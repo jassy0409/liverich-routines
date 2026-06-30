@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Karina Petrova · End-of-Month · June 2026</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#141216;--panel:#201c22;--bd:#2d2630;
+  --pink:#ff4d8d;--mint:#00ffcc;--gold:#ffd700;
+  --purple:#b066ff;--text:#f0e8f5;--muted:#8878a0;
+  --green:#4ade80;--red:#f87171;--amber:#fbbf24
+}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;min-height:100vh}
+
+.hdr{background:linear-gradient(135deg,#140e1a 0%,#1f1230 50%,#140e1a 100%);padding:28px 24px 20px;border-bottom:1px solid var(--bd);position:relative;overflow:hidden}
+.hdr::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(176,102,255,.13) 0%,transparent 60%);pointer-events:none}
+.hdr-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:18px}
+.avatar{width:68px;height:68px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--pink));display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;color:#fff;flex-shrink:0;box-shadow:0 0 0 3px rgba(176,102,255,.3),0 4px 20px rgba(255,77,141,.4);letter-spacing:.04em}
+.hdr-text{flex:1}
+.model-name{font-size:20px;font-weight:800;letter-spacing:.05em}
+.report-sub{font-size:12px;color:var(--muted);margin-top:3px}
+.badge-behind{padding:6px 16px;border-radius:20px;font-size:12px;font-weight:700;letter-spacing:.07em;background:rgba(248,113,113,.15);color:var(--red);border:1px solid rgba(248,113,113,.4)}
+
+.kpi-strip{background:var(--panel);border-bottom:1px solid var(--bd);padding:14px 24px}
+.kpi-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.kpi{text-align:center;padding:12px;border-radius:10px;background:rgba(255,255,255,.03);border:1px solid var(--bd)}
+.kpi-lbl{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
+.kpi-val{font-size:20px;font-weight:700}
+.kpi-sub{font-size:10px;color:var(--muted);margin-top:2px}
+
+.tab-nav{background:var(--panel);border-bottom:1px solid var(--bd);padding:0 24px;position:sticky;top:0;z-index:100}
+.tab-nav-inner{max-width:1100px;margin:0 auto;display:flex;overflow-x:auto}
+.tb{padding:13px 16px;font-size:12px;font-weight:600;color:var(--muted);border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:color .2s,border-color .2s}
+.tb:hover{color:var(--text)}
+.tb.on{color:var(--purple);border-bottom-color:var(--purple)}
+
+.content{max-width:1100px;margin:0 auto;padding:22px 24px}
+.panel{display:none}
+.panel.on{display:block}
+
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.card{background:var(--panel);border:1px solid var(--bd);border-radius:14px;padding:18px}
+.ctitle{font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px}
+.cval{font-size:24px;font-weight:700}
+.cdelta{font-size:11px;margin-top:3px}
+.dpos{color:var(--green)}.dneg{color:var(--red)}
+
+.spill{display:inline-block;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700;margin-right:6px}
+.svip{background:rgba(255,77,141,.15);color:var(--pink);border:1px solid rgba(255,77,141,.3)}
+.sfree{background:rgba(176,102,255,.15);color:var(--purple);border:1px solid rgba(176,102,255,.3)}
+
+canvas{display:block;width:100%}
+
+.row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--bd);font-size:13px}
+.row:last-child{border-bottom:none}
+.rl{color:var(--muted)}
+.rv{font-weight:700}
+
+.post-item{display:flex;align-items:flex-start;gap:12px;padding:11px 0;border-bottom:1px solid var(--bd)}
+.post-item:last-child{border-bottom:none}
+.prank{width:26px;height:26px;border-radius:50%;background:rgba(176,102,255,.15);color:var(--purple);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.ptext{flex:1;font-size:13px;line-height:1.4}
+.pmeta{font-size:10px;color:var(--muted);margin-top:3px}
+.pbadge{display:inline-block;padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700;margin-top:4px}
+.bvip{background:rgba(255,77,141,.15);color:var(--pink);border:1px solid rgba(255,77,141,.3)}
+.bfree{background:rgba(176,102,255,.15);color:var(--purple);border:1px solid rgba(176,102,255,.3)}
+.bpin{background:rgba(255,215,0,.15);color:var(--gold);border:1px solid rgba(255,215,0,.3)}
+.plikes{font-size:15px;font-weight:700;color:var(--purple);text-align:right;white-space:nowrap;flex-shrink:0}
+.plikes-lbl{font-size:10px;color:var(--muted)}
+
+.leg-item{display:flex;align-items:center;gap:9px;margin-bottom:9px}
+.leg-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.leg-name{flex:1;font-size:13px}
+.leg-val{font-size:13px;font-weight:700}
+.leg-pct{font-size:11px;color:var(--muted)}
+
+.funnel{display:flex;flex-direction:column;align-items:center;gap:3px;padding:10px 0}
+.fstep{border-radius:8px;color:#fff;font-weight:600;text-align:center;padding:12px 0}
+
+.summary{font-size:14px;line-height:1.75;background:rgba(248,113,113,.06);border:1px solid rgba(248,113,113,.15);border-radius:10px;padding:16px 20px;margin-bottom:18px}
+
+.action-item{display:flex;gap:14px;padding:16px;background:rgba(248,113,113,.05);border:1px solid rgba(248,113,113,.2);border-radius:10px;margin-bottom:12px}
+.action-num{width:28px;height:28px;border-radius:50%;background:var(--red);color:#fff;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.action-body h4{font-size:14px;font-weight:700;margin-bottom:4px}
+.action-body p{font-size:13px;color:var(--muted);line-height:1.55}
+
+.foot{text-align:center;padding:28px 24px;color:var(--gold);font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;border-top:1px solid var(--bd);margin-top:36px}
+
+@media(max-width:700px){.kpi-inner{grid-template-columns:repeat(2,1fr)}.g2,.g3,.g4{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <div class="hdr-inner">
+    <div class="avatar">KP</div>
+    <div class="hdr-text">
+      <div class="model-name">KARINA PETROVA</div>
+      <div class="report-sub">End-of-Month Report · June 2026 · VIP + Free Combined · Generated Jun 30, 2026</div>
+    </div>
+    <div class="badge-behind">BEHIND</div>
+  </div>
+</div>
+
+<div class="kpi-strip">
+  <div class="kpi-inner">
+    <div class="kpi">
+      <div class="kpi-lbl">June Gross (Combined)</div>
+      <div class="kpi-val" id="k-gross" style="color:var(--purple)">$0</div>
+      <div class="kpi-sub">VIP + Free · Net / 0.8</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-lbl">Monthly Target</div>
+      <div class="kpi-val">$20,000</div>
+      <div class="kpi-sub">June goal</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-lbl">% of Goal</div>
+      <div class="kpi-val" id="k-pct" style="color:var(--red)">0%</div>
+      <div class="kpi-sub">End of month</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-lbl">Deficit</div>
+      <div class="kpi-val" id="k-def" style="color:var(--red)">$0</div>
+      <div class="kpi-sub">Below target</div>
+    </div>
+  </div>
+</div>
+
+<nav class="tab-nav">
+  <div class="tab-nav-inner">
+    <button class="tb on" onclick="sw('overview')">Overview</button>
+    <button class="tb" onclick="sw('earnings')">Earnings</button>
+    <button class="tb" onclick="sw('messages')">Messages</button>
+    <button class="tb" onclick="sw('engagement')">Engagement</button>
+    <button class="tb" onclick="sw('fans')">Fans</button>
+    <button class="tb" onclick="sw('posts')">Top Posts</button>
+    <button class="tb" onclick="sw('stories')">Stories</button>
+    <button class="tb" onclick="sw('action')">Action Plan</button>
+  </div>
+</nav>
+
+<div class="content">
+
+  <!-- OVERVIEW -->
+  <div id="p-overview" class="panel on">
+    <div class="summary">
+      Karina Petrova closed June at <strong>87.2% of goal</strong>, landing $17,437.11 combined gross against a $20,000 target. The VIP account drove $16,015.08 (91.9% of combined), while the Free account contributed $1,422.03. The $2,562.89 deficit is meaningful but closeable with a focused end-of-month push. See the Action Plan tab for five concrete steps.
+    </div>
+    <div class="card" style="margin-bottom:14px">
+      <div class="ctitle">Cumulative Combined Gross vs. Target Pace — June 2026</div>
+      <canvas id="c-ov-line" height="230"></canvas>
+    </div>
+    <div class="g4">
+      <div class="card"><div class="ctitle"><span class="spill svip">VIP</span>Gross</div><div class="cval" style="color:var(--pink)">$16,015</div><div class="cdelta">91.8% of combined</div></div>
+      <div class="card"><div class="ctitle"><span class="spill sfree">Free</span>Gross</div><div class="cval" style="color:var(--purple)">$1,422</div><div class="cdelta">8.2% of combined</div></div>
+      <div class="card"><div class="ctitle">VIP Fans</div><div class="cval" style="color:var(--gold)">622</div><div class="cdelta dneg">-19% vs prev period</div></div>
+      <div class="card"><div class="ctitle">Free Fans</div><div class="cval" style="color:var(--mint)">1,217</div><div class="cdelta dpos">+485.1% vs prev period</div></div>
+    </div>
+  </div>
+
+  <!-- EARNINGS -->
+  <div id="p-earnings" class="panel">
+    <div class="g2" style="margin-bottom:14px">
+      <div class="card">
+        <div class="ctitle">Revenue Split by Account</div>
+        <canvas id="c-acct-donut" height="200"></canvas>
+        <div id="acct-leg" style="margin-top:14px"></div>
+      </div>
+      <div class="card">
+        <div class="ctitle">VIP Revenue by Category</div>
+        <canvas id="c-vip-donut" height="200"></canvas>
+        <div id="vip-leg" style="margin-top:14px"></div>
+      </div>
+    </div>
+    <div class="g2" style="margin-bottom:14px">
+      <div class="card">
+        <div class="ctitle">Daily Combined Gross — June 2026</div>
+        <canvas id="c-daily-bars" height="200"></canvas>
+      </div>
+      <div class="card">
+        <div class="ctitle">Cumulative vs. Target Pace</div>
+        <canvas id="c-earn-line" height="200"></canvas>
+      </div>
+    </div>
+    <div class="g3">
+      <div class="card">
+        <div class="ctitle"><span class="spill svip">VIP</span>Gross</div>
+        <div class="cval" style="color:var(--pink)">$16,015.08</div>
+        <div style="margin-top:12px">
+          <div class="row"><span class="rl">Subscriptions</span><span class="rv">$4,540 <span style="color:var(--muted);font-size:11px">28.4%</span></span></div>
+          <div class="row"><span class="rl">Messages</span><span class="rv">$10,601 <span style="color:var(--muted);font-size:11px">66.2%</span></span></div>
+          <div class="row"><span class="rl">Tips</span><span class="rv">$877 <span style="color:var(--muted);font-size:11px">5.5%</span></span></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ctitle"><span class="spill sfree">Free</span>Gross</div>
+        <div class="cval" style="color:var(--purple)">$1,422.03</div>
+        <div style="margin-top:12px">
+          <div class="row"><span class="rl">Messages</span><span class="rv">$1,377 <span style="color:var(--muted);font-size:11px">96.9%</span></span></div>
+          <div class="row"><span class="rl">Tips</span><span class="rv">$44 <span style="color:var(--muted);font-size:11px">3.1%</span></span></div>
+          <div class="row"><span class="rl">Subscriptions</span><span class="rv">$0 <span style="color:var(--muted);font-size:11px">0%</span></span></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ctitle">Combined Totals</div>
+        <div class="cval" style="color:var(--purple)">$17,437.11</div>
+        <div style="margin-top:12px">
+          <div class="row"><span class="rl">Target</span><span class="rv">$20,000</span></div>
+          <div class="row"><span class="rl">% of goal</span><span class="rv dneg">87.2%</span></div>
+          <div class="row"><span class="rl">Deficit</span><span class="rv dneg">$2,562.89</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MESSAGES -->
+  <div id="p-messages" class="panel">
+    <div class="g2" style="margin-bottom:14px">
+      <div class="card">
+        <div class="ctitle"><span class="spill svip">VIP</span>Message Stats</div>
+        <div class="row"><span class="rl">Messages volume</span><span class="rv" style="color:var(--pink)">53,127</span></div>
+        <div class="row"><span class="rl">Message revenue</span><span class="rv" style="color:var(--gold)">$10,601</span></div>
+        <div class="row"><span class="rl">Avg per message</span><span class="rv" style="color:var(--mint)">$0.20</span></div>
+      </div>
+      <div class="card">
+        <div class="ctitle"><span class="spill sfree">Free</span>Message Stats</div>
+        <div class="row"><span class="rl">Messages volume</span><span class="rv" style="color:var(--purple)">201,242</span></div>
+        <div class="row"><span class="rl">Message revenue</span><span class="rv" style="color:var(--gold)">$1,377</span></div>
+        <div class="row"><span class="rl">Avg per message</span><span class="rv" style="color:var(--muted)">$0.007</span></div>
+      </div>
+    </div>
+    <div class="g2">
+      <div class="card">
+        <div class="ctitle"><span class="spill svip">VIP</span>Revenue Funnel</div>
+        <div class="funnel" id="f-vip"></div>
+      </div>
+      <div class="card">
+        <div class="ctitle"><span class="spill sfree">Free</span>Revenue Funnel</div>
+        <div class="funnel" id="f-free"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ENGAGEMENT -->
+  <div id="p-engagement" class="panel">
+    <div class="g2" style="margin-bottom:14px">
+      <div class="card">
+        <div class="ctitle"><span class="spill svip">VIP</span>Post Engagement — Top 8</div>
+        <div class="row"><span class="rl">Top post likes</span><span class="rv" style="color:var(--pink)">19</span></div>
+        <div class="row"><span class="rl">Avg likes (top 8)</span><span class="rv">16</span></div>
+        <div class="row"><span class="rl">Total messages</span><span class="rv" style="color:var(--gold)">53,127</span></div>
+      </div>
+      <div class="card">
+        <div class="ctitle"><span class="spill sfree">Free</span>Post Engagement — Top 8</div>
+        <div class="row"><span class="rl">Top post likes</span><span class="rv" style="color:var(--purple)">36</span></div>
+        <div class="row"><span class="rl">Avg likes (top 8)</span><span class="rv">29</span></div>
+        <div class="row"><span class="rl">Total messages</span><span class="rv" style="color:var(--gold)">201,242</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="ctitle">Combined Fan-to-Revenue Funnel</div>
+      <div class="funnel" id="f-engagement"></div>
+    </div>
+  </div>
+
+  <!-- FANS -->
+  <div id="p-fans" class="panel">
+    <div class="g2" style="margin-bottom:14px">
+      <div class="card">
+        <div class="ctitle"><span class="spill svip">VIP</span>Fan Metrics</div>
+        <div class="row"><span class="rl">Active fans</span><span class="rv" style="color:var(--pink)">622</span></div>
+        <div class="row"><span class="rl">Vs prev period</span><span class="rv dneg">-19%</span></div>
+        <div class="row"><span class="rl">New subscriptions</span><span class="rv">362</span></div>
+        <div class="row"><span class="rl">Vs prev period</span><span class="rv dneg">-22.6%</span></div>
+        <div class="row"><span class="rl">Renewals</span><span class="rv">260</span></div>
+        <div class="row"><span class="rl">Renewal vs prev</span><span class="rv dneg">-13.3%</span></div>
+        <div class="row"><span class="rl">Profile visitors</span><span class="rv" style="color:var(--mint)">106,274</span></div>
+        <div class="row"><span class="rl">Visitors vs prev</span><span class="rv dpos">+2.7%</span></div>
+      </div>
+      <div class="card">
+        <div class="ctitle"><span class="spill sfree">Free</span>Fan Metrics</div>
+        <div class="row"><span class="rl">Active fans</span><span class="rv" style="color:var(--purple)">1,217</span></div>
+        <div class="row"><span class="rl">Vs prev period</span><span class="rv dpos">+485.1%</span></div>
+        <div class="row"><span class="rl">Profile visitors</span><span class="rv" style="color:var(--mint)">40,707</span></div>
+        <div class="row"><span class="rl">Visitors vs prev</span><span class="rv dpos">+293%</span></div>
+        <div class="row"><span class="rl">Note</span><span class="rv" style="font-size:11px;color:var(--muted)">Funnel account to VIP</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="ctitle">VIP Daily Fan Activity — June 2026</div>
+      <canvas id="c-vip-fans-line" height="200"></canvas>
+    </div>
+  </div>
+
+  <!-- TOP POSTS -->
+  <div id="p-posts" class="panel">
+    <div class="g2" style="margin-bottom:14px">
+      <div class="card">
+        <div class="ctitle"><span class="spill svip">VIP</span>Top 8 Posts by Likes — June 2026</div>
+        <canvas id="c-vip-posts" height="280"></canvas>
+      </div>
+      <div class="card">
+        <div class="ctitle"><span class="spill svip">VIP</span>Post Details</div>
+        <div id="vip-post-list"></div>
+      </div>
+    </div>
+    <div class="g2">
+      <div class="card">
+        <div class="ctitle"><span class="spill sfree">Free</span>Top 8 Posts by Likes — June 2026</div>
+        <canvas id="c-free-posts" height="280"></canvas>
+      </div>
+      <div class="card">
+        <div class="ctitle"><span class="spill sfree">Free</span>Post Details</div>
+        <div id="free-post-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STORIES -->
+  <div id="p-stories" class="panel">
+    <div class="g2" style="margin-bottom:14px">
+      <div class="card">
+        <div class="ctitle"><span class="spill svip">VIP</span>Story Performance</div>
+        <div class="row"><span class="rl">Stories published</span><span class="rv">3</span></div>
+        <div class="row"><span class="rl">Total views</span><span class="rv" style="color:var(--mint)">109</span></div>
+        <div class="row"><span class="rl">Average views</span><span class="rv">36</span></div>
+        <div class="row"><span class="rl">Peak views</span><span class="rv" style="color:var(--mint)">42 <span style="color:var(--muted);font-size:10px">Jun 25</span></span></div>
+      </div>
+      <div class="card">
+        <div class="ctitle"><span class="spill sfree">Free</span>Story Performance</div>
+        <div class="row"><span class="rl">Stories published</span><span class="rv">5</span></div>
+        <div class="row"><span class="rl">Total views</span><span class="rv" style="color:var(--muted)">N/A</span></div>
+        <div class="row"><span class="rl">Dates</span><span class="rv" style="font-size:11px">Jun 3 · 6 · 8 · 20 · 22</span></div>
+        <div class="row"><span class="rl">Note</span><span class="rv" style="font-size:11px;color:var(--muted)">View stats unavailable</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="ctitle"><span class="spill svip">VIP</span>Story Views by Story (Engagement only · no revenue)</div>
+      <canvas id="c-vip-stories" height="200"></canvas>
+    </div>
+  </div>
+
+  <!-- ACTION PLAN -->
+  <div id="p-action" class="panel">
+    <div style="margin-bottom:18px;padding:16px 20px;background:rgba(248,113,113,.06);border:1px solid rgba(248,113,113,.15);border-radius:10px;font-size:14px;line-height:1.75">
+      Karina is at <strong>87.2% of goal</strong> with <strong style="color:var(--red)">$2,562.89</strong> still needed to reach $20,000 combined. These five steps close the gap fastest. All items are for the current shift and tonight.
+    </div>
+
+    <div class="action-item">
+      <div class="action-num">1</div>
+      <div class="action-body">
+        <h4>Run an end-of-month PPV on VIP today</h4>
+        <p>June closes tonight. Send one locked PPV message priced at $8-12 to all 622 VIP fans. At a 30% open rate with 10% purchase conversion, that is roughly 19 sales which alone accounts for $150-230. Add a countdown: "June closes in hours, last exclusive of the month."</p>
+      </div>
+    </div>
+
+    <div class="action-item">
+      <div class="action-num">2</div>
+      <div class="action-body">
+        <h4>Drive Free-to-VIP conversions via personal DMs today</h4>
+        <p>The Free account has 1,217 fans generating only $1,422 gross. Identify the top 20 engagers (liked posts, commented) and DM each one personally: "i've been saving my best stuff for VIP only and today's your last chance to get into June's content at this price." Target 5 conversions. Each conversion adds ~$15-25 in sub revenue immediately.</p>
+      </div>
+    </div>
+
+    <div class="action-item">
+      <div class="action-num">3</div>
+      <div class="action-body">
+        <h4>Tip upsell in VIP DMs from mid-spenders</h4>
+        <p>Pull VIP fans who have tipped $10-50 this month and ask each one for a specific amount by name: "been thinking about you today, tip me $50 and i'll send you something personally from me tonight." Each chatter should have 3-5 of these active in their shift queue right now.</p>
+      </div>
+    </div>
+
+    <div class="action-item">
+      <div class="action-num">4</div>
+      <div class="action-body">
+        <h4>Maximize outbound in tonight's graveyard shift</h4>
+        <p>The graveyard shift (11pm-7am PHT) is Leigh's window. She should be sending new PPV messages to every active VIP thread that had any purchase this month, not waiting on inbounds. Volume matters tonight. At least one new locked message per active thread before 7am PHT.</p>
+      </div>
+    </div>
+
+    <div class="action-item">
+      <div class="action-num">5</div>
+      <div class="action-body">
+        <h4>Reactivate VIP subscribers who have not purchased this month</h4>
+        <p>Any VIP fan who subscribed but has zero purchases in June gets a personal "just for you" message: "you've been quiet and i noticed, check what i left for you." Keep the PPV price low ($5-7) to reduce friction. Reactivating 20 dormant fans at that price adds $100-140. Post a story on VIP with "check your messages" to drive inbox opens.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="foot">LIVERICHMEDIA · KARINA PETROVA · END-OF-MONTH REPORT · JUNE 2026</div>
+
+<script>
+// ── Data ──────────────────────────────────────────────────────────────────
+const DAILY=[548,751,503,374,311,520,297,411,385,790,402,1470,1346,535,639,711,1372,780,730,917,850,406,293,373,329,316,527,339,215,0];
+const VIP_GROSS=16015.08,FREE_GROSS=1422.03,COMBINED=17437.11,TARGET=20000;
+const VIP_FANS_DAILY=[135.94,235.79,199.82,159.8,151.83,119.89,83.92,107.95,131.89,73.55,167.89,83.96,143.89,127.91,99.94,119.93,115.93,107.92,147.88,105.53,115.92,107.91,107.92,149.51,127.91,95.92,111.93,107.87,79.9,31.96];
+const VIP_STORIES=[{d:'Jun 6',v:29},{d:'Jun 8',v:38},{d:'Jun 25',v:42}];
+const VIP_POSTS=[
+  {t:"Office lady or a Teacher? 🤭",d:'Jun 1',l:19,c:1,pin:false},
+  {t:"for whoever's awake at this hour with me 🌙😈 the ones who actually pay attention get spoiled",d:'Jun 6',l:19,c:1,pin:false},
+  {t:"Black kitty 🐈‍⬛",d:'Jun 2',l:18,c:1,pin:false},
+  {t:"🩶  hot stuff",d:'Jun 2',l:17,c:1,pin:false},
+  {t:"made something new i can't wait for you to see 😏 drop a 🔥 if you want me to send you a peek",d:'Jun 12',l:16,c:1,pin:false},
+  {t:"go take a look and tell me what you think 🤪",d:'Jun 4',l:16,c:1,pin:false},
+  {t:"You can look, but can you handle it? 😉",d:'Jun 9',l:16,c:1,pin:false},
+  {t:"i'm in the kind of mood that gets me in trouble today 😏",d:'Jun 12',l:15,c:1,pin:false},
+];
+const FREE_POSTS=[
+  {t:"I've missed having you around. The best stuff is on my VIP where I can actually be myself without holding back.",d:'Jun 4',l:36,c:2,pin:true},
+  {t:"i'm feeling extra soft today and someone's going to get spoiled for it 😏 check your messages",d:'Jun 16',l:36,c:1,pin:false},
+  {t:"in a dangerous little mood today send a 🔥 if you want me to act on it",d:'Jun 11',l:34,c:1,pin:false},
+  {t:"went live last night and didn't hold back at all 🙈 the full hour is in your messages if you missed it",d:'Jun 10',l:33,c:1,pin:false},
+  {t:"feeling myself on this lazy sunday 😏 drop a 💗 if you want me to send you something fun today",d:'Jun 8',l:30,c:1,pin:false},
+  {t:"can't sleep so i posted a lil preview 🙈 the full thing's way too much for the feed, check your DMs 😈",d:'Jun 6',l:28,c:2,pin:false},
+  {t:"feeling a little dangerous this afternoon 👀 should i post what i filmed? like this if you want it",d:'Jun 5',l:27,c:1,pin:false},
+  {t:"i'm in a generous mood today... check your messages, i left something for you 😈",d:'Jun 14',l:27,c:1,pin:false},
+];
+
+// ── Helpers ───────────────────────────────────────────────────────────────
+const $=id=>document.getElementById(id);
+const fmt=n=>'$'+Math.round(n).toLocaleString('en-US');
+const fmtD=n=>'$'+n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+
+function ani(fn,dur=1200){
+  const s=performance.now();
+  (function f(now){const p=Math.min((now-s)/dur,1),e=1-Math.pow(1-p,3);fn(e);if(p<1)requestAnimationFrame(f);})(s);
+}
+
+function sc(id){
+  const cv=$(id);if(!cv)return null;
+  const dpr=window.devicePixelRatio||1;
+  const w=cv.offsetWidth||cv.parentElement&&cv.parentElement.offsetWidth-36||600;
+  const h=parseInt(cv.getAttribute('height'))||200;
+  cv.width=w*dpr;cv.height=h*dpr;cv.style.width=w+'px';cv.style.height=h+'px';
+  const ctx=cv.getContext('2d');ctx.scale(dpr,dpr);
+  return{ctx,w,h};
+}
+
+// ── Cumulative Line ───────────────────────────────────────────────────────
+function drawLine(cid,daily,target,color='#b066ff'){
+  const r=sc(cid);if(!r)return;const{ctx,w,h}=r;
+  const pad={t:22,r:12,b:38,l:66},cw=w-pad.l-pad.r,ch=h-pad.t-pad.b;
+  const cum=[],pace=[];let run=0;
+  for(let i=0;i<30;i++){run+=daily[i];cum.push(run);pace.push(target*(i+1)/30);}
+  const mx=Math.max(...cum,target)*1.06;
+  ani(prog=>{
+    ctx.clearRect(0,0,w,h);
+    ctx.strokeStyle='rgba(255,255,255,.05)';ctx.lineWidth=1;
+    for(let i=0;i<=4;i++){
+      const y=pad.t+ch*(1-i/4);ctx.beginPath();ctx.moveTo(pad.l,y);ctx.lineTo(pad.l+cw,y);ctx.stroke();
+      ctx.fillStyle='#8878a0';ctx.font='10px sans-serif';ctx.textAlign='right';ctx.fillText(fmt(mx*i/4),pad.l-5,y+4);}
+    ctx.fillStyle='#8878a0';ctx.font='10px sans-serif';ctx.textAlign='center';
+    [1,7,14,21,28].forEach(d=>ctx.fillText('Jun '+d,pad.l+(d-1)/29*cw,h-6));
+    ctx.strokeStyle='rgba(251,191,36,.55)';ctx.lineWidth=1.5;ctx.setLineDash([5,4]);
+    ctx.beginPath();pace.forEach((v,i)=>{const x=pad.l+i/29*cw,y=pad.t+ch*(1-v/mx);i?ctx.lineTo(x,y):ctx.moveTo(x,y);});
+    ctx.stroke();ctx.setLineDash([]);
+    ctx.fillStyle='rgba(251,191,36,.7)';ctx.font='10px sans-serif';ctx.textAlign='left';
+    ctx.fillText('Target pace $20k',pad.l+4,pad.t+ch*(1-target/mx)-7);
+    const pts=Math.max(2,Math.floor(30*prog));
+    const g=ctx.createLinearGradient(0,pad.t,0,pad.t+ch);
+    g.addColorStop(0,color+'44');g.addColorStop(1,color+'00');
+    ctx.fillStyle=g;ctx.beginPath();ctx.moveTo(pad.l,pad.t+ch);
+    for(let i=0;i<pts;i++){const x=pad.l+i/29*cw,y=pad.t+ch*(1-cum[i]/mx);ctx.lineTo(x,y);}
+    ctx.lineTo(pad.l+(pts-1)/29*cw,pad.t+ch);ctx.closePath();ctx.fill();
+    ctx.shadowBlur=9;ctx.shadowColor=color;ctx.strokeStyle=color;ctx.lineWidth=2.5;
+    ctx.beginPath();
+    for(let i=0;i<pts;i++){const x=pad.l+i/29*cw,y=pad.t+ch*(1-cum[i]/mx);i?ctx.lineTo(x,y):ctx.moveTo(x,y);}
+    ctx.stroke();ctx.shadowBlur=0;
+    if(prog>0.9){const ex=pad.l+(pts-1)/29*cw,ey=pad.t+ch*(1-cum[pts-1]/mx);
+      ctx.beginPath();ctx.arc(ex,ey,4,0,6.28);ctx.fillStyle=color;ctx.fill();}
+  });
+}
+
+// ── Donut ─────────────────────────────────────────────────────────────────
+function drawDonut(cid,legId,segs,centerLabel,centerVal){
+  const r=sc(cid);if(!r)return;const{ctx,w,h}=r;
+  const cx=w/2,cy=h/2,R=Math.min(w,h)/2*0.88,ri=R*0.55;
+  const total=segs.reduce((a,s)=>a+s.v,0);
+  $(legId).innerHTML=segs.map(s=>`
+    <div class="leg-item"><div class="leg-dot" style="background:${s.col}"></div>
+    <div class="leg-name">${s.lb}</div><div class="leg-val">${fmt(s.v)}</div>
+    <div class="leg-pct">${(s.v/total*100).toFixed(1)}%</div></div>`).join('');
+  ani(p=>{
+    ctx.clearRect(0,0,w,h);let a=-Math.PI/2;
+    segs.forEach(s=>{const sw=s.v/total*2*Math.PI*p;
+      ctx.beginPath();ctx.moveTo(cx,cy);ctx.arc(cx,cy,R,a,a+sw);ctx.closePath();
+      ctx.fillStyle=s.col;ctx.shadowBlur=6;ctx.shadowColor=s.col;ctx.fill();ctx.shadowBlur=0;a+=sw;});
+    ctx.beginPath();ctx.arc(cx,cy,ri,0,6.28);ctx.fillStyle='#201c22';ctx.fill();
+    ctx.fillStyle='#f0e8f5';ctx.textAlign='center';ctx.font='bold 11px sans-serif';
+    ctx.fillText(centerLabel,cx,cy-8);ctx.font='bold 14px sans-serif';ctx.fillStyle='#b066ff';
+    ctx.fillText(fmtD(total*p),cx,cy+12);
+  });
+}
+
+// ── Daily Bars ─────────────────────────────────────────────────────────────
+function drawDailyBars(cid){
+  const r=sc(cid);if(!r)return;const{ctx,w,h}=r;
+  const pad={t:10,r:8,b:28,l:54},cw=w-pad.l-pad.r,ch=h-pad.t-pad.b;
+  const mx=Math.max(...DAILY)*1.12,bw=cw/30*0.72;
+  ani(p=>{
+    ctx.clearRect(0,0,w,h);
+    ctx.strokeStyle='rgba(255,255,255,.05)';ctx.lineWidth=1;
+    for(let i=0;i<=3;i++){const y=pad.t+ch*(1-i/3);ctx.beginPath();ctx.moveTo(pad.l,y);ctx.lineTo(pad.l+cw,y);ctx.stroke();
+      ctx.fillStyle='#8878a0';ctx.font='10px sans-serif';ctx.textAlign='right';ctx.fillText(fmt(mx*i/3),pad.l-4,y+4);}
+    DAILY.forEach((v,i)=>{
+      const x=pad.l+i/30*cw+(cw/30-bw)/2,bh=(v/mx)*ch*p,y=pad.t+ch-bh;
+      ctx.fillStyle=v===0?'rgba(176,102,255,.18)':'rgba(176,102,255,.72)';ctx.fillRect(x,y,bw,bh);});
+    ctx.fillStyle='#8878a0';ctx.font='9px sans-serif';ctx.textAlign='center';
+    [1,10,20,29].forEach(d=>ctx.fillText(d,pad.l+d/30*cw,h-4));
+  });
+}
+
+// ── VIP Fans Activity Line ─────────────────────────────────────────────────
+function drawVipFansLine(cid){
+  const r=sc(cid);if(!r)return;const{ctx,w,h}=r;
+  const pad={t:22,r:12,b:38,l:58},cw=w-pad.l-pad.r,ch=h-pad.t-pad.b;
+  const mx=Math.max(...VIP_FANS_DAILY)*1.12;
+  ani(prog=>{
+    ctx.clearRect(0,0,w,h);
+    ctx.strokeStyle='rgba(255,255,255,.05)';ctx.lineWidth=1;
+    for(let i=0;i<=4;i++){const y=pad.t+ch*(1-i/4);ctx.beginPath();ctx.moveTo(pad.l,y);ctx.lineTo(pad.l+cw,y);ctx.stroke();
+      ctx.fillStyle='#8878a0';ctx.font='10px sans-serif';ctx.textAlign='right';ctx.fillText(Math.round(mx*i/4),pad.l-5,y+4);}
+    ctx.fillStyle='#8878a0';ctx.font='10px sans-serif';ctx.textAlign='center';
+    [1,7,14,21,28].forEach(d=>ctx.fillText('Jun '+d,pad.l+(d-1)/29*cw,h-6));
+    const pts=Math.max(2,Math.floor(30*prog));
+    const g=ctx.createLinearGradient(0,pad.t,0,pad.t+ch);
+    g.addColorStop(0,'rgba(255,77,141,.25)');g.addColorStop(1,'rgba(255,77,141,0)');
+    ctx.fillStyle=g;ctx.beginPath();ctx.moveTo(pad.l,pad.t+ch);
+    for(let i=0;i<pts;i++){const x=pad.l+i/29*cw,y=pad.t+ch*(1-VIP_FANS_DAILY[i]/mx);ctx.lineTo(x,y);}
+    ctx.lineTo(pad.l+(pts-1)/29*cw,pad.t+ch);ctx.closePath();ctx.fill();
+    ctx.shadowBlur=8;ctx.shadowColor='#ff4d8d';ctx.strokeStyle='#ff4d8d';ctx.lineWidth=2;
+    ctx.beginPath();
+    for(let i=0;i<pts;i++){const x=pad.l+i/29*cw,y=pad.t+ch*(1-VIP_FANS_DAILY[i]/mx);i?ctx.lineTo(x,y):ctx.moveTo(x,y);}
+    ctx.stroke();ctx.shadowBlur=0;
+  });
+}
+
+// ── Post Bars ──────────────────────────────────────────────────────────────
+function drawPostBars(cid,posts,col){
+  const r=sc(cid);if(!r)return;const{ctx,w,h}=r;
+  const pad={t:6,r:46,b:6,l:6},cw=w-pad.l-pad.r,ch=h-pad.t-pad.b;
+  const mx=posts[0].l,rh=ch/posts.length;
+  ani(p=>{
+    ctx.clearRect(0,0,w,h);
+    posts.forEach((post,i)=>{
+      const y=pad.t+i*rh,bh=rh*0.52,by=y+(rh-bh)/2;
+      ctx.fillStyle=col+'22';ctx.fillRect(pad.l,by,cw,bh);
+      ctx.fillStyle=col;ctx.shadowBlur=4;ctx.shadowColor=col;
+      ctx.fillRect(pad.l,by,post.l/mx*cw*p,bh);ctx.shadowBlur=0;
+      ctx.fillStyle='#f0e8f5';ctx.font='bold 11px sans-serif';ctx.textAlign='left';
+      ctx.fillText(post.l,pad.l+cw+6,by+bh/2+4);
+    });
+  },900);
+}
+
+// ── VIP Story Bars ─────────────────────────────────────────────────────────
+function drawStoryBars(cid){
+  const r=sc(cid);if(!r)return;const{ctx,w,h}=r;
+  const vals=VIP_STORIES.map(s=>s.v),labels=VIP_STORIES.map(s=>s.d);
+  const pad={t:10,r:8,b:28,l:44},cw=w-pad.l-pad.r,ch=h-pad.t-pad.b;
+  const mx=Math.max(...vals)*1.12,bw=cw/vals.length*0.45;
+  ani(p=>{
+    ctx.clearRect(0,0,w,h);
+    ctx.strokeStyle='rgba(255,255,255,.05)';ctx.lineWidth=1;
+    for(let i=0;i<=3;i++){const y=pad.t+ch*(1-i/3);ctx.beginPath();ctx.moveTo(pad.l,y);ctx.lineTo(pad.l+cw,y);ctx.stroke();
+      ctx.fillStyle='#8878a0';ctx.font='10px sans-serif';ctx.textAlign='right';ctx.fillText(Math.round(mx*i/3),pad.l-4,y+4);}
+    vals.forEach((v,i)=>{
+      const x=pad.l+i/vals.length*cw+(cw/vals.length-bw)/2,bh=v/mx*ch*p;
+      ctx.fillStyle='rgba(0,255,204,.72)';ctx.shadowBlur=6;ctx.shadowColor='#00ffcc';
+      ctx.fillRect(x,pad.t+ch-bh,bw,bh);ctx.shadowBlur=0;
+      ctx.fillStyle='#8878a0';ctx.font='9px sans-serif';ctx.textAlign='center';
+      ctx.fillText(labels[i],x+bw/2,h-5);
+    });
+  },900);
+}
+
+// ── Funnel ─────────────────────────────────────────────────────────────────
+function buildFunnel(id,steps){
+  $(id).innerHTML=steps.map((s,i)=>`
+    <div class="fstep" style="width:${100-i*20}%;background:${s.col}">
+      <div style="font-size:14px;font-weight:700">${s.val}</div>
+      <div style="font-size:10px;opacity:.85;margin-top:1px">${s.lbl}</div>
+    </div>`).join('');
+}
+
+// ── Post Lists ─────────────────────────────────────────────────────────────
+function buildPostList(elId,posts,col,acct){
+  $(elId).innerHTML=posts.map((p,i)=>`
+    <div class="post-item">
+      <div class="prank" style="background:${col}22;color:${col}">${i+1}</div>
+      <div class="ptext">
+        <div>${p.t.substring(0,80)}${p.t.length>80?'…':''}</div>
+        <div class="pmeta">${p.d} · ${p.c} comment${p.c!==1?'s':''}</div>
+        ${p.pin?'<span class="pbadge bpin">Pinned · VIP Redirect</span>':`<span class="pbadge b${acct}">${acct.toUpperCase()}</span>`}
+      </div>
+      <div class="plikes" style="color:${col}">${p.l}<div class="plikes-lbl">likes</div></div>
+    </div>`).join('');
+}
+
+// ── Tab Switch ─────────────────────────────────────────────────────────────
+function sw(t){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.tb').forEach(b=>b.classList.remove('on'));
+  $('p-'+t).classList.add('on');
+  document.querySelectorAll('.tb').forEach(b=>{if(b.getAttribute('onclick').includes("'"+t+"'"))b.classList.add('on');});
+  requestAnimationFrame(()=>initTab(t));
+}
+
+function initTab(t){
+  if(t==='overview'){drawLine('c-ov-line',DAILY,TARGET);}
+  else if(t==='earnings'){
+    drawDonut('c-acct-donut','acct-leg',[{lb:'VIP',v:VIP_GROSS,col:'#ff4d8d'},{lb:'Free',v:FREE_GROSS,col:'#b066ff'}],'Combined',COMBINED);
+    drawDonut('c-vip-donut','vip-leg',[{lb:'Subscriptions',v:4540,col:'#ff4d8d'},{lb:'Messages',v:10601,col:'#ffd700'},{lb:'Tips',v:877,col:'#b066ff'}],'VIP Gross',VIP_GROSS);
+    drawDailyBars('c-daily-bars');
+    drawLine('c-earn-line',DAILY,TARGET);
+  }
+  else if(t==='messages'){
+    buildFunnel('f-vip',[{val:'53,127',lbl:'VIP Messages Volume',col:'#ff4d8d'},{val:'$10,601',lbl:'VIP Message Revenue',col:'#ffd700'},{val:'$0.20',lbl:'Avg per Message',col:'#b066ff'}]);
+    buildFunnel('f-free',[{val:'201,242',lbl:'Free Messages Volume',col:'#b066ff'},{val:'$1,377',lbl:'Free Message Revenue',col:'#9060d0'},{val:'$0.007',lbl:'Avg per Message',col:'#6840a0'}]);
+  }
+  else if(t==='engagement'){
+    buildFunnel('f-engagement',[{val:'146,981',lbl:'Total Fans (VIP + Free)',col:'#b066ff'},{val:'$11,978',lbl:'Combined Message Revenue',col:'#ff4d8d'},{val:'$17,437',lbl:'Combined Gross',col:'#ffd700'}]);
+  }
+  else if(t==='fans'){drawVipFansLine('c-vip-fans-line');}
+  else if(t==='posts'){
+    drawPostBars('c-vip-posts',VIP_POSTS,'#ff4d8d');
+    drawPostBars('c-free-posts',FREE_POSTS,'#b066ff');
+    buildPostList('vip-post-list',VIP_POSTS,'#ff4d8d','vip');
+    buildPostList('free-post-list',FREE_POSTS,'#b066ff','free');
+  }
+  else if(t==='stories'){drawStoryBars('c-vip-stories');}
+}
+
+// ── Boot ──────────────────────────────────────────────────────────────────
+window.addEventListener('load',()=>{
+  const kgEl=$('k-gross'),kpEl=$('k-pct'),kdEl=$('k-def');
+  const s0=performance.now();
+  (function tick(now){
+    const p=Math.min((now-s0)/1800,1),e=1-Math.pow(1-p,3);
+    kgEl.textContent='$'+Math.round(17437.11*e).toLocaleString('en-US');
+    kpEl.textContent=(87.2*e).toFixed(1)+'%';
+    kdEl.textContent='$'+Math.round(2562.89*e).toLocaleString('en-US');
+    if(p<1) requestAnimationFrame(tick);
+  })(s0);
+
+  setTimeout(()=>{
+    drawLine('c-ov-line',DAILY,TARGET);
+    buildFunnel('f-vip',[{val:'53,127',lbl:'VIP Messages Volume',col:'#ff4d8d'},{val:'$10,601',lbl:'VIP Message Revenue',col:'#ffd700'},{val:'$0.20',lbl:'Avg per Message',col:'#b066ff'}]);
+    buildFunnel('f-free',[{val:'201,242',lbl:'Free Messages Volume',col:'#b066ff'},{val:'$1,377',lbl:'Free Message Revenue',col:'#9060d0'},{val:'$0.007',lbl:'Avg per Message',col:'#6840a0'}]);
+    buildFunnel('f-engagement',[{val:'146,981',lbl:'Total Fans (VIP + Free)',col:'#b066ff'},{val:'$11,978',lbl:'Combined Message Revenue',col:'#ff4d8d'},{val:'$17,437',lbl:'Combined Gross',col:'#ffd700'}]);
+    buildPostList('vip-post-list',VIP_POSTS,'#ff4d8d','vip');
+    buildPostList('free-post-list',FREE_POSTS,'#b066ff','free');
+  },80);
+});
+</script>
+</body>
+</html>

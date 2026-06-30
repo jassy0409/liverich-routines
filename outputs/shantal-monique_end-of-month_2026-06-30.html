@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shantal Monique · End-of-Month · June 2026</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#141216;--panel:#201c22;--bd:#2d2630;
+  --pink:#ff4d8d;--mint:#00ffcc;--gold:#ffd700;
+  --purple:#b066ff;--text:#f0e8f5;--muted:#8878a0;
+  --green:#4ade80;--red:#f87171;--amber:#fbbf24
+}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;min-height:100vh}
+
+.hdr{background:linear-gradient(135deg,#1a1020 0%,#241832 50%,#1a1020 100%);padding:28px 24px 20px;border-bottom:1px solid var(--bd);position:relative;overflow:hidden}
+.hdr::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(255,77,141,.13) 0%,transparent 60%);pointer-events:none}
+.hdr-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:18px}
+.avatar{width:68px;height:68px;border-radius:50%;background:linear-gradient(135deg,var(--pink),var(--purple));display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;color:#fff;flex-shrink:0;box-shadow:0 0 0 3px rgba(255,77,141,.3),0 4px 20px rgba(176,102,255,.4);letter-spacing:.04em}
+.hdr-text{flex:1}
+.model-name{font-size:20px;font-weight:800;letter-spacing:.05em}
+.report-sub{font-size:12px;color:var(--muted);margin-top:3px}
+.badge{padding:6px 16px;border-radius:20px;font-size:12px;font-weight:700;letter-spacing:.07em;background:rgba(74,222,128,.15);color:var(--green);border:1px solid rgba(74,222,128,.4)}
+
+.kpi-strip{background:var(--panel);border-bottom:1px solid var(--bd);padding:14px 24px}
+.kpi-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.kpi{text-align:center;padding:12px;border-radius:10px;background:rgba(255,255,255,.03);border:1px solid var(--bd)}
+.kpi-lbl{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
+.kpi-val{font-size:20px;font-weight:700}
+.kpi-sub{font-size:10px;color:var(--muted);margin-top:2px}
+
+.tab-nav{background:var(--panel);border-bottom:1px solid var(--bd);padding:0 24px;position:sticky;top:0;z-index:100}
+.tab-nav-inner{max-width:1100px;margin:0 auto;display:flex;overflow-x:auto}
+.tb{padding:13px 16px;font-size:12px;font-weight:600;color:var(--muted);border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:color .2s,border-color .2s}
+.tb:hover{color:var(--text)}
+.tb.on{color:var(--pink);border-bottom-color:var(--pink)}
+
+.content{max-width:1100px;margin:0 auto;padding:22px 24px}
+.panel{display:none}
+.panel.on{display:block}
+
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.card{background:var(--panel);border:1px solid var(--bd);border-radius:14px;padding:18px}
+.ctitle{font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px}
+.cval{font-size:26px;font-weight:700}
+.cdelta{font-size:11px;margin-top:3px}
+.dpos{color:var(--green)}.dneg{color:var(--red)}
+
+canvas{display:block;width:100%}
+
+.row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--bd);font-size:13px}
+.row:last-child{border-bottom:none}
+.rl{color:var(--muted)}
+.rv{font-weight:700}
+
+.post-item{display:flex;align-items:flex-start;gap:12px;padding:11px 0;border-bottom:1px solid var(--bd)}
+.post-item:last-child{border-bottom:none}
+.prank{width:26px;height:26px;border-radius:50%;background:rgba(255,77,141,.15);color:var(--pink);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.ptext{flex:1;font-size:13px;line-height:1.4}
+.pmeta{font-size:10px;color:var(--muted);margin-top:3px}
+.pbadge{display:inline-block;padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700;margin-top:4px}
+.btip{background:rgba(255,215,0,.15);color:var(--gold);border:1px solid rgba(255,215,0,.3)}
+.beng{background:rgba(176,102,255,.15);color:var(--purple);border:1px solid rgba(176,102,255,.3)}
+.plikes{font-size:15px;font-weight:700;color:var(--pink);text-align:right;white-space:nowrap;flex-shrink:0}
+.plikes-lbl{font-size:10px;color:var(--muted)}
+
+.leg-item{display:flex;align-items:center;gap:9px;margin-bottom:9px}
+.leg-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.leg-name{flex:1;font-size:13px}
+.leg-val{font-size:13px;font-weight:700}
+.leg-pct{font-size:11px;color:var(--muted)}
+
+.funnel{display:flex;flex-direction:column;align-items:center;gap:3px;padding:10px 0}
+.fstep{border-radius:8px;color:#fff;font-weight:600;text-align:center;padding:12px 0}
+
+.summary{font-size:14px;line-height:1.75;background:rgba(255,77,141,.06);border:1px solid rgba(255,77,141,.15);border-radius:10px;padding:16px 20px;margin-bottom:18px}
+
+.foot{text-align:center;padding:28px 24px;color:var(--gold);font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;border-top:1px solid var(--bd);margin-top:36px}
+
+@media(max-width:700px){.kpi-inner{grid-template-columns:repeat(2,1fr)}.g2,.g3,.g4{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <div class="hdr-inner">
+    <div class="avatar">SM</div>
+    <div class="hdr-text">
+      <div class="model-name">SHANTAL MONIQUE</div>
+      <div class="report-sub">End-of-Month Report · June 2026 · Generated Jun 30, 2026</div>
+    </div>
+    <div class="badge">AHEAD</div>
+  </div>
+</div>
+
+<div class="kpi-strip">
+  <div class="kpi-inner">
+    <div class="kpi">
+      <div class="kpi-lbl">June Gross</div>
+      <div class="kpi-val" id="k-gross" style="color:var(--pink)">$0</div>
+      <div class="kpi-sub">Net / 0.8 authoritative</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-lbl">Monthly Target</div>
+      <div class="kpi-val">$100,000</div>
+      <div class="kpi-sub">June goal</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-lbl">% of Goal</div>
+      <div class="kpi-val" id="k-pct" style="color:var(--green)">0%</div>
+      <div class="kpi-sub">End of month</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-lbl">Surplus</div>
+      <div class="kpi-val" id="k-sur" style="color:var(--green)">$0</div>
+      <div class="kpi-sub">Above target</div>
+    </div>
+  </div>
+</div>
+
+<nav class="tab-nav">
+  <div class="tab-nav-inner">
+    <button class="tb on" onclick="sw('overview')">Overview</button>
+    <button class="tb" onclick="sw('earnings')">Earnings</button>
+    <button class="tb" onclick="sw('messages')">Messages</button>
+    <button class="tb" onclick="sw('engagement')">Engagement</button>
+    <button class="tb" onclick="sw('fans')">Fans</button>
+    <button class="tb" onclick="sw('posts')">Top Posts</button>
+    <button class="tb" onclick="sw('stories')">Stories</button>
+    <button class="tb" onclick="sw('action')">Action Plan</button>
+  </div>
+</nav>
+
+<div class="content">
+
+  <!-- OVERVIEW -->
+  <div id="p-overview" class="panel on">
+    <div class="summary">
+      Shantal Monique closed June at <strong>117.6% of goal</strong>, banking $117,628.76 gross against a $100,000 target. Message revenue drove 67.9% of gross ($79,914) with tips adding another 30.9% ($36,345). June 28 was the single biggest day at $9,299. A strong, ahead-of-pace month from start to finish.
+    </div>
+    <div class="card" style="margin-bottom:14px">
+      <div class="ctitle">Cumulative Gross vs. Target Pace — June 2026</div>
+      <canvas id="c-ov-line" height="230"></canvas>
+    </div>
+    <div class="g4">
+      <div class="card"><div class="ctitle">Message Revenue</div><div class="cval" style="color:var(--pink)">$79,914</div><div class="cdelta">67.9% of gross</div></div>
+      <div class="card"><div class="ctitle">Tip Revenue</div><div class="cval" style="color:var(--gold)">$36,345</div><div class="cdelta">30.9% of gross</div></div>
+      <div class="card"><div class="ctitle">Active Fans</div><div class="cval" style="color:var(--purple)">589</div><div class="cdelta dneg">-30.7% vs prev period</div></div>
+      <div class="card"><div class="ctitle">Profile Visitors</div><div class="cval" style="color:var(--mint)">52,416</div><div class="cdelta dneg">-32.7% vs prev period</div></div>
+    </div>
+  </div>
+
+  <!-- EARNINGS -->
+  <div id="p-earnings" class="panel">
+    <div class="g2" style="margin-bottom:14px">
+      <div class="card">
+        <div class="ctitle">Revenue Split (Gross)</div>
+        <canvas id="c-donut" height="210"></canvas>
+        <div id="donut-leg" style="margin-top:14px"></div>
+      </div>
+      <div class="card">
+        <div class="ctitle">Daily Gross — June 2026</div>
+        <canvas id="c-daily-bars" height="210"></canvas>
+      </div>
+    </div>
+    <div class="card">
+      <div class="ctitle">Cumulative Gross vs. Target Pace</div>
+      <canvas id="c-earn-line" height="210"></canvas>
+    </div>
+  </div>
+
+  <!-- MESSAGES -->
+  <div id="p-messages" class="panel">
+    <div class="g3" style="margin-bottom:14px">
+      <div class="card"><div class="ctitle">Messages Volume</div><div class="cval" style="color:var(--pink)">250,642</div><div class="cdelta">June total sent</div></div>
+      <div class="card"><div class="ctitle">Message Revenue</div><div class="cval" style="color:var(--gold)">$79,914</div><div class="cdelta">Gross · PPV + DM tips</div></div>
+      <div class="card"><div class="ctitle">Avg per Message</div><div class="cval" style="color:var(--mint)">$0.32</div><div class="cdelta">Revenue per message sent</div></div>
+    </div>
+    <div class="card">
+      <div class="ctitle">Message Revenue Funnel</div>
+      <div class="funnel" id="f-messages"></div>
+    </div>
+  </div>
+
+  <!-- ENGAGEMENT -->
+  <div id="p-engagement" class="panel">
+    <div class="g2" style="margin-bottom:14px">
+      <div class="card">
+        <div class="ctitle">Post Engagement — Top 8</div>
+        <div class="row"><span class="rl">Top post likes</span><span class="rv" style="color:var(--pink)">205</span></div>
+        <div class="row"><span class="rl">Avg likes (top 8)</span><span class="rv">191</span></div>
+        <div class="row"><span class="rl">Tip wall posts</span><span class="rv" style="color:var(--gold)">1</span></div>
+        <div class="row"><span class="rl">Tip wall raised</span><span class="rv" style="color:var(--gold)">$300</span></div>
+        <div class="row"><span class="rl">Tip wall amount</span><span class="rv" style="color:var(--gold)">$25</span></div>
+      </div>
+      <div class="card">
+        <div class="ctitle">Story Engagement</div>
+        <div class="row"><span class="rl">Stories published</span><span class="rv">9</span></div>
+        <div class="row"><span class="rl">Total story views</span><span class="rv" style="color:var(--mint)">6,272</span></div>
+        <div class="row"><span class="rl">Avg views per story</span><span class="rv">697</span></div>
+        <div class="row"><span class="rl">Peak story views</span><span class="rv" style="color:var(--mint)">826</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="ctitle">Fan-to-Revenue Funnel</div>
+      <div class="funnel" id="f-engagement"></div>
+    </div>
+  </div>
+
+  <!-- FANS -->
+  <div id="p-fans" class="panel">
+    <div class="g4" style="margin-bottom:14px">
+      <div class="card"><div class="ctitle">Total Active Fans</div><div class="cval" style="color:var(--pink)">589</div><div class="cdelta dneg">-30.7% vs prev period</div></div>
+      <div class="card"><div class="ctitle">New Subscribers</div><div class="cval" style="color:var(--purple)">588</div><div class="cdelta">June total</div></div>
+      <div class="card"><div class="ctitle">Renewals</div><div class="cval" style="color:var(--gold)">1</div><div class="cdelta">Returning fans</div></div>
+      <div class="card"><div class="ctitle">Profile Visitors</div><div class="cval" style="color:var(--mint)">52,416</div><div class="cdelta dneg">-32.7% vs prev period</div></div>
+    </div>
+    <div class="g2">
+      <div class="card">
+        <div class="ctitle">Subscription Breakdown</div>
+        <div style="margin-top:6px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px"><span style="font-size:13px">Free subs</span><span style="font-weight:700;color:var(--pink)">449 <span style="font-size:11px;color:var(--muted)">76.2%</span></span></div>
+          <div style="height:6px;border-radius:3px;background:var(--bd);margin-bottom:14px"><div style="height:100%;width:76.2%;border-radius:3px;background:var(--pink)"></div></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px"><span style="font-size:13px">Unknown / deleted</span><span style="font-weight:700;color:var(--muted)">140 <span style="font-size:11px">23.8%</span></span></div>
+          <div style="height:6px;border-radius:3px;background:var(--bd);margin-bottom:14px"><div style="height:100%;width:23.8%;border-radius:3px;background:var(--muted)"></div></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px"><span style="font-size:13px">Paid subs</span><span style="font-weight:700;color:var(--muted)">0 <span style="font-size:11px">0%</span></span></div>
+          <div style="height:6px;border-radius:3px;background:var(--bd)"><div style="height:100%;width:0%;border-radius:3px;background:var(--muted)"></div></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ctitle">Reach vs. Active Fans</div>
+        <canvas id="c-fans-bars" height="180"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOP POSTS -->
+  <div id="p-posts" class="panel">
+    <div class="g2">
+      <div class="card">
+        <div class="ctitle">Top 8 Posts by Likes — June 2026</div>
+        <canvas id="c-posts" height="300"></canvas>
+      </div>
+      <div class="card">
+        <div class="ctitle">Post Details</div>
+        <div id="post-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STORIES -->
+  <div id="p-stories" class="panel">
+    <div class="g2" style="margin-bottom:14px">
+      <div class="card">
+        <div class="ctitle">Story Performance — June 2026</div>
+        <div class="row"><span class="rl">Stories published</span><span class="rv">9</span></div>
+        <div class="row"><span class="rl">Total story views</span><span class="rv" style="color:var(--mint)">6,272</span></div>
+        <div class="row"><span class="rl">Average views per story</span><span class="rv">697</span></div>
+        <div class="row"><span class="rl">Peak story views</span><span class="rv" style="color:var(--mint)">826</span></div>
+        <div class="row"><span class="rl">Lowest story views</span><span class="rv">600</span></div>
+      </div>
+      <div class="card">
+        <div class="ctitle">Story Views (Engagement only · no revenue)</div>
+        <canvas id="c-stories" height="200"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACTION PLAN -->
+  <div id="p-action" class="panel">
+    <div class="card" style="text-align:center;padding:48px 32px">
+      <div style="font-size:52px;margin-bottom:16px">🏆</div>
+      <div style="font-size:22px;font-weight:800;color:var(--green);margin-bottom:12px">Crushing it. No action needed.</div>
+      <div style="font-size:14px;color:var(--muted);line-height:1.8;max-width:520px;margin:0 auto">
+        Shantal closed June at <strong style="color:var(--green)">117.6% of goal</strong> with $117,628.76 gross. She exceeded the $100,000 target by <strong style="color:var(--green)">$17,628.76</strong>. The message-heavy approach is working. No corrective steps required. Keep the current strategy heading into July.
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="foot">LIVERICHMEDIA · SHANTAL MONIQUE · END-OF-MONTH REPORT · JUNE 2026</div>
+
+<script>
+// ── Data ──────────────────────────────────────────────────────────────────
+const DAILY=[5309,2474,1326,1671,2917,4528,2882,3667,3318,3697,2137,8603,1313,3753,4024,3984,2831,4313,4821,3504,3562,5962,3519,4539,3159,7097,4312,9299,5110,0];
+const GROSS=117628.76,TARGET=100000;
+const EARN={msgs:79914,tips:36345,posts:977,streams:393};
+const STORIES=[807,600,677,600,826,795,783,651,733];
+const POSTS=[
+  {t:"Guess what I've been working on today...you'll see it soon",d:'Jun 5',l:205,c:3,tip:false},
+  {t:"This white top might be my favorite thing I've worn all month",d:'Jun 7',l:201,c:1,tip:false},
+  {t:"Soaking up sunshine today. What are you up to? Tell me and keep me company in DM",d:'Jun 10',l:200,c:4,tip:false},
+  {t:"Father's Day weekend and I am in a spoiling kind of mood. I just left a little treat in your messages",d:'Jun 20',l:197,c:3,tip:false},
+  {t:"One wrong look and I'm making bad decisions tonight",d:'Jun 1',l:196,c:2,tip:false},
+  {t:"Happy Fathers day everyone. Good morning from me to you",d:'Jun 21',l:186,c:5,tip:false},
+  {t:"MONDAY DEAL. Tip $25 right here and I'll send you a private set worth way more than that. One day only.",d:'Jun 8',l:174,c:3,tip:true,ta:25},
+  {t:"Going live Thursday 4:30pm PST. Vote so I know who I'm playing for.",d:'Jun 9',l:174,c:3,tip:false},
+];
+
+// ── Helpers ───────────────────────────────────────────────────────────────
+const $=id=>document.getElementById(id);
+const fmt=n=>'$'+Math.round(n).toLocaleString('en-US');
+const fmtD=n=>'$'+n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+
+function countUp(el,to,dur,suffix='') {
+  const s=performance.now();
+  (function tick(now){
+    const p=Math.min((now-s)/dur,1),e=1-Math.pow(1-p,3),v=to*e;
+    const isFloat=(suffix==='' && to<1000 && !Number.isInteger(to));
+    el.textContent=fmtD(v*(suffix?1:1)).replace(/(\.\d{2}).*/,'$1')+(suffix||'');
+    if(suffix==='%') el.textContent=(v).toFixed(1)+'%';
+    else if(to<1000 && String(to).includes('.')) el.textContent='$'+v.toFixed(2);
+    else el.textContent='$'+Math.round(v).toLocaleString('en-US');
+    if(p<1) requestAnimationFrame(tick);
+  })(s);
+}
+
+function ani(fn,dur=1200){
+  const s=performance.now();
+  (function f(now){
+    const p=Math.min((now-s)/dur,1),e=1-Math.pow(1-p,3);
+    fn(e); if(p<1) requestAnimationFrame(f);
+  })(s);
+}
+
+function sc(id){
+  const cv=$(id),dpr=window.devicePixelRatio||1;
+  const w=cv.offsetWidth||cv.parentElement&&cv.parentElement.offsetWidth-36||600;
+  const h=parseInt(cv.getAttribute('height'))||200;
+  cv.width=w*dpr; cv.height=h*dpr;
+  cv.style.width=w+'px'; cv.style.height=h+'px';
+  const ctx=cv.getContext('2d'); ctx.scale(dpr,dpr);
+  return{ctx,w,h};
+}
+
+// ── Cumulative Line ───────────────────────────────────────────────────────
+function drawLine(cid){
+  const{ctx,w,h}=sc(cid);
+  if(!w) return;
+  const pad={t:22,r:12,b:38,l:66},cw=w-pad.l-pad.r,ch=h-pad.t-pad.b;
+  const cum=[],pace=[];
+  let run=0;
+  for(let i=0;i<30;i++){run+=DAILY[i];cum.push(run);pace.push(TARGET*(i+1)/30);}
+  const mx=Math.max(...cum,TARGET)*1.06;
+
+  ani(prog=>{
+    ctx.clearRect(0,0,w,h);
+    // Grid
+    ctx.strokeStyle='rgba(255,255,255,.05)';ctx.lineWidth=1;
+    for(let i=0;i<=4;i++){
+      const y=pad.t+ch*(1-i/4);
+      ctx.beginPath();ctx.moveTo(pad.l,y);ctx.lineTo(pad.l+cw,y);ctx.stroke();
+      ctx.fillStyle='#8878a0';ctx.font='10px sans-serif';ctx.textAlign='right';
+      ctx.fillText(fmt(mx*i/4),pad.l-5,y+4);
+    }
+    // X labels
+    ctx.fillStyle='#8878a0';ctx.font='10px sans-serif';ctx.textAlign='center';
+    [1,7,14,21,28].forEach(d=>ctx.fillText('Jun '+d,pad.l+(d-1)/29*cw,h-6));
+    // Target line
+    ctx.strokeStyle='rgba(251,191,36,.55)';ctx.lineWidth=1.5;ctx.setLineDash([5,4]);
+    ctx.beginPath();
+    pace.forEach((v,i)=>{const x=pad.l+i/29*cw,y=pad.t+ch*(1-v/mx);i?ctx.lineTo(x,y):ctx.moveTo(x,y);});
+    ctx.stroke();ctx.setLineDash([]);
+    ctx.fillStyle='rgba(251,191,36,.7)';ctx.font='10px sans-serif';ctx.textAlign='left';
+    ctx.fillText('Target pace $100k',pad.l+4,pad.t+ch*(1-TARGET/mx)-7);
+    // Fill
+    const pts=Math.max(2,Math.floor(30*prog));
+    const g=ctx.createLinearGradient(0,pad.t,0,pad.t+ch);
+    g.addColorStop(0,'rgba(255,77,141,.28)');g.addColorStop(1,'rgba(255,77,141,0)');
+    ctx.fillStyle=g;ctx.beginPath();ctx.moveTo(pad.l,pad.t+ch);
+    for(let i=0;i<pts;i++){const x=pad.l+i/29*cw,y=pad.t+ch*(1-cum[i]/mx);ctx.lineTo(x,y);}
+    ctx.lineTo(pad.l+(pts-1)/29*cw,pad.t+ch);ctx.closePath();ctx.fill();
+    // Line
+    ctx.shadowBlur=9;ctx.shadowColor='#ff4d8d';ctx.strokeStyle='#ff4d8d';ctx.lineWidth=2.5;
+    ctx.beginPath();
+    for(let i=0;i<pts;i++){const x=pad.l+i/29*cw,y=pad.t+ch*(1-cum[i]/mx);i?ctx.lineTo(x,y):ctx.moveTo(x,y);}
+    ctx.stroke();ctx.shadowBlur=0;
+    // End dot
+    if(prog>0.9){const ex=pad.l+(pts-1)/29*cw,ey=pad.t+ch*(1-cum[pts-1]/mx);
+      ctx.beginPath();ctx.arc(ex,ey,4,0,6.28);ctx.fillStyle='#ff4d8d';ctx.fill();}
+  });
+}
+
+// ── Donut ─────────────────────────────────────────────────────────────────
+function drawDonut(cid){
+  const{ctx,w,h}=sc(cid);
+  if(!w) return;
+  const cx=w/2,cy=h/2,R=Math.min(w,h)/2*0.88,r=R*0.55;
+  const segs=[
+    {lb:'Messages',v:EARN.msgs,col:'#ff4d8d'},
+    {lb:'Tips',v:EARN.tips,col:'#ffd700'},
+    {lb:'Posts',v:EARN.posts,col:'#b066ff'},
+    {lb:'Streams',v:EARN.streams,col:'#00ffcc'},
+  ];
+  const total=segs.reduce((a,s)=>a+s.v,0);
+  $('donut-leg').innerHTML=segs.map(s=>`
+    <div class="leg-item"><div class="leg-dot" style="background:${s.col}"></div>
+    <div class="leg-name">${s.lb}</div>
+    <div class="leg-val">${fmt(s.v)}</div>
+    <div class="leg-pct">${(s.v/GROSS*100).toFixed(1)}%</div></div>`).join('');
+  ani(p=>{
+    ctx.clearRect(0,0,w,h);
+    let a=-Math.PI/2;
+    segs.forEach(s=>{const sw=s.v/total*2*Math.PI*p;
+      ctx.beginPath();ctx.moveTo(cx,cy);ctx.arc(cx,cy,R,a,a+sw);ctx.closePath();
+      ctx.fillStyle=s.col;ctx.shadowBlur=6;ctx.shadowColor=s.col;ctx.fill();ctx.shadowBlur=0;
+      a+=sw;});
+    ctx.beginPath();ctx.arc(cx,cy,r,0,6.28);ctx.fillStyle='#201c22';ctx.fill();
+    ctx.fillStyle='#f0e8f5';ctx.textAlign='center';ctx.font='bold 12px sans-serif';
+    ctx.fillText('Total Gross',cx,cy-8);
+    ctx.font='bold 15px sans-serif';ctx.fillStyle='#ff4d8d';
+    ctx.fillText(fmtD(GROSS*p),cx,cy+12);
+  });
+}
+
+// ── Daily Bars ─────────────────────────────────────────────────────────────
+function drawDailyBars(cid){
+  const{ctx,w,h}=sc(cid);if(!w)return;
+  const pad={t:10,r:8,b:28,l:58},cw=w-pad.l-pad.r,ch=h-pad.t-pad.b;
+  const mx=Math.max(...DAILY)*1.12,bw=cw/30*0.72;
+  ani(p=>{
+    ctx.clearRect(0,0,w,h);
+    ctx.strokeStyle='rgba(255,255,255,.05)';ctx.lineWidth=1;
+    for(let i=0;i<=3;i++){const y=pad.t+ch*(1-i/3);ctx.beginPath();ctx.moveTo(pad.l,y);ctx.lineTo(pad.l+cw,y);ctx.stroke();
+      ctx.fillStyle='#8878a0';ctx.font='10px sans-serif';ctx.textAlign='right';ctx.fillText(fmt(mx*i/3),pad.l-4,y+4);}
+    DAILY.forEach((v,i)=>{
+      const x=pad.l+i/30*cw+(cw/30-bw)/2,bh=(v/mx)*ch*p,y=pad.t+ch-bh;
+      ctx.fillStyle=v===0?'rgba(255,77,141,.18)':'rgba(255,77,141,.75)';ctx.fillRect(x,y,bw,bh);});
+    ctx.fillStyle='#8878a0';ctx.font='9px sans-serif';ctx.textAlign='center';
+    [1,10,20,29].forEach(d=>ctx.fillText(d,pad.l+d/30*cw,h-4));
+  });
+}
+
+// ── Post Bars (horizontal) ─────────────────────────────────────────────────
+function drawPostBars(cid){
+  const{ctx,w,h}=sc(cid);if(!w)return;
+  const pad={t:6,r:50,b:6,l:6},cw=w-pad.l-pad.r,ch=h-pad.t-pad.b;
+  const mx=POSTS[0].l,rh=ch/POSTS.length;
+  ani(p=>{
+    ctx.clearRect(0,0,w,h);
+    POSTS.forEach((post,i)=>{
+      const y=pad.t+i*rh,bh=rh*0.52,by=y+(rh-bh)/2;
+      const col=post.tip?'#ffd700':'#ff4d8d';
+      ctx.fillStyle=col+'22';ctx.fillRect(pad.l,by,cw,bh);
+      ctx.fillStyle=col;ctx.shadowBlur=4;ctx.shadowColor=col;
+      ctx.fillRect(pad.l,by,post.l/mx*cw*p,bh);ctx.shadowBlur=0;
+      ctx.fillStyle='#f0e8f5';ctx.font='bold 11px sans-serif';ctx.textAlign='left';
+      ctx.fillText(post.l,pad.l+cw+6,by+bh/2+4);
+    });
+  },900);
+}
+
+// ── Story Bars ─────────────────────────────────────────────────────────────
+function drawStoryBars(cid){
+  const{ctx,w,h}=sc(cid);if(!w)return;
+  const pad={t:10,r:8,b:28,l:48},cw=w-pad.l-pad.r,ch=h-pad.t-pad.b;
+  const mx=Math.max(...STORIES)*1.12,bw=cw/STORIES.length*0.55;
+  ani(p=>{
+    ctx.clearRect(0,0,w,h);
+    ctx.strokeStyle='rgba(255,255,255,.05)';ctx.lineWidth=1;
+    for(let i=0;i<=3;i++){const y=pad.t+ch*(1-i/3);ctx.beginPath();ctx.moveTo(pad.l,y);ctx.lineTo(pad.l+cw,y);ctx.stroke();
+      ctx.fillStyle='#8878a0';ctx.font='10px sans-serif';ctx.textAlign='right';ctx.fillText(Math.round(mx*i/3),pad.l-4,y+4);}
+    STORIES.forEach((v,i)=>{
+      const x=pad.l+i/STORIES.length*cw+(cw/STORIES.length-bw)/2,bh=v/mx*ch*p;
+      ctx.fillStyle='rgba(0,255,204,.72)';ctx.shadowBlur=6;ctx.shadowColor='#00ffcc';
+      ctx.fillRect(x,pad.t+ch-bh,bw,bh);ctx.shadowBlur=0;
+      ctx.fillStyle='#8878a0';ctx.font='9px sans-serif';ctx.textAlign='center';
+      ctx.fillText('S'+(i+1),x+bw/2,h-5);
+    });
+  },900);
+}
+
+// ── Fans Bars ──────────────────────────────────────────────────────────────
+function drawFansBars(cid){
+  const{ctx,w,h}=sc(cid);if(!w)return;
+  const vals=[589,5242],labels=['Active Fans','Visitors /10'],cols=['#b066ff','#00ffcc'];
+  const pad={t:10,r:8,b:38,l:48},cw=w-pad.l-pad.r,ch=h-pad.t-pad.b;
+  const mx=Math.max(...vals)*1.12,bw=cw/2*0.52;
+  ani(p=>{
+    ctx.clearRect(0,0,w,h);
+    ctx.strokeStyle='rgba(255,255,255,.05)';ctx.lineWidth=1;
+    for(let i=0;i<=3;i++){const y=pad.t+ch*(1-i/3);ctx.beginPath();ctx.moveTo(pad.l,y);ctx.lineTo(pad.l+cw,y);ctx.stroke();
+      ctx.fillStyle='#8878a0';ctx.font='10px sans-serif';ctx.textAlign='right';ctx.fillText(Math.round(mx*i/3),pad.l-4,y+4);}
+    vals.forEach((v,i)=>{
+      const x=pad.l+i/2*cw+(cw/2-bw)/2,bh=v/mx*ch*p;
+      ctx.fillStyle=cols[i];ctx.shadowBlur=5;ctx.shadowColor=cols[i];
+      ctx.fillRect(x,pad.t+ch-bh,bw,bh);ctx.shadowBlur=0;
+      ctx.fillStyle='#f0e8f5';ctx.font='10px sans-serif';ctx.textAlign='center';
+      ctx.fillText(labels[i],x+bw/2,h-6);
+    });
+  });
+}
+
+// ── Funnel ─────────────────────────────────────────────────────────────────
+function buildFunnel(id,steps){
+  $(id).innerHTML=steps.map((s,i)=>`
+    <div class="fstep" style="width:${100-i*20}%;background:${s.col}">
+      <div style="font-size:15px;font-weight:700">${s.val}</div>
+      <div style="font-size:10px;opacity:.85;margin-top:1px">${s.lbl}</div>
+    </div>`).join('');
+}
+
+// ── Post List ──────────────────────────────────────────────────────────────
+function buildPosts(){
+  $('post-list').innerHTML=POSTS.map((p,i)=>`
+    <div class="post-item">
+      <div class="prank">${i+1}</div>
+      <div class="ptext">
+        <div>${p.t.substring(0,82)}${p.t.length>82?'…':''}</div>
+        <div class="pmeta">${p.d} · ${p.c} comment${p.c!==1?'s':''}</div>
+        <span class="pbadge ${p.tip?'btip':'beng'}">${p.tip?'Tip Wall $'+p.ta:'Engagement'}</span>
+      </div>
+      <div class="plikes">${p.l}<div class="plikes-lbl">likes</div></div>
+    </div>`).join('');
+}
+
+// ── Tab Switch ────────────────────────────────────────────────────────────
+function sw(t){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.tb').forEach(b=>b.classList.remove('on'));
+  $('p-'+t).classList.add('on');
+  document.querySelectorAll('.tb').forEach(b=>{if(b.getAttribute('onclick').includes("'"+t+"'"))b.classList.add('on');});
+  requestAnimationFrame(()=>initTab(t));
+}
+
+function initTab(t){
+  if(t==='overview'){drawLine('c-ov-line');}
+  else if(t==='earnings'){drawDonut('c-donut');drawDailyBars('c-daily-bars');drawLine('c-earn-line');}
+  else if(t==='messages'){buildFunnel('f-messages',[{val:'250,642',lbl:'Messages Volume',col:'#ff4d8d'},{val:'$79,914',lbl:'Message Revenue (Gross)',col:'#b066ff'},{val:'$0.32',lbl:'Avg Revenue per Message',col:'#00ffcc'}]);}
+  else if(t==='engagement'){buildFunnel('f-engagement',[{val:'52,416',lbl:'Profile Visitors',col:'#00ffcc'},{val:'589',lbl:'Active Fans',col:'#b066ff'},{val:'$79,914',lbl:'Message Revenue Gross',col:'#ff4d8d'}]);}
+  else if(t==='fans'){drawFansBars('c-fans-bars');}
+  else if(t==='posts'){drawPostBars('c-posts');buildPosts();}
+  else if(t==='stories'){drawStoryBars('c-stories');}
+}
+
+// ── Boot ──────────────────────────────────────────────────────────────────
+window.addEventListener('load',()=>{
+  // KPI count-ups
+  const kgEl=$('k-gross'),kpEl=$('k-pct'),ksEl=$('k-sur');
+  const s0=performance.now();
+  (function tick(now){
+    const p=Math.min((now-s0)/1800,1),e=1-Math.pow(1-p,3);
+    kgEl.textContent='$'+Math.round(117628.76*e).toLocaleString('en-US');
+    kpEl.textContent=(117.6*e).toFixed(1)+'%';
+    ksEl.textContent='$'+Math.round(17628.76*e).toLocaleString('en-US');
+    if(p<1) requestAnimationFrame(tick);
+  })(s0);
+
+  // Charts for initial tab
+  setTimeout(()=>{
+    drawLine('c-ov-line');
+    buildFunnel('f-messages',[{val:'250,642',lbl:'Messages Volume',col:'#ff4d8d'},{val:'$79,914',lbl:'Message Revenue (Gross)',col:'#b066ff'},{val:'$0.32',lbl:'Avg Revenue per Message',col:'#00ffcc'}]);
+    buildFunnel('f-engagement',[{val:'52,416',lbl:'Profile Visitors',col:'#00ffcc'},{val:'589',lbl:'Active Fans',col:'#b066ff'},{val:'$79,914',lbl:'Message Revenue Gross',col:'#ff4d8d'}]);
+    buildPosts();
+  },80);
+});
+</script>
+</body>
+</html>
