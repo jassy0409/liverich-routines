@@ -37,8 +37,8 @@ This is the prompt the schedule runs. It does not depend on this file at run tim
 >
 > ON SHIFT CHATTER, by current PHT time (PHT = UTC+8):
 > Shantal: graveyard 11pm to 7am = Aaliyah <@U09U798V24X>, morning 7am to 3pm = Trisha <@U08H7941KTN>, afternoon 3pm to 11pm = Arsel <@U0B06PSRL83>.
-> Karina: graveyard = Leigh <@U0AHFGZ5ZM2>, morning = MJ <@U06ALHQ6PUH>, afternoon = Alyzha <@U0B38R4A37S>.
-> Days off (tag Jeffrey <@U06AJLM4JM7> instead): Trisha and MJ Sunday, Arsel and Alyzha Monday, Aaliyah and Leigh Tuesday nights.
+> Karina: graveyard = Leigh <@U0AHFGZ5ZM2>, morning = MJ <@U06ALHQ6PUH>, afternoon = Rossana <@U0AV2KV1DUG>.
+> Days off (tag Jeffrey <@U06AJLM4JM7> instead): Trisha and MJ Sunday, Arsel and Rossana Monday, Aaliyah and Leigh Tuesday nights.
 >
 > ALERT ACTION, one Slack message per tripped thread, posted to the MODEL's team channel:
 > Shantal hits go to #shantal-team (channel_id C09P2UMSE2G). Karina hits (paid or free page) go to #karina-team-reports (channel_id C0B38BXSM88, private).
