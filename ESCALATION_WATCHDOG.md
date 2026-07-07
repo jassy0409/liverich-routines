@@ -1,91 +1,70 @@
 ---
 name: lrm-escalation-watchdog
-description: Hourly scan of active fan threads across LRM accounts for serious complaints, anger, or account-risk signals. On a hit, post an alert into the on-shift chatter's management channel telling them to stop and escalate, and tag @Jassy for a quick response. Read-only against OnlyFans; only writes are internal Slack alerts. Use when a manager says 'run the escalation watchdog', 'check for angry fans', or as the scheduled per-hour routine.
+description: Hourly scan of active fan threads across LRM accounts for serious complaints, anger, or account-risk signals. On a hit, post an alert to the MODEL's team channel tagging the on-shift chatter and @Jassy for a quick response. Read-only against OnlyFans; only writes are internal Slack alerts. Use when a manager says 'run the escalation watchdog', 'check for angry fans', or as the scheduled hourly routine.
 ---
 
 # LRM Escalation Watchdog
 
 Catch serious fan complaints early. Each run scans recent fan activity across the
 LRM accounts, flags threads where a fan is angry / feels overcharged / is threatening
-the account, then alerts the chatter working that shift and tags @Jassy so a human
-handles it fast. The chatter's job is to STOP and escalate, never to decide.
+the account, then posts an alert to the model's team channel tagging the on-shift
+chatter and @Jassy so a human handles it fast. The chatter's job is to STOP and
+escalate, never to decide.
 
 Read-only against OnlyFans. The only writes are internal Slack alerts. Never messages
 the fan. Never quotes explicit content (see the scorecard skill's explicit-content rule).
 
-## Accounts
+## The self-contained routine prompt
 
-- Shantal: `acct_508c667e12d24250b75ae3d990594010` (uid 4669068)
-- Karina VIP: `acct_48be256caa4c484cbab6774a098c4edb` (uid 221746288)
-- Karina Free: `acct_bd0c6dda969f4631b02b3a9524fa44be` (uid 364264020)
+This is the prompt the schedule runs. It does not depend on this file at run time.
 
-## Shift -> chatter -> channel (PHT = UTC+8)
-
-Same roster as the chatter-scorecard skill. Pick the on-shift chatter by the CURRENT PHT time.
-
-| Account | Shift (PHT) | UTC window | Chatter | Mgmt channel | Chatter Slack ID |
-|---|---|---|---|---|---|
-| Shantal | graveyard 11pm-7am | 15:00-23:00 | Aaliyah | #aaliyah-management C09U784EE23 | U09U798V24X |
-| Shantal | morning 7am-3pm | 23:00 prev-07:00 | Trisha | #trisha-management C08FFLCF92N | U08H7941KTN |
-| Shantal | afternoon 3pm-11pm | 07:00-15:00 | Arsel | #john-arsel-management C0B0D5MH742 | U0B06PSRL83 |
-| Karina | graveyard 11pm-7am | 15:00-23:00 | Leigh | #leigh-management C0AHBUAPXJN | U0AHFGZ5ZM2 |
-| Karina | morning 7am-3pm | 23:00 prev-07:00 | MJ | #mj-management C07435SAD42 | U06ALHQ6PUH |
-| Karina | afternoon 3pm-11pm | 07:00-15:00 | Alyzha | #alyzha-management C0B2EGZ5DDG | U0B38R4A37S |
-
-Jeffrey (`U06AJLM4JM7`) covers off-days (Trisha/MJ Sun, Arsel/Alyzha Mon, Aaliyah/Leigh Tue nights).
-If the covering chatter is on, tag them instead and post to their channel.
-Karina Free is worked by the Karina roster; attribute it to the Karina on-shift chatter.
-
-**Escalation contact:** always also tag @Jassy `U069Z6RFJR4` on every alert.
-
-## Escalation signals (read the FAN's INCOMING messages only)
-
-Scan messages the fan sent in the last ~90 minutes (`isSentByMe:false`; exclude
-`isFromQueue:true`). Trip on any of:
-
-- **Account-risk / legal (CRITICAL):** scam, report you, refund, chargeback, dispute, my bank, block you, "turning off renew", unsubscribing because of this.
-- **Overcharge / pricing (HIGH):** overcharged, too expensive, "why did you charge", "others paid less", "my friend got it for", "everyone else gets", double charged.
-- **Trust / feeling cheated (HIGH):** "you took it back", "clawed it back", "pulled it back after I paid", "not fair", "transactional", "you scammed me", "I tipped and got nothing".
-- **General anger (REVIEW):** repeated angry messages, all-caps venting, "I'm done", "disappointed", demanding a manager.
-
-Judgement call, made by reading the thread each run. When unsure, flag it — a false alert is cheap, a missed chargeback is not.
-
-## Detection method
-
-1. For each account, `listChats` (newest first) to find threads active in the scan window; prioritise `unreadMessagesCount>0` and `hasUnreadTips`.
-2. For each active thread, `listChatMessages(account, chat_id, limit=20, order='desc', skip_users='all')`.
-3. Read only the fan's incoming messages in the last ~90 min. Exclude `isFromQueue:true`.
-4. Assign severity CRITICAL / HIGH / REVIEW from the signals above.
-5. Large tool payloads auto-save to disk — process them out of context (a subagent or a slice script), never pull a full thread into the main context.
-6. **Dedupe:** do not re-alert a thread already alerted in the last 6 hours. Track by the fan's `chat_id` + the id of the message that tripped it (keep a short note in `watchdog_state.json` in this folder, or check the channel for an existing alert on that fan today).
-
-## Alert action (per tripped thread)
-
-Post ONE message to the on-shift chatter's management channel:
-
-```
-:rotating_light: ESCALATION — <Account> — <fan first name / display name>
-<@chatterID> <@U069Z6RFJR4>
-Severity: <CRITICAL|HIGH|REVIEW>
-What tripped it: <one non-explicit line, e.g. "fan says he was overcharged vs a friend and wants a refund">
-Thread: <fan username / link>
-
-STOP. Do not reply with an offer, a discount, or more sales. Do not make a decision.
-Alerting @Jassy now — hold the thread until you get direction.
-```
-
-Rules for the alert copy: fan FIRST NAME or display name only, never the message text if it is explicit. No dashes inside sentences per LRM Slack style. Keep it to the block above.
+> Run the LRM escalation watchdog for BOTH Shantal and Karina. This prompt is self contained. Work through the OnlyFans MCP connector (read only, never send anything to a fan) and Slack (post AS Jassy, the authorizing user, never a bot persona). Do both models in order, Shantal first then Karina. If one model's scan fails, still complete the other and note what failed at the end; never post a guessed alert.
+>
+> SCAN WINDOW (critical): scan fan messages from the last 90 minutes, using UTC timestamps from the API. Read ONLY the fan's INCOMING messages (isSentByMe false) and exclude every message with isFromQueue true (those are scheduled auto sends, not real fan activity). Process large tool payloads out of context (subagent or slice script), never pull a full thread into the main context.
+>
+> ACCOUNTS
+> Shantal: acct_508c667e12d24250b75ae3d990594010. Karina paid: acct_48be256caa4c484cbab6774a098c4edb. Karina free: acct_bd0c6dda969f4631b02b3a9524fa44be (worked by the Karina roster, alert it as Karina).
+>
+> DETECTION METHOD, per account: listChats with filter unread (limit 20, skip_users all) plus listChats order recent (limit 15, skip_users all) to find threads with fan activity in the window. For each active thread listChatMessages (limit 20, order desc, skip_users all) and read the fan's recent incoming messages only.
+>
+> ESCALATION SIGNALS in the fan's words:
+> CRITICAL: scam, report you, refund, chargeback, dispute, my bank, block you, turning off renew, unsubscribing over this.
+> HIGH: overcharged, too expensive, why did you charge, others paid less, my friend got it for, everyone else gets, double charged, you took it back or clawed it back or pulled it back after paying, not fair, transactional, you scammed me, tipped and got nothing.
+> REVIEW: repeated angry messages, all caps venting, "I'm done", "disappointed", demanding a manager.
+> A price question from a fan who is shopping is NOT a complaint. When genuinely unsure, flag it: a false alert is cheap, a missed chargeback is not.
+>
+> DEDUPE: before posting, check the target channel for an alert on the same fan within the last 6 hours (slack_read_channel). If one exists, skip silently.
+>
+> ON SHIFT CHATTER, by current PHT time (PHT = UTC+8):
+> Shantal: graveyard 11pm to 7am = Aaliyah <@U09U798V24X>, morning 7am to 3pm = Trisha <@U08H7941KTN>, afternoon 3pm to 11pm = Arsel <@U0B06PSRL83>.
+> Karina: graveyard = Leigh <@U0AHFGZ5ZM2>, morning = MJ <@U06ALHQ6PUH>, afternoon = Alyzha <@U0B38R4A37S>.
+> Days off (tag Jeffrey <@U06AJLM4JM7> instead): Trisha and MJ Sunday, Arsel and Alyzha Monday, Aaliyah and Leigh Tuesday nights.
+>
+> ALERT ACTION, one Slack message per tripped thread, posted to the MODEL's team channel:
+> Shantal hits go to #shantal-team (channel_id C09P2UMSE2G). Karina hits (paid or free page) go to #karina-team-reports (channel_id C0B38BXSM88, private).
+> Message format, keep exactly this shape:
+> :rotating_light: ESCALATION ALERT, <Model>, fan <first name or display name>
+> <@onShiftChatterID> <@U069Z6RFJR4>
+> Severity: CRITICAL or HIGH or REVIEW
+> What tripped it: one short non explicit sentence, for example "fan says he was overcharged versus a friend and wants a refund"
+> Thread: fan username
+> STOP. Do not reply with an offer, a discount, or more sales. Do not make a decision. Hold the thread until Jassy gives direction.
+>
+> STYLE RULES: fan first name or display name only, never quote explicit message text, no dash symbols anywhere in visible text (rewrite to avoid them), no @channel, plain direct wording. If nothing trips on either model, post nothing and end quietly. At the end report which threads tripped, which channels were alerted, and any account whose scan failed.
 
 ## Cadence
 
-Runs hourly via scheduled trigger. Each run scans the last ~90 minutes so nothing
-falls in the gap between runs. If a run finds nothing, it posts nothing (silent).
+Hourly. Cron trigger (off the :00 mark on purpose):
 
-Routine prompt (kept short — points here, does not restate the method):
-> Run the LRM escalation watchdog. Follow the lrm-escalation-watchdog skill: scan the last ~90 minutes of fan activity on all three LRM accounts for the escalation signals, dedupe against the last 6 hours, and for each tripped thread post the alert block to the on-shift chatter's management channel tagging the chatter and @Jassy (U069Z6RFJR4). Read-only against OnlyFans, internal Slack alerts only, never quote explicit content. If nothing trips, do nothing.
+```
+13 * * * *
+```
+
+Each run scans the last ~90 minutes so nothing falls in the gap between runs.
+A clean run posts nothing.
 
 ## Safety
 
 Read-only against OnlyFans. Never sends anything to a fan. Only writes are Slack
-alerts to internal management channels. Never reproduces explicit content. When a
+alerts to the two internal team channels. Never reproduces explicit content. When a
 thread's severity is genuinely ambiguous, err toward alerting so a human can judge.
