@@ -17,5 +17,5 @@ replaced by Rossana (#rosanna-management C0AUM8Z0SSD, U0AV2KV1DUG).
 | huddle chatter checker | [huddle-chatter-checker.md](huddle-chatter-checker.md) | `59 * * * *` | `trig_01MyuFDMvNEVsSvgVydxyXsR` | updated: Arsel→Princess, Alyzha→Rossana |
 | chatter queue auto eply | [chatter-queue-autoreply.md](chatter-queue-autoreply.md) | `30 * * * *` | `trig_012VCP1bfpWneuQbGtMEV79r` | no roster refs |
 | BUMP REQUEST SHANTAL+KARINA | [bump-request-shantal-karina.md](bump-request-shantal-karina.md) | `1 * * * *` | `trig_01Y6FExGTxxcKiP2UGxJzjDE` | no roster refs |
-| DAILY RECAP (SHANTAL+KARINA) | [daily-recap-shantal-karina.md](daily-recap-shantal-karina.md) | `0 1 * * *` | `trig_01Cf6oy9NbWGDfkVVvxqKKDC` | updated: Arsel→Princess, Alyzha/Eliza→Rossana |
+| DAILY RECAP (SHANTAL+KARINA) | [daily-recap-shantal-karina.md](daily-recap-shantal-karina.md) | `0 1 * * *` | `trig_01Cf6oy9NbWGDfkVVvxqKKDC` | updated: roster swap + Canvas replaced by animated `render_recap.py` GIF card |
 | CHATTER SHIFT CHECKER | [chatter-shift-checker.md](chatter-shift-checker.md) | `59 * * * *` | `trig_01S1x5ed1DUJJP7uuyppp4Vu` | no roster refs |
