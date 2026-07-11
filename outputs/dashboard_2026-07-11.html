@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>LRM Daily Gameplan — July 11, 2026</title>
+<style>
+  :root{
+    --bg:#171717; --panel:#202022; --panel2:#252527; --gold:#e7b94f;
+    --white:#f2f2f2; --mute:#9a9a9e; --faint:#6f6f74;
+    --green:#3cc878; --amber:#ef9f27; --red:#e24b4a; --track:#333335;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    width:1560px; background:var(--bg); color:var(--white);
+    font-family:-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;
+    padding:36px 44px 48px;
+  }
+  .masthead{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:26px; border-bottom:1px solid #2c2c2e; padding-bottom:20px;}
+  .masthead h1{font-size:28px; letter-spacing:0.5px;}
+  .masthead .gold{color:var(--gold);}
+  .masthead .date{color:var(--mute); font-size:15px; text-align:right;}
+  .masthead .date b{color:var(--white); display:block; font-size:17px; margin-bottom:2px;}
+
+  .grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:18px; margin-bottom:22px;}
+  .panel{background:var(--panel); border-radius:14px; padding:22px 24px; border:1px solid #2a2a2c;}
+  .panel h2{font-size:13px; letter-spacing:1.2px; text-transform:uppercase; color:var(--gold); margin-bottom:16px;}
+
+  .acct-name{font-size:18px; font-weight:600; margin-bottom:2px;}
+  .acct-sub{font-size:12px; color:var(--faint); margin-bottom:14px;}
+  .gross-row{display:flex; align-items:baseline; gap:10px; margin-bottom:4px;}
+  .gross-num{font-size:34px; font-weight:700;}
+  .delta{font-size:14px; font-weight:600; padding:2px 8px; border-radius:20px;}
+  .delta.down{background:rgba(226,75,74,0.15); color:var(--red);}
+  .delta.up{background:rgba(60,200,120,0.15); color:var(--green);}
+  .vs-prior{font-size:12px; color:var(--mute); margin-bottom:14px;}
+  .breakdown{display:flex; gap:0; border-top:1px solid #2f2f31; padding-top:12px; margin-top:8px;}
+  .bd-item{flex:1;}
+  .bd-label{font-size:10.5px; text-transform:uppercase; letter-spacing:0.6px; color:var(--faint); margin-bottom:4px;}
+  .bd-val{font-size:16px; font-weight:600;}
+  .bd-val.hot{color:var(--red);}
+
+  .flagbar{background:rgba(231,185,79,0.08); border:1px solid rgba(231,185,79,0.35); border-radius:12px; padding:16px 22px; margin-bottom:22px; display:flex; gap:14px; align-items:flex-start;}
+  .flagbar .icon{font-size:20px;}
+  .flagbar .txt{font-size:13.5px; line-height:1.55; color:#e9e2c9;}
+  .flagbar .txt b{color:var(--gold);}
+
+  table{width:100%; border-collapse:collapse; font-size:13.5px;}
+  th{text-align:left; font-size:10.5px; text-transform:uppercase; letter-spacing:0.6px; color:var(--faint); padding:8px 10px; border-bottom:1px solid #2f2f31;}
+  td{padding:10px 10px; border-bottom:1px solid #262628; vertical-align:top;}
+  tr:last-child td{border-bottom:none;}
+  .pill{display:inline-block; padding:2px 9px; border-radius:20px; font-size:11px; font-weight:600;}
+  .pill.ok{background:rgba(60,200,120,0.15); color:var(--green);}
+  .pill.stale{background:rgba(239,159,39,0.15); color:var(--amber);}
+  .pill.gap{background:rgba(226,75,74,0.15); color:var(--red);}
+  .mono{font-family:'SF Mono',Consolas,monospace; font-size:12px; color:var(--mute);}
+
+  .two-col{display:grid; grid-template-columns:1.35fr 1fr; gap:18px; margin-bottom:22px;}
+
+  .rule-block{margin-bottom:14px;}
+  .rule-block:last-child{margin-bottom:0;}
+  .rule-name{font-size:13px; font-weight:700; color:var(--white); margin-bottom:3px;}
+  .rule-name .tag{font-size:10px; font-weight:600; color:var(--bg); background:var(--gold); border-radius:5px; padding:1px 6px; margin-left:8px; vertical-align:1px;}
+  .rule-desc{font-size:12.5px; color:var(--mute); line-height:1.5;}
+
+  .footer{margin-top:26px; text-align:center; color:var(--faint); font-size:11px; letter-spacing:0.8px;}
+  .footer .gold{color:var(--gold); font-weight:600;}
+</style>
+</head>
+<body>
+
+  <div class="masthead">
+    <h1>LIVERICH<span class="gold">MEDIA</span> &nbsp;·&nbsp; DAILY GAMEPLAN DASHBOARD</h1>
+    <div class="date"><b>Saturday, July 11, 2026</b>Pulled vs. July 10 (yest.) &amp; July 9 (prior) · all figures gross (net ÷ 0.8)</div>
+  </div>
+
+  <div class="flagbar">
+    <div class="icon">⚠️</div>
+    <div class="txt">
+      <b>3 flags this run:</b> (1) Karina VIP tips collapsed <b>$550 → $10 gross</b> day-over-day (-98%) — the single biggest swing in the data, worth a look before assuming it's just a quiet night.
+      (2) Live roster doesn't match the roster doc — afternoon shifts are actually run by <b>Princess Grecia</b> (Shantal) and <b>Rosanna</b> (Karina), not Arsel/Alyzha as written up. SKILL.md needs updating.
+      (3) Buyer-list hygiene gap confirmed live: vault sets like <b>GRAY SET IN BED</b>, <b>JULY 4TH BIKINI</b>, and <b>white lace lingerie</b> are actively selling, but their matching named fan-lists show only 1–8 people tagged — matches the exact complaint Jassy raised in Slack yesterday.
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="panel">
+      <h2>Shantal Monique</h2>
+      <div class="acct-sub">acct_508c667e12…594010 · uid 4669068</div>
+      <div class="gross-row"><span class="gross-num">$1,803.95</span><span class="delta down">▼ 58.9%</span></div>
+      <div class="vs-prior">vs. $4,390.91 gross on Jul 9 (that day itself ran well above normal, so this reads more like reversion than a real slide)</div>
+      <div class="breakdown">
+        <div class="bd-item"><div class="bd-label">Subs</div><div class="bd-val">$0.00</div></div>
+        <div class="bd-item"><div class="bd-label">Messages / PPV</div><div class="bd-val">$1,703.95</div></div>
+        <div class="bd-item"><div class="bd-label">Tips</div><div class="bd-val">$100.00</div></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>Karina VIP</h2>
+      <div class="acct-sub">acct_48be256caa4c…4edb · uid 221746288</div>
+      <div class="gross-row"><span class="gross-num">$166.44</span><span class="delta down">▼ 77.5%</span></div>
+      <div class="vs-prior">vs. $740.88 gross on Jul 9 — steepest drop of the three, driven almost entirely by tips</div>
+      <div class="breakdown">
+        <div class="bd-item"><div class="bd-label">Subs</div><div class="bd-val">$74.44</div></div>
+        <div class="bd-item"><div class="bd-label">Messages / PPV</div><div class="bd-val">$82.00</div></div>
+        <div class="bd-item"><div class="bd-label">Tips</div><div class="bd-val hot">$10.00 <span style="color:var(--faint); font-weight:400;">(was $550)</span></div></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>Karina Free</h2>
+      <div class="acct-sub">acct_bd0c6dda969f…44be · uid 364264020</div>
+      <div class="gross-row"><span class="gross-num">$50.00</span><span class="delta up">▲ new</span></div>
+      <div class="vs-prior">vs. $0.00 gross on Jul 9 — free page essentially dormant both days, small message sale only</div>
+      <div class="breakdown">
+        <div class="bd-item"><div class="bd-label">Subs</div><div class="bd-val">$0.00</div></div>
+        <div class="bd-item"><div class="bd-label">Messages / PPV</div><div class="bd-val">$50.00</div></div>
+        <div class="bd-item"><div class="bd-label">Tips</div><div class="bd-val">$0.00</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel" style="margin-bottom:22px;">
+    <h2>Combined Team Gross</h2>
+    <div class="gross-row"><span class="gross-num">$2,020.39</span><span class="delta down">▼ 60.6%</span><span style="color:var(--mute); font-size:13px;">vs. $5,131.79 gross on Jul 9</span></div>
+  </div>
+
+  <div class="two-col">
+    <div class="panel">
+      <h2>Today's Roster · Saturday, Jul 11 (PHT shifts)</h2>
+      <table>
+        <tr><th>Account</th><th>Shift</th><th>UTC window</th><th>Chatter</th><th>Status</th></tr>
+        <tr><td>Shantal</td><td>Graveyard 11pm–7am</td><td class="mono">15:00–23:00</td><td>Aaliyah</td><td><span class="pill ok">worked, clocked out</span></td></tr>
+        <tr><td>Shantal</td><td>Morning 7am–3pm</td><td class="mono">23:00–07:00</td><td>Trisha</td><td><span class="pill ok">in progress</span></td></tr>
+        <tr><td>Shantal</td><td>Afternoon 3pm–11pm</td><td class="mono">07:00–15:00</td><td>Princess Grecia</td><td><span class="pill stale">roster doc says Arsel</span></td></tr>
+        <tr><td>Karina</td><td>Graveyard 11pm–7am</td><td class="mono">15:00–23:00</td><td>Leigh</td><td><span class="pill ok">worked, clocked out</span></td></tr>
+        <tr><td>Karina</td><td>Morning 7am–3pm</td><td class="mono">23:00–07:00</td><td>MJ</td><td><span class="pill ok">on pattern</span></td></tr>
+        <tr><td>Karina</td><td>Afternoon 3pm–11pm</td><td class="mono">07:00–15:00</td><td>Rosanna</td><td><span class="pill stale">roster doc says Alyzha</span></td></tr>
+      </table>
+      <div style="margin-top:14px; font-size:12px; color:var(--mute); line-height:1.6;">
+        No cover-shift swaps or days-off logged today for the Shantal/Karina team, and no chatter is double-booked across two shifts — no scheduling conflict. But Arsel's and Alyzha's last confirmed afternoon shifts were <b style="color:var(--white);">Jun 28</b> and <b style="color:var(--white);">Jul 4</b> respectively; Princess Grecia and Rosanna have been running those afternoons for over a week. <b style="color:var(--gold);">SKILL.md's roster table is out of date</b> — recommend updating it so shift-close routines tag the right person.
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>Vault &amp; Fan-List Check</h2>
+      <table>
+        <tr><th>Content set</th><th>Vault folder</th><th>Matching fan-list</th></tr>
+        <tr><td>Gray set in bed</td><td><span class="pill ok">exists</span></td><td><span class="pill gap">1–2 tagged</span></td></tr>
+        <tr><td>July 4th bikini</td><td><span class="pill ok">exists</span></td><td><span class="pill gap">1 tagged</span></td></tr>
+        <tr><td>White lace lingerie</td><td><span class="pill ok">exists</span></td><td><span class="pill gap">8 tagged</span></td></tr>
+        <tr><td>Cheetah top striptease</td><td><span class="pill ok">exists</span></td><td><span class="pill gap">2 tagged</span></td></tr>
+      </table>
+      <div style="margin-top:14px; font-size:12px; color:var(--mute); line-height:1.6;">
+        All vault content named in this run's brief was confirmed live under those names on Karina VIP/Free — no missing folders. But every matching buyer-tracking list is nearly empty despite active sales, confirming the gap Jassy flagged in Slack on Jul 10 ("I have never seen anyone added on any list"). No specific fan-list names were supplied to check for this run, so nothing to flag as "doesn't exist" beyond this.
+      </div>
+    </div>
+  </div>
+
+  <div class="panel" style="margin-bottom:0;">
+    <h2>Standing Rules for Today's Gameplan</h2>
+    <div class="two-col" style="margin-bottom:0;">
+      <div>
+        <div class="rule-block">
+          <div class="rule-name">Shift structure <span class="tag">not specified this run</span></div>
+          <div class="rule-desc">This run's brief left the engagement → tease → bump → paid-mass order as an open bracket — no explicit sequence was given. Defaulting to each shift opening with engagement, then a tease, then two bumps, then the paid mass, per the last standing Karina gameplan on file. Confirm if this should change.</div>
+        </div>
+        <div class="rule-block">
+          <div class="rule-name">Bumps &amp; exclusions</div>
+          <div class="rule-desc">Bumps go to online fans only, never cold lists. Exclude previous buyers of the item being bumped from that send.</div>
+        </div>
+        <div class="rule-block">
+          <div class="rule-name">Buyer-list hygiene</div>
+          <div class="rule-desc">Tag every buyer to the matching named list the instant they unlock — not saved for end of shift. Current data shows this isn't happening consistently (see panel at left).</div>
+        </div>
+      </div>
+      <div>
+        <div class="rule-block">
+          <div class="rule-name">Shantal voice</div>
+          <div class="rule-desc">Proper sentences, first names, warm. No "hey," no pet names.</div>
+        </div>
+        <div class="rule-block">
+          <div class="rule-name">Karina VIP voice</div>
+          <div class="rule-desc">Lowercase, playful / bratty.</div>
+        </div>
+        <div class="rule-block">
+          <div class="rule-name">Karina Free voice</div>
+          <div class="rule-desc">Lowercase, softer than VIP.</div>
+        </div>
+        <div class="rule-block">
+          <div class="rule-name">Copy rules</div>
+          <div class="rule-desc">Emojis at line ends only. No caption reused across gameplans. Never "thinking about you" on a mass send.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">GENERATED FOR <span class="gold">JASSY</span> · LIVERICHMEDIA OPERATIONS · JUL 11 2026 · DATA: OnlyFans API + Slack live roster</div>
+
+</body>
+</html>
