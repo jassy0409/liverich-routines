@@ -1,0 +1,209 @@
+<title>LiveRichMedia · Performance Review</title>
+<meta name="color-scheme" content="dark">
+<style>
+  :root{
+    --ground:#100E0A;--panel:#18140D;--panel-2:#1F1A11;--line:#2C2519;--line-soft:#221D14;
+    --ink:#F0E9DA;--ink-soft:#B8AD97;--ink-faint:#8A7F6B;
+    --gold:#D9B26A;--gold-deep:#B48F49;--green:#74C08C;--amber:#E0A44A;--red:#DE7676;
+    --radius:14px;--maxw:780px;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --mono:"SF Mono","JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+  header{border-bottom:1px solid var(--line);padding:56px 0 40px;
+    background:radial-gradient(120% 90% at 85% -10%,rgba(217,178,106,.10),transparent 60%);}
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin:0 0 18px;}
+  h1{font-family:var(--serif);font-weight:600;font-size:clamp(32px,6vw,52px);line-height:1.05;margin:0 0 10px;text-wrap:balance;}
+  h1 em{color:var(--gold);font-style:italic;}
+  .sub{color:var(--ink-soft);font-size:18px;margin:0;max-width:60ch;}
+  .scoreband{display:flex;gap:26px;align-items:center;flex-wrap:wrap;margin-top:30px;}
+  .bignum{font-family:var(--serif);font-size:84px;font-weight:600;line-height:1;}
+  .scoremeta{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);}
+  .scoremeta b{display:block;font-size:14px;letter-spacing:.18em;margin-bottom:4px;}
+  .bars{flex:1;min-width:220px;display:grid;gap:8px;}
+  .bar{height:10px;border-radius:6px;background:var(--panel-2);overflow:hidden;position:relative;}
+  .bar i{position:absolute;inset:0;width:var(--w);border-radius:6px;background:var(--c);}
+  .barlab{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);display:flex;justify-content:space-between;}
+  section{padding:44px 0;border-bottom:1px solid var(--line-soft);}
+  .sec-no{font-family:var(--mono);font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin:0 0 12px;}
+  h2{font-family:var(--serif);font-weight:600;font-size:clamp(24px,4vw,34px);margin:0 0 10px;text-wrap:balance;}
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:22px 26px;margin:18px 0;}
+  .qhead{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:10px;}
+  .qn{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);}
+  .pill{font-family:var(--mono);font-size:11px;letter-spacing:.06em;padding:4px 11px;border-radius:999px;border:1px solid;}
+  .pill.bad{color:var(--red);border-color:color-mix(in srgb,var(--red) 45%,var(--line));background:color-mix(in srgb,var(--red) 10%,var(--panel));}
+  .pill.good{color:var(--green);border-color:color-mix(in srgb,var(--green) 45%,var(--line));background:color-mix(in srgb,var(--green) 10%,var(--panel));}
+  .qlabel{font-weight:600;font-size:17px;margin:0 0 12px;color:var(--ink);}
+  .lab{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;margin:14px 0 6px;}
+  .lab.why{color:var(--ink-faint);} .lab.best{color:var(--gold);}
+  .panel p{margin:0 0 8px;color:var(--ink-soft);font-size:15.5px;}
+  .flow{background:var(--panel-2);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:0 12px 12px 0;
+    padding:13px 17px;font-size:15px;color:var(--ink);margin-top:6px;line-height:1.55;}
+  .flow .who{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:4px;}
+  .callout{border-radius:var(--radius);padding:18px 22px;margin:22px 0;font-size:15.5px;border:1px solid color-mix(in srgb,var(--gold) 40%,var(--line));
+    background:color-mix(in srgb,var(--gold) 8%,var(--panel));}
+  .callout .t{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:600;display:block;margin-bottom:6px;}
+  .callout p{margin:0;color:var(--ink-soft);}
+  ul.next{margin:14px 0 0;padding-left:20px;}
+  ul.next li{margin-bottom:8px;color:var(--ink-soft);font-size:15.5px;}
+  ul.next li::marker{color:var(--gold-deep);}
+  a{color:var(--gold);}
+  footer{padding:40px 0 70px;color:var(--ink-faint);font-size:13px;}
+  footer .mono{font-family:var(--mono);font-size:12px;letter-spacing:.06em;}
+  #empty{padding:80px 24px;text-align:center;color:var(--ink-soft);display:none;}
+</style>
+
+<div id="empty"><h1 style="font-size:34px;">No review data</h1><p>This page is opened from the link in your exam results. Take an exam first, then use the review link Slack sends you.</p></div>
+
+<div id="app" style="display:none;">
+<header><div class="wrap">
+  <p class="kicker">LiveRichMedia · Chatter Playbook · Performance Review</p>
+  <h1 id="title">Your <em>review</em></h1>
+  <p class="sub" id="subtitle"></p>
+  <div class="scoreband">
+    <div><div class="bignum" id="bignum">0/5</div><div class="scoremeta"><b id="verdict"></b><span id="who"></span></div></div>
+    <div class="bars" id="bars"></div>
+  </div>
+</div></header>
+
+<main>
+<section id="missedSec"><div class="wrap">
+  <p class="sec-no">What went wrong — and the better flow</p>
+  <h2 id="missedH2">Review these</h2>
+  <div id="missed"></div>
+</div></section>
+
+<section><div class="wrap">
+  <p class="sec-no">Take this forward</p>
+  <h2>Your next shift</h2>
+  <div class="callout"><span class="t">This is the end of the loop — on purpose</span>
+    <p>No retake needed. The score is already logged with your manager; what matters now is the flow above showing up in your real chats. Your written answers get a manager review in your model's voice, and this page is your prep for that coaching session.</p>
+  </div>
+  <ul class="next">
+    <li>Pick the ONE flow above you missed hardest and consciously use it on your very next shift.</li>
+    <li>Re-skim the module reading once — not to memorize, to recognize the moment when it happens live.</li>
+    <li>Bring this page to your next coaching session and tell your manager which flow you practiced.</li>
+  </ul>
+  <p style="margin-top:18px;font-size:15px;color:var(--ink-soft);">Module reading: <a id="modlink" href="index.html">open</a></p>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <p class="mono">LIVERICHMEDIA · CHATTER PLAYBOOK · PERFORMANCE REVIEW</p>
+  <p>Scores measure the training. Fans measure the craft.</p>
+</div></footer>
+</div>
+
+<script>
+const NAMES={aaliyah:"Aaliyah",trisha:"Trisha",princess:"Princess",leigh:"Leigh",mj:"MJ",alyzha:"Alyzha",jeffrey:"Jeffrey"};
+const DATA={
+ 1:{name:"Mastering the Comeback",read:"module-1-chatter-edition.html",q:{
+  q1:{label:'Fan: "That\'s too expensive."',correct:"B",why:"He replied instead of ignoring the PPV — that's interest. The objection is the price, not the content.",
+      best:'Acknowledge, hold the value, offer another path: "i totally get it ❤️ that\'s my biggest bundle. i have a smaller one i think you\'d love just as much — want me to show you?" Never close with "okay babe."'},
+  q2:{label:'Fan: "Maybe next Friday."',correct:"C",why:'"Not today" is not "no." A timing objection is a booking waiting to happen.',
+      best:'Book the return and note it: "perfect ❤️ when\'s payday? i\'ll save this one just for you — message me and it\'s yours." Then write payday in his fan notes.'},
+  q3:{label:'Fan: "I already bought something like that."',correct:"B",why:"He's rejecting that content, not spending. Arguing \"it's different\" fights him instead of reading him.",
+      best:'Ask before the next offer: "what are you actually in the mood to see today? i\'ll find you something you don\'t have yet 😏"'},
+  q4:{label:"Which is stalling?",correct:"C",why:'"Haha maybe" keeps the chat alive without a decision. Endless chatting with no ask wastes the moment.',
+      best:'One confident, warm ask: "no pressure ❤️ i just thought you\'d really enjoy this one. want me to send it over?" If he still won\'t move, exit warm — the PPV is still in his inbox tomorrow.'},
+  q5:{label:"Biggest mistake after an objection",correct:"C",why:"Ending the conversation at the first no throws away the information the fan just gave you.",
+      best:"Name the obstacle first — price, timing, content, or stalling — then choose the reply that leaves another path to yes."}}},
+ 2:{name:"The Discovery Phase",read:"module-2-discovery-chatter.html",q:{
+  q1:{label:"The goal of discovery",correct:"B",why:"In the first 5–7 messages the fan unconsciously decides whether to invest. He needs to feel listened to, valued, and at ease.",
+      best:"Every early message shows his words were read, shows real interest in him as a person, and keeps zero pressure in the air."},
+  q2:{label:"The fatal discovery mistake",correct:"C",why:"Stringing closed questions is an interrogation — cold, mechanical, no connection.",
+      best:'Wrap the info-gathering in play: "how old are you? you write like you\'ve got something mature about you, i kinda like that 😊" Same question, completely different feeling.'},
+  q3:{label:"Every discovery message should…",correct:"A",why:"A message he can't reply to is a dead end. You are the engine of the conversation.",
+      best:"End every message with an open loop — an open question or a line that invites him to keep going."},
+  q4:{label:'Fan: "I work in IT."',correct:"D",why:'"Ok cool" ignores the door he just opened. Every detail is a chance to connect.',
+      best:'Bounce off it: "seriously? my cousin does that too! are you glued to the screen for hours or can you actually unplug? 😏 guys passionate about their work do something for me ngl"'},
+  q5:{label:"Selling during discovery?",correct:"B",why:"Pitching too early reads as a bot and kills the thread. We sell on curiosity and mystery.",
+      best:"Hold the pitch. Build connection and curiosity now — the sale belongs to Escalation and the Sale, and it lands ten times easier there."}}},
+ 3:{name:"The Escalation Phase",read:"module-3-escalation-chatter.html",q:{
+  q1:{label:"When to start escalating",correct:"C",why:"Escalation is earned by his energy, not by time on shift. Escalating at the wrong moment sends him cold.",
+      best:"Wait for the three green lights: the chat is alive, he's invested (asking about you, sharing), and the tone fits the move you're about to make."},
+  q2:{label:"Role of the first free media",correct:"B",why:"It's not a giveaway — it's a bridge that tests receptivity and creates value before you ever ask for anything.",
+      best:'"ahh you have to help me! i got new lingerie today and i can\'t tell if it suits me 🙈 honest opinion?" → free photo → read his reaction → then escalate.'},
+  q3:{label:"Best transition toward intimacy",correct:"A",why:"An explicit message from nowhere is a rupture. A justified transition is continuity.",
+      best:"Create context — an outfit, an opinion, a situation that naturally leans intimate — then let his positive reaction pull the next step."},
+  q4:{label:"Fan gives low-energy replies",correct:"D",why:"Sending intimate content to a fan replying \"haha nice\" is pitching blind. His energy is your thermostat.",
+      best:"Stay in rapport: ask, tease lightly, find the topic that wakes him up. Escalate only when his replies get longer and warmer."},
+  q5:{label:"Most common escalation mistake",correct:"B",why:"One or two messages are not a warm-up. Too fast breaks trust and the tone.",
+      best:"Raise the temperature one degree at a time and check his reaction after every step — a dial, not a switch."}}},
+ 4:{name:"The Sale",read:"module-4-sale-chatter.html",q:{
+  q1:{label:"The hook text with a PPV",correct:"B",why:"A file description sells a file. An experience creates desire, exclusivity, and urgency.",
+      best:'"i can\'t take it anymore, look what you made me do… 🥵 filmed thinking about exactly what you said last night. just for you — you\'ll be replaying it tomorrow"'},
+  q2:{label:"The reinforcement message",correct:"C",why:"Thirty seconds after the PPV, one short line multiplies anticipation while the moment is hot.",
+      best:'"omg maybe i shouldn\'t have sent that… you\'re gonna die 😈"'},
+  q3:{label:"Fan doesn't reply to the PPV",correct:"A",why:"A guilt ladder ('why are you ignoring me 😢') is a scored dead-end and burns fans.",
+      best:'Maximum two playful nudges: "are you still there…? 👀" — then let it breathe. An unopened PPV is still sitting in his inbox tomorrow.'},
+  q4:{label:"Right after he buys",correct:"D",why:"The moment after a purchase is the highest-trust moment — an instant re-pitch turns you into a vending machine.",
+      best:'After-care first: "mmh i knew you\'d love that one 😌 tell me your favourite part, i want details" — the relationship funds the NEXT pitch.'},
+  q5:{label:'"Sell feelings, not content"',correct:"B",why:"The content is the vehicle; the emotion is the product.",
+      best:"Describe how it will make HIM feel, tied to what he actually told you — never length, acts, or resolution."}}},
+ 5:{name:"Negotiation & Retention",read:"module-5-negotiation-retention-chatter.html",q:{
+  q1:{label:'Fan: "Can you do less?" — first move',correct:"C",why:"An instant discount destroys value and trains fans to always push back.",
+      best:'Rung two of the ladder: "i don\'t want us to get stuck on this 😌 take this one and i\'ll send you a surprise bonus right after — deal?"'},
+  q2:{label:"When to discount",correct:"B",why:"The discount is the bottom rung, not the opener.",
+      best:'Last resort, framed as a favor: "just for you, and only because i really want you to see this — $20. that stays between us 🤫"'},
+  q3:{label:"Speed in negotiation",correct:"A",why:"A hesitating fan is a fan who can leave. Every silent minute lets him change his mind.",
+      best:"Active negotiations jump the queue — answer them before anything else on your shift."},
+  q4:{label:"What whales are",correct:"D",why:"A small share of fans produce most of the revenue. Losing one whale outweighs winning ten strangers.",
+      best:"Memory + priority: greet him with his details from fan notes, protect the relationship, and give him the special status he's earned."},
+  q5:{label:"Why NOT selling can be right",correct:"B",why:"Relationship-mode days after a big purchase build the trust the next premium offer lands on.",
+      best:'"no agenda today, i just remembered your big meeting was this morning… how did it go?? 😊" — sells nothing, worth more than a PPV.'}}}
+};
+
+const p=new URLSearchParams(location.search);
+const m=parseInt(p.get('m')||'0'), mod=DATA[m];
+const chatter=(p.get('chatter')||'').toLowerCase();
+const score=Math.max(0,Math.min(5,parseInt(p.get('score')||'-1')));
+const ans=(p.get('a')||'').toUpperCase();
+
+if(!mod||isNaN(score)||score<0){ document.getElementById('empty').style.display='block'; }
+else{
+  document.getElementById('app').style.display='block';
+  const name=NAMES[chatter]||'Chatter';
+  const col=score>=4?'var(--green)':score>=3?'var(--amber)':'var(--red)';
+  document.getElementById('title').innerHTML=`${name}, your <em>review</em>`;
+  document.getElementById('subtitle').textContent=`Module ${m} · ${mod.name}. This is your personal breakdown — what went wrong, why, and the flow to use next time. No retake needed; this ends at understanding.`;
+  const bn=document.getElementById('bignum'); bn.textContent=`${score}/5`; bn.style.color=col;
+  document.getElementById('verdict').textContent=score>=4?'PASSED':'REVIEW BELOW';
+  document.getElementById('verdict').style.color=col;
+  document.getElementById('who').textContent=`MULTIPLE CHOICE · MODULE ${m}`;
+  const bars=document.getElementById('bars');
+  ['q1','q2','q3','q4','q5'].forEach((q,i)=>{
+    const mine=ans[i]||'-', ok=mine===mod.q[q].correct;
+    bars.insertAdjacentHTML('beforeend',
+      `<div><div class="barlab"><span>Q${i+1}</span><span>${ok?'✓':'✕'}</span></div>
+       <div class="bar"><i style="--w:100%;--c:${ok?'var(--green)':'var(--red)'};opacity:${ok?'0.85':'0.75'};"></i></div></div>`);
+  });
+  const missedEl=document.getElementById('missed');
+  let missedCount=0;
+  ['q1','q2','q3','q4','q5'].forEach((q,i)=>{
+    const mine=ans[i]||'—', d=mod.q[q];
+    if(mine===d.correct) return;
+    missedCount++;
+    missedEl.insertAdjacentHTML('beforeend',`
+      <div class="panel">
+        <div class="qhead"><span class="qn">Question ${i+1}</span>
+          <span class="pill bad">You answered ${mine}</span>
+          <span class="pill good">Correct · ${d.correct}</span></div>
+        <p class="qlabel">${d.label}</p>
+        <p class="lab why">Why</p><p>${d.why}</p>
+        <p class="lab best">The best response &amp; flow</p>
+        <div class="flow"><span class="who">In the chat</span>${d.best}</div>
+      </div>`);
+  });
+  if(!missedCount){
+    document.getElementById('missedH2').textContent='Clean sweep — keep it sharp';
+    missedEl.innerHTML=`<div class="panel"><p style="color:var(--ink);font-size:16px;">All five correct 🎉 The flows below every question are still worth a skim — knowing the answer and using the flow live are two different skills.</p></div>`;
+  } else {
+    document.getElementById('missedH2').textContent=`${missedCount} to review`;
+  }
+  const link=document.getElementById('modlink'); link.href=mod.read; link.textContent=`Module ${m} · ${mod.name}`;
+}
+</script>

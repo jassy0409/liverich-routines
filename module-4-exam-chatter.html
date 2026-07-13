@@ -376,6 +376,9 @@ const CONFIG = {
 const CORRECT = { q1:"B", q2:"C", q3:"A", q4:"D", q5:"B" };
 const EXPLAIN = {"q1": "The hook is an invitation to an experience — desire, exclusivity, a callback. Never a file description.", "q2": "The reinforcement ~30 seconds later amplifies anticipation while the moment is hot.", "q3": "Maximum two light, playful follow-ups. Guilt ladders are a house dead-end.", "q4": "After a purchase: after-care first. An instant re-pitch turns you into a vending machine.", "q5": "Sell feelings — describe how it will make him feel, personalized to him."};
 const MODURL = "https://jassy0409.github.io/liverich-routines/module-4-sale-chatter.html";
+const MODNUM = 4;
+const REVIEWURL = "https://jassy0409.github.io/liverich-routines/review.html";
+const BEST = {"q1": "Sell the experience: \"filmed this thinking about what you said last night… just for you\"", "q2": "Reinforce 30s later: \"omg maybe i shouldn't have sent that… 😈\"", "q3": "Max two playful nudges (\"still there…? 👀\"), then let it breathe — never guilt", "q4": "After-care first: \"i knew you'd love that one 😌 tell me your favourite part\" — no instant re-pitch", "q5": "Describe how it makes HIM feel, tied to what he told you — never file specs"};
 
 const VOICE = {
   Shantal: 'Shantal\'s voice: personal and elegant — proper sentences, first names only, never "hey", no pet names.',
@@ -460,7 +463,9 @@ form.addEventListener('submit',async(e)=>{
   ]};
 
   /* ---- message 2: automatic coaching ---- */
-  const fixes=missed.map(q=>`*${q.toUpperCase()} — correct answer: ${CORRECT[q]}*\n${EXPLAIN[q]}`).join('\n\n');
+  const fixes=missed.map(q=>`*${q.toUpperCase()} — you answered ${data.get(q)||'—'}, correct is ${CORRECT[q]}*\n_Why:_ ${EXPLAIN[q]}\n_Best flow:_ ${BEST[q]}`).join('\n\n');
+  const ansStr=['q1','q2','q3','q4','q5'].map(q=>data.get(q)||'-').join('');
+  const reviewLink=`${REVIEWURL}?m=${MODNUM}&chatter=${encodeURIComponent(whoKey)}&score=${score}&a=${ansStr}`;
   const coachIntro = missed.length
     ? `${c.name}, here's what to review from *${CONFIG.module}*:`
     : `Perfect multiple-choice, ${c.name} 🎉 The written answers still get a manager review — here's the bar they're graded against:`;
@@ -470,7 +475,7 @@ form.addEventListener('submit',async(e)=>{
     ...(missed.length?[{type:'section',text:{type:'mrkdwn',text:trunc(fixes,2900)}}]:[]),
     {type:'divider'},
     {type:'section',text:{type:'mrkdwn',text:`🎙 *Voice check:* ${voiceFor(c)}\n🏛 *Company rules:* stay on-platform · no guilt-tripping or pressure · never promise more than we deliver · notes on every fan.`}},
-    {type:'section',text:{type:'mrkdwn',text:`📖 Re-read: <${MODURL}|${CONFIG.module}>${missed.length?' — then retake your exam link.':''}`}}
+    {type:'section',text:{type:'mrkdwn',text:`📊 *Your performance file:* <${reviewLink}|open your personal Module ${MODNUM} review> — what went wrong, why, and the exact flow to use next time. No retake needed, this ends at understanding. Bring it to your next coaching session ✨`}}
   ]};
 
   const posts=[];
@@ -483,21 +488,21 @@ form.addEventListener('submit',async(e)=>{
   }else{ slackMsg=`No Slack webhook set for you yet — "Copy my results" and send it to your manager.`; }
 
   const report=`${head}\n${CONFIG.module}\n${c.model} · ${c.shift} · ${ts}\nMissed: ${missed.length?missed.map(q=>q.toUpperCase()).join(', '):'none'}\n\nWritten answers:\n${written}`;
-  renderResult(score,passed,slackMsg,report,missed,c);
+  renderResult(score,passed,slackMsg,report,missed,c,reviewLink);
   document.getElementById('submitBtn').disabled=true;
   resultEl.scrollIntoView({behavior:'smooth',block:'start'});
 });
 
 function sendSlack(url,payload){ return fetch(url,{method:'POST',mode:'no-cors',body:JSON.stringify(payload)}); }
 
-function renderResult(score,passed,slackMsg,report,missed,c){
+function renderResult(score,passed,slackMsg,report,missed,c,reviewLink){
   const pct=score/5;const R=54,C2=2*Math.PI*R,off=C2*(1-pct);
   const col=passed?'var(--green)':'var(--amber)';
   const fixHtml=missed.length?`
     <div class="q" style="text-align:left;margin-top:22px;">
       <p class="qn">📘 Instant coaching — review these</p>
       ${missed.map(q=>`<p style="margin:0 0 12px;"><strong>${q.toUpperCase()} · correct answer: ${CORRECT[q]}</strong><br><span style="color:var(--ink-soft);font-size:15px;">${EXPLAIN[q]}</span></p>`).join('')}
-      <p style="margin:6px 0 0;font-size:14.5px;color:var(--ink-soft);">🎙 ${voiceFor(c)}<br>📖 <a href="${MODURL}" style="color:var(--gold);font-weight:600;">Re-read the module</a>, then retake your exam link.</p>
+      <p style="margin:6px 0 0;font-size:14.5px;color:var(--ink-soft);">🎙 ${voiceFor(c)}<br>📊 <a href="${reviewLink}" style="color:var(--gold);font-weight:600;">Open your personal performance review</a> — the full best-response flows are there. No retake needed.</p>
     </div>`:'';
   resultEl.style.display='block';
   resultEl.innerHTML=`
@@ -510,9 +515,10 @@ function renderResult(score,passed,slackMsg,report,missed,c){
         </svg>
         <div class="num"><b>${score}/5</b><small>MULTIPLE CHOICE</small></div>
       </div>
-      <div class="verdict">${passed?'Passed':'Below pass — review and retake'}</div>
+      <div class="verdict">${passed?'Passed':'Below pass — your review is ready below'}</div>
       <p class="slack-status">${slackMsg}</p>
       <div class="actions" style="justify-content:center;margin-top:14px;">
+        <a class="btn" href="${reviewLink}" style="text-decoration:none;">Open my performance review</a>
         <button type="button" class="btn ghost" id="copyBtn">Copy my results</button>
       </div>
       <pre class="copybox" id="copybox">${escapeHtml(report)}</pre>
