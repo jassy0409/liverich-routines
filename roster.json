@@ -1,5 +1,5 @@
 {
-  "comment": "Single source of truth for the weekly Playbook routine. Edit here when the team changes.",
+  "comment": "Source of truth for the weekly Playbook routine. Weeks 1-5 send modules 1-5; every week after, a FRESH module is authored from the backlog (or from chatters' weakest exam areas once the backlog is empty), added here, then sent.",
   "site": "https://jassy0409.github.io/liverich-routines/",
   "rotationStartMonday": "2026-07-14",
   "modules": [
@@ -99,5 +99,17 @@
       "channelId": "",
       "note": "covers off-days; resolve channel by name or skip"
     }
+  ],
+  "backlog": [
+    "Shift Organization & Priorities \u2014 the priority hierarchy (spenders, new fans, regulars), pinning, 20-30 min rotation, start/mid-shift checklists, always-be-in-a-phase",
+    "Mass Messages That Convert \u2014 one per shift, question-first messages, planning the responses, exclusions, personalization at scale",
+    "Fan Notes & Memory Systems \u2014 what to log (job, pets, payday, kinks, milestones), nicknames done right, lists and segmentation, handover quality",
+    "Fan Types & Buyer Psychology \u2014 reading the whale, the regular, the window-shopper and the time-waster, and how attention allocation follows",
+    "PPV Pricing & Bundles \u2014 anchoring, laddering after a yes, bundle framing, when to hold price vs when to bonus",
+    "Boundaries & Time-Wasters \u2014 spotting sexting-for-free patterns, polite disengagement, protecting shift time without burning the fan",
+    "Compliance Deep Dive \u2014 platform rules refresher, chargeback discipline, meet-up requests, escalation to managers",
+    "Voice Mastery: Shantal \u2014 personal, elegant, first-names; drills and rewrites in her register",
+    "Voice Mastery: Karina \u2014 lowercase bratty done right; pet-name rules; drills and rewrites in her register",
+    "The VIP & SVIP Funnel \u2014 spotting mid-spenders ready to move up, protecting whales, making status feel real"
   ]
 }
