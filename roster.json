@@ -58,10 +58,9 @@
       "name": "Princess",
       "model": "Shantal",
       "shift": "Afternoon",
-      "slackId": "",
+      "slackId": "U0B5Y66UDAQ",
       "channel": "#princess-management",
-      "channelId": "",
-      "note": "slackId pending (only DM id D0BERBBJFSB known); resolve channel by name"
+      "channelId": "C0B5D3AJYB1"
     },
     {
       "key": "leigh",
@@ -83,13 +82,12 @@
     },
     {
       "key": "rossana",
-      "name": "Rossana",
+      "name": "Rosanna",
       "model": "Karina",
       "shift": "Afternoon",
-      "slackId": "",
+      "slackId": "U0AV2KV1DUG",
       "channel": "#rossana-management",
-      "channelId": "",
-      "note": "slackId + channelId pending; resolve channel by name"
+      "channelId": "C0AUM8Z0SSD"
     },
     {
       "key": "jeffrey",
