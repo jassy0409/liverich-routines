@@ -1,0 +1,328 @@
+<title>Creative Radar · July 2026</title>
+<meta name="color-scheme" content="dark">
+<script>document.documentElement.setAttribute('data-theme','dark');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --ground:#100E0A; --panel:#18140D; --panel2:#1F1A11;
+    --line:#2C2519; --line2:#221D14;
+    --ink:#F0E9DA; --soft:#B8AD97; --faint:#8A7F6B;
+    --gold:#D9B26A; --gold-deep:#B48F49; --rose:#CD8598;
+    --green:#74C08C; --amber:#E0A44A; --red:#DE7676;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    --mono:"SF Mono",ui-monospace,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{background:var(--ground)}
+  body{
+    background:var(--ground);color:var(--ink);
+    font-family:var(--sans);font-size:17px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a,button,summary{outline:none}
+  :focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
+  .wrap{max-width:920px;margin:0 auto;padding:0 24px 60px}
+
+  /* ── header ── */
+  header{position:relative;padding:64px 0 44px;text-align:center;overflow:hidden}
+  header::before{
+    content:"";position:absolute;inset:-40% -20% auto;height:150%;pointer-events:none;
+    background:radial-gradient(ellipse 60% 55% at 50% 18%,rgba(217,178,106,.14),transparent 70%);
+  }
+  .kicker{
+    font-family:var(--mono);font-size:12px;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--gold);position:relative;
+  }
+  h1{
+    font-family:var(--serif);font-weight:600;position:relative;
+    font-size:clamp(38px,7vw,60px);line-height:1.12;letter-spacing:-.01em;
+    margin:14px 0 10px;text-wrap:balance;
+  }
+  h1 em{font-style:italic;color:var(--gold)}
+  .dateline{color:var(--soft);font-size:16px;position:relative}
+  .pillrow{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:26px;position:relative}
+  .pill{
+    font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+    padding:6px 14px;border-radius:999px;border:1px solid var(--line);
+    background:var(--panel);color:var(--soft);
+  }
+  .pill.gold{border-color:rgba(217,178,106,.45);background:rgba(217,178,106,.10);color:var(--gold)}
+
+  /* ── model sections ── */
+  section{padding:48px 0 8px;border-top:1px solid var(--line2)}
+  .model-head{display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:8px}
+  h2{font-family:var(--serif);font-weight:600;font-size:clamp(28px,4.6vw,38px);letter-spacing:-.01em}
+  h2 em{font-style:italic;color:var(--gold)}
+  .voice{
+    font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+    padding:6px 13px;border-radius:999px;border:1px solid rgba(205,133,152,.4);
+    background:rgba(205,133,152,.10);color:var(--rose);
+  }
+  .model-sub{color:var(--faint);font-size:15px;margin-bottom:26px}
+
+  /* ── event cards ── */
+  .grid{display:grid;gap:16px}
+  .card{
+    background:var(--panel);border:1px solid var(--line);border-radius:14px;
+    padding:24px 26px 22px;
+  }
+  .card-top{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:4px}
+  h3{font-family:var(--serif);font-weight:600;font-size:23px;letter-spacing:-.005em}
+  .when{
+    font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--gold);white-space:nowrap;
+  }
+  .fitline{display:flex;align-items:center;gap:12px;margin:8px 0 16px}
+  .bar{flex:1;height:10px;border-radius:6px;background:var(--panel2);overflow:hidden}
+  .bar i{display:block;height:100%;border-radius:6px}
+  .fit{font-family:var(--mono);font-size:13px;font-weight:700;min-width:52px;text-align:right}
+  .g{color:var(--green)} .a{color:var(--amber)} .r{color:var(--red)}
+  .bg-g{background:var(--green)} .bg-a{background:var(--amber)} .bg-r{background:var(--red)}
+  .lbl{
+    font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--gold);margin:14px 0 5px;
+  }
+  .card p{color:var(--soft);font-size:16px;max-width:66ch}
+  .flow{
+    margin-top:6px;padding:10px 16px;border-left:3px solid var(--gold);
+    background:var(--panel2);border-radius:0 10px 10px 0;
+    font-size:16px;color:var(--ink);max-width:66ch;
+  }
+  .note{
+    margin-top:14px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+    display:inline-block;padding:5px 12px;border-radius:999px;
+  }
+  .note.g{border:1px solid rgba(116,192,140,.45);background:rgba(116,192,140,.10)}
+  .note.a{border:1px solid rgba(224,164,74,.45);background:rgba(224,164,74,.10)}
+  .note.r{border:1px solid rgba(222,118,118,.45);background:rgba(222,118,118,.10)}
+
+  /* ── callout ── */
+  .callout{
+    margin:44px 0 0;padding:22px 26px;border-radius:14px;
+    border:1px solid rgba(217,178,106,.35);background:rgba(217,178,106,.08);
+  }
+  .callout .lbl{margin-top:0}
+  .callout p{color:var(--soft);font-size:16px;max-width:70ch}
+
+  footer{
+    margin-top:56px;padding-top:26px;border-top:1px solid var(--line2);
+    text-align:center;font-family:var(--mono);font-size:11px;
+    letter-spacing:.24em;text-transform:uppercase;color:var(--faint);
+  }
+  @media (prefers-reduced-motion:no-preference){
+    .card{transition:border-color .2s}
+    .card:hover{border-color:rgba(217,178,106,.4)}
+  }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="kicker">LIVERICHMEDIA · CREATIVE RADAR</div>
+    <h1>Upcoming <em>moments</em>, per model</h1>
+    <div class="dateline">July 13 – 31, 2026 · all times Pacific</div>
+    <div class="pillrow">
+      <span class="pill gold">9 moments tracked</span>
+      <span class="pill">Peak · World Cup Final · Sun Jul 19</span>
+      <span class="pill">Biggest sale window · Christmas in July · Jul 25</span>
+    </div>
+  </header>
+
+  <!-- ══════════ KARINA ══════════ -->
+  <section>
+    <div class="model-head">
+      <h2>Radar · <em>Karina</em></h2>
+      <span class="voice">voice · lowercase, playful, bratty</span>
+    </div>
+    <div class="model-sub">Lane: high energy, teasing, event-native. Fight night and the Final are hers this month.</div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="card-top"><h3>World Cup Final</h3><span class="when">SUN JUL 19 · 12PM</span></div>
+        <div class="fitline"><div class="bar"><i class="bg-g" style="width:96%"></i></div><span class="fit g">96</span></div>
+        <p>The championship match, the single biggest audience moment of the month.</p>
+        <div class="lbl">Shoot ideas</div>
+        <p>Bratty game day jersey tied at the waist, quick teasing mirror clip before kickoff. Couch watch party with popcorn and a playful championship pick sign held to camera, cheeky bet with me energy.</p>
+        <div class="lbl">Caption angle</div>
+        <div class="flow">one team takes it all today and so do i, watch the final with me before kickoff, today only</div>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><h3>UFC Fight Night · Du Plessis vs Usman</h3><span class="when">SAT JUL 18 · 5PM</span></div>
+        <div class="fitline"><div class="bar"><i class="bg-g" style="width:94%"></i></div><span class="fit g">94</span></div>
+        <div class="lbl">Shoot ideas</div>
+        <p>Ringside glam with a robe entrance, fighter walkout attitude. Post fight celebration clip, arms up like she just took the belt.</p>
+        <div class="lbl">Caption angle</div>
+        <div class="flow">fight night, live only while the card is on, come watch me take the belt tonight</div>
+        <span class="note g">her strongest fit of the week</span>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><h3>National Ice Cream Day</h3><span class="when">SUN JUL 19</span></div>
+        <div class="fitline"><div class="bar"><i class="bg-g" style="width:92%"></i></div><span class="fit g">92</span></div>
+        <div class="lbl">Shoot ideas</div>
+        <p>Cone or sundae taste test, playful lick and bite reaction, messy on purpose. Spoon lick cleanup moment by the couch. Same day as the Final, run it as the morning warm up post.</p>
+        <div class="lbl">Caption angle</div>
+        <div class="flow">ice cream day and i am being messy on purpose, sweet content today only, don't miss it</div>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><h3>World Cup Semifinals</h3><span class="when">TUE JUL 14 + WED JUL 15 · 12PM</span></div>
+        <div class="fitline"><div class="bar"><i class="bg-g" style="width:88%"></i></div><span class="fit g">88</span></div>
+        <div class="lbl">Shoot ideas</div>
+        <p>Team colors robe walkout reveal, tunnel entrance strut with a drop on the reveal. Loud couch reaction clip, big gasp and cheer during the match.</p>
+        <div class="lbl">Caption angle</div>
+        <div class="flow">only two teams left and i already picked my winner, tune in with me while it airs tonight</div>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><h3>MLB All Star Game</h3><span class="when">TUE JUL 14 · EVENING</span></div>
+        <div class="fitline"><div class="bar"><i class="bg-g" style="width:85%"></i></div><span class="fit g">85</span></div>
+        <div class="lbl">Shoot ideas</div>
+        <p>Ballpark chic cap and tiny shorts posed like heading out to the game. Hot dog and soda flat lay with a messy playful bite reaction clip.</p>
+        <div class="lbl">Caption angle</div>
+        <div class="flow">all star night, baseball is on and i wore the cap just for you, hang out with me for the game tonight</div>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><h3>Christmas in July</h3><span class="when">SAT JUL 25</span></div>
+        <div class="fitline"><div class="bar"><i class="bg-g" style="width:93%"></i></div><span class="fit g">93</span></div>
+        <p>The biggest sales moment of the back half of the month. Frame the drop as a gift, one night only.</p>
+        <div class="lbl">Shoot ideas</div>
+        <p>Red bow and ribbon styling, gift wrap tease with a slow unwrap clip. Santa hat and stockings by a fake tree, naughty list sign held to camera.</p>
+        <div class="lbl">Caption angle</div>
+        <div class="flow">christmas came early and so did your gift, unwrap me tonight only</div>
+        <span class="note g">vip gift drop · pair with a bundle</span>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><h3>National Tequila Day</h3><span class="when">FRI JUL 24</span></div>
+        <div class="fitline"><div class="bar"><i class="bg-g" style="width:86%"></i></div><span class="fit g">86</span></div>
+        <div class="lbl">Shoot ideas</div>
+        <p>Going out cocktail look, lime and salt play, a wink over the shoulder shot glass clip. Body shot setup implied, kept playful.</p>
+        <div class="lbl">Caption angle</div>
+        <div class="flow">it's tequila day, take a shot with me and see where the night goes</div>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><h3>Comic-Con weekend</h3><span class="when">THU JUL 23 – SUN JUL 26</span></div>
+        <div class="fitline"><div class="bar"><i class="bg-g" style="width:83%"></i></div><span class="fit g">83</span></div>
+        <div class="lbl">Shoot ideas</div>
+        <p>Cosplay costume reveal tease, spin transition from casual to full costume. Poll the fans on which character she suits up as next.</p>
+        <div class="lbl">Caption angle</div>
+        <div class="flow">suited up for con weekend, guess who i came as, full reveal in your dms</div>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><h3>National Hot Dog Day</h3><span class="when">WED JUL 22</span></div>
+        <div class="fitline"><div class="bar"><i class="bg-a" style="width:74%"></i></div><span class="fit a">74</span></div>
+        <div class="lbl">Shoot ideas</div>
+        <p>Quick playful food clip, natural follow on from the All Star hot dog flat lay. Low lift filler day, one post max.</p>
+        <div class="lbl">Caption angle</div>
+        <div class="flow">apparently it's hot dog day, i had to, don't judge me just watch</div>
+        <span class="note a">filler · keep it light</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ SHANTAL ══════════ -->
+  <section>
+    <div class="model-head">
+      <h2>Radar · <em>Shantal</em></h2>
+      <span class="voice">voice · personal, proper sentences, first names</span>
+    </div>
+    <div class="model-sub">Lane: elegant, one to one, unhurried. She wins the Final and the sweet moments, skip the fight card.</div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="card-top"><h3>World Cup Final</h3><span class="when">SUN JUL 19 · 12PM</span></div>
+        <div class="fitline"><div class="bar"><i class="bg-g" style="width:96%"></i></div><span class="fit g">96</span></div>
+        <p>The championship match, the single biggest audience moment of the month.</p>
+        <div class="lbl">Shoot ideas</div>
+        <p>Elegant team colors fit, a calm mirror moment before kickoff. Tidy couch watch party setup, a quiet pick your team with me note held to camera.</p>
+        <div class="lbl">Caption angle</div>
+        <div class="flow">The final is today and only one team lifts the trophy, come watch it with me before kickoff, just for today.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><h3>National Ice Cream Day</h3><span class="when">SUN JUL 19</span></div>
+        <div class="fitline"><div class="bar"><i class="bg-g" style="width:90%"></i></div><span class="fit g">90</span></div>
+        <div class="lbl">Shoot ideas</div>
+        <p>Sundae taste test at home, a soft genuine reaction. An unhurried sweet moment on the couch, morning post before the Final takes over.</p>
+        <div class="lbl">Caption angle</div>
+        <div class="flow">It is National Ice Cream Day, I made myself a treat and saved a spot for you, come share something sweet with me today.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><h3>World Cup Semifinals</h3><span class="when">TUE JUL 14 + WED JUL 15 · 12PM</span></div>
+        <div class="fitline"><div class="bar"><i class="bg-g" style="width:88%"></i></div><span class="fit g">88</span></div>
+        <div class="lbl">Shoot ideas</div>
+        <p>Refined team color entrance, poised rather than costume. An honest reaction moment on the couch during the match.</p>
+        <div class="lbl">Caption angle</div>
+        <div class="flow">Only two teams remain tonight, tune in with me while the semifinal airs, I kept you a place on the couch.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><h3>Christmas in July</h3><span class="when">SAT JUL 25</span></div>
+        <div class="fitline"><div class="bar"><i class="bg-g" style="width:88%"></i></div><span class="fit g">88</span></div>
+        <div class="lbl">Shoot ideas</div>
+        <p>Cosy at home styling, soft lighting, a wrapped gift on her lap opened slowly to camera. Keep it intimate rather than costume.</p>
+        <div class="lbl">Caption angle</div>
+        <div class="flow">A little Christmas in July, just for you. I put something together and it is ready whenever you are.</div>
+        <span class="note g">gift framed ppv drop</span>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><h3>The Open · golf major</h3><span class="when">THU JUL 16 – SUN JUL 19</span></div>
+        <div class="fitline"><div class="bar"><i class="bg-g" style="width:82%"></i></div><span class="fit g">82</span></div>
+        <div class="lbl">Shoot ideas</div>
+        <p>Country club chic, pleated skirt and polo, posed like heading to the course. A quiet afternoon of watching together framing.</p>
+        <div class="lbl">Caption angle</div>
+        <div class="flow">The Open is on this week and I dressed for the occasion, spend a slow afternoon watching with me.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><h3>National Tequila Day</h3><span class="when">FRI JUL 24</span></div>
+        <div class="fitline"><div class="bar"><i class="bg-a" style="width:76%"></i></div><span class="fit a">76</span></div>
+        <div class="lbl">Shoot ideas</div>
+        <p>One elegant cocktail at home, evening dress, a single toast to camera. Refined rather than party energy.</p>
+        <div class="lbl">Caption angle</div>
+        <div class="flow">It is Tequila Day and I made us a drink, join me for one tonight, I saved you the seat next to me.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><h3>MLB All Star Game</h3><span class="when">TUE JUL 14 · EVENING</span></div>
+        <div class="fitline"><div class="bar"><i class="bg-a" style="width:72%"></i></div><span class="fit a">72</span></div>
+        <div class="lbl">Shoot ideas</div>
+        <p>Ballpark chic, cap and shorts, posed and clean like heading out to the game. A simple hot dog and soda flat lay.</p>
+        <div class="lbl">Caption angle</div>
+        <div class="flow">It is All Star night and the game is on, come watch it with me tonight, I even found my cap.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><h3>UFC Fight Night</h3><span class="when">SAT JUL 18 · 5PM</span></div>
+        <div class="fitline"><div class="bar"><i class="bg-r" style="width:64%"></i></div><span class="fit r">64</span></div>
+        <div class="lbl">Shoot ideas</div>
+        <p>Off lane. If she wants it, a soft ringside glam look with the robe kept elegant. Otherwise a quiet at home evening post and let the other lane own fight night.</p>
+        <div class="lbl">Caption angle</div>
+        <div class="flow">Fight night is on tonight, if you are watching the card come watch it with me while it is live.</div>
+        <span class="note r">off lane · optional</span>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><h3>Comic-Con weekend</h3><span class="when">THU JUL 23 – SUN JUL 26</span></div>
+        <div class="fitline"><div class="bar"><i class="bg-r" style="width:58%"></i></div><span class="fit r">58</span></div>
+        <div class="lbl">Shoot ideas</div>
+        <p>Soft pass. Costume energy does not suit the lane, keep the weekend for an elegant summer evening set instead.</p>
+        <span class="note r">skip · protect the lane</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="callout">
+    <div class="lbl">Editing board · lock these before the moment</div>
+    <p>Semifinal fits by Mon Jul 13 evening. All Star fit Tue morning. The Open look by Wed Jul 15. UFC glam by Fri Jul 17. Final plus Ice Cream Day shot Sat Jul 18 so both post Sunday morning. Tequila and Christmas in July sets in the edit by Wed Jul 22. Every go live is timed to kickoff, edits deliver the day before, never day of.</p>
+  </div>
+
+  <footer>LIVERICHMEDIA · CREATIVE RADAR · JUL 13–31 2026</footer>
+</div>

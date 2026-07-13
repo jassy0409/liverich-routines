@@ -58,6 +58,6 @@ Caption angle. It is National Ice Cream Day, I made myself a treat and saved a s
 
 ---
 
-@Celine @Sora @Eirene @Jassy forward what fits your models to their WhatsApp today, and make sure the editing board schedules around these.
+Forward what fits your models to their WhatsApp today, and make sure the editing board schedules around these.
 
 Sent using @Claude
