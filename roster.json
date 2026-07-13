@@ -3,19 +3,103 @@
   "site": "https://jassy0409.github.io/liverich-routines/",
   "rotationStartMonday": "2026-07-14",
   "modules": [
-    { "n": 1, "name": "Mastering the Comeback",   "read": "module-1-chatter-edition.html",              "exam": "module-1-exam-chatter.html" },
-    { "n": 2, "name": "The Discovery Phase",      "read": "module-2-discovery-chatter.html",            "exam": "module-2-exam-chatter.html" },
-    { "n": 3, "name": "The Escalation Phase",     "read": "module-3-escalation-chatter.html",           "exam": "module-3-exam-chatter.html" },
-    { "n": 4, "name": "The Sale",                 "read": "module-4-sale-chatter.html",                 "exam": "module-4-exam-chatter.html" },
-    { "n": 5, "name": "Negotiation & Retention",  "read": "module-5-negotiation-retention-chatter.html","exam": "module-5-exam-chatter.html" }
+    {
+      "n": 1,
+      "name": "Mastering the Comeback",
+      "read": "module-1-chatter-edition.html",
+      "exam": "module-1-exam-chatter.html"
+    },
+    {
+      "n": 2,
+      "name": "The Discovery Phase",
+      "read": "module-2-discovery-chatter.html",
+      "exam": "module-2-exam-chatter.html"
+    },
+    {
+      "n": 3,
+      "name": "The Escalation Phase",
+      "read": "module-3-escalation-chatter.html",
+      "exam": "module-3-exam-chatter.html"
+    },
+    {
+      "n": 4,
+      "name": "The Sale",
+      "read": "module-4-sale-chatter.html",
+      "exam": "module-4-exam-chatter.html"
+    },
+    {
+      "n": 5,
+      "name": "Negotiation & Retention",
+      "read": "module-5-negotiation-retention-chatter.html",
+      "exam": "module-5-exam-chatter.html"
+    }
   ],
   "chatters": [
-    { "key": "aaliyah",  "name": "Aaliyah",  "model": "Shantal", "shift": "Graveyard", "slackId": "U09U798V24X", "channel": "#aaliyah-management",    "channelId": "C09U784EE23" },
-    { "key": "trisha",   "name": "Trisha",   "model": "Shantal", "shift": "Morning",   "slackId": "U08H7941KTN", "channel": "#trisha-management",     "channelId": "C08FFLCF92N" },
-    { "key": "princess", "name": "Princess", "model": "Shantal", "shift": "Afternoon", "slackId": "",            "channel": "#princess-management",   "channelId": "", "note": "slackId pending (only DM id D0BERBBJFSB known); resolve channel by name" },
-    { "key": "leigh",    "name": "Leigh",    "model": "Karina",  "shift": "Graveyard", "slackId": "U0AHFGZ5ZM2", "channel": "#leigh-management",      "channelId": "C0AHBUAPXJN" },
-    { "key": "mj",       "name": "MJ",       "model": "Karina",  "shift": "Morning",   "slackId": "U06ALHQ6PUH", "channel": "#mj-management",         "channelId": "C07435SAD42" },
-    { "key": "alyzha",   "name": "Alyzha",   "model": "Karina",  "shift": "Afternoon", "slackId": "U0B38R4A37S", "channel": "#alyzha-management",     "channelId": "C0B2EGZ5DDG" },
-    { "key": "jeffrey",  "name": "Jeffrey",  "model": "Cover",   "shift": "Off-days",  "slackId": "U06AJLM4JM7", "channel": "",                       "channelId": "", "note": "covers off-days; resolve channel by name or skip" }
+    {
+      "key": "aaliyah",
+      "name": "Aaliyah",
+      "model": "Shantal",
+      "shift": "Graveyard",
+      "slackId": "U09U798V24X",
+      "channel": "#aaliyah-management",
+      "channelId": "C09U784EE23"
+    },
+    {
+      "key": "trisha",
+      "name": "Trisha",
+      "model": "Shantal",
+      "shift": "Morning",
+      "slackId": "U08H7941KTN",
+      "channel": "#trisha-management",
+      "channelId": "C08FFLCF92N"
+    },
+    {
+      "key": "princess",
+      "name": "Princess",
+      "model": "Shantal",
+      "shift": "Afternoon",
+      "slackId": "",
+      "channel": "#princess-management",
+      "channelId": "",
+      "note": "slackId pending (only DM id D0BERBBJFSB known); resolve channel by name"
+    },
+    {
+      "key": "leigh",
+      "name": "Leigh",
+      "model": "Karina",
+      "shift": "Graveyard",
+      "slackId": "U0AHFGZ5ZM2",
+      "channel": "#leigh-management",
+      "channelId": "C0AHBUAPXJN"
+    },
+    {
+      "key": "mj",
+      "name": "MJ",
+      "model": "Karina",
+      "shift": "Morning",
+      "slackId": "U06ALHQ6PUH",
+      "channel": "#mj-management",
+      "channelId": "C07435SAD42"
+    },
+    {
+      "key": "rossana",
+      "name": "Rossana",
+      "model": "Karina",
+      "shift": "Afternoon",
+      "slackId": "",
+      "channel": "#rossana-management",
+      "channelId": "",
+      "note": "slackId + channelId pending; resolve channel by name"
+    },
+    {
+      "key": "jeffrey",
+      "name": "Jeffrey",
+      "model": "Cover",
+      "shift": "Off-days",
+      "slackId": "U06AJLM4JM7",
+      "channel": "",
+      "channelId": "",
+      "note": "covers off-days; resolve channel by name or skip"
+    }
   ]
 }
