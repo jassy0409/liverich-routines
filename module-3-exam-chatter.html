@@ -371,12 +371,37 @@ const CONFIG = {
   }
 };
 const CORRECT = { q1:"C", q2:"B", q3:"A", q4:"D", q5:"B" };
+const EXPLAIN = {"q1": "Escalate when the chat is genuinely engaging and he's emotionally invested — not on a timer.", "q2": "Free media is a bridge: it tests receptivity and creates value before any ask.", "q3": "Create contextual justification (outfit, opinion, situation) — never an explicit message from nowhere.", "q4": "Low-energy replies mean not ready. Keep building engagement before you escalate.", "q5": "Going too fast is the classic mistake — the temperature rise must be gradual."};
+const MODURL = "https://jassy0409.github.io/liverich-routines/module-3-escalation-chatter.html";
+
+const VOICE = {
+  Shantal: 'Shantal\'s voice: personal and elegant — proper sentences, first names only, never "hey", no pet names.',
+  Karina:  'Karina\'s voice: lowercase, playful, bratty — pet names (babe/baby) ONLY for a VIP actively spending right now.'
+};
+function voiceFor(c){ return VOICE[c.model] || 'Match the exact voice of the account you are covering — check its voice guide before writing.'; }
 
 const sel = document.getElementById('fWho');
 Object.keys(CONFIG.chatters).forEach(k=>{
   const c=CONFIG.chatters[k];const o=document.createElement('option');
   o.value=k;o.textContent=`${c.name} · ${c.model} ${c.shift}`;sel.appendChild(o);
 });
+
+/* voice-rule panels (identity area + above Part 3) */
+document.querySelector('.idrow').insertAdjacentHTML('afterend',
+  '<div id="voiceHint" class="callout" style="display:none;margin:18px 0 0;"><span class="emoji">🎙</span><div><p class="t">Your model\'s voice</p><p id="voiceHintTxt"></p></div></div>');
+[...document.querySelectorAll('#exam h3')].filter(h=>h.textContent.includes('Part 3')).forEach(h=>{
+  h.insertAdjacentHTML('afterend',
+    '<div class="callout" id="voiceHint2" style="display:none;"><span class="emoji">✍️</span><div><p class="t">Write in your model\'s voice</p><p id="voiceHint2Txt"></p></div></div>');
+});
+function updateVoiceHints(){
+  const c=CONFIG.chatters[sel.value];
+  const v1=document.getElementById('voiceHint'), v2=document.getElementById('voiceHint2');
+  if(!c){ if(v1)v1.style.display='none'; if(v2)v2.style.display='none'; return; }
+  const txt = voiceFor(c)+' Company rules always apply: stay on-platform, no guilt-tripping or pressure, never promise more than we deliver.';
+  if(v1){ v1.style.display='flex'; document.getElementById('voiceHintTxt').textContent=txt; }
+  if(v2){ v2.style.display='flex'; document.getElementById('voiceHint2Txt').textContent='Your written replies are graded as '+c.model+' messages. '+voiceFor(c); }
+}
+sel.addEventListener('change', updateVoiceHints);
 
 const params=new URLSearchParams(location.search);
 const who=(params.get('chatter')||'').toLowerCase();
@@ -386,6 +411,7 @@ if(CONFIG.chatters[who]){
   const n=document.getElementById('lockedNote');n.style.display='block';
   n.textContent=`Signed in as ${c.name} (${c.model} · ${c.shift}). This is your personal exam link.`;
 }
+updateVoiceHints();
 
 document.querySelectorAll('.opt input').forEach(inp=>{
   inp.addEventListener('change',()=>{
@@ -397,6 +423,7 @@ document.querySelectorAll('.opt input').forEach(inp=>{
 const form=document.getElementById('exam');
 const resultEl=document.getElementById('result');
 const errEl=document.getElementById('formErr');
+const trunc=(s,n)=>s.length>n?s.slice(0,n-1)+'…':s;
 
 form.addEventListener('submit',async(e)=>{
   e.preventDefault();errEl.textContent='';
@@ -404,40 +431,71 @@ form.addEventListener('submit',async(e)=>{
   const whoKey=sel.value;
   if(!name){errEl.textContent='Please enter your name.';return;}
   if(!whoKey){errEl.textContent='Please select which chatter you are.';return;}
-
   const data=new FormData(form);
+  const blanks=[6,7,8,9,10,11,12,13,14,15].filter(n=>!(data.get('q'+n)||'').trim());
+  if(blanks.length){errEl.textContent='Please answer all written questions (missing: Q'+blanks.join(', Q')+').';return;}
+
   let score=0;const missed=[];
-  for(const q of Object.keys(CORRECT)){ if(data.get(q)===CORRECT[q])score++; else missed.push(q.toUpperCase()); }
+  for(const q of Object.keys(CORRECT)){ if(data.get(q)===CORRECT[q])score++; else missed.push(q); }
   const passed=score>=CONFIG.passMark;
   const c=CONFIG.chatters[whoKey];
   const ts=new Date().toLocaleString();
-  const written=[6,7,8,9,10,11,12,13,14,15].map(n=>`Q${n}: ${(data.get('q'+n)||'').trim()||'(blank)'}`).join('\n');
-  const head=`${passed?'✅':'⚠️'} *${c.name}* finished *${CONFIG.module}*`;
-  const l2=`Score: *${score}/5* multiple-choice — ${passed?'PASS':'BELOW PASS ('+CONFIG.passMark+'/5)'}`;
-  const l3=missed.length?`Missed: ${missed.join(', ')}`:`All multiple-choice correct`;
-  const l4=`${c.model} · ${c.shift} · ${ts}`;
-  const mgrText=`${head}\n${c.slackId?`<@${c.slackId}>\n`:''}${l2}\n${l3}\n${l4}\n\n*Written answers (manager review):*\n${written}`;
-  const chnText=`${head}\n${l2}\n${l3}\n${l4}\n\n*Written answers:*\n${written}`;
+  const written=[6,7,8,9,10,11,12,13,14,15].map(n=>`Q${n}: ${(data.get('q'+n)||'').trim()}`).join('\n');
+
+  /* ---- message 1: the result card (Block Kit) ---- */
+  const head=`${passed?'✅':'⚠️'} ${c.name.toUpperCase()} — ${score}/5 ${passed?'PASS':'BELOW PASS'}`;
+  const resultPayload={ text:`${head} · ${CONFIG.module}`, blocks:[
+    {type:'header',text:{type:'plain_text',text:head,emoji:true}},
+    {type:'section',fields:[
+      {type:'mrkdwn',text:`*Module:*\n${CONFIG.module}`},
+      {type:'mrkdwn',text:`*Chatter:*\n${c.name}${c.slackId?` <@${c.slackId}>`:''} · ${c.model} ${c.shift}`},
+      {type:'mrkdwn',text:`*Missed:*\n${missed.length?missed.map(q=>q.toUpperCase()).join(', '):'None 🎉'}`},
+      {type:'mrkdwn',text:`*Submitted:*\n${ts}`}
+    ]},
+    {type:'divider'},
+    {type:'section',text:{type:'mrkdwn',text:`*Written answers (manager reviews these in ${c.model}'s voice):*\n${trunc(written,2700)}`}}
+  ]};
+
+  /* ---- message 2: automatic coaching ---- */
+  const fixes=missed.map(q=>`*${q.toUpperCase()} — correct answer: ${CORRECT[q]}*\n${EXPLAIN[q]}`).join('\n\n');
+  const coachIntro = missed.length
+    ? `${c.name}, here's what to review from *${CONFIG.module}*:`
+    : `Perfect multiple-choice, ${c.name} 🎉 The written answers still get a manager review — here's the bar they're graded against:`;
+  const coachPayload={ text:`📘 Coaching — ${c.name} · ${CONFIG.module}`, blocks:[
+    {type:'header',text:{type:'plain_text',text:`📘 COACHING — ${c.name.toUpperCase()}`,emoji:true}},
+    {type:'section',text:{type:'mrkdwn',text:coachIntro}},
+    ...(missed.length?[{type:'section',text:{type:'mrkdwn',text:trunc(fixes,2900)}}]:[]),
+    {type:'divider'},
+    {type:'section',text:{type:'mrkdwn',text:`🎙 *Voice check:* ${voiceFor(c)}\n🏛 *Company rules:* stay on-platform · no guilt-tripping or pressure · never promise more than we deliver · notes on every fan.`}},
+    {type:'section',text:{type:'mrkdwn',text:`📖 Re-read: <${MODURL}|${CONFIG.module}>${missed.length?' — then retake your exam link.':''}`}}
+  ]};
 
   const posts=[];
-  if(CONFIG.managerWebhook)posts.push(sendSlack(CONFIG.managerWebhook,mgrText));
-  if(c.webhook)posts.push(sendSlack(c.webhook,chnText));
+  if(c.webhook){ posts.push(sendSlack(c.webhook,resultPayload)); posts.push(sendSlack(c.webhook,coachPayload)); }
+  if(CONFIG.managerWebhook){ posts.push(sendSlack(CONFIG.managerWebhook,resultPayload)); if(missed.length)posts.push(sendSlack(CONFIG.managerWebhook,coachPayload)); }
   let slackMsg;
   if(posts.length){
-    try{await Promise.all(posts);slackMsg=`Sent to Slack (${posts.length} channel${posts.length>1?'s':''}). If it doesn't appear, use "Copy my results" below.`;}
+    try{await Promise.all(posts);slackMsg=`Score + coaching sent to Slack. If nothing appears, use "Copy my results" below.`;}
     catch(_){slackMsg=`Couldn't reach Slack from here — please "Copy my results" and send it to your manager.`;}
-  }else{ slackMsg=`No Slack webhook set yet — "Copy my results" and send it to your manager.`; }
+  }else{ slackMsg=`No Slack webhook set for you yet — "Copy my results" and send it to your manager.`; }
 
-  renderResult(score,passed,slackMsg,mgrText);
+  const report=`${head}\n${CONFIG.module}\n${c.model} · ${c.shift} · ${ts}\nMissed: ${missed.length?missed.map(q=>q.toUpperCase()).join(', '):'none'}\n\nWritten answers:\n${written}`;
+  renderResult(score,passed,slackMsg,report,missed,c);
   document.getElementById('submitBtn').disabled=true;
   resultEl.scrollIntoView({behavior:'smooth',block:'start'});
 });
 
-function sendSlack(url,text){ return fetch(url,{method:'POST',mode:'no-cors',body:JSON.stringify({text})}); }
+function sendSlack(url,payload){ return fetch(url,{method:'POST',mode:'no-cors',body:JSON.stringify(payload)}); }
 
-function renderResult(score,passed,slackMsg,report){
-  const pct=score/5;const R=54,C=2*Math.PI*R,off=C*(1-pct);
+function renderResult(score,passed,slackMsg,report,missed,c){
+  const pct=score/5;const R=54,C2=2*Math.PI*R,off=C2*(1-pct);
   const col=passed?'var(--green)':'var(--amber)';
+  const fixHtml=missed.length?`
+    <div class="q" style="text-align:left;margin-top:22px;">
+      <p class="qn">📘 Instant coaching — review these</p>
+      ${missed.map(q=>`<p style="margin:0 0 12px;"><strong>${q.toUpperCase()} · correct answer: ${CORRECT[q]}</strong><br><span style="color:var(--ink-soft);font-size:15px;">${EXPLAIN[q]}</span></p>`).join('')}
+      <p style="margin:6px 0 0;font-size:14.5px;color:var(--ink-soft);">🎙 ${voiceFor(c)}<br>📖 <a href="${MODURL}" style="color:var(--gold);font-weight:600;">Re-read the module</a>, then retake your exam link.</p>
+    </div>`:'';
   resultEl.style.display='block';
   resultEl.innerHTML=`
     <div class="scorecard ${passed?'pass':'fail'}">
@@ -445,22 +503,18 @@ function renderResult(score,passed,slackMsg,report){
         <svg width="132" height="132" viewBox="0 0 132 132">
           <circle cx="66" cy="66" r="${R}" fill="none" stroke="var(--sep)" stroke-width="11"/>
           <circle cx="66" cy="66" r="${R}" fill="none" stroke="${col}" stroke-width="11" stroke-linecap="round"
-            stroke-dasharray="${C}" stroke-dashoffset="${off}" transform="rotate(-90 66 66)"/>
+            stroke-dasharray="${C2}" stroke-dashoffset="${off}" transform="rotate(-90 66 66)"/>
         </svg>
         <div class="num"><b>${score}/5</b><small>MULTIPLE CHOICE</small></div>
       </div>
-      <div class="verdict">${passed?'Passed':'Below pass — review with your manager'}</div>
+      <div class="verdict">${passed?'Passed':'Below pass — review and retake'}</div>
       <p class="slack-status">${slackMsg}</p>
       <div class="actions" style="justify-content:center;margin-top:14px;">
         <button type="button" class="btn ghost" id="copyBtn">Copy my results</button>
       </div>
       <pre class="copybox" id="copybox">${escapeHtml(report)}</pre>
     </div>
-    <div class="callout" style="margin-top:24px;">
-      <span class="emoji">❤️</span>
-      <div><p class="t">Nice work</p>
-      <p>The written answers matter as much as the score — they show whether you can read the obstacle behind a "no." Your manager reviews those. Now go turn a real "maybe later" into a booked payday.</p></div>
-    </div>`;
+    ${fixHtml}`;
   document.getElementById('copyBtn').addEventListener('click',()=>{
     navigator.clipboard?.writeText(document.getElementById('copybox').textContent).then(()=>{
       const b=document.getElementById('copyBtn');b.textContent='Copied ✓';setTimeout(()=>b.textContent='Copy my results',1800);
