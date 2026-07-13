@@ -1,0 +1,698 @@
+<title>LiveRichMedia · Chatter Training Manual</title>
+<style>
+  :root {
+    --ground: #100E0A;
+    --panel: #18140D;
+    --panel-2: #1F1A11;
+    --line: #2C2519;
+    --line-soft: #221D14;
+    --ink: #F0E9DA;
+    --ink-soft: #B8AD97;
+    --ink-faint: #8A7F6B;
+    --gold: #D9B26A;
+    --gold-deep: #B48F49;
+    --rose: #CD8598;
+    --green: #74C08C;
+    --amber: #E0A44A;
+    --red: #DE7676;
+    --radius: 14px;
+    --maxw: 760px;
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --mono: "SF Mono", "JetBrains Mono", "Roboto Mono", ui-monospace, Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: light) {
+    :root {
+      --ground: #F5F1E8;
+      --panel: #FFFFFF;
+      --panel-2: #FBF7EE;
+      --line: #E4DCC9;
+      --line-soft: #EDE6D6;
+      --ink: #1E1912;
+      --ink-soft: #5C5341;
+      --ink-faint: #8A7F6B;
+      --gold: #A07C2E;
+      --gold-deep: #8A6A22;
+      --rose: #B25A72;
+      --green: #3F8E5B;
+      --amber: #B67A22;
+      --red: #C0503F;
+    }
+  }
+  :root[data-theme="light"] {
+    --ground: #F5F1E8; --panel: #FFFFFF; --panel-2: #FBF7EE; --line: #E4DCC9;
+    --line-soft: #EDE6D6; --ink: #1E1912; --ink-soft: #5C5341; --ink-faint: #8A7F6B;
+    --gold: #A07C2E; --gold-deep: #8A6A22; --rose: #B25A72; --green: #3F8E5B;
+    --amber: #B67A22; --red: #C0503F;
+  }
+  :root[data-theme="dark"] {
+    --ground: #100E0A; --panel: #18140D; --panel-2: #1F1A11; --line: #2C2519;
+    --line-soft: #221D14; --ink: #F0E9DA; --ink-soft: #B8AD97; --ink-faint: #8A7F6B;
+    --gold: #D9B26A; --gold-deep: #B48F49; --rose: #CD8598; --green: #74C08C;
+    --amber: #E0A44A; --red: #DE7676;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.68;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- HERO ---------- */
+  header.hero {
+    border-bottom: 1px solid var(--line);
+    background:
+      radial-gradient(120% 90% at 85% -10%, rgba(217,178,106,0.10), transparent 60%),
+      radial-gradient(90% 70% at -10% 0%, rgba(205,133,152,0.07), transparent 55%);
+  }
+  .hero-inner { padding: 84px 0 64px; }
+  .kicker {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 0 0 22px;
+  }
+  h1 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: clamp(38px, 7vw, 64px);
+    line-height: 1.02;
+    letter-spacing: -0.01em;
+    margin: 0 0 20px;
+    text-wrap: balance;
+  }
+  h1 em { color: var(--gold); font-style: italic; }
+  .lede {
+    font-size: 20px;
+    color: var(--ink-soft);
+    max-width: 62ch;
+    margin: 0 0 34px;
+  }
+  .meta-row {
+    display: flex; flex-wrap: wrap; gap: 10px;
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.04em;
+  }
+  .chip {
+    border: 1px solid var(--line);
+    background: var(--panel);
+    color: var(--ink-soft);
+    padding: 6px 12px; border-radius: 999px;
+  }
+  .chip b { color: var(--ink); font-weight: 600; }
+
+  /* ---------- NAV ---------- */
+  nav.toc {
+    position: sticky; top: 0; z-index: 20;
+    background: color-mix(in srgb, var(--ground) 88%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav.toc .wrap {
+    display: flex; gap: 4px; overflow-x: auto; padding-top: 10px; padding-bottom: 10px;
+    scrollbar-width: none;
+  }
+  nav.toc .wrap::-webkit-scrollbar { display: none; }
+  nav.toc a {
+    flex: 0 0 auto;
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em;
+    text-transform: uppercase; text-decoration: none;
+    color: var(--ink-faint); padding: 6px 11px; border-radius: 8px;
+    white-space: nowrap;
+  }
+  nav.toc a:hover { color: var(--ink); background: var(--panel); }
+
+  /* ---------- SECTIONS ---------- */
+  section { padding: 60px 0; border-bottom: 1px solid var(--line-soft); }
+  .sec-no {
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.24em;
+    text-transform: uppercase; color: var(--gold); margin: 0 0 12px;
+  }
+  h2 {
+    font-family: var(--serif); font-weight: 600;
+    font-size: clamp(27px, 4.4vw, 38px); line-height: 1.1;
+    letter-spacing: -0.01em; margin: 0 0 8px; text-wrap: balance;
+  }
+  h3 {
+    font-family: var(--serif); font-weight: 600; font-size: 22px;
+    margin: 34px 0 10px; letter-spacing: -0.005em;
+  }
+  .sub { color: var(--ink-soft); font-size: 18px; margin: 0 0 26px; max-width: 64ch; }
+  p { margin: 0 0 16px; }
+  p.narrow, ul.narrow, ol.narrow { max-width: 66ch; }
+  a { color: var(--gold); text-decoration-color: color-mix(in srgb, var(--gold) 40%, transparent); text-underline-offset: 3px; }
+  strong { color: var(--ink); font-weight: 600; }
+  ul, ol { margin: 0 0 16px; padding-left: 22px; }
+  li { margin-bottom: 8px; }
+  li::marker { color: var(--gold-deep); }
+
+  /* ---------- CARD / PANEL ---------- */
+  .panel {
+    background: var(--panel); border: 1px solid var(--line);
+    border-radius: var(--radius); padding: 24px 26px; margin: 22px 0;
+  }
+  .panel h3:first-child, .panel h4:first-child { margin-top: 0; }
+
+  /* ---------- IRAE STAGES ---------- */
+  .irae { display: grid; gap: 14px; margin: 26px 0 8px; }
+  .stage {
+    display: grid; grid-template-columns: 62px 1fr; gap: 20px;
+    background: var(--panel); border: 1px solid var(--line);
+    border-radius: var(--radius); padding: 22px 24px;
+    position: relative; overflow: hidden;
+  }
+  .stage::before {
+    content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+    background: var(--gold);
+  }
+  .stage .letter {
+    font-family: var(--serif); font-size: 46px; font-weight: 600;
+    line-height: 1; color: var(--gold);
+  }
+  .stage .word {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--ink-faint); margin-top: 6px;
+  }
+  .stage h3 { margin: 0 0 6px; font-size: 20px; }
+  .stage p { margin: 0 0 10px; color: var(--ink-soft); }
+  .stage p:last-child { margin-bottom: 0; }
+
+  /* ---------- CHAT BUBBLES ---------- */
+  .script { margin: 18px 0; display: grid; gap: 10px; }
+  .script .label {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--ink-faint); margin-bottom: 2px;
+  }
+  .bubble {
+    max-width: 82%; padding: 11px 15px; border-radius: 16px; font-size: 15.5px;
+    line-height: 1.5;
+  }
+  .bubble.fan {
+    align-self: flex-start; background: var(--panel-2);
+    border: 1px solid var(--line); border-bottom-left-radius: 5px; color: var(--ink-soft);
+  }
+  .bubble.you {
+    align-self: flex-end; margin-left: auto; border-bottom-right-radius: 5px;
+    background: color-mix(in srgb, var(--gold) 16%, var(--panel));
+    border: 1px solid color-mix(in srgb, var(--gold) 35%, var(--line));
+    color: var(--ink);
+  }
+  .bubble .who { display:block; font-family: var(--mono); font-size: 10px; letter-spacing:0.1em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 3px; }
+
+  /* ---------- DO / DONT ---------- */
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 22px 0; }
+  .cols .panel { margin: 0; }
+  .cols h4 { margin: 0 0 12px; font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; }
+  .do h4 { color: var(--green); }
+  .dont h4 { color: var(--red); }
+  .cols ul { margin: 0; padding-left: 18px; }
+  .cols li { font-size: 15px; color: var(--ink-soft); }
+  @media (max-width: 640px) { .cols { grid-template-columns: 1fr; } }
+
+  /* ---------- VOICE CARDS ---------- */
+  .voices { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0; }
+  @media (max-width: 640px) { .voices { grid-template-columns: 1fr; } }
+  .voice { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 22px 20px; }
+  .voice .name { font-family: var(--serif); font-size: 24px; font-weight: 600; margin: 0; }
+  .voice .tag { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rose); margin: 4px 0 16px; }
+  .voice dl { margin: 0; display: grid; gap: 12px; }
+  .voice dt { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); }
+  .voice dd { margin: 2px 0 0; font-size: 15px; color: var(--ink-soft); }
+  .voice .ex { margin-top: 6px; font-size: 14.5px; color: var(--ink); border-left: 2px solid var(--gold); padding-left: 12px; font-style: italic; }
+
+  /* ---------- PILLAR / SIGNAL TABLE ---------- */
+  .tbl-scroll { overflow-x: auto; margin: 20px 0; border: 1px solid var(--line); border-radius: var(--radius); }
+  table { border-collapse: collapse; width: 100%; font-size: 15px; min-width: 480px; }
+  th, td { text-align: left; padding: 13px 16px; border-bottom: 1px solid var(--line-soft); vertical-align: top; }
+  th { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); background: var(--panel-2); }
+  tr:last-child td { border-bottom: none; }
+  td b { color: var(--ink); }
+
+  /* ---------- CALLOUT ---------- */
+  .callout {
+    border-radius: var(--radius); padding: 18px 22px; margin: 22px 0; font-size: 15.5px;
+    border: 1px solid; display: grid; grid-template-columns: auto 1fr; gap: 14px; align-items: start;
+  }
+  .callout .tag { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; padding-top: 2px; }
+  .callout p { margin: 0; color: var(--ink-soft); }
+  .callout p + p { margin-top: 8px; }
+  .callout.warn { border-color: color-mix(in srgb, var(--red) 45%, var(--line)); background: color-mix(in srgb, var(--red) 8%, var(--panel)); }
+  .callout.warn .tag { color: var(--red); }
+  .callout.note { border-color: color-mix(in srgb, var(--gold) 40%, var(--line)); background: color-mix(in srgb, var(--gold) 8%, var(--panel)); }
+  .callout.note .tag { color: var(--gold); }
+
+  /* ---------- RESOURCE LIST ---------- */
+  .res { display: grid; gap: 12px; margin: 22px 0; }
+  .res a.card {
+    display: grid; grid-template-columns: 1fr auto; gap: 8px 18px; align-items: baseline;
+    background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 16px 20px; text-decoration: none; color: var(--ink); transition: border-color .15s;
+  }
+  .res a.card:hover { border-color: var(--gold-deep); }
+  .res .t { font-family: var(--serif); font-size: 18px; }
+  .res .d { grid-column: 1 / -1; font-size: 14.5px; color: var(--ink-soft); }
+  .res .u { font-family: var(--mono); font-size: 11px; color: var(--gold); letter-spacing: 0.02em; word-break: break-all; }
+  .res .grp { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-faint); margin: 14px 0 2px; }
+
+  /* ---------- FOOTER ---------- */
+  footer { padding: 48px 0 72px; color: var(--ink-faint); font-size: 14px; }
+  footer .wrap { display: grid; gap: 8px; }
+  footer .mono { font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em; }
+
+  :focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; border-radius: 4px; }
+</style>
+
+<header class="hero">
+  <div class="wrap hero-inner">
+    <p class="kicker">LiveRichMedia · Chatter Playbook · v1</p>
+    <h1>The art of the <em>conversation</em> that sells.</h1>
+    <p class="lede">Every message a fan reads is the brand talking. This manual is how we chat at LiveRichMedia — the mindset, the method, the house voices, and the line between a great sale and a broken trust. Read it once end to end, then keep it open on shift.</p>
+    <div class="meta-row">
+      <span class="chip"><b>Audience:</b> Chatters &amp; managers</span>
+      <span class="chip"><b>Accounts:</b> Shantal · Karina</span>
+      <span class="chip"><b>Method:</b> IRAE</span>
+      <span class="chip"><b>Updated:</b> Jul 2026</span>
+    </div>
+  </div>
+</header>
+
+<nav class="toc" aria-label="Sections">
+  <div class="wrap">
+    <a href="#mindset">Mindset</a>
+    <a href="#irae">IRAE Method</a>
+    <a href="#technique">Technique</a>
+    <a href="#voices">House Voices</a>
+    <a href="#funnel">The Funnel</a>
+    <a href="#signals">Signals</a>
+    <a href="#compliance">Compliance</a>
+    <a href="#shift">On Shift</a>
+    <a href="#mistakes">Mistakes</a>
+    <a href="#resources">Resources</a>
+  </div>
+</nav>
+
+<main>
+
+<section id="mindset">
+  <div class="wrap">
+    <p class="sec-no">01 — The Mindset</p>
+    <h2>You are not "selling." You are the most interesting person in her inbox.</h2>
+    <p class="sub">A fan didn't subscribe for a transaction. He subscribed for a feeling — that a specific woman finds <em>him</em> worth her attention. Your job is to protect and deepen that feeling. Sales are what happens when you do it well.</p>
+
+    <p class="narrow">Hold three ideas at once and everything else in this manual follows from them:</p>
+    <ul class="narrow">
+      <li><strong>The relationship is the product.</strong> PPVs, tips and VIP are just the moments where the fan gets to spend on a relationship that already feels real. No relationship, no repeat spend — only regret and chargebacks.</li>
+      <li><strong>He can tell when he's being processed.</strong> Copy-paste scripts, ignoring what he just said, pushing a locked photo the second he says hi — fans feel it instantly. The whole edge of a human chatter over a bot is that you actually read him.</li>
+      <li><strong>Lifetime value beats today's number.</strong> A fan you over-pushed tonight is a fan who unsubscribes tomorrow. We are playing a long game: a whale who trusts you is worth more than fifty squeezed strangers.</li>
+    </ul>
+
+    <div class="callout note">
+      <span class="tag">North star</span>
+      <p>Before you send anything ask one question: <strong>"Does this make him feel more seen, or just more sold-to?"</strong> If it's the second, rewrite it.</p>
+    </div>
+  </div>
+</section>
+
+<section id="irae">
+  <div class="wrap">
+    <p class="sec-no">02 — The Method</p>
+    <h2>The IRAE Framework</h2>
+    <p class="sub">Every profitable conversation moves through four stages. You don't rush them and you don't skip them — a fan pushed to stage four while still in stage one just closes the app. IRAE is the spine of the house style; internalize the order.</p>
+
+    <div class="irae">
+      <div class="stage">
+        <div><div class="letter">I</div><div class="word">Identify</div></div>
+        <div>
+          <h3>Identify — read the fan before you type</h3>
+          <p>Who is this? New sub or returning whale? What did he say, what's his name, what's his timezone, what has he bought before? Check fan notes and history first. The opening line is different for a fresh trial link than for a VIP who tipped $200 last week.</p>
+          <p><strong>Goal:</strong> know who you're talking to and what he's likely here for before your first reply.</p>
+        </div>
+      </div>
+      <div class="stage">
+        <div><div class="letter">R</div><div class="word">Rapport</div></div>
+        <div>
+          <h3>Rapport — earn the right to sell</h3>
+          <p>Use his name. Ask a real question and react to the real answer. Find one true thing to connect over — his day, his job, the game he mentioned. This is the stage most chatters skip, and it's the one that makes every later sale easy. Two-way conversation, not a monologue with a price tag.</p>
+          <p><strong>Goal:</strong> he feels like he's talking to a person who remembers him.</p>
+        </div>
+      </div>
+      <div class="stage">
+        <div><div class="letter">A</div><div class="word">Attract / Arouse</div></div>
+        <div>
+          <h3>Attract — build the tension, don't dump it</h3>
+          <p>Now you raise the temperature: tease, hint, make him curious about what's behind the lock. Attraction is anticipation. You describe just enough that he wants more, and you let <em>him</em> ask. A tease that he chased is worth ten unlocks you shoved at him.</p>
+          <p><strong>Goal:</strong> he is the one leaning in and asking "how much?"</p>
+        </div>
+      </div>
+      <div class="stage">
+        <div><div class="letter">E</div><div class="word">Escalate</div></div>
+        <div>
+          <h3>Escalate — land it, then ladder</h3>
+          <p>Present the offer with confidence and a clean price. After a <em>yes</em>, ladder up — a bundle, an add-on, the next tier — while the moment is hot. After a satisfied <em>done</em>, stop. Escalation includes knowing when the sale is complete and switching back to warmth so he leaves happy and comes back.</p>
+          <p><strong>Goal:</strong> the sale closes, value is maximized, and the relationship survives it.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout note">
+      <span class="tag">Worked example</span>
+      <p>Watch IRAE run in one short thread. Notice the chatter never names a price until the fan is basically asking for it.</p>
+    </div>
+
+    <div class="script">
+      <div class="bubble fan"><span class="who">Fan</span>hey just subscribed 🙂</div>
+      <div class="bubble you"><span class="who">You · Identify + Rapport</span>Hi Marcus, welcome in — you actually caught me between shoots. What made you finally hit subscribe? 😊</div>
+      <div class="bubble fan"><span class="who">Fan</span>haha been following your IG for a while. long day at work honestly</div>
+      <div class="bubble you"><span class="who">You · Rapport</span>Long days are the worst. What do you do? And are you the type who unwinds loud or quiet after one 😅</div>
+      <div class="bubble fan"><span class="who">Fan</span>quiet lol. just me and my phone tonight</div>
+      <div class="bubble you"><span class="who">You · Attract</span>Mm, just you and your phone… that's dangerous with me around. I actually shot something today I'm a little obsessed with. Been debating whether to send it 🙈</div>
+      <div class="bubble fan"><span class="who">Fan</span>now you have to show me. what is it</div>
+      <div class="bubble you"><span class="who">You · Escalate</span>Okay okay — it's a 4-min video, the one I know you'll replay. It's $22 and I promise it's worth ruining your quiet night over 😏 want it?</div>
+    </div>
+  </div>
+</section>
+
+<section id="technique">
+  <div class="wrap">
+    <p class="sec-no">03 — The Craft</p>
+    <h2>Best chatting technique</h2>
+    <p class="sub">The habits that separate a top earner from a warm body with a keyboard. None of these are tricks — they're just what genuine, attentive attention looks like at scale.</p>
+
+    <h3>Open a loop, don't close one</h3>
+    <p class="narrow">End messages that invite a reply. A question, a tease, a "guess what happened today" beats a statement he can't respond to. Every closed loop is a dead thread; every open loop is a fan still typing.</p>
+
+    <h3>Match his energy, then lead it</h3>
+    <p class="narrow">If he's shy, be gentle first. If he's blunt and ready, don't waste his time. You mirror where he is, <em>then</em> you set the direction. Leading from the wrong starting point is why fans go cold.</p>
+
+    <h3>Sell the experience, not the file</h3>
+    <p class="narrow">"A 4-minute video" is a file. "The one you'll be thinking about at your desk tomorrow" is an experience. Describe how it'll make him feel, never the resolution or the runtime alone.</p>
+
+    <h3>Price with confidence, once</h3>
+    <p class="narrow">State the price plainly and stop typing. Don't apologize for it, don't stack three nervous messages, don't immediately discount. Confidence is itself part of the value. If he hesitates, ask what he was hoping for — don't just slash the number.</p>
+
+    <h3>One ask at a time</h3>
+    <p class="narrow">Never send two locked offers back to back. It reads as a vending machine. Land one, breathe, reconnect, then ladder.</p>
+
+    <h3>Remember and call back</h3>
+    <p class="narrow">He told you his dog's name three days ago? Ask about the dog. Callbacks are the single most powerful proof that he's talking to a person, not a rotation of strangers. Log it in fan notes so the next shift can do it too.</p>
+
+    <div class="cols">
+      <div class="panel do">
+        <h4>✓ Do</h4>
+        <ul>
+          <li>Use his name early and naturally</li>
+          <li>React to what he actually said</li>
+          <li>Tease before you present a price</li>
+          <li>Let him ask "how much?"</li>
+          <li>Ladder after a yes, while it's hot</li>
+          <li>Stop cleanly after a satisfied "done"</li>
+          <li>Write fan notes for the next shift</li>
+        </ul>
+      </div>
+      <div class="panel dont">
+        <h4>✕ Don't</h4>
+        <ul>
+          <li>Paste a script that ignores his last line</li>
+          <li>Drop a locked PPV on "hi"</li>
+          <li>Send two offers in a row</li>
+          <li>Guilt-trip or fake-sulk to pressure him</li>
+          <li>Over-promise content you can't deliver</li>
+          <li>Keep pushing after he's clearly satisfied</li>
+          <li>Go silent the second he's paid</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="voices">
+  <div class="wrap">
+    <p class="sec-no">04 — House Voices</p>
+    <h2>Two models, two completely different people</h2>
+    <p class="sub">The fan is talking to <em>her</em>, not to you. Voice discipline is non-negotiable — a wrong word breaks the illusion and it's what our scorecard grades hardest. Learn the account you're on cold before your first shift on it.</p>
+
+    <div class="voices">
+      <div class="voice">
+        <p class="name">Shantal Monique</p>
+        <p class="tag">Personal · warm · one-to-one</p>
+        <dl>
+          <dt>Voice</dt>
+          <dd>Speaks like she's writing to one man she genuinely likes. Proper sentences, real punctuation, first names only.</dd>
+          <dt>Never uses</dt>
+          <dd>"Hey" / "hay", pet names (baby, babe, handsome), or crude anatomy shorthand. It's not who she is.</dd>
+          <dt>Feels like</dt>
+          <dd>A grounded, elegant woman giving you her full attention.</dd>
+        </dl>
+        <p class="ex">"Hi Marcus, I've been thinking about what you said last night. Tell me how your day actually went."</p>
+      </div>
+      <div class="voice">
+        <p class="name">Karina</p>
+        <p class="tag">Playful · bratty · lowercase</p>
+        <dl>
+          <dt>Voice</dt>
+          <dd>Lowercase, teasing, a little bratty and fun. Fast, flirty energy.</dd>
+          <dt>Pet names</dt>
+          <dd>"babe / baby" are allowed <strong>only</strong> for a VIP who is actively spending in that moment — not as a default filler for everyone.</dd>
+          <dt>Feels like</dt>
+          <dd>The fun, slightly-too-confident girl who makes you work for it.</dd>
+        </dl>
+        <p class="ex">"oh you're back… i was starting to think you forgot about me 🙄 prove you didn't"</p>
+      </div>
+    </div>
+
+    <div class="callout warn">
+      <span class="tag">Graded</span>
+      <p>Restricted words are counted from <strong>your outgoing messages only</strong> and pull your score down. Shantal: no "hey/hay", no pet names, no crude terms. Karina: pet names only for an actively-spending VIP. When in doubt, stay in the safe register — you can always warm up, you can't un-send.</p>
+    </div>
+  </div>
+</section>
+
+<section id="funnel">
+  <div class="wrap">
+    <p class="sec-no">05 — The Funnel</p>
+    <h2>Where the money actually is</h2>
+    <p class="sub">Four revenue moments, in roughly the order a healthy fan moves through them. Your value-setting score is about landing these <em>and</em> laddering them without leaving money on the table or breaking trust.</p>
+
+    <div class="tbl-scroll">
+      <table>
+        <thead>
+          <tr><th>Moment</th><th>What it is</th><th>How you win it</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><b>PPV</b></td><td>Pay-per-view locked content sent in DMs.</td><td>Tease first, sell the experience, price with confidence, present one at a time.</td></tr>
+          <tr><td><b>Tips</b></td><td>Free-form spending — appreciation, requests, games.</td><td>Give him easy reasons to spend on <em>you</em>, not just content. "Tip if you want me to…", tip menus, small games.</td></tr>
+          <tr><td><b>VIP</b></td><td>Your recognized, higher-spending fans.</td><td>Work the VIP-tagged list first every shift. Protect whales. Make them feel like the priority they are.</td></tr>
+          <tr><td><b>SVIP / laddering</b></td><td>Moving a mid-spender up a tier or into a bigger bundle.</td><td>After a yes, offer the next step while it's hot. Bundle the win, don't restart the pitch.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>The ladder in practice</h3>
+    <div class="script">
+      <div class="bubble fan"><span class="who">Fan</span>ok yes send it 🔥</div>
+      <div class="bubble you"><span class="who">You · land</span>Good choice 😏 sending now…</div>
+      <div class="bubble you"><span class="who">You · ladder</span>okay while you've got me in this mood — i also filmed a longer follow-up to that one. want me to bundle both for $35 instead of buying them apart? just for you</div>
+      <div class="bubble fan"><span class="who">Fan</span>go on then</div>
+    </div>
+    <p class="narrow">He said yes twice because you offered the second thing <em>at the peak</em>, not after the mood cooled. That's laddering. But if he'd said "nah that's plenty for tonight," the correct move is to stop and stay warm — see the next section.</p>
+  </div>
+</section>
+
+<section id="signals">
+  <div class="wrap">
+    <p class="sec-no">06 — Reading the Room</p>
+    <h2>Buyer signals &amp; avoiding dead ends</h2>
+    <p class="sub">The highest-scoring chatters read intent and respond to it. The lowest ones follow a script off a cliff — pushing a satisfied fan, deflecting a real question, or re-poking someone who already left. Learn to read the signal under the words.</p>
+
+    <div class="tbl-scroll">
+      <table>
+        <thead>
+          <tr><th>He says…</th><th>Signal</th><th>You do</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>"how much is it?"</td><td>Buying — ready</td><td>Give the price cleanly and confidently. Don't stall.</td></tr>
+          <tr><td>"maybe later / a bit pricey"</td><td>Hesitation, not a no</td><td>Ask what he hoped for; offer a smaller entry, don't panic-discount the whole thing.</td></tr>
+          <tr><td>"that was amazing, goodnight"</td><td>Satisfied &amp; done</td><td>Warm close. Bank the good feeling. Do <strong>not</strong> push another PPV.</td></tr>
+          <tr><td>a real question (schedule, a fact about her)</td><td>Wants connection</td><td>Actually answer it. Deflecting to a sale is a dead end and gets graded down.</td></tr>
+          <tr><td>goes quiet after paying</td><td>Enjoying it</td><td>Don't vanish. A warm follow-up later keeps him. Don't instantly re-pitch.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout warn">
+      <span class="tag">Dead ends</span>
+      <p>These four behaviors cost you the most on the scorecard and cost us fans: <strong>deflecting</strong> real questions into a pitch, <strong>over-pushing</strong> past a satisfied signal, <strong>withholding</strong> attention the moment he's paid, and <strong>needy guilt-trip re-pokes</strong> ("why are you ignoring me 🥺"). Avoiding these is a whole scoring pillar on its own.</p>
+    </div>
+  </div>
+</section>
+
+<section id="compliance">
+  <div class="wrap">
+    <p class="sec-no">07 — Compliance &amp; Safety</p>
+    <h2>The rules that keep the accounts alive</h2>
+    <p class="sub">One careless message can get a model banned or a payment reversed. These aren't suggestions — they protect the creator's income and yours. Read OnlyFans' own policies (linked in Resources) and treat them as the floor.</p>
+
+    <h3>Platform hard rules</h3>
+    <ul class="narrow">
+      <li><strong>Never move a fan off-platform.</strong> No requests to pay by other apps, meet in person, or take content elsewhere. It violates the Terms and kills our recourse if something goes wrong.</li>
+      <li><strong>Nothing illegal or impersonating.</strong> No content involving minors (real or implied age-play framing), no non-consensual themes, no pretending to be someone you're not off-platform.</li>
+      <li><strong>Only sell what exists and is cleared.</strong> Don't promise custom content the model hasn't agreed to. Release forms and consent are tracked for a reason.</li>
+      <li><strong>Deliver what he paid for.</strong> Non-delivery is the fastest route to a chargeback and a dispute.</li>
+    </ul>
+
+    <h3>Chargeback discipline</h3>
+    <p class="narrow">A fan who feels tricked disputes the charge — and a high chargeback ratio threatens the whole account's standing with the platform. Honest teasing sells; misleading "bait and switch" (promising more than you send) creates disputes. Protect the ratio by never overselling.</p>
+
+    <h3>Explicit content: how we handle it internally</h3>
+    <p class="narrow">Threads get explicit — that's the platform. Two rules govern how <em>we</em> treat that content in coaching and records:</p>
+    <ul class="narrow">
+      <li><strong>Never reproduce explicit messages</strong> in reports, notes, or cards. Coaching scores a thread on its structure and outcome — who escalated, did the sale land, was a signal read — never by quoting the content.</li>
+      <li><strong>Match, don't over-drive.</strong> Let the fan set the pace and meet him there. A chatter who pushes further than the fan wanted is both a trust risk and a coaching flag. Reading who's leading whom is a judgment you make every thread.</li>
+    </ul>
+
+    <div class="callout note">
+      <span class="tag">Golden rule</span>
+      <p>If you'd be uncomfortable with a manager reading the exact message back to you, don't send it. Escalate anything genuinely off (a fan mentioning being underage, threats, self-harm, real-world coercion) to your manager immediately — do not handle it alone.</p>
+    </div>
+  </div>
+</section>
+
+<section id="shift">
+  <div class="wrap">
+    <p class="sec-no">08 — On Shift</p>
+    <h2>How a shift actually runs</h2>
+    <p class="sub">The operational side of the craft. Consistency across shifts is what makes a fan feel like he's talking to one continuous person, even though three chatters cover a day.</p>
+
+    <h3>Start of shift</h3>
+    <ul class="narrow">
+      <li>Read the handover / recent fan notes so you know where each active thread was left.</li>
+      <li>Work the <strong>VIP-tagged fans first</strong> — they're the priority and they notice speed.</li>
+      <li>Check what's already been sent from the scheduled queue so you don't repeat auto-content as if it were live.</li>
+    </ul>
+
+    <h3>Continuity &amp; attribution</h3>
+    <p class="narrow">Shifts are covered around the clock (graveyard / morning / afternoon in PHT). Fans are framed in the model's local time-of-day, so a "good morning" has to match <em>her</em> timezone, not yours. Because attribution is by shift window, whatever you leave in fan notes is how the next chatter — and the scorecard — knows what happened. Write it down.</p>
+
+    <h3>End of shift</h3>
+    <ul class="narrow">
+      <li>Update fan notes on anyone who moved (bought, opened up, went cold, hit a milestone).</li>
+      <li>Flag whales and anyone mid-conversation so the next shift picks up warm.</li>
+      <li>Never leave a fan mid-sale with no note — that's lost money for the whole team.</li>
+    </ul>
+
+    <div class="callout note">
+      <span class="tag">You're graded on this</span>
+      <p>Each shift is scored 0–100 across four pillars: <strong>relationship building</strong>, <strong>value setting</strong>, <strong>VIP funnel</strong>, and <strong>avoiding dead ends</strong>. Green is 80+, amber 65–79, red under 65. The scorecard exists to coach the weakest pillar, not to punish — read your card, fix the one red thing.</p>
+    </div>
+  </div>
+</section>
+
+<section id="mistakes">
+  <div class="wrap">
+    <p class="sec-no">09 — Failure Modes</p>
+    <h2>The mistakes that cost us fans</h2>
+    <p class="sub">If you only remember one section on a busy night, remember this one. Every item here is something that felt fine in the moment and lost a fan or a sale.</p>
+    <ul class="narrow">
+      <li><strong>The vending machine.</strong> PPV, PPV, PPV with no conversation between. He unsubscribes because he's being billed, not seen.</li>
+      <li><strong>The script robot.</strong> Sending a canned line that has nothing to do with what he just said. The one thing a bot can't do is listen — so listen.</li>
+      <li><strong>The over-pusher.</strong> He said "that's enough for tonight" and you sent one more offer. Now the last thing he feels is pressure.</li>
+      <li><strong>The ghost.</strong> He paid, and you went silent. Post-purchase warmth is what makes him buy again.</li>
+      <li><strong>The guilt-tripper.</strong> "why are you ignoring me 😢" — needy re-pokes read as manipulation and they work exactly once before he leaves.</li>
+      <li><strong>The wrong voice.</strong> Calling a Shantal fan "baby", or being buttoned-up and formal as Karina. The illusion breaks and it never fully recovers.</li>
+      <li><strong>The over-promiser.</strong> Hyping content beyond what you send. Feels like a win tonight, becomes a chargeback and a lost fan by the weekend.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="resources">
+  <div class="wrap">
+    <p class="sec-no">10 — Enhanced Training</p>
+    <h2>References &amp; further reading</h2>
+    <p class="sub">Bookmark these. The OnlyFans policy pages are the authority on what's allowed — check them periodically, since the platform updates them. The rest sharpen the skills underneath good chatting: persuasion, copy, and psychology.</p>
+
+    <p class="res grp">Platform rules — the authority (read these first)</p>
+    <div class="res">
+      <a class="card" href="https://onlyfans.com/terms" target="_blank" rel="noopener">
+        <span class="t">OnlyFans — Terms of Service</span>
+        <span class="u">onlyfans.com/terms</span>
+        <span class="d">The binding rules for every account. What creators and fans may and may not do. This is the floor for everything in Section 07.</span>
+      </a>
+      <a class="card" href="https://onlyfans.com/aup" target="_blank" rel="noopener">
+        <span class="t">OnlyFans — Acceptable Use Policy</span>
+        <span class="u">onlyfans.com/aup</span>
+        <span class="d">Exactly which content and behavior is and isn't permitted. Know the prohibited categories cold.</span>
+      </a>
+      <a class="card" href="https://help.onlyfans.com" target="_blank" rel="noopener">
+        <span class="t">OnlyFans — Help Center</span>
+        <span class="u">help.onlyfans.com</span>
+        <span class="d">Official FAQs on messaging, payments, and account safety. First stop for "is this allowed?"</span>
+      </a>
+    </div>
+
+    <p class="res grp">The skills underneath the craft</p>
+    <div class="res">
+      <a class="card" href="https://www.influenceatwork.com/principles-of-persuasion/" target="_blank" rel="noopener">
+        <span class="t">Cialdini's 7 Principles of Persuasion</span>
+        <span class="u">influenceatwork.com/principles-of-persuasion</span>
+        <span class="d">Reciprocity, scarcity, liking, commitment. The psychology behind why teasing and laddering work. Foundational.</span>
+      </a>
+      <a class="card" href="https://copyblogger.com/copywriting-101/" target="_blank" rel="noopener">
+        <span class="t">Copyblogger — Copywriting 101</span>
+        <span class="u">copyblogger.com/copywriting-101</span>
+        <span class="d">Writing that sells without sounding like selling. Directly applies to how you present a PPV as an experience.</span>
+      </a>
+      <a class="card" href="https://www.nickkolenda.com/psychology-of-persuasion/" target="_blank" rel="noopener">
+        <span class="t">Kolenda — The Psychology of Persuasion (Guide)</span>
+        <span class="u">nickkolenda.com/psychology-of-persuasion</span>
+        <span class="d">A deep, practical walk through how attention, framing, and pricing shape decisions. Great for pricing-with-confidence.</span>
+      </a>
+      <a class="card" href="https://www.gottman.com/blog/" target="_blank" rel="noopener">
+        <span class="t">The Gottman Institute — Blog</span>
+        <span class="u">gottman.com/blog</span>
+        <span class="d">Relationship science on making people feel heard — "turning toward" bids for connection. That's the Rapport stage in a nutshell.</span>
+      </a>
+    </div>
+
+    <p class="res grp">Inside LiveRichMedia</p>
+    <div class="res">
+      <a class="card" href="#irae">
+        <span class="t">The IRAE Method (Section 02)</span>
+        <span class="u">this manual · §02</span>
+        <span class="d">The house framework. If a conversation is stuck, figure out which stage you skipped.</span>
+      </a>
+      <a class="card" href="#voices">
+        <span class="t">House Voice Guides (Section 04)</span>
+        <span class="u">this manual · §04</span>
+        <span class="d">Shantal and Karina voice rules and restricted words. Re-read before every shift on a new account.</span>
+      </a>
+      <a class="card" href="#shift">
+        <span class="t">The Chatter Scorecard (Section 08)</span>
+        <span class="u">of-chatter-scorecard skill</span>
+        <span class="d">How your four pillars are graded each shift, and how to read your coaching card to fix the one red thing.</span>
+      </a>
+    </div>
+
+    <div class="callout note">
+      <span class="tag">Keep sharpening</span>
+      <p>Ask your manager for saved examples of top-scoring threads on your account. Nothing teaches the house voice faster than reading a green-card shift line by line and asking "why did that land?"</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="mono">LIVERICHMEDIA · CHATTER TRAINING MANUAL · v1 · JUL 2026</p>
+    <p>Internal training material. The relationship is the product — protect it on every message.</p>
+  </div>
+</footer>
