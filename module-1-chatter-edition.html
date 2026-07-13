@@ -1,0 +1,177 @@
+<title>Playbook · Module 1 · Mastering the Comeback (Chatter Edition)</title>
+<style>
+  :root{--bg:#ECECF1;--card:#FFF;--card-2:#FBFBFD;--sep:rgba(60,60,67,.14);--sep-strong:rgba(60,60,67,.24);
+    --ink:#1C1C1E;--ink-2:#3C3C43;--ink-soft:#6E6E73;--ink-faint:#8E8E93;
+    --gold:#C99A3E;--gold-deep:#A97F27;--gold-soft:rgba(201,154,62,.14);
+    --imsg:#1E8CFF;--imsg-2:#0A74E6;--grey:#E9E9EB;--green:#34C759;--amber:#FF9F0A;--red:#FF3B30;
+    --shadow-sm:0 1px 2px rgba(0,0,0,.05);--shadow:0 8px 30px rgba(30,25,10,.08);
+    --r-md:18px;--r-sm:12px;--maxw:820px;
+    --sans:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;}
+  @media (prefers-color-scheme:dark){:root{--bg:#000;--card:#1C1C1E;--card-2:#2C2C2E;--sep:rgba(84,84,88,.36);--sep-strong:rgba(120,120,128,.5);
+    --ink:#F5F5F7;--ink-2:#EBEBF0;--ink-soft:#AEAEB2;--ink-faint:#8E8E93;--gold:#E8C170;--gold-deep:#D9B26A;--gold-soft:rgba(232,193,112,.16);
+    --grey:#3A3A3C;--green:#30D158;--shadow:0 8px 30px rgba(0,0,0,.5);}}
+  :root[data-theme="light"]{--bg:#ECECF1;--card:#FFF;--card-2:#FBFBFD;--sep:rgba(60,60,67,.14);--sep-strong:rgba(60,60,67,.24);--ink:#1C1C1E;--ink-2:#3C3C43;--ink-soft:#6E6E73;--ink-faint:#8E8E93;--gold:#C99A3E;--gold-deep:#A97F27;--gold-soft:rgba(201,154,62,.14);--grey:#E9E9EB;--green:#34C759;--shadow:0 8px 30px rgba(30,25,10,.08);}
+  :root[data-theme="dark"]{--bg:#000;--card:#1C1C1E;--card-2:#2C2C2E;--sep:rgba(84,84,88,.36);--sep-strong:rgba(120,120,128,.5);--ink:#F5F5F7;--ink-2:#EBEBF0;--ink-soft:#AEAEB2;--ink-faint:#8E8E93;--gold:#E8C170;--gold-deep:#D9B26A;--gold-soft:rgba(232,193,112,.16);--grey:#3A3A3C;--green:#30D158;--shadow:0 8px 30px rgba(0,0,0,.5);}
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;letter-spacing:-.01em;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px;}
+  .topbar{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--bg) 72%,transparent);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--sep);}
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:52px;}
+  .topbar .brand{font-size:15px;font-weight:600;}.topbar .brand span{color:var(--gold);}
+  .topbar .pill{font-size:12px;font-weight:600;color:var(--ink-soft);background:var(--card);border:1px solid var(--sep);padding:5px 11px;border-radius:999px;}
+  header.hero{padding:64px 0 36px;text-align:center;}
+  .eyebrow{font-size:13px;font-weight:600;text-transform:uppercase;color:var(--gold);margin:0 0 14px;}
+  h1{font-weight:700;font-size:clamp(36px,7vw,58px);line-height:1.03;letter-spacing:-.03em;margin:0 auto 16px;max-width:15ch;text-wrap:balance;}
+  h1 em{font-style:normal;background:linear-gradient(120deg,var(--gold),var(--gold-deep));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .lede{font-size:20px;color:var(--ink-soft);max-width:52ch;margin:0 auto;line-height:1.45;}
+  section{padding:34px 0;}
+  h2{font-weight:700;font-size:clamp(24px,4vw,32px);letter-spacing:-.02em;margin:0 0 8px;}
+  .sub{font-size:18px;color:var(--ink-soft);margin:0 0 20px;max-width:60ch;}
+  .card{background:var(--card);border:1px solid var(--sep);border-radius:var(--r-md);padding:22px 24px;margin:16px 0;box-shadow:var(--shadow-sm);}
+  .card .k{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);margin:0 0 8px;}
+  .card h3{margin:0 0 10px;font-size:21px;font-weight:700;letter-spacing:-.015em;}
+  .card p{margin:0 0 10px;color:var(--ink-2);font-size:15.5px;}
+  .lab{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin:14px 0 6px;}
+  .lab.means{color:var(--ink-faint);} .lab.no{color:var(--red);} .lab.yes{color:var(--green);} .lab.goal{color:var(--gold-deep);}
+  .chat{display:grid;gap:6px;margin:8px 0 4px;}
+  .m{max-width:82%;padding:9px 14px;border-radius:17px;font-size:15px;line-height:1.38;}
+  .m.in{align-self:flex-start;background:var(--grey);color:var(--ink);border-bottom-left-radius:5px;}
+  .m.out{align-self:flex-end;margin-left:auto;color:#fff;background:linear-gradient(160deg,var(--imsg),var(--imsg-2));border-bottom-right-radius:5px;}
+  .m.bad{align-self:flex-end;margin-left:auto;color:#fff;background:linear-gradient(160deg,#FF6B61,#E5382C);border-bottom-right-radius:5px;}
+  .who{display:block;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.72;margin-bottom:2px;}
+  .callout{background:var(--card);border:1px solid var(--sep);border-radius:var(--r-md);padding:20px 24px;margin:22px 0;box-shadow:var(--shadow-sm);display:flex;gap:16px;align-items:flex-start;}
+  .callout .e{font-size:26px;line-height:1;}
+  .callout .t{font-weight:700;margin:0 0 4px;}
+  .callout p{margin:0;color:var(--ink-soft);font-size:15.5px;}
+  table{border-collapse:collapse;width:100%;font-size:15px;min-width:430px;}
+  .tblwrap{overflow-x:auto;background:var(--card);border:1px solid var(--sep);border-radius:var(--r-md);box-shadow:var(--shadow-sm);margin:16px 0;}
+  th,td{text-align:left;padding:13px 18px;border-bottom:1px solid var(--sep);}
+  th{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);background:var(--card-2);}
+  tr:last-child td{border-bottom:none;} td b{font-weight:600;}
+  ul.rules{list-style:none;margin:0;padding:0;}
+  ul.rules li{display:flex;gap:13px;align-items:flex-start;padding:13px 0;border-bottom:1px solid var(--sep);font-size:16px;}
+  ul.rules li:last-child{border-bottom:none;}
+  ul.rules .n{width:24px;height:24px;border-radius:50%;background:var(--gold-soft);color:var(--gold-deep);font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;flex:0 0 auto;margin-top:2px;}
+  .cta{display:block;text-align:center;background:linear-gradient(160deg,var(--gold),var(--gold-deep));color:#2a1e08;font-weight:600;font-size:17px;text-decoration:none;border-radius:14px;padding:16px 30px;margin:28px auto 0;max-width:420px;box-shadow:0 6px 18px var(--gold-soft);}
+  footer{padding:36px 0 66px;color:var(--ink-faint);font-size:13px;text-align:center;}
+  footer .mm{font-weight:600;color:var(--ink-soft);}
+  :focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:6px;}
+</style>
+
+<div class="topbar"><div class="wrap">
+  <div class="brand">LiveRich<span>Media</span> · Playbook</div>
+  <div class="pill">Module 1 · Chatter Edition</div>
+</div></div>
+
+<header class="hero"><div class="wrap">
+  <p class="eyebrow">The Chatter Playbook · Module 1</p>
+  <h1>Mastering the <em>Comeback</em></h1>
+  <p class="lede">Turning "no" into the next conversation. Don't memorize scripts — learn to understand <strong>why</strong> the fan is saying no. Every objection gives you information.</p>
+</div></header>
+
+<main><div class="wrap">
+
+<section>
+  <div class="callout"><span class="e">⭐️</span><div>
+    <p class="t">Before you start</p>
+    <p>Your job is to identify the obstacle and keep the conversation moving. There are only four obstacles: <strong>price, timing, content, and stalling</strong>. Learn to name which one you're looking at before you type.</p>
+  </div></div>
+</section>
+
+<section>
+  <div class="card">
+    <p class="k">💰 Price objections</p>
+    <h3>"That's too expensive."</h3>
+    <p class="lab means">What he usually means</p>
+    <p>"I like it, but not at this price." He replied instead of ignoring you — that's interest.</p>
+    <div class="chat">
+      <div class="m in"><span class="who">Fan</span>that's expensive</div>
+      <div class="m bad"><span class="who">✕ Don't</span>okay babe ❤️</div>
+      <div class="m out"><span class="who">✓ Better</span>i totally get it ❤️ that's my biggest bundle. i have something smaller i think you'd enjoy just as much</div>
+    </div>
+    <p class="lab goal">🎯 Goal — find another path to yes.</p>
+  </div>
+
+  <div class="card">
+    <p class="k">⏰ Timing objections</p>
+    <h3>"Maybe later / next Friday."</h3>
+    <p class="lab means">What he usually means</p>
+    <p>"I'm interested, just not today." That's a booking, not a rejection.</p>
+    <div class="chat">
+      <div class="m in"><span class="who">Fan</span>i'll buy it next friday</div>
+      <div class="m bad"><span class="who">✕ Don't</span>okay.</div>
+      <div class="m out"><span class="who">✓ Better</span>perfect ❤️ i'll save it for you. message me friday and i'll have it ready</div>
+    </div>
+    <p class="lab goal">🎯 Goal — book the next opportunity. Ask when payday is and note it.</p>
+  </div>
+
+  <div class="card">
+    <p class="k">🎥 Content objections</p>
+    <h3>"I already have something like that."</h3>
+    <p class="lab means">What he usually means</p>
+    <p>"Show me something different." He's not rejecting spending — just that content.</p>
+    <div class="chat">
+      <div class="m in"><span class="who">Fan</span>i already bought something like that</div>
+      <div class="m bad"><span class="who">✕ Don't</span>trust me, this one's different</div>
+      <div class="m out"><span class="who">✓ Better</span>what are you in the mood to see today? i'll find something you don't have yet ❤️</div>
+    </div>
+    <p class="lab goal">🎯 Goal — find what he really wants. Ask before the next PPV.</p>
+  </div>
+
+  <div class="card">
+    <p class="k">💬 Stalling</p>
+    <h3>"Haha maybe 😜"</h3>
+    <p class="lab means">What he usually means</p>
+    <p>He's enjoying the chat but not moving. You have to lead.</p>
+    <div class="chat">
+      <div class="m in"><span class="who">Fan</span>haha maybe</div>
+      <div class="m bad"><span class="who">✕ Don't</span>(chat for 30 more minutes with no ask)</div>
+      <div class="m out"><span class="who">✓ Better</span>no pressure ❤️ i just thought you'd enjoy this one. want me to send it over?</div>
+    </div>
+    <p class="lab goal">🎯 Goal — lead the conversation. If he still doesn't move, exit politely and keep it warm.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Quick reference</h2>
+  <div class="tblwrap"><table>
+    <thead><tr><th>Fan says</th><th>Think</th><th>Goal</th></tr></thead>
+    <tbody>
+      <tr><td>"Too expensive"</td><td><b>Price</b></td><td>Find another path</td></tr>
+      <tr><td>"Maybe later"</td><td><b>Timing</b></td><td>Book the next opportunity</td></tr>
+      <tr><td>"Already have that"</td><td><b>Content</b></td><td>Find what he wants</td></tr>
+      <tr><td>"Haha maybe"</td><td><b>Stalling</b></td><td>Lead the conversation</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section>
+  <h2>Common mistakes</h2>
+  <div class="card"><ul class="rules">
+    <li><span class="n">1</span><span>Ending the conversation after the first objection.</span></li>
+    <li><span class="n">2</span><span>Discounting immediately without understanding the problem.</span></li>
+    <li><span class="n">3</span><span>Sending another PPV without addressing the objection.</span></li>
+    <li><span class="n">4</span><span>Assuming instead of asking questions.</span></li>
+    <li><span class="n">5</span><span>Forgetting to follow up.</span></li>
+  </ul></div>
+</section>
+
+<section>
+  <h2>Golden rules</h2>
+  <div class="card"><ul class="rules">
+    <li><span class="n">★</span><span>Every objection is information.</span></li>
+    <li><span class="n">★</span><span>Don't react. Understand first.</span></li>
+    <li><span class="n">★</span><span>Every reply should move the conversation forward.</span></li>
+    <li><span class="n">★</span><span>Ask before assuming.</span></li>
+    <li><span class="n">★</span><span>Always leave another path to yes.</span></li>
+  </ul></div>
+
+  <a class="cta" href="module-1-exam-chatter.html">Ready? Take the Module 1 exam →</a>
+</section>
+
+</div></main>
+
+<footer><div class="wrap">
+  <p class="mm">LIVERICHMEDIA · THE CHATTER PLAYBOOK · MODULE 1 · CHATTER EDITION</p>
+  <p>Study this page, then take the exam. Your manager gets your score automatically.</p>
+</div></footer>

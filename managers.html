@@ -1,0 +1,82 @@
+<title>LiveRichMedia · Playbook · Manager Hub (Managers Only)</title>
+<style>
+  :root{--bg:#ECECF1;--card:#FFF;--sep:rgba(60,60,67,.14);--ink:#1C1C1E;--ink-soft:#6E6E73;--ink-faint:#8E8E93;
+    --gold:#C99A3E;--gold-deep:#A97F27;--red:#FF3B30;
+    --shadow-sm:0 1px 2px rgba(0,0,0,.05);--r-md:18px;--maxw:760px;
+    --sans:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;}
+  @media (prefers-color-scheme:dark){:root{--bg:#000;--card:#1C1C1E;--sep:rgba(84,84,88,.36);--ink:#F5F5F7;--ink-soft:#AEAEB2;--ink-faint:#8E8E93;--gold:#E8C170;--gold-deep:#D9B26A;}}
+  :root[data-theme="light"]{--bg:#ECECF1;--card:#FFF;--sep:rgba(60,60,67,.14);--ink:#1C1C1E;--ink-soft:#6E6E73;--ink-faint:#8E8E93;--gold:#C99A3E;--gold-deep:#A97F27;}
+  :root[data-theme="dark"]{--bg:#000;--card:#1C1C1E;--sep:rgba(84,84,88,.36);--ink:#F5F5F7;--ink-soft:#AEAEB2;--ink-faint:#8E8E93;--gold:#E8C170;--gold-deep:#D9B26A;}
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased;letter-spacing:-.01em;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px;}
+  header{padding:64px 0 26px;}
+  .eyebrow{font-size:13px;font-weight:600;text-transform:uppercase;color:var(--gold);margin:0 0 12px;}
+  h1{font-weight:700;font-size:clamp(32px,6vw,48px);line-height:1.05;letter-spacing:-.03em;margin:0 0 12px;max-width:18ch;}
+  .lede{font-size:18px;color:var(--ink-soft);max-width:56ch;margin:0;}
+  .redbar{margin-top:18px;background:color-mix(in srgb,var(--red) 9%,var(--card));border:1px solid color-mix(in srgb,var(--red) 28%,var(--sep));border-radius:var(--r-md);padding:13px 17px;font-size:15px;display:flex;gap:12px;align-items:center;}
+  .redbar b{color:var(--red);}
+  section{padding:20px 0;}
+  h2{font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);margin:12px 0 12px;}
+  .links{display:grid;gap:10px;}
+  .links a{display:flex;justify-content:space-between;align-items:center;gap:14px;background:var(--card);border:1px solid var(--sep);border-radius:var(--r-md);padding:16px 20px;text-decoration:none;color:var(--ink);font-weight:600;font-size:16.5px;box-shadow:var(--shadow-sm);transition:border-color .12s;}
+  .links a:hover{border-color:var(--gold);}
+  .links a small{color:var(--ink-faint);font-weight:500;flex:0 0 auto;}
+  .links .d{display:block;font-weight:400;font-size:14px;color:var(--ink-soft);margin-top:3px;}
+  .steps{background:var(--card);border:1px solid var(--sep);border-radius:var(--r-md);box-shadow:var(--shadow-sm);padding:6px 20px;}
+  .steps div{display:flex;gap:13px;align-items:flex-start;padding:13px 0;border-bottom:1px solid var(--sep);font-size:15.5px;color:var(--ink-soft);}
+  .steps div:last-child{border-bottom:none;}
+  .steps .n{width:24px;height:24px;border-radius:50%;background:color-mix(in srgb,var(--gold) 16%,var(--card));color:var(--gold-deep);font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;flex:0 0 auto;margin-top:1px;}
+  .steps b{color:var(--ink);}
+  footer{padding:40px 0 66px;color:var(--ink-faint);font-size:13px;text-align:center;}
+</style>
+
+<header><div class="wrap">
+  <p class="eyebrow">LiveRichMedia · The Chatter Playbook</p>
+  <h1>Manager Hub</h1>
+  <p class="lede">Trainer's guides, answer keys, and the workflow for running each module with your team.</p>
+  <div class="redbar"><span>🔒</span><div><b>Managers only.</b> Never share this page or the answer keys with chatters. Their hub is <a href="index.html" style="color:inherit;">index.html</a>.</div></div>
+</div></header>
+
+<main><div class="wrap">
+
+<section>
+  <h2>How to run a module</h2>
+  <div class="steps">
+    <div><span class="n">1</span><span><b>Run the training session</b> with the Trainer's Guide (intro script, coach's notes, demos).</span></div>
+    <div><span class="n">2</span><span><b>Send the Chatter Edition</b> to the team to study.</span></div>
+    <div><span class="n">3</span><span><b>Send each chatter their personal exam link</b> (from the chatter hub — links carry their name and Slack routing).</span></div>
+    <div><span class="n">4</span><span><b>Scores land in Slack automatically</b>; grade written answers with the Answer Key and coach the weakest point.</span></div>
+  </div>
+</section>
+
+<section>
+  <h2>Module 1 · Mastering the Comeback</h2>
+  <div class="links">
+    <a href="module-1-trainers-guide-manager.html"><span>🔒 Trainer's Guide<span class="d">Session script, coach's notes, golden rules, reflection questions.</span></span><small>open →</small></a>
+    <a href="module-1-answer-key-manager.html"><span>🔒 Quiz Answer Key<span class="d">Correct answers, the "why", coaching tips, and the written-answer rubric.</span></span><small>open →</small></a>
+    <a href="module-1-chatter-edition.html"><span>Chatter Edition<span class="d">What the team reads. Safe to share.</span></span><small>open →</small></a>
+    <a href="module-1-exam-chatter.html"><span>Exam (fillable)<span class="d">Auto-grades MC, posts scores to Slack. Safe to share.</span></span><small>open →</small></a>
+  </div>
+</section>
+
+<section>
+  <h2>Module 2 · The Discovery Phase</h2>
+  <div class="links">
+    <a href="module-2-discovery-chatter.html"><span>Chatter Edition<span class="d">Goals of discovery, fatal mistakes, bad-vs-good chat examples. Safe to share.</span></span><small>open →</small></a>
+  </div>
+</section>
+
+<section>
+  <h2>Foundation</h2>
+  <div class="links">
+    <a href="chatter-training-manual.html"><span>The Training Manual<span class="d">IRAE method, house voices, funnel, compliance, shift workflow. Safe to share.</span></span><small>open →</small></a>
+    <a href="index.html"><span>Chatter Hub<span class="d">The page you send the team — includes per-chatter exam links.</span></span><small>open →</small></a>
+  </div>
+</section>
+
+</div></main>
+
+<footer><div class="wrap">
+  <p>LIVERICHMEDIA · THE CHATTER PLAYBOOK · MANAGER HUB (MANAGERS ONLY)</p>
+</div></footer>
