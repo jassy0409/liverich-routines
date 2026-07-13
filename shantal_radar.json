@@ -1,0 +1,19 @@
+{
+  "name": "Shantal",
+  "sub": "Week of Jul 13–19  ·  Pacific",
+  "hero_label": "BIGGEST AUDIENCE MOMENT",
+  "hero_score": 96,
+  "hero_caption": "World Cup Final  ·  Sun 12pm PT",
+  "events": [
+    ["World Cup Final", "team-colours fit, watch-with-me", "SUN 12PM", 96],
+    ["Ice Cream Day", "sundae taste test at home", "SUN", 90],
+    ["World Cup Semifinals", "elegant team-colour entrance", "TUE+WED 12PM", 88],
+    ["The Open (golf)", "country-club chic, posed look", "THU–SUN", 82],
+    ["Christmas in July (prep)", "cosy gift-framed PPV drop", "JUL 25", 80],
+    ["MLB All-Star Game", "ballpark-chic cap and shorts", "TUE PM", 72],
+    ["UFC Fight Night", "ringside glam (off-lane, optional)", "SAT 5PM", 64]
+  ],
+  "toppick": "World Cup Final, Sunday",
+  "window": "Live during the match, PT",
+  "footer": "LIVERICHMEDIA  ·  CREATIVE RADAR  ·  JUL 13–19"
+}
