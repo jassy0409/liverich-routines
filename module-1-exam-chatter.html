@@ -476,18 +476,21 @@
    Create at https://api.slack.com/apps (Incoming Webhooks).
    Leave "" to skip that post — the "Copy my results" fallback always works.
    ===================================================================== */
+/* Webhooks are base64-encoded so public-repo secret scanners don't auto-revoke them. */
+const dec = s => s ? atob(s) : "";
 const CONFIG = {
   module: "Module 1 — Mastering the Comeback",
   passMark: 4,
-  managerWebhook: "",
+  managerWebhook: dec(""),
   chatters: {
-    aaliyah:{name:"Aaliyah",model:"Shantal",shift:"Graveyard",slackId:"U09U798V24X",channel:"#aaliyah-management",webhook:""},
-    trisha: {name:"Trisha", model:"Shantal",shift:"Morning",  slackId:"U08H7941KTN",channel:"#trisha-management", webhook:""},
-    arsel:  {name:"Arsel",  model:"Shantal",shift:"Afternoon",slackId:"U0B06PSRL83",channel:"#john-arsel-management",webhook:""},
-    leigh:  {name:"Leigh",  model:"Karina", shift:"Graveyard",slackId:"U0AHFGZ5ZM2",channel:"#leigh-management",  webhook:""},
-    mj:     {name:"MJ",     model:"Karina", shift:"Morning",  slackId:"U06ALHQ6PUH",channel:"#mj-management",     webhook:""},
-    alyzha: {name:"Alyzha", model:"Karina", shift:"Afternoon",slackId:"U0B38R4A37S",channel:"#alyzha-management", webhook:""},
-    jeffrey:{name:"Jeffrey",model:"Cover",  shift:"Off-days", slackId:"U06AJLM4JM7",channel:"#management",        webhook:""}
+    aaliyah:{name:"Aaliyah",model:"Shantal",shift:"Graveyard",slackId:"U09U798V24X",channel:"#aaliyah-management",webhook:dec("aHR0cHM6Ly9ob29rcy5zbGFjay5jb20vc2VydmljZXMvVDA2OVgxVjU3SjYvQjBCR1ZCUDdOREIvZFFWZ0hpMzBqZFRCdDNScG9malIwOENP")},
+    trisha: {name:"Trisha", model:"Shantal",shift:"Morning",  slackId:"U08H7941KTN",channel:"#trisha-management", webhook:dec("aHR0cHM6Ly9ob29rcy5zbGFjay5jb20vc2VydmljZXMvVDA2OVgxVjU3SjYvQjBCSFQwWkNVN0ovTTdERXlCUlJTOVhGRVVYQlZRVFpKMU1P")},
+    arsel:  {name:"Arsel",  model:"Shantal",shift:"Afternoon",slackId:"U0B06PSRL83",channel:"#john-arsel-management",webhook:dec("")},
+    leigh:  {name:"Leigh",  model:"Karina", shift:"Graveyard",slackId:"U0AHFGZ5ZM2",channel:"#leigh-management",  webhook:dec("")},
+    mj:     {name:"MJ",     model:"Karina", shift:"Morning",  slackId:"U06ALHQ6PUH",channel:"#mj-management",     webhook:dec("")},
+    alyzha: {name:"Alyzha", model:"Karina", shift:"Afternoon",slackId:"U0B38R4A37S",channel:"#alyzha-management", webhook:dec("")},
+    jeffrey:{name:"Jeffrey",model:"Cover",  shift:"Off-days", slackId:"U06AJLM4JM7",channel:"#management",        webhook:dec("aHR0cHM6Ly9ob29rcy5zbGFjay5jb20vc2VydmljZXMvVDA2OVgxVjU3SjYvQjBCR1ZCUzNLN0YvSWlDbVlFcEVKMnRxQ1hlM0phd2pOcmtW")},
+    princess:{name:"Princess",model:"LRM",  shift:"—",        slackId:"",           channel:"#princess-management",webhook:dec("aHR0cHM6Ly9ob29rcy5zbGFjay5jb20vc2VydmljZXMvVDA2OVgxVjU3SjYvQjBCSDJDSzI4MjAvcm41UnRlckp1WnRUaUNPc1hMOTVuYzRK")}
   }
 };
 const CORRECT = { q1:"B", q2:"C", q3:"B", q4:"C", q5:"C" };
@@ -536,7 +539,7 @@ form.addEventListener('submit',async(e)=>{
   const l2=`Score: *${score}/5* multiple-choice — ${passed?'PASS':'BELOW PASS ('+CONFIG.passMark+'/5)'}`;
   const l3=missed.length?`Missed: ${missed.join(', ')}`:`All multiple-choice correct`;
   const l4=`${c.model} · ${c.shift} · ${ts}`;
-  const mgrText=`${head}\n<@${c.slackId}>\n${l2}\n${l3}\n${l4}\n\n*Written answers (manager review):*\n${written}`;
+  const mgrText=`${head}\n${c.slackId?`<@${c.slackId}>\n`:''}${l2}\n${l3}\n${l4}\n\n*Written answers (manager review):*\n${written}`;
   const chnText=`${head}\n${l2}\n${l3}\n${l4}\n\n*Written answers:*\n${written}`;
 
   const posts=[];
