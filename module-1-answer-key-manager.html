@@ -1,0 +1,169 @@
+<title>Chatter Playbook · Module 1 Answer Key · Managers Only</title>
+<style>
+  :root{
+    --bg:#ECECF1;--bg-2:#F7F7FA;--card:#FFFFFF;--card-2:#FBFBFD;
+    --sep:rgba(60,60,67,0.14);--sep-strong:rgba(60,60,67,0.24);
+    --ink:#1C1C1E;--ink-2:#3C3C43;--ink-soft:#6E6E73;--ink-faint:#8E8E93;
+    --gold:#C99A3E;--gold-deep:#A97F27;--gold-soft:rgba(201,154,62,0.14);
+    --green:#34C759;--green-soft:rgba(52,199,89,0.14);--amber:#FF9F0A;--red:#FF3B30;
+    --shadow-sm:0 1px 2px rgba(0,0,0,.05);--shadow:0 8px 30px rgba(30,25,10,.08),0 2px 8px rgba(30,25,10,.05);
+    --r-lg:24px;--r-md:18px;--r-sm:12px;--maxw:820px;
+    --sans:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --mono:"SF Mono",ui-monospace,"JetBrains Mono",Menlo,Consolas,monospace;
+  }
+  @media (prefers-color-scheme:dark){:root{--bg:#000;--bg-2:#0B0B0D;--card:#1C1C1E;--card-2:#2C2C2E;
+    --sep:rgba(84,84,88,0.36);--sep-strong:rgba(120,120,128,0.5);--ink:#F5F5F7;--ink-2:#EBEBF0;--ink-soft:#AEAEB2;--ink-faint:#8E8E93;
+    --gold:#E8C170;--gold-deep:#D9B26A;--gold-soft:rgba(232,193,112,0.16);--green:#30D158;--green-soft:rgba(48,209,88,0.18);
+    --shadow:0 8px 30px rgba(0,0,0,.5);}}
+  :root[data-theme="light"]{--bg:#ECECF1;--bg-2:#F7F7FA;--card:#FFF;--card-2:#FBFBFD;--sep:rgba(60,60,67,0.14);--sep-strong:rgba(60,60,67,0.24);
+    --ink:#1C1C1E;--ink-2:#3C3C43;--ink-soft:#6E6E73;--ink-faint:#8E8E93;--gold:#C99A3E;--gold-deep:#A97F27;--gold-soft:rgba(201,154,62,0.14);
+    --green:#34C759;--green-soft:rgba(52,199,89,0.14);--shadow:0 8px 30px rgba(30,25,10,.08),0 2px 8px rgba(30,25,10,.05);}
+  :root[data-theme="dark"]{--bg:#000;--bg-2:#0B0B0D;--card:#1C1C1E;--card-2:#2C2C2E;--sep:rgba(84,84,88,0.36);--sep-strong:rgba(120,120,128,0.5);
+    --ink:#F5F5F7;--ink-2:#EBEBF0;--ink-soft:#AEAEB2;--ink-faint:#8E8E93;--gold:#E8C170;--gold-deep:#D9B26A;--gold-soft:rgba(232,193,112,0.16);
+    --green:#30D158;--green-soft:rgba(48,209,88,0.18);--shadow:0 8px 30px rgba(0,0,0,.5);}
+
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased;letter-spacing:-0.01em;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px;}
+  .topbar{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--bg) 72%,transparent);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--sep);}
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:52px;}
+  .topbar .brand{font-size:15px;font-weight:600;}.topbar .brand span{color:var(--gold);}
+  .topbar .pill{font-size:12px;font-weight:600;color:#fff;background:var(--red);padding:5px 11px;border-radius:999px;}
+
+  header.hero{padding:60px 0 34px;}
+  .eyebrow{font-size:13px;font-weight:600;text-transform:uppercase;color:var(--gold);margin:0 0 14px;}
+  h1{font-weight:700;font-size:clamp(34px,6vw,52px);line-height:1.04;letter-spacing:-0.03em;margin:0 0 14px;max-width:16ch;text-wrap:balance;}
+  .lede{font-size:20px;color:var(--ink-soft);max-width:56ch;margin:0;line-height:1.45;}
+  .redbar{margin-top:22px;background:color-mix(in srgb,var(--red) 9%,var(--card));border:1px solid color-mix(in srgb,var(--red) 28%,var(--sep));border-radius:var(--r-md);padding:14px 18px;font-size:15px;color:var(--ink-2);display:flex;gap:12px;align-items:center;}
+  .redbar b{color:var(--red);}
+
+  section{padding:16px 0 40px;}
+  h2{font-weight:700;font-size:clamp(24px,4vw,32px);letter-spacing:-0.02em;margin:34px 0 6px;}
+  .sub{font-size:18px;color:var(--ink-soft);margin:0 0 20px;max-width:60ch;}
+
+  .ans{background:var(--card);border:1px solid var(--sep);border-radius:var(--r-md);padding:22px 24px;margin:16px 0;box-shadow:var(--shadow-sm);}
+  .ans .qn{font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--gold);margin:0 0 8px;}
+  .ans .prompt{font-size:17px;font-weight:600;margin:0 0 14px;line-height:1.35;}
+  .correct{display:inline-flex;align-items:center;gap:9px;background:var(--green-soft);border:1px solid color-mix(in srgb,var(--green) 40%,var(--sep));
+    color:var(--ink);font-weight:600;font-size:15.5px;padding:9px 15px;border-radius:12px;margin-bottom:14px;}
+  .correct .chk{width:20px;height:20px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;flex:0 0 auto;}
+  .lab{font-size:12px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:var(--ink-faint);margin:14px 0 5px;}
+  .ans p{margin:0 0 6px;color:var(--ink-2);font-size:15.5px;line-height:1.5;}
+  .tip{background:var(--gold-soft);border-radius:var(--r-sm);padding:12px 15px;margin-top:12px;font-size:15px;color:var(--ink-2);}
+  .tip b{color:var(--gold-deep);}
+
+  .rubric{background:var(--card);border:1px solid var(--sep);border-radius:var(--r-md);box-shadow:var(--shadow-sm);overflow:hidden;margin:16px 0;}
+  .rubric .r{display:flex;gap:13px;align-items:flex-start;padding:15px 20px;border-bottom:1px solid var(--sep);font-size:15.5px;}
+  .rubric .r:last-child{border-bottom:none;}
+  .rubric .r .n{width:24px;height:24px;border-radius:50%;background:var(--gold-soft);color:var(--gold-deep);font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;flex:0 0 auto;}
+  .check{background:var(--card);border:1px solid var(--sep);border-radius:var(--r-md);padding:22px 24px;box-shadow:var(--shadow-sm);margin:16px 0;}
+  .check h3{margin:0 0 14px;font-size:19px;font-weight:700;}
+  .check label{display:flex;gap:12px;align-items:center;padding:11px 0;border-bottom:1px solid var(--sep);font-size:16px;cursor:pointer;}
+  .check label:last-child{border-bottom:none;}
+  .check input{width:22px;height:22px;accent-color:var(--gold);flex:0 0 auto;}
+
+  footer{padding:36px 0 66px;color:var(--ink-faint);font-size:13px;text-align:center;}
+  footer .m{font-weight:600;color:var(--ink-soft);}
+  :focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:6px;}
+</style>
+
+<div class="topbar"><div class="wrap">
+  <div class="brand">LiveRich<span>Media</span> · Playbook</div>
+  <div class="pill">Managers Only</div>
+</div></div>
+
+<header class="hero"><div class="wrap">
+  <p class="eyebrow">The Chatter Playbook · Module 1 · Answer Key</p>
+  <h1>Mastering the Comeback — Coaching Key</h1>
+  <p class="lede">Grade for the chatter's thought process, not their exact wording. The multiple-choice is auto-scored on the exam; use this to coach the "why" and to grade Parts 2–4 by hand.</p>
+  <div class="redbar"><span>🔒</span><div><b>Managers only.</b> Don't share this file or its link with chatters — it contains the answers.</div></div>
+</div></header>
+
+<main><div class="wrap">
+
+  <h2>Part 1 · Multiple choice</h2>
+  <p class="sub">The exam auto-scores these five and reports the total to Slack. Use the notes below when reviewing a miss.</p>
+
+  <div class="ans">
+    <p class="qn">Question 1</p>
+    <p class="prompt">A fan says, "That's too expensive."</p>
+    <div class="correct"><span class="chk"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="4"><path d="M4 12l6 6L20 6"/></svg></span>B · He likes the content but not the current price.</div>
+    <p class="lab">Why</p>
+    <p>When a fan replies instead of ignoring the PPV, there's usually still interest. The objection is about price, not the content. Goal: find another path to yes, not defend the price.</p>
+    <div class="tip"><b>Coach:</b> if they pick A, remind them silence is a stronger rejection than an objection.</div>
+  </div>
+
+  <div class="ans">
+    <p class="qn">Question 2</p>
+    <p class="prompt">A fan says, "Maybe next Friday."</p>
+    <div class="correct"><span class="chk"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="4"><path d="M4 12l6 6L20 6"/></svg></span>C · Book the next opportunity and follow up.</div>
+    <p class="lab">Why</p>
+    <p>"Maybe next Friday" is a timing objection, not a rejection. A good chatter builds a follow-up plan instead of hoping the fan comes back on his own.</p>
+    <div class="tip"><b>Coach:</b> watch for chatters who just say "okay" and never follow up.</div>
+  </div>
+
+  <div class="ans">
+    <p class="qn">Question 3</p>
+    <p class="prompt">"I already bought something like that."</p>
+    <div class="correct"><span class="chk"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="4"><path d="M4 12l6 6L20 6"/></svg></span>B · Ask what content he'd like to see.</div>
+    <p class="lab">Why</p>
+    <p>He isn't rejecting spending — he's rejecting that particular content. Asking uncovers what he actually wants and keeps the conversation moving.</p>
+    <div class="tip"><b>Coach:</b> get them to ask before offering another PPV.</div>
+  </div>
+
+  <div class="ans">
+    <p class="qn">Question 4</p>
+    <p class="prompt">Which is an example of stalling?</p>
+    <div class="correct"><span class="chk"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="4"><path d="M4 12l6 6L20 6"/></svg></span>C · "Haha maybe."</div>
+    <p class="lab">Why</p>
+    <p>Stalling is when the fan keeps chatting without deciding. The chatter should gently guide toward the ask instead of chatting endlessly.</p>
+    <div class="tip"><b>Coach:</b> look for confidence in asking for the sale without being pushy.</div>
+  </div>
+
+  <div class="ans">
+    <p class="qn">Question 5</p>
+    <p class="prompt">The biggest mistake after an objection?</p>
+    <div class="correct"><span class="chk"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="4"><path d="M4 12l6 6L20 6"/></svg></span>C · Ending the conversation immediately.</div>
+    <p class="lab">Why</p>
+    <p>Assuming the first objection is the end of the sale. Every objection gives information that can be explored.</p>
+    <div class="tip"><b>Coach:</b> objections are opportunities, not stop signs.</div>
+  </div>
+
+  <h2>Part 2 · Spot the mistake (Q6–9)</h2>
+  <p class="sub">Graded by hand. More than one good answer exists. Give full credit if the chatter names the obstacle and explains how they'd keep the conversation moving.</p>
+  <div class="rubric">
+    <div class="r"><span class="n">6</span><div><b>Price.</b> Mistake: accepting the "no" and closing with "okay babe." Should acknowledge, then offer a smaller/other option.</div></div>
+    <div class="r"><span class="n">7</span><div><b>Timing.</b> Should have booked the return — asked when payday is and offered to save it — instead of ending warm-but-dead.</div></div>
+    <div class="r"><span class="n">8</span><div><b>Content.</b> "Trust me it's different" argues. Better: ask what he's in the mood for and find something he doesn't have.</div></div>
+    <div class="r"><span class="n">9</span><div><b>Stalling.</b> Chatting 30 min with no ask. Should build rapport then confidently ask; if no movement, exit warm.</div></div>
+  </div>
+
+  <h2>Part 3 · Write your reply (Q10–13)</h2>
+  <p class="sub">No perfect script. Grade each reply on the five points below.</p>
+  <div class="rubric">
+    <div class="r"><span class="n">✓</span><div>Acknowledges the fan's concern.</div></div>
+    <div class="r"><span class="n">✓</span><div>Identifies the real objection (price / timing / content / stalling).</div></div>
+    <div class="r"><span class="n">✓</span><div>Moves the conversation forward.</div></div>
+    <div class="r"><span class="n">✓</span><div>Avoids sounding pushy or desperate.</div></div>
+    <div class="r"><span class="n">✓</span><div>Leaves another path to yes.</div></div>
+  </div>
+
+  <h2>Part 4 · Reflection (Q14–15)</h2>
+  <p class="sub">Measures understanding, not wording. Look for evidence they grasp that objections are buying opportunities and can say how they'll apply it in real chats.</p>
+
+  <h2>Manager coaching checklist</h2>
+  <div class="check">
+    <h3>Run each written answer against this</h3>
+    <label><input type="checkbox">Did they identify the real obstacle?</label>
+    <label><input type="checkbox">Did they avoid ending the conversation?</label>
+    <label><input type="checkbox">Did they ask before assuming?</label>
+    <label><input type="checkbox">Did they create another path to yes?</label>
+    <label><input type="checkbox">Would you be comfortable if this reply was sent to a real fan?</label>
+  </div>
+
+</div></main>
+
+<footer><div class="wrap">
+  <p class="m">LIVERICHMEDIA · THE CHATTER PLAYBOOK · MODULE 1 · ANSWER KEY (MANAGERS ONLY)</p>
+  <p>Coach the thought process. A chatter who understands the reason behind a "no" beats one who memorizes scripts.</p>
+</div></footer>
