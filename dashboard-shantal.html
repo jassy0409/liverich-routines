@@ -1,4 +1,4 @@
-<title>LiveRichMedia · Playbook · Training Dashboard</title>
+<title>LiveRichMedia · Playbook · Team Shantal Dashboard</title>
 <meta name="color-scheme" content="dark">
 <script>document.documentElement.setAttribute('data-theme','dark');</script>
 <link rel="stylesheet" href="playbook.css">
@@ -62,8 +62,8 @@
 </div></div>
 
 <header class="hero"><div class="wrap">
-  <p class="eyebrow">The Chatter Playbook · Training Dashboard</p>
-  <h1>Team <em>Results</em></h1>
+  <p class="eyebrow">The Chatter Playbook · Training Dashboard · Team Shantal</p>
+  <h1>Team <em>Shantal</em></h1>
   <p class="lede" id="updated">Loading team results…</p>
   <div class="tabsbar" id="tabs"></div>
 </div></header>
@@ -110,7 +110,7 @@ const MODQ={
      14:'Why is going quiet after a no worse than any single bad message?',
      15:'Where did you treat a no as a stop, and what changes TONIGHT?'}}
 };
-const ORDER=["overview","aaliyah","trisha","princess","leigh","mj","rossana","jeffrey"];
+const ORDER=["overview","aaliyah","trisha","princess","jeffrey"]; /* Jeffrey covers both teams and is included here */
 const cls=s=>s===null?'p':(s>=4?'g':s>=3?'a':'r');
 const col=s=>s===null?'var(--ink-faint)':(s>=4?'var(--green)':s>=3?'var(--amber)':'var(--red)');
 
@@ -130,7 +130,7 @@ fetch('results.json?t='+Math.floor(Math.random()*1e6)).then(r=>r.json()).then(D=
                 Karina:'Team theme from the scorecards: price the peak, land big spends softly, keep the bratty register — never blunt.',
                 Cover:'Covers all accounts — voice-check one thread per covered account each shift.'};
   const teams={};
-  ORDER.slice(1).forEach(k=>{const c=C[k];(teams[c.model]=teams[c.model]||[]).push(c);});
+  ORDER.slice(1).forEach(k=>{const c=C[k];(teams["Shantal"]=teams["Shantal"]||[]).push(c);});
   const teamHtml=Object.entries(teams).map(([model,members])=>{
     const exams=members.flatMap(c=>c.exams);
     const tavg=exams.length?(exams.reduce((s,e)=>s+e.score,0)/exams.length):null;
@@ -140,7 +140,7 @@ fetch('results.json?t='+Math.floor(Math.random()*1e6)).then(r=>r.json()).then(D=
       const oavg=c.exams.length?(c.exams.reduce((s,e)=>s+e.score,0)/c.exams.length):null;
       const chips=c.exams.slice().sort((a,b)=>a.m-b.m).map(e=>`<span class="score ${cls(e.score)}" title="${e.module}">M${e.m} · ${e.score}/${e.max}</span>`).join(' ')
         + c.pending.map(p=>` <span class="score r" title="${p.note}">M${p.m} · MISSING</span>`).join('');
-      return `<tr><td><b>${c.name}</b></td><td style="color:var(--ink-faint);font-size:13px;">${c.shift}</td>
+      return `<tr><td><b>${c.name}</b></td><td style="color:var(--ink-faint);font-size:13px;">${c.model==="Cover"?"Cover · all shifts":c.shift}</td>
         <td>${chips||'<span class="score p">—</span>'}</td>
         <td>${oavg===null?'<span class="score p">—</span>':`<span class="score ${cls(Math.round(oavg))}">${oavg.toFixed(1)}/5</span>`}</td></tr>`;
     }).join('');
