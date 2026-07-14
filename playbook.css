@@ -108,3 +108,8 @@
   footer{padding:36px 0 66px;color:var(--ink-faint);font-size:13px;text-align:center;}
   footer .mm{font-weight:600;color:var(--ink-soft);}
   :focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:6px;}
+
+/* clickable phase pills */
+a.ph{text-decoration:none;transition:border-color .12s,color .12s;}
+.ph:hover{border-color:var(--gold);color:var(--ink);}
+a.ph.on:hover{filter:brightness(1.06);}
