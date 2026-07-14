@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shantal Monique · June 2026 Report</title>
+<meta name="color-scheme" content="dark">
+<script>document.documentElement.setAttribute('data-theme','dark');</script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#000000;--bg2:#0B0B0D;
+  --card:#1C1C1E;--card2:#2C2C2E;--card3:#3A3A3C;
+  --sep:rgba(84,84,88,.36);
+  --text:#F5F5F7;--soft:#AEAEB2;--faint:#8E8E93;
+  --rose:#FF6FA5;--rose-d:#F0518A;--lav:#C9A0FF;--lav-d:#9B6EF0;
+  --mint:#2FD9C3;--mint-d:#0AA592;--gold:#E8C170;--gold-d:#B0802C;
+  --rose-wash:rgba(255,111,165,.14);--lav-wash:rgba(201,160,255,.14);
+  --grad:linear-gradient(135deg,#FF6FA5 0%,#C9A0FF 100%);
+  --grad-soft:linear-gradient(135deg,rgba(255,111,165,.9),rgba(201,160,255,.9));
+  --green:#30D158;--amber:#FF9F0A;--red:#FF3B30;
+  --r:20px;--r-sm:14px;
+}
+html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','SF Pro Text','Segoe UI',sans-serif;
+  line-height:1.5;min-height:100vh;overflow-x:hidden}
+.mono{font-family:'SF Mono',ui-monospace,'Menlo','Consolas',monospace}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:6px}
+
+/* ── Topbar ── */
+.topbar{position:sticky;top:0;z-index:200;
+  background:rgba(11,11,13,.72);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);
+  border-bottom:1px solid var(--sep)}
+.topbar-in{max-width:920px;margin:0 auto;padding:13px 22px;display:flex;align-items:center;gap:12px}
+.brand{font-size:15px;font-weight:600;letter-spacing:-.01em}
+.brand b{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:700}
+.pill{margin-left:auto;font-size:12px;font-weight:600;padding:5px 13px;border-radius:100px;letter-spacing:.01em;
+  display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.pill-green{background:rgba(48,209,88,.16);color:#5DE68A;border:1px solid rgba(48,209,88,.3)}
+.pill .dot{width:7px;height:7px;border-radius:50%;background:currentColor;box-shadow:0 0 8px currentColor}
+
+.wrap{max-width:920px;margin:0 auto;padding:0 22px}
+
+/* ── Hero ── */
+.hero{position:relative;text-align:center;padding:64px 22px 40px;overflow:hidden}
+.orb{position:absolute;border-radius:50%;filter:blur(70px);opacity:.5;pointer-events:none;z-index:0}
+.orb1{width:360px;height:360px;background:#FF6FA5;top:-120px;left:50%;transform:translateX(-60%)}
+.orb2{width:300px;height:300px;background:#9B6EF0;top:-60px;right:15%;opacity:.4}
+.hero-in{position:relative;z-index:1;max-width:760px;margin:0 auto}
+.eyebrow{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--rose);margin-bottom:18px}
+.avatar-lg{width:76px;height:76px;border-radius:50%;margin:0 auto 22px;
+  background:var(--grad);display:flex;align-items:center;justify-content:center;
+  font-size:26px;font-weight:800;color:#fff;letter-spacing:.03em;
+  box-shadow:0 0 0 5px rgba(255,111,165,.12),0 8px 40px rgba(201,160,255,.45)}
+h1{font-size:clamp(38px,8vw,66px);font-weight:800;letter-spacing:-.035em;line-height:1.02}
+h1 .g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-sub{color:var(--soft);font-size:17px;margin-top:16px}
+.stat-pills{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:30px}
+.spill{background:var(--card);border:1px solid var(--sep);border-radius:100px;
+  padding:9px 17px;font-size:14px;display:flex;align-items:center;gap:8px}
+.spill b{font-weight:700}
+.spill .ic{font-size:15px}
+
+/* ── Nav pills ── */
+.nav{position:sticky;top:53px;z-index:150;padding:12px 0 6px;
+  background:linear-gradient(180deg,var(--bg) 60%,transparent)}
+.nav-in{display:flex;gap:8px;overflow-x:auto;padding:0 22px 4px;max-width:920px;margin:0 auto;
+  scrollbar-width:none}
+.nav-in::-webkit-scrollbar{display:none}
+.np{flex-shrink:0;font-size:13px;font-weight:600;padding:8px 15px;border-radius:100px;
+  background:var(--card);border:1px solid var(--sep);color:var(--soft);cursor:pointer;
+  transition:all .2s;white-space:nowrap}
+.np:hover{color:var(--text)}
+.np.on{background:var(--grad);color:#2a1030;border-color:transparent}
+
+/* ── Sections ── */
+section{padding:34px 0;border-top:1px solid var(--sep)}
+section:first-of-type{border-top:none}
+.sec-eye{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--rose);margin-bottom:8px}
+.sec-h{font-size:26px;font-weight:800;letter-spacing:-.02em;margin-bottom:6px}
+.sec-p{color:var(--soft);font-size:15px;margin-bottom:22px;max-width:640px}
+
+/* ── Cards & grid ── */
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:1fr 1fr}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+.card{background:var(--card);border:1px solid var(--sep);border-radius:var(--r);padding:20px;
+  box-shadow:0 1px 0 rgba(255,255,255,.03) inset,0 10px 30px rgba(0,0,0,.35)}
+.card-t{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);margin-bottom:14px}
+.kpi .num{font-size:30px;font-weight:800;letter-spacing:-.02em}
+.kpi .lbl{font-size:13px;color:var(--soft);margin-top:2px}
+.kpi .chg{font-size:12px;margin-top:8px;font-weight:600}
+.up{color:var(--green)}.down{color:var(--red)}
+.tint-rose{color:var(--rose)}.tint-lav{color:var(--lav)}.tint-mint{color:var(--mint)}.tint-gold{color:var(--gold)}
+
+canvas{display:block;width:100%}
+
+/* legend */
+.leg{margin-top:16px;display:flex;flex-direction:column;gap:10px}
+.leg-row{display:flex;align-items:center;gap:10px;font-size:14px}
+.leg-dot{width:11px;height:11px;border-radius:3px;flex-shrink:0}
+.leg-nm{flex:1;color:var(--soft)}
+.leg-v{font-weight:700}
+.leg-p{color:var(--faint);font-size:12px;min-width:44px;text-align:right}
+
+/* ── Flowchart (revenue engine) ── */
+.flow{display:flex;align-items:stretch;gap:0;flex-wrap:wrap}
+.fnode{flex:1;min-width:120px;background:var(--card2);border:1px solid var(--sep);border-radius:var(--r-sm);
+  padding:16px 14px;text-align:center;position:relative;opacity:0;transform:translateY(10px);
+  animation:rise .5s forwards}
+.fnode .fi{font-size:20px}
+.fnode .fv{font-size:20px;font-weight:800;margin-top:6px;letter-spacing:-.02em}
+.fnode .fl{font-size:11px;color:var(--soft);margin-top:3px;line-height:1.3}
+.farrow{display:flex;align-items:center;justify-content:center;padding:0 4px;color:var(--rose);font-size:20px;flex-shrink:0}
+@keyframes rise{to{opacity:1;transform:none}}
+@media(max-width:640px){
+  .flow{flex-direction:column}
+  .farrow{transform:rotate(90deg);padding:6px 0}
+}
+
+/* ── Funnel ── */
+.funnel{display:flex;flex-direction:column;align-items:center;gap:5px;padding:6px 0}
+.fstep{border-radius:12px;padding:15px 0;text-align:center;color:#fff;position:relative;
+  opacity:0;animation:grow .6s forwards}
+@keyframes grow{from{opacity:0;transform:scaleX(.7)}to{opacity:1;transform:none}}
+.fstep .sv{font-size:19px;font-weight:800;letter-spacing:-.02em}
+.fstep .sl{font-size:11px;opacity:.9;margin-top:1px}
+.fstep .sr{position:absolute;right:14px;top:50%;transform:translateY(-50%);
+  font-size:11px;font-weight:700;background:rgba(0,0,0,.22);padding:3px 8px;border-radius:8px}
+
+/* ── Posts ── */
+.post{display:flex;gap:13px;align-items:flex-start;padding:13px 0;border-bottom:1px solid var(--sep)}
+.post:last-child{border-bottom:none}
+.prank{width:28px;height:28px;border-radius:50%;background:var(--rose-wash);color:var(--rose);
+  font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.ptxt{flex:1;font-size:14px;line-height:1.4}
+.pmeta{font-size:11px;color:var(--faint);margin-top:4px;display:flex;align-items:center;gap:8px}
+.tag{display:inline-block;padding:2px 8px;border-radius:7px;font-size:10px;font-weight:700}
+.tag-eng{background:var(--lav-wash);color:var(--lav)}
+.tag-tip{background:rgba(232,193,112,.16);color:var(--gold)}
+.plk{font-weight:800;color:var(--rose);text-align:right;white-space:nowrap;flex-shrink:0;font-size:16px}
+.plk small{display:block;font-size:10px;color:var(--faint);font-weight:500}
+
+/* ── Callout ── */
+.callout{background:var(--rose-wash);border:1px solid rgba(255,111,165,.28);border-radius:var(--r);
+  padding:20px 22px;display:flex;gap:14px;align-items:flex-start}
+.callout .ce{font-size:26px}
+.callout h4{font-size:16px;font-weight:700;margin-bottom:4px}
+.callout p{font-size:14px;color:var(--soft)}
+
+/* tooltip */
+.tt{position:fixed;pointer-events:none;z-index:500;background:rgba(28,28,30,.96);
+  border:1px solid var(--sep);border-radius:10px;padding:8px 11px;font-size:12px;
+  box-shadow:0 8px 24px rgba(0,0,0,.5);opacity:0;transition:opacity .12s;backdrop-filter:blur(8px)}
+.tt b{font-size:13px}
+
+.foot{text-align:center;padding:40px 22px 56px;color:var(--faint);font-size:11px;
+  letter-spacing:.16em;text-transform:uppercase;border-top:1px solid var(--sep);margin-top:20px}
+
+@media(max-width:680px){.g4{grid-template-columns:1fr 1fr}.g3,.g2{grid-template-columns:1fr}.sec-h{font-size:22px}}
+</style>
+</head>
+<body data-palette="#F0518A,#9B6EF0,#0AA592,#B0802C">
+
+<div class="topbar">
+  <div class="topbar-in">
+    <span class="brand">LiveRich<b>Media</b> · Reports</span>
+    <span class="pill pill-green"><span class="dot"></span>AHEAD · 117.6%</span>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="orb orb1"></div><div class="orb orb2"></div>
+  <div class="hero-in">
+    <div class="eyebrow">End of Month · June 2026</div>
+    <div class="avatar-lg">SM</div>
+    <h1>Shantal closed June <span class="g">ahead of goal.</span></h1>
+    <p class="hero-sub">$117,628.76 gross against a $100,000 target. A message-led month, ahead of pace start to finish.</p>
+    <div class="stat-pills">
+      <span class="spill"><span class="ic">💖</span><b id="sp-gross">$0</b> gross</span>
+      <span class="spill"><span class="ic">🎯</span><b id="sp-pct">0%</b> of goal</span>
+      <span class="spill"><span class="ic">✨</span><b id="sp-sur">$0</b> surplus</span>
+    </div>
+  </div>
+</div>
+
+<nav class="nav"><div class="nav-in">
+  <button class="np on" data-t="overview">Overview</button>
+  <button class="np" data-t="revenue">Revenue</button>
+  <button class="np" data-t="engine">Revenue Engine</button>
+  <button class="np" data-t="content">Content</button>
+  <button class="np" data-t="verdict">Verdict</button>
+</div></nav>
+
+<div class="wrap">
+
+  <!-- OVERVIEW -->
+  <section data-sec="overview">
+    <div class="sec-eye">Snapshot</div>
+    <div class="sec-h">The month at a glance</div>
+    <p class="sec-p">Four headline numbers, then the cumulative curve against target pace.</p>
+    <div class="grid g4" style="margin-bottom:14px">
+      <div class="card kpi"><div class="num tint-rose">$79.9k</div><div class="lbl">Message revenue</div><div class="chg">67.9% of gross</div></div>
+      <div class="card kpi"><div class="num tint-gold">$36.3k</div><div class="lbl">Tip revenue</div><div class="chg">30.9% of gross</div></div>
+      <div class="card kpi"><div class="num tint-lav">589</div><div class="lbl">Active fans</div><div class="chg down">−30.7% vs prev</div></div>
+      <div class="card kpi"><div class="num tint-mint">52.4k</div><div class="lbl">Profile visitors</div><div class="chg down">−32.7% vs prev</div></div>
+    </div>
+    <div class="card">
+      <div class="card-t">Cumulative gross vs. target pace · June</div>
+      <canvas id="c-line" height="250"></canvas>
+    </div>
+  </section>
+
+  <!-- REVENUE -->
+  <section data-sec="revenue" hidden>
+    <div class="sec-eye">Where it came from</div>
+    <div class="sec-h">Revenue breakdown</div>
+    <p class="sec-p">Messages carried the month; tips did the rest. Daily gross shows the rhythm.</p>
+    <div class="grid g2" style="margin-bottom:14px">
+      <div class="card">
+        <div class="card-t">Revenue split · gross</div>
+        <canvas id="c-donut" height="220"></canvas>
+        <div class="leg" id="donut-leg"></div>
+      </div>
+      <div class="card">
+        <div class="card-t">Daily gross · 30 days</div>
+        <canvas id="c-bars" height="220"></canvas>
+      </div>
+    </div>
+    <div class="callout">
+      <span class="ce">📈</span>
+      <div><h4>Peak day: June 28 at $9,299</h4>
+      <p>The single biggest day of the month. Late June ran hot, closing the gap and pushing well past goal.</p></div>
+    </div>
+  </section>
+
+  <!-- REVENUE ENGINE (flowcharts) -->
+  <section data-sec="engine" hidden>
+    <div class="sec-eye">How the money moves</div>
+    <div class="sec-h">The revenue engine</div>
+    <p class="sec-p">From reach to gross, step by step. Then the same story as a conversion funnel.</p>
+    <div class="card" style="margin-bottom:14px">
+      <div class="card-t">Reach to revenue · flow</div>
+      <div class="flow" id="flow"></div>
+    </div>
+    <div class="grid g2">
+      <div class="card">
+        <div class="card-t">Fan-to-revenue funnel</div>
+        <div class="funnel" id="funnel"></div>
+      </div>
+      <div class="card">
+        <div class="card-t">Message economics</div>
+        <div class="flow" id="flow2" style="flex-direction:column;gap:10px"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENT -->
+  <section data-sec="content" hidden>
+    <div class="sec-eye">What landed</div>
+    <div class="sec-h">Top content & stories</div>
+    <p class="sec-p">Highest-engagement posts by likes, and story reach across the month.</p>
+    <div class="grid g2" style="margin-bottom:14px">
+      <div class="card">
+        <div class="card-t">Top posts by likes</div>
+        <canvas id="c-posts" height="260"></canvas>
+      </div>
+      <div class="card">
+        <div class="card-t">Post details</div>
+        <div id="post-list"></div>
+      </div>
+    </div>
+    <div class="grid g2">
+      <div class="card">
+        <div class="card-t">Story views · engagement only</div>
+        <canvas id="c-stories" height="200"></canvas>
+      </div>
+      <div class="card kpi" style="display:flex;flex-direction:column;justify-content:center;gap:14px">
+        <div><div class="num tint-mint">6,272</div><div class="lbl">Total story views · 9 stories</div></div>
+        <div style="height:1px;background:var(--sep)"></div>
+        <div><div class="num" style="font-size:24px">697</div><div class="lbl">Average views per story · peak 826</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VERDICT -->
+  <section data-sec="verdict" hidden>
+    <div class="sec-eye">Bottom line</div>
+    <div class="sec-h">Verdict</div>
+    <div class="card" style="text-align:center;padding:48px 26px;position:relative;overflow:hidden">
+      <div class="orb orb1" style="opacity:.22;top:-160px"></div>
+      <div style="position:relative;z-index:1">
+        <div style="font-size:56px;margin-bottom:10px">🏆</div>
+        <div style="font-size:26px;font-weight:800;letter-spacing:-.02em">Crushing it. <span class="g" style="background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent">No action needed.</span></div>
+        <p style="color:var(--soft);font-size:15px;max-width:520px;margin:14px auto 0;line-height:1.7">
+          Shantal closed June at 117.6% of goal with $117,628.76 gross, beating the $100,000 target by $17,628.76. The message-heavy approach is working. Keep the same strategy heading into July.</p>
+        <div class="stat-pills" style="margin-top:26px">
+          <span class="spill"><b class="tint-rose">$117,628.76</b> gross</span>
+          <span class="spill"><b class="up">+$17,628.76</b> over target</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<div class="foot mono">LiveRichMedia · Shantal Monique · End of Month · June 2026</div>
+<div class="tt" id="tt"></div>
+
+<script>
+// ── Data ──
+const DAILY=[5309,2474,1326,1671,2917,4528,2882,3667,3318,3697,2137,8603,1313,3753,4024,3984,2831,4313,4821,3504,3562,5962,3519,4539,3159,7097,4312,9299,5110,0];
+const GROSS=117628.76,TARGET=100000;
+const EARN=[{lb:'Messages',v:79914,c:'#F0518A'},{lb:'Tips',v:36345,c:'#B0802C'},{lb:'Posts',v:977,c:'#9B6EF0'},{lb:'Streams',v:393,c:'#0AA592'}];
+const STORIES=[807,600,677,600,826,795,783,651,733];
+const POSTS=[
+  {t:"Guess what I've been working on today...you'll see it soon",d:'Jun 5',l:205,c:3,tip:false},
+  {t:"This white top might be my favorite thing I've worn all month",d:'Jun 7',l:201,c:1,tip:false},
+  {t:"Soaking up sunshine today. What are you up to? Tell me and keep me company in DM",d:'Jun 10',l:200,c:4,tip:false},
+  {t:"Father's Day weekend and I am in a spoiling kind of mood. I just left a little treat in your messages",d:'Jun 20',l:197,c:3,tip:false},
+  {t:"One wrong look and I'm making bad decisions tonight",d:'Jun 1',l:196,c:2,tip:false},
+  {t:"Happy Fathers day everyone. Good morning from me to you",d:'Jun 21',l:186,c:5,tip:false},
+  {t:"MONDAY DEAL. Tip $25 right here and I'll send you a private set worth way more. One day only.",d:'Jun 8',l:174,c:3,tip:true},
+  {t:"Going live Thursday 4:30pm PST. Vote so I know who I'm playing for.",d:'Jun 9',l:174,c:3,tip:false},
+];
+
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const fmt=n=>'$'+Math.round(n).toLocaleString('en-US');
+const fmtk=n=>n>=1000?'$'+(n/1000).toFixed(n>=10000?0:1)+'k':'$'+n;
+const tt=$('#tt');
+function showTT(html,x,y){tt.innerHTML=html;tt.style.opacity=1;
+  const r=tt.getBoundingClientRect();let nx=x+14,ny=y-r.height-10;
+  if(nx+r.width>innerWidth-8)nx=x-r.width-14; if(ny<8)ny=y+16;
+  tt.style.left=nx+'px';tt.style.top=ny+'px';}
+function hideTT(){tt.style.opacity=0}
+
+function ani(fn,dur=1100){const s=performance.now();
+  (function f(now){const p=Math.min((now-s)/dur,1),e=1-Math.pow(1-p,3);fn(e);if(p<1)requestAnimationFrame(f);})(performance.now());}
+function sc(id){const cv=$('#'+id);if(!cv)return null;const dpr=devicePixelRatio||1;
+  const w=cv.offsetWidth||(cv.parentElement.offsetWidth-40)||600,h=+cv.getAttribute('height')||200;
+  cv.width=w*dpr;cv.height=h*dpr;cv.style.height=h+'px';const x=cv.getContext('2d');x.scale(dpr,dpr);
+  return{cv,x,w,h};}
+
+// ── Cumulative line ──
+let lineGeo=null;
+function drawLine(){const r=sc('c-line');if(!r)return;const{cv,x,w,h}=r;
+  const pad={t:20,r:14,b:34,l:56},cw=w-pad.l-pad.r,ch=h-pad.t-pad.b;
+  const cum=[],pace=[];let run=0;
+  for(let i=0;i<30;i++){run+=DAILY[i];cum.push(run);pace.push(TARGET*(i+1)/30);}
+  const mx=Math.max(...cum,TARGET)*1.06;
+  const X=i=>pad.l+i/29*cw,Y=v=>pad.t+ch*(1-v/mx);
+  lineGeo={X,Y,cum,pad,cw,ch,mx};
+  ani(prog=>{
+    x.clearRect(0,0,w,h);
+    x.strokeStyle='rgba(255,255,255,.06)';x.lineWidth=1;x.fillStyle='#8E8E93';x.font='11px -apple-system,sans-serif';
+    for(let i=0;i<=4;i++){const y=pad.t+ch*(1-i/4);x.beginPath();x.moveTo(pad.l,y);x.lineTo(pad.l+cw,y);x.stroke();
+      x.textAlign='right';x.fillText(fmtk(mx*i/4),pad.l-7,y+4);}
+    x.textAlign='center';[1,7,14,21,28].forEach(d=>x.fillText('Jun '+d,X(d-1),h-4));
+    // target
+    x.strokeStyle='rgba(232,193,112,.55)';x.lineWidth=1.5;x.setLineDash([5,4]);x.beginPath();
+    pace.forEach((v,i)=>{i?x.lineTo(X(i),Y(v)):x.moveTo(X(i),Y(v))});x.stroke();x.setLineDash([]);
+    x.fillStyle='rgba(232,193,112,.8)';x.textAlign='left';x.fillText('Target pace $100k',pad.l+4,Y(TARGET)-7);
+    const pts=Math.max(2,Math.floor(30*prog));
+    const g=x.createLinearGradient(0,pad.t,0,pad.t+ch);
+    g.addColorStop(0,'rgba(255,111,165,.34)');g.addColorStop(1,'rgba(255,111,165,0)');
+    x.fillStyle=g;x.beginPath();x.moveTo(pad.l,pad.t+ch);
+    for(let i=0;i<pts;i++)x.lineTo(X(i),Y(cum[i]));x.lineTo(X(pts-1),pad.t+ch);x.closePath();x.fill();
+    const lg=x.createLinearGradient(pad.l,0,pad.l+cw,0);lg.addColorStop(0,'#FF6FA5');lg.addColorStop(1,'#C9A0FF');
+    x.strokeStyle=lg;x.lineWidth=3;x.shadowBlur=12;x.shadowColor='rgba(255,111,165,.6)';x.beginPath();
+    for(let i=0;i<pts;i++)x.lineTo(X(i),Y(cum[i]));x.stroke();x.shadowBlur=0;
+    if(prog>.92){x.beginPath();x.arc(X(pts-1),Y(cum[pts-1]),5,0,7);x.fillStyle='#FF6FA5';x.fill();
+      x.strokeStyle='#fff';x.lineWidth=2;x.stroke();}
+  });
+  cv.onmousemove=e=>{if(!lineGeo)return;const b=cv.getBoundingClientRect();const mxp=e.clientX-b.left;
+    let i=Math.round((mxp-pad.l)/cw*29);i=Math.max(0,Math.min(29,i));
+    showTT(`<b>Jun ${i+1}</b><br>Cumulative ${fmt(cum[i])}<br>Target ${fmt(pace[i])}`,e.clientX,e.clientY);};
+  cv.onmouseleave=hideTT;
+}
+
+// ── Donut ──
+function drawDonut(){const r=sc('c-donut');if(!r)return;const{cv,x,w,h}=r;
+  const cx=w/2,cy=h/2,R=Math.min(w,h)/2*.9,ri=R*.58,tot=EARN.reduce((a,s)=>a+s.v,0);
+  $('#donut-leg').innerHTML=EARN.map(s=>`<div class="leg-row"><span class="leg-dot" style="background:${s.c}"></span>
+    <span class="leg-nm">${s.lb}</span><span class="leg-v">${fmt(s.v)}</span><span class="leg-p">${(s.v/tot*100).toFixed(1)}%</span></div>`).join('');
+  let segs=[];
+  ani(p=>{x.clearRect(0,0,w,h);let a=-Math.PI/2;segs=[];
+    EARN.forEach(s=>{const sw=s.v/tot*2*Math.PI*p;segs.push({a0:a,a1:a+sw,...s});
+      x.beginPath();x.moveTo(cx,cy);x.arc(cx,cy,R,a,a+sw);x.closePath();
+      x.fillStyle=s.c;x.fill();
+      // 2px surface gap
+      x.strokeStyle='#1C1C1E';x.lineWidth=3;x.beginPath();x.moveTo(cx,cy);
+      x.lineTo(cx+Math.cos(a)*R,cy+Math.sin(a)*R);x.stroke();
+      a+=sw;});
+    x.beginPath();x.arc(cx,cy,ri,0,7);x.fillStyle='#1C1C1E';x.fill();
+    x.fillStyle='#8E8E93';x.textAlign='center';x.font='600 11px -apple-system';x.fillText('TOTAL GROSS',cx,cy-8);
+    x.fillStyle='#F5F5F7';x.font='800 17px -apple-system';x.fillText(fmt(tot*p),cx,cy+13);
+  });
+  cv.onmousemove=e=>{const b=cv.getBoundingClientRect();const dx=e.clientX-b.left-cx,dy=e.clientY-b.top-cy;
+    const dist=Math.hypot(dx,dy);if(dist<ri||dist>R){hideTT();return;}
+    let ang=Math.atan2(dy,dx);if(ang<-Math.PI/2)ang+=2*Math.PI;
+    const seg=segs.find(s=>ang>=s.a0&&ang<s.a1);
+    if(seg)showTT(`<b>${seg.lb}</b><br>${fmt(seg.v)} · ${(seg.v/tot*100).toFixed(1)}%`,e.clientX,e.clientY);};
+  cv.onmouseleave=hideTT;
+}
+
+// ── Daily bars ──
+function drawBars(){const r=sc('c-bars');if(!r)return;const{cv,x,w,h}=r;
+  const pad={t:12,r:8,b:26,l:48},cw=w-pad.l-pad.r,ch=h-pad.t-pad.b;
+  const mx=Math.max(...DAILY)*1.12,step=cw/30,bw=step*.66;
+  ani(p=>{x.clearRect(0,0,w,h);
+    x.strokeStyle='rgba(255,255,255,.06)';x.fillStyle='#8E8E93';x.font='11px -apple-system';x.lineWidth=1;
+    for(let i=0;i<=3;i++){const y=pad.t+ch*(1-i/3);x.beginPath();x.moveTo(pad.l,y);x.lineTo(pad.l+cw,y);x.stroke();
+      x.textAlign='right';x.fillText(fmtk(mx*i/3),pad.l-5,y+4);}
+    DAILY.forEach((v,i)=>{const bx=pad.l+i*step+(step-bw)/2,bh=v/mx*ch*p,by=pad.t+ch-bh;
+      const g=x.createLinearGradient(0,by,0,pad.t+ch);g.addColorStop(0,'#FF6FA5');g.addColorStop(1,'#9B6EF0');
+      x.fillStyle=v===0?'rgba(255,111,165,.18)':g;
+      const rd=Math.min(4,bw/2);x.beginPath();
+      if(x.roundRect)x.roundRect(bx,by,bw,Math.max(bh,.5),[rd,rd,0,0]);else x.rect(bx,by,bw,bh);
+      x.fill();});
+    x.fillStyle='#8E8E93';x.textAlign='center';[1,10,20,29].forEach(d=>x.fillText(d,pad.l+(d-.5)*step,h-4));
+  });
+  cv.onmousemove=e=>{const b=cv.getBoundingClientRect();let i=Math.floor((e.clientX-b.left-pad.l)/step);
+    if(i<0||i>29){hideTT();return;}showTT(`<b>Jun ${i+1}</b><br>${fmt(DAILY[i])}`,e.clientX,e.clientY);};
+  cv.onmouseleave=hideTT;
+}
+
+// ── Posts bars ──
+function drawPosts(){const r=sc('c-posts');if(!r)return;const{cv,x,w,h}=r;
+  const pad={t:6,r:44,b:6,l:6},cw=w-pad.l-pad.r,ch=h-pad.t-pad.b,mx=POSTS[0].l,rh=ch/POSTS.length;
+  ani(p=>{x.clearRect(0,0,w,h);
+    POSTS.forEach((po,i)=>{const y=pad.t+i*rh,bh=rh*.5,by=y+(rh-bh)/2,c=po.tip?'#B0802C':'#F0518A';
+      x.fillStyle=c+'26';const rd=bh/2;
+      if(x.roundRect){x.beginPath();x.roundRect(pad.l,by,cw,bh,rd);x.fill();}else x.fillRect(pad.l,by,cw,bh);
+      const g=x.createLinearGradient(pad.l,0,pad.l+cw,0);
+      g.addColorStop(0,po.tip?'#E8C170':'#FF6FA5');g.addColorStop(1,po.tip?'#B0802C':'#C9A0FF');
+      x.fillStyle=g;const bw2=po.l/mx*cw*p;
+      if(x.roundRect){x.beginPath();x.roundRect(pad.l,by,Math.max(bw2,bh),bh,rd);x.fill();}else x.fillRect(pad.l,by,bw2,bh);
+      x.fillStyle='#F5F5F7';x.font='800 12px -apple-system';x.textAlign='left';x.fillText(po.l,pad.l+cw+6,by+bh/2+4);
+    });
+  },900);
+}
+
+// ── Story bars ──
+function drawStories(){const r=sc('c-stories');if(!r)return;const{cv,x,w,h}=r;
+  const pad={t:12,r:8,b:24,l:42},cw=w-pad.l-pad.r,ch=h-pad.t-pad.b,mx=Math.max(...STORIES)*1.14;
+  const step=cw/STORIES.length,bw=step*.5;
+  ani(p=>{x.clearRect(0,0,w,h);
+    x.strokeStyle='rgba(255,255,255,.06)';x.fillStyle='#8E8E93';x.font='11px -apple-system';
+    for(let i=0;i<=3;i++){const y=pad.t+ch*(1-i/3);x.beginPath();x.moveTo(pad.l,y);x.lineTo(pad.l+cw,y);x.stroke();
+      x.textAlign='right';x.fillText(Math.round(mx*i/3),pad.l-5,y+4);}
+    STORIES.forEach((v,i)=>{const bx=pad.l+i*step+(step-bw)/2,bh=v/mx*ch*p,by=pad.t+ch-bh;
+      const g=x.createLinearGradient(0,by,0,pad.t+ch);g.addColorStop(0,'#2FD9C3');g.addColorStop(1,'#0AA592');
+      x.fillStyle=g;const rd=Math.min(4,bw/2);
+      if(x.roundRect){x.beginPath();x.roundRect(bx,by,bw,Math.max(bh,.5),[rd,rd,0,0]);x.fill();}else x.fillRect(bx,by,bw,bh);
+      x.fillStyle='#8E8E93';x.textAlign='center';x.font='10px -apple-system';x.fillText('S'+(i+1),bx+bw/2,h-4);
+    });
+  },900);
+}
+
+// ── Flowcharts ──
+function buildFlow(){
+  const nodes=[
+    {i:'👀',v:'52.4k',l:'Profile visitors'},
+    {i:'💌',v:'589',l:'Active fans'},
+    {i:'💬',v:'250.6k',l:'Messages sent'},
+    {i:'💖',v:'$79.9k',l:'Message revenue'},
+    {i:'🏆',v:'$117.6k',l:'Total gross'},
+  ];
+  $('#flow').innerHTML=nodes.map((n,i)=>
+    `<div class="fnode" style="animation-delay:${i*.12}s"><div class="fi">${n.i}</div><div class="fv">${n.v}</div><div class="fl">${n.l}</div></div>`
+    +(i<nodes.length-1?'<div class="farrow">→</div>':'')).join('');
+  const eco=[
+    {i:'💬',v:'250,642',l:'Messages sent this month'},
+    {i:'💵',v:'$0.32',l:'Average revenue per message'},
+    {i:'💖',v:'$79,914',l:'Total message revenue · gross'},
+  ];
+  $('#flow2').innerHTML=eco.map((n,i)=>
+    `<div class="fnode" style="animation-delay:${i*.12}s;text-align:left;display:flex;gap:12px;align-items:center">
+      <div class="fi">${n.i}</div><div><div class="fv" style="margin:0">${n.v}</div><div class="fl">${n.l}</div></div></div>`
+    +(i<eco.length-1?'<div class="farrow" style="transform:rotate(90deg)">→</div>':'')).join('');
+}
+function buildFunnel(){
+  const steps=[
+    {v:'52,416',l:'Profile visitors',c:'#0AA592',w:100},
+    {v:'589',l:'Active fans',c:'#9B6EF0',w:80,r:'1.1% convert'},
+    {v:'$116.3k',l:'Message + tip revenue',c:'#F0518A',w:60},
+    {v:'$117,628.76',l:'Total gross',c:'#FF6FA5',w:44},
+  ];
+  $('#funnel').innerHTML=steps.map((s,i)=>
+    `<div class="fstep" style="width:${s.w}%;background:linear-gradient(135deg,${s.c},${s.c}cc);animation-delay:${i*.13}s">
+      <div class="sv">${s.v}</div><div class="sl">${s.l}</div>${s.r?`<span class="sr">${s.r}</span>`:''}</div>`).join('');
+}
+function buildPosts(){
+  $('#post-list').innerHTML=POSTS.map((p,i)=>
+    `<div class="post"><div class="prank">${i+1}</div>
+      <div class="ptxt">${p.t.slice(0,76)}${p.t.length>76?'…':''}
+        <div class="pmeta">${p.d} · ${p.c} comment${p.c!==1?'s':''}
+          <span class="tag ${p.tip?'tag-tip':'tag-eng'}">${p.tip?'Tip Wall $25':'Engagement'}</span></div></div>
+      <div class="plk">${p.l}<small>likes</small></div></div>`).join('');
+}
+
+// ── Tabs ──
+const drawn={};
+function initSec(t){
+  if(t==='overview')drawLine();
+  else if(t==='revenue'){drawDonut();drawBars();}
+  else if(t==='engine'){buildFlow();buildFunnel();}
+  else if(t==='content'){drawPosts();drawStories();buildPosts();}
+}
+$$('.np').forEach(b=>b.onclick=()=>{
+  const t=b.dataset.t;
+  $$('.np').forEach(x=>x.classList.toggle('on',x===b));
+  $$('section[data-sec]').forEach(s=>s.hidden=s.dataset.sec!==t);
+  requestAnimationFrame(()=>initSec(t));
+});
+
+// ── Boot: count-ups + first section ──
+addEventListener('load',()=>{
+  const g=$('#sp-gross'),pc=$('#sp-pct'),su=$('#sp-sur'),s0=performance.now();
+  (function tick(now){const p=Math.min((now-s0)/1700,1),e=1-Math.pow(1-p,3);
+    g.textContent=fmt(117628.76*e);pc.textContent=(117.6*e).toFixed(1)+'%';su.textContent=fmt(17628.76*e);
+    if(p<1)requestAnimationFrame(tick);})(performance.now());
+  setTimeout(()=>initSec('overview'),60);
+});
+addEventListener('resize',()=>{const on=$('.np.on');if(on)initSec(on.dataset.t);});
+</script>
+</body>
+</html>
