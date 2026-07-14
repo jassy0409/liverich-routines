@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shantal Monique · June 2026 · Creator Report</title>
+<meta name="color-scheme" content="dark">
+<script>document.documentElement.setAttribute('data-theme','dark');</script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#000000;--bg2:#0B0B0D;
+  --card:#1C1C1E;--card2:#2C2C2E;--card3:#3A3A3C;
+  --sep:rgba(84,84,88,.36);
+  --text:#F5F5F7;--soft:#AEAEB2;--faint:#8E8E93;
+  --rose:#FF6FA5;--rose-d:#F0518A;--lav:#C9A0FF;--lav-d:#9B6EF0;
+  --mint:#2FD9C3;--mint-d:#0AA592;--gold:#E8C170;--gold-d:#B0802C;
+  --rose-wash:rgba(255,111,165,.13);--lav-wash:rgba(201,160,255,.12);--mint-wash:rgba(47,217,195,.12);
+  --grad:linear-gradient(135deg,#FF6FA5 0%,#C9A0FF 100%);
+  --green:#30D158;--amber:#FF9F0A;--red:#FF3B30;
+  --r:20px;--r-sm:14px;
+}
+html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','SF Pro Text','Segoe UI',sans-serif;
+  line-height:1.5;min-height:100vh;overflow-x:hidden}
+.mono{font-family:'SF Mono',ui-monospace,'Menlo','Consolas',monospace}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:6px}
+
+.topbar{position:sticky;top:0;z-index:200;background:rgba(11,11,13,.72);
+  backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid var(--sep)}
+.topbar-in{max-width:960px;margin:0 auto;padding:13px 22px;display:flex;align-items:center;gap:12px}
+.brand{font-size:15px;font-weight:600;letter-spacing:-.01em}
+.brand b{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:700}
+.pill{margin-left:auto;font-size:12px;font-weight:600;padding:5px 13px;border-radius:100px;
+  display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.pill-green{background:rgba(48,209,88,.16);color:#5DE68A;border:1px solid rgba(48,209,88,.3)}
+.pill .dot{width:7px;height:7px;border-radius:50%;background:currentColor;box-shadow:0 0 8px currentColor}
+.wrap{max-width:960px;margin:0 auto;padding:0 22px}
+
+.hero{position:relative;text-align:center;padding:60px 22px 36px;overflow:hidden}
+.orb{position:absolute;border-radius:50%;filter:blur(70px);opacity:.5;pointer-events:none;z-index:0}
+.orb1{width:360px;height:360px;background:#FF6FA5;top:-120px;left:50%;transform:translateX(-60%)}
+.orb2{width:300px;height:300px;background:#9B6EF0;top:-60px;right:15%;opacity:.4}
+.hero-in{position:relative;z-index:1;max-width:780px;margin:0 auto}
+.eyebrow{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--rose);margin-bottom:16px}
+.avatar-lg{width:74px;height:74px;border-radius:50%;margin:0 auto 20px;background:var(--grad);
+  display:flex;align-items:center;justify-content:center;font-size:25px;font-weight:800;color:#fff;
+  box-shadow:0 0 0 5px rgba(255,111,165,.12),0 8px 40px rgba(201,160,255,.45)}
+h1{font-size:clamp(34px,7vw,58px);font-weight:800;letter-spacing:-.035em;line-height:1.03}
+h1 .g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-sub{color:var(--soft);font-size:17px;margin-top:15px;line-height:1.55}
+.stat-pills{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:26px}
+.spill{background:var(--card);border:1px solid var(--sep);border-radius:100px;padding:9px 17px;font-size:14px;display:flex;align-items:center;gap:8px}
+.spill b{font-weight:700}
+
+.nav{position:sticky;top:53px;z-index:150;padding:12px 0 6px;background:linear-gradient(180deg,var(--bg) 62%,transparent)}
+.nav-in{display:flex;gap:8px;overflow-x:auto;padding:0 22px 4px;max-width:960px;margin:0 auto;scrollbar-width:none}
+.nav-in::-webkit-scrollbar{display:none}
+.np{flex-shrink:0;font-size:13px;font-weight:600;padding:8px 14px;border-radius:100px;background:var(--card);
+  border:1px solid var(--sep);color:var(--soft);cursor:pointer;transition:all .2s;white-space:nowrap}
+.np:hover{color:var(--text)}
+.np.on{background:var(--grad);color:#2a1030;border-color:transparent}
+
+section{padding:32px 0;border-top:1px solid var(--sep)}
+section:first-of-type{border-top:none}
+.sec-eye{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--rose);margin-bottom:8px}
+.sec-h{font-size:25px;font-weight:800;letter-spacing:-.02em;margin-bottom:6px}
+.sec-p{color:var(--soft);font-size:15px;margin-bottom:20px;max-width:660px;line-height:1.55}
+
+.grid{display:grid;gap:14px}.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+.span2{grid-column:span 2}
+.card{background:var(--card);border:1px solid var(--sep);border-radius:var(--r);padding:20px;
+  box-shadow:0 1px 0 rgba(255,255,255,.03) inset,0 10px 30px rgba(0,0,0,.35)}
+.card-t{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);margin-bottom:14px}
+.kpi .num{font-size:29px;font-weight:800;letter-spacing:-.02em}
+.kpi .lbl{font-size:13px;color:var(--soft);margin-top:2px}
+.kpi .chg{font-size:12px;margin-top:8px;font-weight:600}
+.up{color:var(--green)}.down{color:var(--red)}.flat{color:var(--faint)}
+.tint-rose{color:var(--rose)}.tint-lav{color:var(--lav)}.tint-mint{color:var(--mint)}.tint-gold{color:var(--gold)}
+canvas{display:block;width:100%}
+
+/* logic explainer */
+.logic{background:var(--lav-wash);border:1px solid rgba(201,160,255,.22);border-radius:var(--r-sm);padding:15px 17px;margin-top:14px}
+.logic h5{font-size:11.5px;font-weight:700;letter-spacing:.05em;color:var(--lav);text-transform:uppercase;margin-bottom:7px;display:flex;gap:7px;align-items:center}
+.logic p{font-size:13.5px;color:var(--soft);line-height:1.62}
+.logic p+p{margin-top:8px}
+.logic b{color:var(--text);font-weight:600}
+
+/* statement table */
+.stmt{width:100%;border-collapse:collapse;font-size:14px}
+.stmt th{text-align:left;font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--faint);padding:0 0 10px;border-bottom:1px solid var(--sep)}
+.stmt th.r,.stmt td.r{text-align:right}
+.stmt td{padding:12px 0;border-bottom:1px solid var(--sep);vertical-align:middle}
+.stmt tr:last-child td{border-bottom:none}
+.stmt .cat{display:flex;align-items:center;gap:10px;font-weight:600}
+.stmt .sw{width:11px;height:11px;border-radius:3px;flex-shrink:0}
+.stmt .gv{font-weight:700}
+.stmt .tot td{border-top:2px solid var(--sep);border-bottom:none;padding-top:14px;font-weight:800}
+.stmt .mut{color:var(--faint);font-size:12px}
+.mono-n{font-variant-numeric:tabular-nums}
+
+/* leg */
+.leg{margin-top:16px;display:flex;flex-direction:column;gap:10px}
+.leg-row{display:flex;align-items:center;gap:10px;font-size:14px}
+.leg-dot{width:11px;height:11px;border-radius:3px;flex-shrink:0}
+.leg-nm{flex:1;color:var(--soft)}.leg-v{font-weight:700}.leg-p{color:var(--faint);font-size:12px;min-width:46px;text-align:right}
+
+/* flow + funnel */
+.flow{display:flex;align-items:stretch;flex-wrap:wrap}
+.fnode{flex:1;min-width:120px;background:var(--card2);border:1px solid var(--sep);border-radius:var(--r-sm);
+  padding:15px 13px;text-align:center;opacity:0;transform:translateY(10px);animation:rise .5s forwards}
+.fnode .fi{font-size:19px}.fnode .fv{font-size:19px;font-weight:800;margin-top:5px;letter-spacing:-.02em}
+.fnode .fl{font-size:11px;color:var(--soft);margin-top:3px;line-height:1.3}
+.farrow{display:flex;align-items:center;justify-content:center;padding:0 4px;color:var(--rose);font-size:19px;flex-shrink:0}
+@keyframes rise{to{opacity:1;transform:none}}
+.funnel{display:flex;flex-direction:column;align-items:center;gap:5px;padding:6px 0}
+.fstep{border-radius:12px;padding:14px 0;text-align:center;color:#fff;position:relative;opacity:0;animation:grow .6s forwards}
+@keyframes grow{from{opacity:0;transform:scaleX(.75)}to{opacity:1;transform:none}}
+.fstep .sv{font-size:18px;font-weight:800}.fstep .sl{font-size:11px;opacity:.92;margin-top:1px}
+.fstep .sr{position:absolute;right:13px;top:50%;transform:translateY(-50%);font-size:10.5px;font-weight:700;background:rgba(0,0,0,.22);padding:3px 8px;border-radius:8px}
+@media(max-width:640px){.flow{flex-direction:column}.farrow{transform:rotate(90deg);padding:6px 0}}
+
+/* fan list */
+.fan{display:flex;align-items:center;gap:13px;padding:12px 0;border-bottom:1px solid var(--sep)}
+.fan:last-child{border-bottom:none}
+.frank{width:26px;height:26px;border-radius:8px;background:var(--rose-wash);color:var(--rose);font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.frank.gold{background:rgba(232,193,112,.18);color:var(--gold)}
+.fname{flex:1;min-width:0}
+.fname .n{font-weight:600;font-size:14px;display:flex;align-items:center;gap:7px}
+.vip{font-size:9px;font-weight:800;letter-spacing:.04em;background:var(--grad);color:#2a1030;padding:2px 6px;border-radius:5px}
+.fname .s{font-size:11px;color:var(--faint);margin-top:2px}
+.fspend{text-align:right;flex-shrink:0}
+.fspend .t{font-weight:800;font-size:15px}
+.fspend .b{font-size:10px;color:var(--faint)}
+.fbar{height:5px;border-radius:3px;background:var(--card3);margin-top:5px;overflow:hidden}
+.fbar>div{height:100%;border-radius:3px;background:var(--grad)}
+
+/* post list */
+.post{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--sep)}
+.post:last-child{border-bottom:none}
+.prank{width:27px;height:27px;border-radius:50%;background:var(--rose-wash);color:var(--rose);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.ptxt{flex:1;font-size:13.5px;line-height:1.4}
+.pmeta{font-size:11px;color:var(--faint);margin-top:4px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.tag{display:inline-block;padding:2px 8px;border-radius:7px;font-size:10px;font-weight:700}
+.tag-eng{background:var(--lav-wash);color:var(--lav)}.tag-tip{background:rgba(232,193,112,.16);color:var(--gold)}
+.plk{font-weight:800;color:var(--rose);text-align:right;white-space:nowrap;flex-shrink:0;font-size:16px}
+.plk small{display:block;font-size:10px;color:var(--faint);font-weight:500}
+
+.callout{background:var(--rose-wash);border:1px solid rgba(255,111,165,.26);border-radius:var(--r);padding:18px 20px;display:flex;gap:14px;align-items:flex-start}
+.callout.mint{background:var(--mint-wash);border-color:rgba(47,217,195,.26)}
+.callout .ce{font-size:24px}.callout h4{font-size:15px;font-weight:700;margin-bottom:3px}.callout p{font-size:13.5px;color:var(--soft);line-height:1.55}
+
+.tt{position:fixed;pointer-events:none;z-index:500;background:rgba(28,28,30,.96);border:1px solid var(--sep);
+  border-radius:10px;padding:8px 11px;font-size:12px;box-shadow:0 8px 24px rgba(0,0,0,.5);opacity:0;transition:opacity .12s;backdrop-filter:blur(8px)}
+.tt b{font-size:13px}
+.foot{text-align:center;padding:38px 22px 54px;color:var(--faint);font-size:11px;letter-spacing:.16em;text-transform:uppercase;border-top:1px solid var(--sep);margin-top:18px}
+
+@media(max-width:680px){.g4{grid-template-columns:1fr 1fr}.g3,.g2{grid-template-columns:1fr}.span2{grid-column:auto}.sec-h{font-size:21px}}
+</style>
+</head>
+<body data-palette="#F0518A,#9B6EF0,#0AA592,#B0802C">
+
+<div class="topbar"><div class="topbar-in">
+  <span class="brand">LiveRich<b>Media</b> · Creator Report</span>
+  <span class="pill pill-green"><span class="dot"></span>AHEAD · 119.97%</span>
+</div></div>
+
+<div class="hero">
+  <div class="orb orb1"></div><div class="orb orb2"></div>
+  <div class="hero-in">
+    <div class="eyebrow">End of Month · June 2026 · Deep Dive</div>
+    <div class="avatar-lg">SM</div>
+    <h1>Shantal's June, <span class="g">line by line.</span></h1>
+    <p class="hero-sub">$119,974.84 gross against a $100,000 goal. Every category, every driver, and the logic behind each chart so the numbers actually mean something.</p>
+    <div class="stat-pills">
+      <span class="spill">💖 <b id="sp-gross">$0</b> gross</span>
+      <span class="spill">🎯 <b id="sp-pct">0%</b> of goal</span>
+      <span class="spill">✨ <b id="sp-sur">$0</b> surplus</span>
+      <span class="spill">🌍 <b>Top 0.11%</b> of all creators</span>
+    </div>
+  </div>
+</div>
+
+<nav class="nav"><div class="nav-in">
+  <button class="np on" data-t="overview">Overview</button>
+  <button class="np" data-t="earnings">Earnings</button>
+  <button class="np" data-t="messages">Messages</button>
+  <button class="np" data-t="tips">Tips</button>
+  <button class="np" data-t="fans">Fans & Subs</button>
+  <button class="np" data-t="reach">Reach</button>
+  <button class="np" data-t="spenders">Top Spenders</button>
+  <button class="np" data-t="content">Content</button>
+  <button class="np" data-t="engine">Revenue Engine</button>
+  <button class="np" data-t="verdict">Verdict</button>
+</div></nav>
+
+<div class="wrap">
+
+  <!-- OVERVIEW -->
+  <section data-sec="overview">
+    <div class="sec-eye">Snapshot</div>
+    <div class="sec-h">The month at a glance</div>
+    <p class="sec-p">Gross is what the fan paid; OnlyFans keeps 20%, so every dollar here is grossed up from the net statement (net ÷ 0.8). These four numbers are the headline; the curve below is the whole month against goal pace.</p>
+    <div class="grid g4" style="margin-bottom:14px">
+      <div class="card kpi"><div class="num tint-rose" id="k-gross">$0</div><div class="lbl">Total gross · June</div><div class="chg up">+10.2% vs May</div></div>
+      <div class="card kpi"><div class="num tint-lav">$3,999</div><div class="lbl">Avg gross per day</div><div class="chg flat">30 active days</div></div>
+      <div class="card kpi"><div class="num tint-mint">602</div><div class="lbl">New + renewed subs</div><div class="chg down">−29.3% vs May</div></div>
+      <div class="card kpi"><div class="num tint-gold">54,649</div><div class="lbl">Profile visitors</div><div class="chg down">−29.9% vs May</div></div>
+    </div>
+    <div class="card">
+      <div class="card-t">Cumulative gross vs. target pace · June</div>
+      <canvas id="c-cum" height="250"></canvas>
+      <div class="logic">
+        <h5>💡 The logic</h5>
+        <p>The <b>solid rose line</b> is money actually banked, adding up day by day. The <b>dashed gold line</b> is the pace needed to hit $100,000 by June 30 — a straight climb of $3,333 a day.</p>
+        <p>Whenever rose sits <b>above</b> gold, Shantal is ahead of schedule. She crossed above pace around June 12 (a $6,882 day) and never gave it back, finishing $19,974 over goal. The gap between the two lines at month end <b>is</b> the surplus.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EARNINGS -->
+  <section data-sec="earnings" hidden>
+    <div class="sec-eye">Where every dollar came from</div>
+    <div class="sec-h">Earnings breakdown</div>
+    <p class="sec-p">OnlyFans splits income into five buckets. Below is the full statement, grossed up, with each bucket's share and its move versus May.</p>
+    <div class="grid g2" style="margin-bottom:14px">
+      <div class="card">
+        <div class="card-t">Revenue split · gross</div>
+        <canvas id="c-cat" height="230"></canvas>
+        <div class="leg" id="cat-leg"></div>
+      </div>
+      <div class="card">
+        <div class="card-t">June statement</div>
+        <table class="stmt mono-n"><thead><tr><th>Category</th><th class="r">Gross</th><th class="r">Share</th><th class="r">vs May</th></tr></thead>
+        <tbody id="stmt-body"></tbody></table>
+      </div>
+    </div>
+    <div class="card" style="margin-bottom:14px">
+      <div class="card-t">Daily gross · messages vs tips (stacked)</div>
+      <canvas id="c-stack" height="230"></canvas>
+      <div class="logic">
+        <h5>💡 The logic</h5>
+        <p>Each bar is one day, split into <b style="color:var(--rose)">messages</b> (bottom) and <b style="color:var(--gold)">tips</b> (top). Messages are the steady base every single day; tips are spikier because they depend on a few big moments landing.</p>
+        <p>June 12 is the tallest bar ($6,882) — that is the day of the live stream, when tips alone hit $3,727. Read the pattern: <b>messages pay the rent, tips are the upside.</b></p>
+      </div>
+    </div>
+    <div class="callout"><span class="ce">📈</span><div>
+      <h4>Peak day: June 28 at $7,439 gross</h4>
+      <p>The single biggest day, driven by a $4,979 message push. Late June ran hot: four of the top five days fell after the 22nd.</p></div>
+    </div>
+  </section>
+
+  <!-- MESSAGES -->
+  <section data-sec="messages" hidden>
+    <div class="sec-eye">The engine</div>
+    <div class="sec-h">Messages · $81,884.78</div>
+    <p class="sec-p">Two out of every three dollars came from paid messages — locked photo and video sets sent in DMs and unlocked by fans. This is the account's core engine.</p>
+    <div class="grid g3" style="margin-bottom:14px">
+      <div class="card kpi"><div class="num tint-rose">$81,884.78</div><div class="lbl">Message gross</div><div class="chg flat">68.3% of total</div></div>
+      <div class="card kpi"><div class="num tint-lav" id="k-munlock">0</div><div class="lbl">Paid unlocks</div><div class="chg up">+0.4% vs May</div></div>
+      <div class="card kpi"><div class="num tint-mint" id="k-mavg">$0</div><div class="lbl">Avg per unlock</div><div class="chg flat">gross</div></div>
+    </div>
+    <div class="card">
+      <div class="card-t">Daily message gross · June</div>
+      <canvas id="c-msg" height="220"></canvas>
+      <div class="logic">
+        <h5>💡 The logic</h5>
+        <p><b>Paid unlocks</b> = the number of fans who paid to open a locked message. <b>Avg per unlock</b> = message gross ÷ paid unlocks — the effective price of a set. Push the number of unlocks up (more sends, better hooks) or the average up (higher-value sets, laddering after a yes) and this bar chart rises.</p>
+        <p>June 28 spiked to $4,979 on 78 unlocks. The floor never dropped below ~$900, which is what a healthy always-on DM operation looks like.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIPS -->
+  <section data-sec="tips" hidden>
+    <div class="sec-eye">The upside</div>
+    <div class="sec-h">Tips · $36,740.52</div>
+    <p class="sec-p">Tips grew <b style="color:var(--green)">+40.4%</b> versus May — the fastest-growing category of the month. Tips are pure margin: no set to produce, just a fan choosing to spoil her.</p>
+    <div class="grid g3" style="margin-bottom:14px">
+      <div class="card kpi"><div class="num tint-gold">$36,740.52</div><div class="lbl">Tip gross</div><div class="chg up">+40.4% vs May</div></div>
+      <div class="card kpi"><div class="num tint-lav" id="k-tcount">0</div><div class="lbl">Tips received</div><div class="chg flat">30.6% of total</div></div>
+      <div class="card kpi"><div class="num tint-mint" id="k-tavg">$0</div><div class="lbl">Avg tip</div><div class="chg flat">gross</div></div>
+    </div>
+    <div class="card">
+      <div class="card-t">Daily tips gross · June</div>
+      <canvas id="c-tips" height="220"></canvas>
+      <div class="logic">
+        <h5>💡 The logic</h5>
+        <p>Tips are <b>event-driven</b>, not steady. See the June 12 tower ($3,727): that is the live stream, where fans tip in real time to get attention. The other tall bars (June 22, 26, 28) line up with tip-wall posts and campaigns.</p>
+        <p>The takeaway: tips do not just happen. They spike when there is a <b>reason to tip right now</b> — a stream, a countdown, a game. More of those moments, more tips.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FANS -->
+  <section data-sec="fans" hidden>
+    <div class="sec-eye">The audience</div>
+    <div class="sec-h">Fans & subscriptions</div>
+    <p class="sec-p">Shantal runs a <b>free page</b>: subscriptions cost $0, so the whole business is turning free fans into message and tip buyers. That is why the Subscriptions line reads $0 and that is by design.</p>
+    <div class="grid g4" style="margin-bottom:14px">
+      <div class="card kpi"><div class="num tint-rose">602</div><div class="lbl">Total subs · June</div><div class="chg down">−29.3% vs May</div></div>
+      <div class="card kpi"><div class="num tint-lav">434</div><div class="lbl">Free subscribers</div><div class="chg flat">72.1% of subs</div></div>
+      <div class="card kpi"><div class="num tint-gold">168</div><div class="lbl">Deleted / banned</div><div class="chg flat">28% churn noise</div></div>
+      <div class="card kpi"><div class="num tint-mint">1</div><div class="lbl">Renewals</div><div class="chg flat">free page</div></div>
+    </div>
+    <div class="grid g2">
+      <div class="card">
+        <div class="card-t">New subscribers per day · June</div>
+        <canvas id="c-subs" height="210"></canvas>
+      </div>
+      <div class="card">
+        <div class="card-t">Subscriber composition</div>
+        <canvas id="c-subdonut" height="210"></canvas>
+        <div class="leg" id="sub-leg"></div>
+      </div>
+    </div>
+    <div class="logic">
+      <h5>💡 The logic</h5>
+      <p><b>Free subscribers (434)</b> are the real, reachable audience — people who can be sold to in DMs. <b>Deleted / banned (168)</b> are accounts OnlyFans could not classify, usually removed fans; they inflate the raw sub count but cannot buy, so we discount them.</p>
+      <p>New subs held a steady ~20/day all month. The <b>−29.3% versus May</b> is a reach problem, not a selling problem: fewer people arrived, but the ones who did spent more (gross still rose +10.2%). Fixing reach is the lever for July.</p>
+    </div>
+  </section>
+
+  <!-- REACH -->
+  <section data-sec="reach" hidden>
+    <div class="sec-eye">Top of funnel</div>
+    <div class="sec-h">Reach & geography</div>
+    <p class="sec-p">54,649 people viewed the profile in June. Where they come from tells us which time zones and promo channels are working.</p>
+    <div class="grid g4" style="margin-bottom:14px">
+      <div class="card kpi"><div class="num tint-mint">54,649</div><div class="lbl">Profile visitors</div><div class="chg down">−29.9% vs May</div></div>
+      <div class="card kpi"><div class="num tint-lav">49,631</div><div class="lbl">Logged-in users</div><div class="chg flat">90.8%</div></div>
+      <div class="card kpi"><div class="num tint-gold">5,018</div><div class="lbl">Guests</div><div class="chg flat">9.2%</div></div>
+      <div class="card kpi"><div class="num tint-rose">1.1%</div><div class="lbl">Visitor→sub rate</div><div class="chg flat">602 of 54,649</div></div>
+    </div>
+    <div class="card">
+      <div class="card-t">Visitors by country · top 10</div>
+      <canvas id="c-geo" height="290"></canvas>
+      <div class="logic">
+        <h5>💡 The logic</h5>
+        <p>Over <b>half the audience (51.6%) is in the United States</b>, so US evening hours are prime selling time. Australia at #2 is the key overnight window — worth having graveyard-shift content ready for it.</p>
+        <p>Visitors are the very top of the funnel: nothing sells without eyeballs first. The <b>−29.9%</b> drop is the number to reverse in July, because everything downstream (subs, messages, tips) scales off it.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOP SPENDERS -->
+  <section data-sec="spenders" hidden>
+    <div class="sec-eye">Who paid</div>
+    <div class="sec-h">Top spenders</div>
+    <p class="sec-p">Revenue is highly concentrated. The top 10 fans alone paid <b style="color:var(--rose)">$40,111</b> — that is <b>33.4% of the entire month</b> from ten people. Protecting and laddering these VIPs is the single highest-leverage job on the account.</p>
+    <div class="grid g3" style="margin-bottom:14px">
+      <div class="card kpi"><div class="num tint-rose">$40,111</div><div class="lbl">Top 10 fans · gross</div><div class="chg flat">33.4% of total</div></div>
+      <div class="card kpi"><div class="num tint-gold">$9,893</div><div class="lbl">Biggest whale · Seve</div><div class="chg flat">8.2% alone</div></div>
+      <div class="card kpi"><div class="num tint-lav">$4,011</div><div class="lbl">Avg of top 10</div><div class="chg flat">per fan</div></div>
+    </div>
+    <div class="card">
+      <div class="card-t">Top 10 fans by gross spend · June</div>
+      <div id="fan-list"></div>
+      <div class="logic">
+        <h5>💡 The logic</h5>
+        <p>Each bar is one fan's total spend, split behind the scenes into messages and tips. Notice the shape: <b>#1 Seve ($9,893) spent more than #4 and #5 combined.</b> This is a classic whale curve — a few fans carry the account.</p>
+        <p>The rule this creates: never let a top-10 VIP go cold. A single lapsed whale is a four-figure hole. Reactivation and personal attention to these ten names is worth more than chasing dozens of new $20 fans.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENT -->
+  <section data-sec="content" hidden>
+    <div class="sec-eye">What she posted</div>
+    <div class="sec-h">Content & stories</div>
+    <p class="sec-p">The feed and streams are not the money — they are the <b>hook</b> that pulls fans into DMs where the selling happens. So we read posts for engagement, not revenue.</p>
+    <div class="grid g4" style="margin-bottom:14px">
+      <div class="card kpi"><div class="num tint-rose">25</div><div class="lbl">Feed posts</div><div class="chg down">−21.9% vs May</div></div>
+      <div class="card kpi"><div class="num tint-lav">119,513</div><div class="lbl">Post views</div><div class="chg down">−30.4% vs May</div></div>
+      <div class="card kpi"><div class="num tint-mint">6,272</div><div class="lbl">Story views · 9 stories</div><div class="chg flat">697 avg</div></div>
+      <div class="card kpi"><div class="num tint-gold">$390</div><div class="lbl">1 live stream · gross</div><div class="chg flat">278 views · 1h 50m</div></div>
+    </div>
+    <div class="grid g2">
+      <div class="card">
+        <div class="card-t">Top posts by likes</div>
+        <canvas id="c-posts" height="250"></canvas>
+      </div>
+      <div class="card">
+        <div class="card-t">Post details</div>
+        <div id="post-list"></div>
+      </div>
+    </div>
+    <div class="logic">
+      <h5>💡 The logic</h5>
+      <p>Likes measure how well a post <b>stops the scroll</b> and warms a fan up. The top posts are personal, teasing, and end with a nudge into DMs ("keep me company in DM", "left a treat in your messages"). That is the pattern: <b>a post's job is to open a conversation, not to close a sale.</b></p>
+      <p>Post count fell 21.9% and views 30.4% — the same reach dip seen everywhere this month. More consistent posting feeds the top of the funnel and, downstream, the message revenue that pays the bills.</p>
+    </div>
+  </section>
+
+  <!-- ENGINE -->
+  <section data-sec="engine" hidden>
+    <div class="sec-eye">How it all connects</div>
+    <div class="sec-h">The revenue engine</div>
+    <p class="sec-p">Every section above is one link in a single chain. Here is the whole machine, left to right, with June's real numbers.</p>
+    <div class="card" style="margin-bottom:14px">
+      <div class="card-t">Reach → revenue · flow</div>
+      <div class="flow" id="flow"></div>
+      <div class="logic">
+        <h5>💡 The logic</h5>
+        <p>Read it as a chain of conversions: <b>visitors</b> become <b>fans</b>, fans get <b>messaged</b>, messages produce <b>message revenue</b>, and message revenue plus tips make <b>total gross</b>. Each arrow is a rate you can improve.</p>
+        <p>Because the funnel narrows fast, the biggest dollar wins are late in the chain (a better DM close beats a few extra visitors). But if the first box shrinks, everything after it shrinks too — which is exactly what the reach dip did this month.</p>
+      </div>
+    </div>
+    <div class="grid g2">
+      <div class="card">
+        <div class="card-t">Fan-to-revenue funnel</div>
+        <div class="funnel" id="funnel"></div>
+      </div>
+      <div class="card">
+        <div class="card-t">Message economics · step by step</div>
+        <div class="flow" id="flow2" style="flex-direction:column;gap:10px"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VERDICT -->
+  <section data-sec="verdict" hidden>
+    <div class="sec-eye">Bottom line</div>
+    <div class="sec-h">Verdict</div>
+    <div class="card" style="text-align:center;padding:46px 26px;position:relative;overflow:hidden">
+      <div class="orb orb1" style="opacity:.22;top:-160px"></div>
+      <div style="position:relative;z-index:1">
+        <div style="font-size:54px;margin-bottom:10px">🏆</div>
+        <div style="font-size:25px;font-weight:800;letter-spacing:-.02em">Ahead of goal. <span class="g" style="background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent">Watch reach in July.</span></div>
+        <p style="color:var(--soft);font-size:15px;max-width:560px;margin:14px auto 0;line-height:1.7">
+          Shantal closed June at 119.97% of goal on $119,974.84 gross, beating the $100,000 target by $19,974.84. Messages and a +40% tips month carried it, and the top 10 VIPs drove a third of everything. The one caution: reach fell ~30% across visitors, subs and post views. Selling stayed elite; the funnel just needs refilling. Keep the DM engine exactly as is, and put July's energy into traffic.</p>
+        <div class="stat-pills" style="margin-top:24px">
+          <span class="spill"><b class="tint-rose">$119,974.84</b> gross</span>
+          <span class="spill"><b class="up">+$19,974.84</b> over goal</span>
+          <span class="spill">🌍 <b>Top 0.11%</b></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<div class="foot mono">LiveRichMedia · Shantal Monique · Creator Report · June 2026 · gross figures (net ÷ 0.8)</div>
+<div class="tt" id="tt"></div>
+
+<script>
+// ── Real data (net from API; grossed up ÷0.8 for display) ──
+const GU=1/0.8;
+const NET_TOTAL=[4247.3,1979,1061.16,1336.72,2333.62,3622.79,2285.22,2933.48,2654.49,2957.59,1709.6,6882.34,1050.27,3002.11,3218.92,3187.14,2264.73,3450.08,3856.73,2803.57,2849.46,4769.44,2815.23,3631.06,2527.07,5677.22,3449.44,7438.84,4087.87,1896.85];
+const NET_MSG=[3079.3,1503.16,878.76,1320.72,1712.02,2182.01,2018.05,1839.18,1518.71,1701.59,1237.6,2776.75,935.9,2444.51,2735.84,1836.76,1980.73,2347.69,2863.13,2753.98,2521.46,2717.44,1665.65,2355.06,1531.07,3659.62,2505.44,4978.85,2061.5,1844.85];
+const NET_TIPS=[1168,475.84,168,16,616,1380,160,1094.3,1124,1256,445.6,3727.2,24,520,479.08,1319.99,284,1047.2,993.6,40,328,2052,1112,1276,996,2017.6,944,2420,1856,52];
+const DAILY=NET_TOTAL.map(v=>v*GU), MSG=NET_MSG.map(v=>v*GU), TIPS=NET_TIPS.map(v=>v*GU);
+const MSG_CNT=[51,29,26,36,33,51,67,41,31,24,19,36,33,63,49,31,36,40,46,54,45,42,34,49,53,82,62,78,35,41];
+const TIP_CNT=[10,7,2,1,9,16,1,16,15,16,15,64,3,6,7,13,5,9,8,3,3,17,10,14,9,21,9,18,14,3];
+const NEW_SUBS=[24,21,23,12,16,21,31,21,18,21,20,18,20,20,23,12,21,19,18,22,20,17,12,28,20,24,22,23,17,18];
+const GROSS=119974.84, TARGET=100000;
+const CAT=[
+  {lb:'Messages',v:81884.78,c:'#F0518A',d:'+0.4%'},
+  {lb:'Tips',v:36740.52,c:'#B0802C',d:'+40.4%'},
+  {lb:'Posts',v:959.54,c:'#9B6EF0',d:'+35.2%'},
+  {lb:'Streams',v:390,c:'#0AA592',d:'−15.6%'},
+  {lb:'Subscriptions',v:0,c:'#3A3A3C',d:'—'},
+];
+const SUBCOMP=[{lb:'Free subscribers',v:434,c:'#F0518A'},{lb:'Deleted / banned',v:168,c:'#B0802C'},{lb:'Paid',v:0,c:'#9B6EF0'}];
+const GEO=[
+  {n:'United States',c:'US',v:28223},{n:'Australia',c:'AU',v:3841},{n:'Canada',c:'CA',v:2541},
+  {n:'United Kingdom',c:'GB',v:2221},{n:'India',c:'IN',v:1881},{n:'Mexico',c:'MX',v:1714},
+  {n:'Germany',c:'DE',v:1377},{n:'Netherlands',c:'NL',v:736},{n:'Italy',c:'IT',v:685},{n:'Norway',c:'NO',v:614}];
+const FANS=[
+  {n:'Seve',loc:'Longtime VIP',t:9892.79,m:5467.19,tp:4417.6},
+  {n:'Are',loc:'VIP · Norway',t:4780,m:1900,tp:2880},
+  {n:'Donovan',loc:'VIP · Pennsylvania',t:3919.29,m:1679.29,tp:2240},
+  {n:'Johnny',loc:'VIP',t:3889.01,m:3633.01,tp:256},
+  {n:'Reggie',loc:'VIP · Louisiana',t:3524.79,m:1524.79,tp:2000},
+  {n:'Tony',loc:'New VIP',t:3156,m:2908,tp:248},
+  {n:'Jimmy',loc:'VIP · Cyprus',t:3056,m:1536,tp:1520},
+  {n:'David',loc:'VIP · North Carolina',t:2913.59,m:1833.59,tp:1080},
+  {n:'Longtime top spender',loc:'VIP · Florida',t:2618.39,m:1178.39,tp:1440},
+  {n:'Nebo',loc:'VIP · Europe',t:2361.18,m:2201.18,tp:160}];
+const POSTS=[
+  {t:"Guess what I've been working on today...you'll see it soon",d:'Jun 5',l:205,c:3,tip:false},
+  {t:"This white top might be my favorite thing I've worn all month",d:'Jun 7',l:201,c:1,tip:false},
+  {t:"Soaking up sunshine today. Tell me what you're up to and keep me company in DM",d:'Jun 10',l:200,c:4,tip:false},
+  {t:"Father's Day weekend and I am in a spoiling mood. I left a little treat in your messages",d:'Jun 20',l:197,c:3,tip:false},
+  {t:"One wrong look and I'm making bad decisions tonight",d:'Jun 1',l:196,c:2,tip:false},
+  {t:"Happy Fathers day everyone. Good morning from me to you",d:'Jun 21',l:186,c:5,tip:false},
+  {t:"MONDAY DEAL. Tip $25 right here and I'll send you a private set worth way more. One day only.",d:'Jun 8',l:174,c:3,tip:true},
+  {t:"Going live Thursday 4:30pm PST. Vote so I know who I'm playing for.",d:'Jun 9',l:174,c:3,tip:false}];
+
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const fmt=n=>'$'+Math.round(n).toLocaleString('en-US');
+const fmtc=n=>'$'+n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+const fmtk=n=>n>=1000?'$'+(n/1000).toFixed(n>=10000?0:1)+'k':'$'+Math.round(n);
+const sum=a=>a.reduce((x,y)=>x+y,0);
+const tt=$('#tt');
+function showTT(h,x,y){tt.innerHTML=h;tt.style.opacity=1;const r=tt.getBoundingClientRect();
+  let nx=x+14,ny=y-r.height-10;if(nx+r.width>innerWidth-8)nx=x-r.width-14;if(ny<8)ny=y+16;
+  tt.style.left=nx+'px';tt.style.top=ny+'px';}
+function hideTT(){tt.style.opacity=0}
+function ani(fn,dur=1100){const s=performance.now();
+  (function f(now){const p=Math.min((now-s)/dur,1),e=1-Math.pow(1-p,3);fn(e);if(p<1)requestAnimationFrame(f);})(performance.now());}
+function sc(id){const cv=$('#'+id);if(!cv)return null;const dpr=devicePixelRatio||1;
+  const w=cv.offsetWidth||(cv.parentElement.offsetWidth-40)||600,h=+cv.getAttribute('height')||200;
+  cv.width=w*dpr;cv.height=h*dpr;cv.style.height=h+'px';const x=cv.getContext('2d');x.scale(dpr,dpr);return{cv,x,w,h};}
+function grad(x,x0,x1,a,b){const g=x.createLinearGradient(x0,0,x1,0);g.addColorStop(0,a);g.addColorStop(1,b);return g;}
+function vgrad(x,y0,y1,a,b){const g=x.createLinearGradient(0,y0,0,y1);g.addColorStop(0,a);g.addColorStop(1,b);return g;}
+function rr(x,a,b,c,d,r){if(x.roundRect){x.beginPath();x.roundRect(a,b,c,Math.max(d,.5),r);x.fill();}else x.fillRect(a,b,c,d);}
+
+// ── Cumulative line ──
+function drawCum(){const r=sc('c-cum');if(!r)return;const{cv,x,w,h}=r;
+  const pad={t:20,r:14,b:34,l:58},cw=w-pad.l-pad.r,ch=h-pad.t-pad.b;
+  const cum=[],pace=[];let run=0;for(let i=0;i<30;i++){run+=DAILY[i];cum.push(run);pace.push(TARGET*(i+1)/30);}
+  const mx=Math.max(...cum,TARGET)*1.06,X=i=>pad.l+i/29*cw,Y=v=>pad.t+ch*(1-v/mx);
+  ani(prog=>{x.clearRect(0,0,w,h);
+    x.strokeStyle='rgba(255,255,255,.06)';x.fillStyle='#8E8E93';x.font='11px -apple-system';x.lineWidth=1;
+    for(let i=0;i<=4;i++){const y=pad.t+ch*(1-i/4);x.beginPath();x.moveTo(pad.l,y);x.lineTo(pad.l+cw,y);x.stroke();
+      x.textAlign='right';x.fillText(fmtk(mx*i/4),pad.l-7,y+4);}
+    x.textAlign='center';[1,7,14,21,28].forEach(d=>x.fillText('Jun '+d,X(d-1),h-4));
+    x.strokeStyle='rgba(232,193,112,.55)';x.lineWidth=1.5;x.setLineDash([5,4]);x.beginPath();
+    pace.forEach((v,i)=>{i?x.lineTo(X(i),Y(v)):x.moveTo(X(i),Y(v))});x.stroke();x.setLineDash([]);
+    x.fillStyle='rgba(232,193,112,.8)';x.textAlign='left';x.fillText('Target pace $100k',pad.l+4,Y(TARGET)-7);
+    const pts=Math.max(2,Math.floor(30*prog));
+    x.fillStyle=vgrad(x,pad.t,pad.t+ch,'rgba(255,111,165,.34)','rgba(255,111,165,0)');
+    x.beginPath();x.moveTo(pad.l,pad.t+ch);for(let i=0;i<pts;i++)x.lineTo(X(i),Y(cum[i]));x.lineTo(X(pts-1),pad.t+ch);x.closePath();x.fill();
+    x.strokeStyle=grad(x,pad.l,pad.l+cw,'#FF6FA5','#C9A0FF');x.lineWidth=3;x.shadowBlur=12;x.shadowColor='rgba(255,111,165,.6)';
+    x.beginPath();for(let i=0;i<pts;i++)x.lineTo(X(i),Y(cum[i]));x.stroke();x.shadowBlur=0;
+    if(prog>.92){x.beginPath();x.arc(X(pts-1),Y(cum[pts-1]),5,0,7);x.fillStyle='#FF6FA5';x.fill();x.strokeStyle='#fff';x.lineWidth=2;x.stroke();}});
+  cv.onmousemove=e=>{const b=cv.getBoundingClientRect();let i=Math.round((e.clientX-b.left-pad.l)/cw*29);i=Math.max(0,Math.min(29,i));
+    showTT(`<b>Jun ${i+1}</b><br>Cumulative ${fmt(cum[i])}<br>Target ${fmt(pace[i])}`,e.clientX,e.clientY);};
+  cv.onmouseleave=hideTT;}
+
+// ── Category donut ──
+function drawDonut(id,legId,data,centerLbl){const r=sc(id);if(!r)return;const{cv,x,w,h}=r;
+  const cx=w/2,cy=h/2,R=Math.min(w,h)/2*.9,ri=R*.58,tot=sum(data.map(s=>s.v));
+  document.getElementById(legId).innerHTML=data.filter(s=>s.v>0).map(s=>`<div class="leg-row"><span class="leg-dot" style="background:${s.c}"></span>
+    <span class="leg-nm">${s.lb}</span><span class="leg-v">${fmt(s.v)}</span><span class="leg-p">${(s.v/tot*100).toFixed(1)}%</span></div>`).join('');
+  let segs=[];
+  ani(p=>{x.clearRect(0,0,w,h);let a=-Math.PI/2;segs=[];
+    data.forEach(s=>{if(s.v<=0)return;const sw=s.v/tot*2*Math.PI*p;segs.push({a0:a,a1:a+sw,...s});
+      x.beginPath();x.moveTo(cx,cy);x.arc(cx,cy,R,a,a+sw);x.closePath();x.fillStyle=s.c;x.fill();
+      x.strokeStyle='#1C1C1E';x.lineWidth=3;x.beginPath();x.moveTo(cx,cy);x.lineTo(cx+Math.cos(a)*R,cy+Math.sin(a)*R);x.stroke();a+=sw;});
+    x.beginPath();x.arc(cx,cy,ri,0,7);x.fillStyle='#1C1C1E';x.fill();
+    x.fillStyle='#8E8E93';x.textAlign='center';x.font='600 11px -apple-system';x.fillText(centerLbl,cx,cy-8);
+    x.fillStyle='#F5F5F7';x.font='800 16px -apple-system';x.fillText(centerLbl==='TOTAL GROSS'?fmt(tot*p):Math.round(tot*p).toLocaleString(),cx,cy+13);});
+  cv.onmousemove=e=>{const b=cv.getBoundingClientRect();const dx=e.clientX-b.left-cx,dy=e.clientY-b.top-cy,dist=Math.hypot(dx,dy);
+    if(dist<ri||dist>R){hideTT();return;}let ang=Math.atan2(dy,dx);if(ang<-Math.PI/2)ang+=2*Math.PI;
+    const seg=segs.find(s=>ang>=s.a0&&ang<s.a1);if(seg)showTT(`<b>${seg.lb}</b><br>${fmt(seg.v)} · ${(seg.v/tot*100).toFixed(1)}%`,e.clientX,e.clientY);};
+  cv.onmouseleave=hideTT;}
+
+// ── Stacked daily (msg+tips) ──
+function drawStack(){const r=sc('c-stack');if(!r)return;const{cv,x,w,h}=r;
+  const pad={t:12,r:8,b:26,l:52},cw=w-pad.l-pad.r,ch=h-pad.t-pad.b;
+  const mx=Math.max(...DAILY.map((_,i)=>MSG[i]+TIPS[i]))*1.12,step=cw/30,bw=step*.66;
+  ani(p=>{x.clearRect(0,0,w,h);x.strokeStyle='rgba(255,255,255,.06)';x.fillStyle='#8E8E93';x.font='11px -apple-system';
+    for(let i=0;i<=3;i++){const y=pad.t+ch*(1-i/3);x.beginPath();x.moveTo(pad.l,y);x.lineTo(pad.l+cw,y);x.stroke();x.textAlign='right';x.fillText(fmtk(mx*i/3),pad.l-5,y+4);}
+    for(let i=0;i<30;i++){const bx=pad.l+i*step+(step-bw)/2;
+      const mh=MSG[i]/mx*ch*p,th=TIPS[i]/mx*ch*p,base=pad.t+ch;
+      x.fillStyle=vgrad(x,base-mh,base,'#F0518A','#FF6FA5');rr(x,bx,base-mh,bw,mh,[0,0,0,0]);
+      x.fillStyle='#B0802C';rr(x,bx,base-mh-th,bw,th,[3,3,0,0]);}
+    x.fillStyle='#8E8E93';x.textAlign='center';[1,10,20,29].forEach(d=>x.fillText(d,pad.l+(d-.5)*step,h-4));});
+  cv.onmousemove=e=>{const b=cv.getBoundingClientRect();let i=Math.floor((e.clientX-b.left-pad.l)/step);
+    if(i<0||i>29){hideTT();return;}showTT(`<b>Jun ${i+1}</b> · ${fmt(MSG[i]+TIPS[i])}<br>Messages ${fmt(MSG[i])}<br>Tips ${fmt(TIPS[i])}`,e.clientX,e.clientY);};
+  cv.onmouseleave=hideTT;}
+
+// ── Simple daily bar (generic) ──
+function drawBar(id,data,c1,c2,cntArr,unit){const r=sc(id);if(!r)return;const{cv,x,w,h}=r;
+  const pad={t:12,r:8,b:26,l:50},cw=w-pad.l-pad.r,ch=h-pad.t-pad.b,mx=Math.max(...data)*1.14,step=cw/data.length,bw=step*.66;
+  ani(p=>{x.clearRect(0,0,w,h);x.strokeStyle='rgba(255,255,255,.06)';x.fillStyle='#8E8E93';x.font='11px -apple-system';
+    for(let i=0;i<=3;i++){const y=pad.t+ch*(1-i/3);x.beginPath();x.moveTo(pad.l,y);x.lineTo(pad.l+cw,y);x.stroke();x.textAlign='right';
+      x.fillText(unit==='$'?fmtk(mx*i/3):Math.round(mx*i/3),pad.l-5,y+4);}
+    data.forEach((v,i)=>{const bx=pad.l+i*step+(step-bw)/2,bh=v/mx*ch*p,by=pad.t+ch-bh;
+      x.fillStyle=v===0?'rgba(255,111,165,.15)':vgrad(x,by,pad.t+ch,c1,c2);rr(x,bx,by,bw,bh,[Math.min(4,bw/2),Math.min(4,bw/2),0,0]);});
+    x.fillStyle='#8E8E93';x.textAlign='center';
+    [1,10,20,29].forEach(d=>{if(d<data.length)x.fillText(d,pad.l+(d-.5)*step,h-4);});});
+  cv.onmousemove=e=>{const b=cv.getBoundingClientRect();let i=Math.floor((e.clientX-b.left-pad.l)/step);
+    if(i<0||i>=data.length){hideTT();return;}
+    let extra=cntArr?`<br>${cntArr[i]} ${unit==='$'?'':''}`:'';
+    showTT(`<b>Jun ${i+1}</b><br>${unit==='$'?fmt(data[i]):data[i]}${cntArr?'<br>'+cntArr[i]+' count':''}`,e.clientX,e.clientY);};
+  cv.onmouseleave=hideTT;}
+
+// ── Geo horizontal bars ──
+function drawGeo(){const r=sc('c-geo');if(!r)return;const{cv,x,w,h}=r;
+  const pad={t:6,r:66,b:6,l:120},cw=w-pad.l-pad.r,ch=h-pad.t-pad.b,mx=GEO[0].v,rh=ch/GEO.length,tot=54649;
+  ani(p=>{x.clearRect(0,0,w,h);
+    GEO.forEach((g,i)=>{const y=pad.t+i*rh,bh=rh*.56,by=y+(rh-bh)/2;
+      x.fillStyle='#F5F5F7';x.font='13px -apple-system';x.textAlign='left';x.textBaseline='middle';
+      x.fillText(g.n,6,by+bh/2);
+      x.fillStyle='rgba(47,217,195,.16)';rr(x,pad.l,by,cw,bh,bh/2);
+      x.fillStyle=grad(x,pad.l,pad.l+cw,'#2FD9C3','#0AA592');rr(x,pad.l,by,Math.max(g.v/mx*cw*p,bh),bh,bh/2);
+      x.fillStyle='#AEAEB2';x.font='700 12px -apple-system';x.textAlign='left';
+      x.fillText((g.v/tot*100).toFixed(1)+'%',pad.l+cw+8,by+bh/2);});
+    x.textBaseline='alphabetic';},1000);
+  cv.onmousemove=e=>{const b=cv.getBoundingClientRect();let i=Math.floor((e.clientY-b.top-pad.t)/rh);
+    if(i<0||i>=GEO.length){hideTT();return;}showTT(`<b>${GEO[i].n}</b><br>${GEO[i].v.toLocaleString()} visitors · ${(GEO[i].v/54649*100).toFixed(1)}%`,e.clientX,e.clientY);};
+  cv.onmouseleave=hideTT;}
+
+// ── Posts bars ──
+function drawPosts(){const r=sc('c-posts');if(!r)return;const{cv,x,w,h}=r;
+  const pad={t:6,r:42,b:6,l:6},cw=w-pad.l-pad.r,ch=h-pad.t-pad.b,mx=POSTS[0].l,rh=ch/POSTS.length;
+  ani(p=>{x.clearRect(0,0,w,h);POSTS.forEach((po,i)=>{const y=pad.t+i*rh,bh=rh*.5,by=y+(rh-bh)/2,c=po.tip?'#B0802C':'#F0518A';
+    x.fillStyle=c+'26';rr(x,pad.l,by,cw,bh,bh/2);
+    x.fillStyle=grad(x,pad.l,pad.l+cw,po.tip?'#E8C170':'#FF6FA5',po.tip?'#B0802C':'#C9A0FF');rr(x,pad.l,by,Math.max(po.l/mx*cw*p,bh),bh,bh/2);
+    x.fillStyle='#F5F5F7';x.font='800 12px -apple-system';x.textAlign='left';x.fillText(po.l,pad.l+cw+6,by+bh/2+4);});},900);}
+
+// ── Builders ──
+function buildStmt(){const tot=GROSS;
+  $('#stmt-body').innerHTML=CAT.map(s=>`<tr><td><div class="cat"><span class="sw" style="background:${s.c}"></span>${s.lb}</div></td>
+    <td class="r gv">${s.v?fmtc(s.v):'$0.00'}</td><td class="r mut">${(s.v/tot*100).toFixed(1)}%</td>
+    <td class="r" style="color:${s.d.includes('+')?'var(--green)':s.d.includes('−')?'var(--red)':'var(--faint)'}">${s.d}</td></tr>`).join('')
+    +`<tr class="tot"><td>Total gross</td><td class="r">${fmtc(tot)}</td><td class="r">100%</td><td class="r up">+10.2%</td></tr>`;}
+function buildFans(){const mx=FANS[0].t;
+  $('#fan-list').innerHTML=FANS.map((f,i)=>`<div class="fan">
+    <div class="frank ${i<3?'gold':''}">${i+1}</div>
+    <div class="fname"><div class="n">${f.n} <span class="vip">${f.loc.includes('New')?'NEW VIP':'VIP'}</span></div>
+      <div class="s">${f.loc.replace('New VIP','New')} · msgs ${fmt(f.m)} · tips ${fmt(f.tp)}</div>
+      <div class="fbar"><div style="width:${f.t/mx*100}%"></div></div></div>
+    <div class="fspend"><div class="t">${fmt(f.t)}</div><div class="b">gross</div></div></div>`).join('');}
+function buildPosts(){$('#post-list').innerHTML=POSTS.map((p,i)=>`<div class="post"><div class="prank">${i+1}</div>
+    <div class="ptxt">${p.t.slice(0,74)}${p.t.length>74?'…':''}
+      <div class="pmeta">${p.d} · ${p.c} comment${p.c!==1?'s':''}<span class="tag ${p.tip?'tag-tip':'tag-eng'}">${p.tip?'Tip Wall $25':'Engagement'}</span></div></div>
+    <div class="plk">${p.l}<small>likes</small></div></div>`).join('');}
+function buildFlow(){
+  const nodes=[{i:'👀',v:'54.6k',l:'Profile visitors'},{i:'💌',v:'602',l:'Subscribers'},{i:'💬',v:'1,283',l:'Paid unlocks'},{i:'💖',v:'$81.9k',l:'Message gross'},{i:'🏆',v:'$120k',l:'Total gross'}];
+  $('#flow').innerHTML=nodes.map((n,i)=>`<div class="fnode" style="animation-delay:${i*.11}s"><div class="fi">${n.i}</div><div class="fv">${n.v}</div><div class="fl">${n.l}</div></div>`+(i<nodes.length-1?'<div class="farrow">→</div>':'')).join('');
+  const eco=[{i:'💬',v:'1,283',l:'Paid message unlocks this month'},{i:'💵',v:'$63.82',l:'Average gross per unlock'},{i:'💖',v:'$81,884.78',l:'Total message gross · 68.3% of all revenue'}];
+  $('#flow2').innerHTML=eco.map((n,i)=>`<div class="fnode" style="animation-delay:${i*.11}s;text-align:left;display:flex;gap:12px;align-items:center">
+    <div class="fi">${n.i}</div><div><div class="fv" style="margin:0">${n.v}</div><div class="fl">${n.l}</div></div></div>`+(i<eco.length-1?'<div class="farrow" style="transform:rotate(90deg)">→</div>':'')).join('');}
+function buildFunnel(){const steps=[
+    {v:'54,649',l:'Profile visitors',c:'#0AA592',w:100},
+    {v:'602',l:'Subscribers',c:'#9B6EF0',w:78,r:'1.1%'},
+    {v:'~430',l:'Fans who spent',c:'#F0518A',w:58},
+    {v:'$119,974.84',l:'Total gross',c:'#FF6FA5',w:42}];
+  $('#funnel').innerHTML=steps.map((s,i)=>`<div class="fstep" style="width:${s.w}%;background:linear-gradient(135deg,${s.c},${s.c}cc);animation-delay:${i*.12}s">
+    <div class="sv">${s.v}</div><div class="sl">${s.l}</div>${s.r?`<span class="sr">${s.r}</span>`:''}</div>`).join('');}
+
+// ── Tabs ──
+function initSec(t){
+  if(t==='overview')drawCum();
+  else if(t==='earnings'){drawDonut('c-cat','cat-leg',CAT,'TOTAL GROSS');drawStack();buildStmt();}
+  else if(t==='messages'){drawBar('c-msg',MSG,'#F0518A','#FF6FA5',null,'$');}
+  else if(t==='tips'){drawBar('c-tips',TIPS,'#E8C170','#B0802C',null,'$');}
+  else if(t==='fans'){drawBar('c-subs',NEW_SUBS,'#9B6EF0','#C9A0FF',null,'n');drawDonut('c-subdonut','sub-leg',SUBCOMP,'SUBS');}
+  else if(t==='reach'){drawGeo();}
+  else if(t==='spenders'){buildFans();}
+  else if(t==='content'){drawPosts();buildPosts();}
+  else if(t==='engine'){buildFlow();buildFunnel();}
+}
+$$('.np').forEach(b=>b.onclick=()=>{const t=b.dataset.t;
+  $$('.np').forEach(x=>x.classList.toggle('on',x===b));
+  $$('section[data-sec]').forEach(s=>s.hidden=s.dataset.sec!==t);
+  requestAnimationFrame(()=>initSec(t));});
+
+// ── Boot ──
+addEventListener('load',()=>{
+  $('#k-munlock').textContent=sum(MSG_CNT).toLocaleString();
+  $('#k-mavg').textContent=fmtc(81884.78/sum(MSG_CNT));
+  $('#k-tcount').textContent=sum(TIP_CNT).toLocaleString();
+  $('#k-tavg').textContent=fmtc(36740.52/sum(TIP_CNT));
+  const g=$('#sp-gross'),pc=$('#sp-pct'),su=$('#sp-sur'),kg=$('#k-gross'),s0=performance.now();
+  (function tick(now){const p=Math.min((now-s0)/1700,1),e=1-Math.pow(1-p,3);
+    g.textContent=fmt(119974.84*e);kg.textContent=fmt(119974.84*e);pc.textContent=(119.97*e).toFixed(1)+'%';su.textContent=fmt(19974.84*e);
+    if(p<1)requestAnimationFrame(tick);})(performance.now());
+  setTimeout(()=>initSec('overview'),60);});
+addEventListener('resize',()=>{const on=$('.np.on');if(on)initSec(on.dataset.t);});
+</script>
+</body>
+</html>
