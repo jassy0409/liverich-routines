@@ -1,0 +1,534 @@
+<title>Chatter Playbook · Module 6 Exam · The Chase</title>
+<meta name="color-scheme" content="dark">
+<script>document.documentElement.setAttribute('data-theme','dark');</script>
+
+<style>
+  :root{
+    --bg:#ECECF1; --bg-2:#F7F7FA; --card:#FFFFFF; --card-2:#FBFBFD;
+    --sep:rgba(60,60,67,0.14); --sep-strong:rgba(60,60,67,0.24);
+    --ink:#1C1C1E; --ink-2:#3C3C43; --ink-soft:#6E6E73; --ink-faint:#8E8E93;
+    --gold:#C99A3E; --gold-deep:#A97F27; --gold-soft:rgba(201,154,62,0.14);
+    --imsg:#1E8CFF; --imsg-2:#0A74E6; --grey-bubble:#E9E9EB;
+    --green:#34C759; --amber:#FF9F0A; --red:#FF3B30;
+    --shadow-sm:0 1px 2px rgba(0,0,0,.05);
+    --shadow:0 8px 30px rgba(30,25,10,.08), 0 2px 8px rgba(30,25,10,.05);
+    --shadow-lg:0 30px 70px rgba(20,16,6,.14), 0 8px 20px rgba(20,16,6,.08);
+    --r-lg:24px; --r-md:18px; --r-sm:12px; --maxw:920px;
+    --sans:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --mono:"SF Mono",ui-monospace,"JetBrains Mono",Menlo,Consolas,monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{--bg:#000000; --bg-2:#0B0B0D; --card:#1C1C1E; --card-2:#2C2C2E;
+      --sep:rgba(84,84,88,0.36); --sep-strong:rgba(120,120,128,0.5);
+      --ink:#F5F5F7; --ink-2:#EBEBF0; --ink-soft:#AEAEB2; --ink-faint:#8E8E93;
+      --gold:#E8C170; --gold-deep:#D9B26A; --gold-soft:rgba(232,193,112,0.16);
+      --grey-bubble:#3A3A3C;
+      --shadow:0 8px 30px rgba(0,0,0,.5); --shadow-lg:0 30px 70px rgba(0,0,0,.6);}
+  }
+  :root[data-theme="light"]{--bg:#ECECF1;--bg-2:#F7F7FA;--card:#FFF;--card-2:#FBFBFD;
+    --sep:rgba(60,60,67,0.14);--sep-strong:rgba(60,60,67,0.24);--ink:#1C1C1E;--ink-2:#3C3C43;
+    --ink-soft:#6E6E73;--ink-faint:#8E8E93;--gold:#C99A3E;--gold-deep:#A97F27;--gold-soft:rgba(201,154,62,0.14);
+    --grey-bubble:#E9E9EB;--shadow:0 8px 30px rgba(30,25,10,.08),0 2px 8px rgba(30,25,10,.05);--shadow-lg:0 30px 70px rgba(20,16,6,.14),0 8px 20px rgba(20,16,6,.08);}
+  :root[data-theme="dark"]{--bg:#000;--bg-2:#0B0B0D;--card:#1C1C1E;--card-2:#2C2C2E;
+    --sep:rgba(84,84,88,0.36);--sep-strong:rgba(120,120,128,0.5);--ink:#F5F5F7;--ink-2:#EBEBF0;
+    --ink-soft:#AEAEB2;--ink-faint:#8E8E93;--gold:#E8C170;--gold-deep:#D9B26A;--gold-soft:rgba(232,193,112,0.16);
+    --grey-bubble:#3A3A3C;--shadow:0 8px 30px rgba(0,0,0,.5);--shadow-lg:0 30px 70px rgba(0,0,0,.6);}
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;} *{animation:none!important;transition:none!important;}}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.5;
+    -webkit-font-smoothing:antialiased;letter-spacing:-0.01em;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px;}
+
+  /* ---------- top bar (frosted) ---------- */
+  .topbar{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--bg) 72%,transparent);
+    backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);
+    border-bottom:1px solid var(--sep);}
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:52px;}
+  .topbar .brand{font-size:15px;font-weight:600;letter-spacing:-0.01em;}
+  .topbar .brand span{color:var(--gold);}
+  .topbar .pill{font-size:12px;font-weight:600;color:var(--ink-soft);background:var(--card);border:1px solid var(--sep);
+    padding:5px 11px;border-radius:999px;}
+
+  /* ---------- hero ---------- */
+  header.hero{text-align:center;padding:72px 0 40px;position:relative;overflow:hidden;}
+  .orb{position:absolute;border-radius:50%;filter:blur(60px);opacity:.5;z-index:0;pointer-events:none;}
+  .orb.a{width:340px;height:340px;background:radial-gradient(circle,var(--gold),transparent 70%);top:-120px;left:50%;transform:translateX(-60%);}
+  .orb.b{width:260px;height:260px;background:radial-gradient(circle,var(--imsg),transparent 70%);top:-60px;right:12%;opacity:.22;}
+  header.hero .wrap{position:relative;z-index:1;}
+  .eyebrow{font-size:13px;font-weight:600;letter-spacing:0.02em;color:var(--gold);margin:0 0 16px;text-transform:uppercase;}
+  h1{font-weight:700;font-size:clamp(40px,8vw,68px);line-height:1.02;letter-spacing:-0.03em;margin:0 auto 18px;max-width:14ch;text-wrap:balance;}
+  h1 em{font-style:normal;background:linear-gradient(120deg,var(--gold),var(--gold-deep));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .lede{font-size:21px;line-height:1.45;color:var(--ink-soft);max-width:52ch;margin:0 auto 30px;font-weight:400;}
+  .stat-row{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;}
+  .stat{background:var(--card);border:1px solid var(--sep);border-radius:999px;padding:8px 16px;font-size:13.5px;font-weight:500;color:var(--ink-soft);box-shadow:var(--shadow-sm);}
+  .stat b{color:var(--ink);font-weight:700;}
+
+  section{padding:44px 0;}
+  .sec-head{margin:0 0 6px;}
+  .sec-kicker{font-size:13px;font-weight:600;letter-spacing:0.02em;text-transform:uppercase;color:var(--gold);margin:0 0 6px;}
+  h2{font-weight:700;font-size:clamp(26px,4.4vw,38px);line-height:1.1;letter-spacing:-0.02em;margin:0 0 8px;text-wrap:balance;}
+  .sub{font-size:19px;color:var(--ink-soft);max-width:60ch;margin:0 0 26px;line-height:1.45;}
+  h3{font-weight:700;font-size:22px;letter-spacing:-0.015em;margin:38px 0 14px;}
+
+  /* ---------- iPhone mockups ---------- */
+  .phones{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:34px 26px;margin:26px 0 8px;}
+  .phone-wrap{display:flex;flex-direction:column;align-items:center;}
+  .phone{width:100%;max-width:290px;aspect-ratio:9/17.6;background:var(--card-2);border-radius:44px;
+    padding:11px;box-shadow:var(--shadow-lg);border:1px solid var(--sep);position:relative;}
+  .screen{width:100%;height:100%;background:var(--card);border-radius:34px;overflow:hidden;display:flex;flex-direction:column;position:relative;}
+  .island{position:absolute;top:9px;left:50%;transform:translateX(-50%);width:74px;height:20px;background:#000;border-radius:14px;z-index:5;}
+  @media (prefers-color-scheme:light){.island{background:#000;}}
+  /* status bar */
+  .status{display:flex;justify-content:space-between;align-items:center;padding:13px 22px 4px;font-size:12px;font-weight:600;color:var(--ink);}
+  .status .sig{display:flex;gap:4px;align-items:center;}
+  .status svg{display:block;}
+  /* messages header */
+  .msg-head{display:flex;flex-direction:column;align-items:center;gap:3px;padding:4px 10px 10px;border-bottom:1px solid var(--sep);position:relative;}
+  .msg-head .chev{position:absolute;left:12px;top:8px;color:var(--imsg);font-size:22px;font-weight:600;line-height:1;}
+  .msg-head .ico{position:absolute;right:12px;top:10px;color:var(--imsg);}
+  .avatar{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-size:18px;font-weight:600;color:#fff;background:linear-gradient(150deg,#B0B0B5,#8E8E93);}
+  .msg-head .nm{font-size:12px;font-weight:600;display:flex;align-items:center;gap:3px;}
+  .msg-head .nm .c{font-size:10px;color:var(--ink-faint);}
+  /* thread */
+  .thread{flex:1;overflow:hidden;padding:12px 12px 8px;display:flex;flex-direction:column;gap:3px;}
+  . b{max-width:78%;padding:8px 13px;font-size:13.5px;line-height:1.32;border-radius:18px;position:relative;word-wrap:break-word;}
+  .b.in{align-self:flex-start;background:var(--grey-bubble);color:var(--ink);border-bottom-left-radius:5px;}
+  .b.out{align-self:flex-end;color:#fff;border-bottom-right-radius:5px;
+    background:linear-gradient(160deg,var(--imsg),var(--imsg-2));}
+  .b + .b{margin-top:1px;}
+  .gap{height:8px;}
+  .delivered{align-self:flex-end;font-size:9.5px;color:var(--ink-faint);font-weight:500;margin:2px 4px 0;}
+  /* input bar */
+  .inbar{display:flex;align-items:center;gap:8px;padding:8px 12px 14px;border-top:1px solid var(--sep);}
+  .inbar .field{flex:1;height:30px;border:1px solid var(--sep-strong);border-radius:16px;}
+  .inbar .send{width:28px;height:28px;border-radius:50%;background:var(--imsg);display:flex;align-items:center;justify-content:center;color:#fff;flex:0 0 auto;}
+  /* caption under phone */
+  .phone-cap{margin:18px 0 0;text-align:center;max-width:300px;}
+  .phone-cap .k{font-size:12px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:var(--gold);}
+  .phone-cap .d{font-size:14.5px;color:var(--ink-soft);margin-top:5px;line-height:1.4;}
+  .dont{display:inline-flex;align-items:center;gap:6px;margin-top:10px;font-size:12.5px;color:var(--red);
+    background:color-mix(in srgb,var(--red) 10%,var(--card));border:1px solid color-mix(in srgb,var(--red) 26%,var(--sep));
+    padding:5px 11px;border-radius:999px;}
+  .dont s{color:var(--ink-faint);}
+
+  /* ---------- callout ---------- */
+  .callout{background:var(--card);border:1px solid var(--sep);border-radius:var(--r-md);padding:20px 24px;margin:26px 0;box-shadow:var(--shadow-sm);display:flex;gap:16px;align-items:flex-start;}
+  .callout .emoji{font-size:26px;line-height:1;flex:0 0 auto;}
+  .callout .t{font-weight:700;font-size:16px;margin:0 0 4px;}
+  .callout p{margin:0;color:var(--ink-soft);font-size:15.5px;}
+
+  /* ---------- grouped inset list (iOS settings style) ---------- */
+  .group{background:var(--card);border-radius:var(--r-md);box-shadow:var(--shadow-sm);border:1px solid var(--sep);overflow:hidden;margin:16px 0;}
+  .group .row{padding:16px 18px;border-bottom:1px solid var(--sep);}
+  .group .row:last-child{border-bottom:none;}
+  .field-lbl{font-size:12.5px;font-weight:600;letter-spacing:0.02em;text-transform:uppercase;color:var(--ink-faint);margin:0 0 8px;}
+  input[type=text],select,textarea{width:100%;background:transparent;border:none;color:var(--ink);font-family:var(--sans);
+    font-size:16.5px;padding:0;letter-spacing:-0.01em;}
+  textarea{min-height:70px;line-height:1.45;resize:vertical;}
+  input:focus,select,textarea:focus{outline:none;}
+  select{cursor:pointer;-webkit-appearance:none;appearance:none;color:var(--ink);}
+  .field-wrap{background:var(--card);border:1px solid var(--sep);border-radius:var(--r-sm);padding:12px 14px;transition:border-color .12s,box-shadow .12s;}
+  .field-wrap:focus-within{border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-soft);}
+  .idrow{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  @media (max-width:560px){.idrow{grid-template-columns:1fr;}}
+  #lockedNote{display:none;background:var(--gold-soft);border:1px solid color-mix(in srgb,var(--gold) 40%,var(--sep));
+    border-radius:var(--r-sm);padding:12px 16px;font-size:14.5px;color:var(--gold-deep);font-weight:500;margin:0 0 18px;}
+
+  /* ---------- questions ---------- */
+  .q{background:var(--card);border:1px solid var(--sep);border-radius:var(--r-md);padding:22px 24px;margin:16px 0;box-shadow:var(--shadow-sm);}
+  .q .qn{font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--gold);margin:0 0 9px;}
+  .qtext{font-size:18px;font-weight:600;letter-spacing:-0.015em;margin:0 0 16px;line-height:1.35;}
+  .qtext .fanline{display:block;font-weight:400;color:var(--ink-soft);font-size:15px;margin-top:8px;padding:10px 14px;background:var(--grey-bubble);border-radius:12px;font-family:var(--sans);}
+  .opt{display:flex;gap:12px;align-items:center;padding:13px 15px;border:1.5px solid var(--sep);border-radius:var(--r-sm);margin-bottom:9px;cursor:pointer;transition:all .13s;}
+  .opt:hover{border-color:var(--gold-deep);}
+  .opt input{position:absolute;opacity:0;pointer-events:none;}
+  .opt .dot{width:22px;height:22px;border-radius:50%;border:2px solid var(--sep-strong);flex:0 0 auto;display:flex;align-items:center;justify-content:center;transition:all .13s;}
+  .opt .dot::after{content:"";width:10px;height:10px;border-radius:50%;background:#fff;transform:scale(0);transition:transform .13s;}
+  .opt span{font-size:16px;}
+  .opt.picked{border-color:var(--gold);background:var(--gold-soft);}
+  .opt.picked .dot{border-color:var(--gold);background:var(--gold);}
+  .opt.picked .dot::after{transform:scale(1);}
+
+  /* ---------- buttons ---------- */
+  .actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-top:22px;}
+  .btn{font-family:var(--sans);font-size:17px;font-weight:600;letter-spacing:-0.01em;border:none;border-radius:14px;padding:15px 30px;cursor:pointer;
+    background:linear-gradient(160deg,var(--gold),var(--gold-deep));color:#2a1e08;box-shadow:0 6px 18px var(--gold-soft);transition:transform .1s,filter .12s;}
+  .btn:hover{filter:brightness(1.05);} .btn:active{transform:scale(.98);}
+  .btn.ghost{background:var(--card);border:1px solid var(--sep-strong);color:var(--ink);box-shadow:var(--shadow-sm);}
+  .btn:disabled{opacity:.45;cursor:not-allowed;}
+  .err{color:var(--red);font-size:14.5px;font-weight:500;}
+
+  /* ---------- result ---------- */
+  #result{display:none;margin-top:26px;}
+  .scorecard{border-radius:var(--r-lg);border:1px solid var(--sep);padding:34px 28px;text-align:center;background:var(--card);box-shadow:var(--shadow);}
+  .ring{width:132px;height:132px;margin:0 auto 6px;position:relative;}
+  .ring .num{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+  .ring .num b{font-size:40px;font-weight:700;letter-spacing:-0.02em;line-height:1;}
+  .ring .num small{font-size:12px;color:var(--ink-faint);font-weight:600;margin-top:2px;}
+  .verdict{font-size:14px;font-weight:700;letter-spacing:0.02em;text-transform:uppercase;margin-top:12px;}
+  .pass .verdict{color:var(--green);} .fail .verdict{color:var(--amber);}
+  .slack-status{font-size:14.5px;color:var(--ink-soft);margin-top:16px;}
+  pre.copybox{background:var(--card-2);border:1px solid var(--sep);border-radius:var(--r-sm);padding:15px;font-family:var(--mono);
+    font-size:12px;color:var(--ink-soft);white-space:pre-wrap;word-break:break-word;margin:16px 0 0;text-align:left;max-height:230px;overflow:auto;line-height:1.5;}
+
+  footer{padding:40px 0 70px;color:var(--ink-faint);font-size:13px;text-align:center;}
+  footer .m{font-weight:600;letter-spacing:0.02em;color:var(--ink-soft);}
+  :focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:6px;}
+</style>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="brand">LiveRich<span>Media</span> · Playbook</div>
+    <div class="pill">Module 6</div>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="orb a"></div><div class="orb b"></div>
+  <div class="wrap">
+    <p class="eyebrow">The Chatter Playbook · Module 1</p>
+    <h1>The <em>Chase</em> Exam</h1>
+    <p class="lede">A no is not a stop. This one comes straight from the top — study the module, then prove you know how to stay in the game and make him chase. Answer needed TODAY.</p>
+    <div class="stat-row">
+      <span class="stat"><b>15</b> questions</span>
+      <span class="stat"><b>5</b> auto-graded</span>
+      <span class="stat">Pass · <b>4/5</b></span>
+      <span class="stat">~10 min</span>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ MOCK CHATS ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="sec-kicker">Study first</p>
+      <h2>Read the module before you start</h2>
+    </div>
+    <div class="callout">
+      <span class="emoji">📖</span>
+      <div>
+        <p class="t">Module 6 · The Chase</p>
+        <p>Everything on this exam comes from the Chatter Edition — <a href="module-6-the-chase-chatter.html" style="color:inherit;font-weight:600;">open it here</a> and read it once end to end. Then come back and take the exam in one sitting.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ IDENTITY ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="sec-kicker">Step 1</p>
+      <h2>Who's taking this</h2>
+    </div>
+    <p id="lockedNote"></p>
+    <div class="idrow">
+      <div class="field-wrap">
+        <p class="field-lbl">Your name</p>
+        <input type="text" id="fName" placeholder="e.g. Aaliyah" autocomplete="off">
+      </div>
+      <div class="field-wrap">
+        <p class="field-lbl">Which chatter are you?</p>
+        <select id="fWho"><option value="">Select…</option></select>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXAM ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="sec-kicker">Step 2</p>
+      <h2>The exam</h2>
+      <p class="sub">Answer based on the training. Think about <em>why</em>, not just what.</p>
+    </div>
+
+    <form id="exam">
+      <h3>Part 1 · Multiple choice</h3>
+
+      <div class="q">
+        <p class="qn">Question 1</p>
+        <p class="qtext">A fan says no to your PPV. What is that "no"?</p>
+        <label class="opt"><input type="radio" name="q1" value="A"><span class="dot"></span><span>A hard stop — the conversation is over</span></label>
+        <label class="opt"><input type="radio" name="q1" value="B"><span class="dot"></span><span>A direction, not a wall — no to THIS offer, and an invitation to find the next path</span></label>
+        <label class="opt"><input type="radio" name="q1" value="C"><span class="dot"></span><span>A sign he should be ignored</span></label>
+        <label class="opt"><input type="radio" name="q1" value="D"><span class="dot"></span><span>A personal rejection of you</span></label>
+      </div>
+      <div class="q">
+        <p class="qn">Question 2</p>
+        <p class="qtext">What should you have ready BEFORE you ever send the pitch?</p>
+        <label class="opt"><input type="radio" name="q2" value="A"><span class="dot"></span><span>A discount</span></label>
+        <label class="opt"><input type="radio" name="q2" value="B"><span class="dot"></span><span>An apology in case he says no</span></label>
+        <label class="opt"><input type="radio" name="q2" value="C"><span class="dot"></span><span>Your next move — smaller door, new angle, curiosity plant, takeaway, or booking</span></label>
+        <label class="opt"><input type="radio" name="q2" value="D"><span class="dot"></span><span>Nothing; improvise after</span></label>
+      </div>
+      <div class="q">
+        <p class="qn">Question 3</p>
+        <p class="qtext">What actually makes a fan chase?</p>
+        <label class="opt"><input type="radio" name="q3" value="A"><span class="dot"></span><span>Confidence, honest scarcity, and the playful takeaway — being slightly out of reach</span></label>
+        <label class="opt"><input type="radio" name="q3" value="B"><span class="dot"></span><span>Begging harder with sad emojis</span></label>
+        <label class="opt"><input type="radio" name="q3" value="C"><span class="dot"></span><span>Repeating the same offer three times</span></label>
+        <label class="opt"><input type="radio" name="q3" value="D"><span class="dot"></span><span>Going silent until he misses you</span></label>
+      </div>
+      <div class="q">
+        <p class="qn">Question 4</p>
+        <p class="qtext">After a no, your chat volume and energy should…</p>
+        <label class="opt"><input type="radio" name="q4" value="A"><span class="dot"></span><span>Drop — he made his choice</span></label>
+        <label class="opt"><input type="radio" name="q4" value="B"><span class="dot"></span><span>Stop completely</span></label>
+        <label class="opt"><input type="radio" name="q4" value="C"><span class="dot"></span><span>Turn cold and businesslike</span></label>
+        <label class="opt"><input type="radio" name="q4" value="D"><span class="dot"></span><span>Go UP — more personality, more words, more alive than before the no</span></label>
+      </div>
+      <div class="q">
+        <p class="qn">Question 5</p>
+        <p class="qtext">The difference between pressing and pressure?</p>
+        <label class="opt"><input type="radio" name="q5" value="A"><span class="dot"></span><span>There is none</span></label>
+        <label class="opt"><input type="radio" name="q5" value="B"><span class="dot"></span><span>Pressing = a NEW angle with higher energy and confidence; pressure = the same ask repeated with guilt</span></label>
+        <label class="opt"><input type="radio" name="q5" value="C"><span class="dot"></span><span>Pressure works better</span></label>
+        <label class="opt"><input type="radio" name="q5" value="D"><span class="dot"></span><span>Pressing means messaging every hour</span></label>
+      </div>
+
+      <h3>Part 2 · Spot the mistake</h3>
+      <div class="q"><p class="qn">Question 6</p>
+        <p class="qtext">What did the chatter do wrong?<span class="fanline">Fan: "nah not tonight" → Chatter: "ok" — and barely chats with him for the rest of the shift.</span></p>
+        <div class="field-wrap"><textarea name="q6" placeholder="Your answer…"></textarea></div></div>
+      <div class="q"><p class="qn">Question 7</p>
+        <p class="qtext">Why does this fail?<span class="fanline">Fan: "no thanks" → Chatter: "come on 🥺" … "please? for me?" … "why are you ignoring me 😢"</span></p>
+        <div class="field-wrap"><textarea name="q7" placeholder="Your answer…"></textarea></div></div>
+      <div class="q"><p class="qn">Question 8</p>
+        <p class="qtext">What was missed here?<span class="fanline">Fan: "can't spend tonight, sorry" → Chatter: "no worries!" and never mentions anything again, no booking, no seed planted.</span></p>
+        <div class="field-wrap"><textarea name="q8" placeholder="Your answer…"></textarea></div></div>
+      <div class="q"><p class="qn">Question 9</p>
+        <p class="qtext">What's wrong with this pitch setup?<span class="fanline">Chatter sends the big $45 PPV with no idea what to offer if he declines.</span></p>
+        <div class="field-wrap"><textarea name="q9" placeholder="Your answer…"></textarea></div></div>
+
+      <h3>Part 3 · Write your reply</h3>
+      <div class="q"><p class="qn">Question 10</p>
+        <p class="qtext">He said no. Write your NEXT-MOVE reply (any of the five plays — smaller door, angle change, curiosity, takeaway, booking).<span class="fanline">Fan: "nah not tonight"</span></p>
+        <div class="field-wrap"><textarea name="q10" placeholder="Your answer…"></textarea></div></div>
+      <div class="q"><p class="qn">Question 11</p>
+        <p class="qtext">Write a TAKEAWAY reply that makes him chase.<span class="fanline">Fan: "hmm idk, maybe not"</span></p>
+        <div class="field-wrap"><textarea name="q11" placeholder="Your answer…"></textarea></div></div>
+      <div class="q"><p class="qn">Question 12</p>
+        <p class="qtext">He can't spend tonight. Write the reply that keeps the conversation ALIVE at full energy without pitching again immediately.<span class="fanline">Fan: "can't spend tonight sorry"</span></p>
+        <div class="field-wrap"><textarea name="q12" placeholder="Your answer…"></textarea></div></div>
+      <div class="q"><p class="qn">Question 13</p>
+        <p class="qtext">Write the seed you plant 15 minutes later in that same conversation.</p>
+        <div class="field-wrap"><textarea name="q13" placeholder="Your answer…"></textarea></div></div>
+
+      <h3>Part 4 · Think like a chatter</h3>
+      <div class="q"><p class="qn">Question 14</p>
+        <p class="qtext">In your own words: why is going quiet after a no worse than any single bad message?</p>
+        <div class="field-wrap"><textarea name="q14" placeholder="Your answer…"></textarea></div></div>
+      <div class="q"><p class="qn">Question 15</p>
+        <p class="qtext">Look at your own recent chats honestly — where did you treat a no as a stop, and what will you do differently TONIGHT?</p>
+        <div class="field-wrap"><textarea name="q15" placeholder="Your answer…"></textarea></div></div>
+
+      <div class="actions">
+        <button type="submit" class="btn" id="submitBtn">Submit exam</button>
+        <span class="err" id="formErr"></span>
+      </div>
+    </form>
+
+    <div id="result"></div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="m">LIVERICHMEDIA · THE CHATTER PLAYBOOK · MODULE 6</p>
+    <p>Your written answers are reviewed by a manager. Multiple-choice is auto-graded. Do your own work. ❤️</p>
+  </div>
+</footer>
+
+<script>
+/* =====================================================================
+   CONFIG — Jassy: paste your Slack Incoming Webhook URLs below.
+   managerWebhook = central channel where YOU get every result.
+   each chatter's webhook = their own #...-management channel.
+   Create at https://api.slack.com/apps (Incoming Webhooks).
+   Leave "" to skip that post — the "Copy my results" fallback always works.
+   ===================================================================== */
+/* Webhooks are base64-encoded so public-repo secret scanners don't auto-revoke them. */
+const dec = s => s ? atob(s) : "";
+const CONFIG = {
+  module: "Module 6 — The Chase",
+  passMark: 4,
+  managerWebhook: dec(""),
+  chatters: {
+    aaliyah:{name:"Aaliyah",model:"Shantal",shift:"Graveyard",slackId:"U09U798V24X",channel:"#aaliyah-management",webhook:dec("aHR0cHM6Ly9ob29rcy5zbGFjay5jb20vc2VydmljZXMvVDA2OVgxVjU3SjYvQjBCR1ZCUDdOREIvZFFWZ0hpMzBqZFRCdDNScG9malIwOENP")},
+    trisha: {name:"Trisha", model:"Shantal",shift:"Morning",  slackId:"U08H7941KTN",channel:"#trisha-management", webhook:dec("aHR0cHM6Ly9ob29rcy5zbGFjay5jb20vc2VydmljZXMvVDA2OVgxVjU3SjYvQjBCSFQwWkNVN0ovTTdERXlCUlJTOVhGRVVYQlZRVFpKMU1P")},
+    leigh:  {name:"Leigh",  model:"Karina", shift:"Graveyard",slackId:"U0AHFGZ5ZM2",channel:"#leigh-management",  webhook:dec("aHR0cHM6Ly9ob29rcy5zbGFjay5jb20vc2VydmljZXMvVDA2OVgxVjU3SjYvQjBCR1hCNkRSR1cvbTgxTUk3SXlwbGQxazJCN2k3aEp4QVFs")},
+    mj:     {name:"MJ",     model:"Karina", shift:"Morning",  slackId:"U06ALHQ6PUH",channel:"#mj-management",     webhook:dec("aHR0cHM6Ly9ob29rcy5zbGFjay5jb20vc2VydmljZXMvVDA2OVgxVjU3SjYvQjBCR1hCRVVEVTYvNDczSDZuanRYeGt3c1lFUEtGMmpQZ1pR")},
+    rossana:{name:"Rosanna",model:"Karina", shift:"Afternoon",slackId:"U0AV2KV1DUG",channel:"#rossana-management",webhook:dec("aHR0cHM6Ly9ob29rcy5zbGFjay5jb20vc2VydmljZXMvVDA2OVgxVjU3SjYvQjBCR1hCQUc3M1EvbnByOXpXZzhBdGd5d1dwUDRIQWtZakZs")},
+    jeffrey:{name:"Jeffrey",model:"Cover",  shift:"Off-days", slackId:"U06AJLM4JM7",channel:"#management",        webhook:dec("aHR0cHM6Ly9ob29rcy5zbGFjay5jb20vc2VydmljZXMvVDA2OVgxVjU3SjYvQjBCR1ZCUzNLN0YvSWlDbVlFcEVKMnRxQ1hlM0phd2pOcmtW")},
+    princess:{name:"Princess",model:"Shantal",shift:"Afternoon",slackId:"U0B5Y66UDAQ",channel:"#princess-management",webhook:dec("aHR0cHM6Ly9ob29rcy5zbGFjay5jb20vc2VydmljZXMvVDA2OVgxVjU3SjYvQjBCSDJDSzI4MjAvcm41UnRlckp1WnRUaUNPc1hMOTVuYzRK")}
+  }
+};
+const CORRECT = { q1:"B", q2:"C", q3:"A", q4:"D", q5:"B" };
+const EXPLAIN = {"q1": "Nobody is on the page by accident. A no is aimed at this offer, this price, or this moment — almost never at her. One no can hold many yeses.", "q2": "Pros load the pipeline before they pitch: smaller door, angle change, curiosity plant, takeaway, or booking. If the no can surprise you, you weren't ready.", "q3": "Desire grows for what's slightly out of reach. Confidence and honest scarcity flip the pursuit so HE sells YOU on why he deserves it. Begging kills the fantasy.", "q4": "The silent death is the real failure — when your words dry up he feels rejected by HER and spends elsewhere. After a no the chat gets MORE alive, not less.", "q5": "Pressing is a NEW angle with NEW value at higher energy. Pressure is the same ask repeated with guilt — that's begging, and it's also a scored dead-end."};
+const MODURL = "https://jassy0409.github.io/liverich-routines/module-6-the-chase-chatter.html";
+const MODNUM = 6;
+const REVIEWURL = "https://jassy0409.github.io/liverich-routines/review.html";
+const BEST = {"q1": "\"not tonight?? and here i was thinking you had good taste 😏 okay, the big one waits. but i have something smaller that's criminal to keep to myself…\"", "q2": "Walk in loaded: know your smaller door and your angle change before the first pitch leaves your keyboard", "q3": "\"mm you hesitated 🤔 okay forget i offered — that one's special and maybe-not energy doesn't get my special things 😏\"", "q4": "\"then don't 😊 you're not getting rid of me that easy though — how did that thing with your brother go?\" …then plant the seed 15 minutes later", "q5": "New door, never the same one twice: change the content, the mood, or the frame — with her personality turned UP"};
+
+const VOICE = {
+  Shantal: 'Shantal\'s voice: personal and elegant — proper sentences, first names only, never "hey", no pet names.',
+  Karina:  'Karina\'s voice: lowercase, playful, bratty — pet names (babe/baby) ONLY for a VIP actively spending right now.'
+};
+function voiceFor(c){ return VOICE[c.model] || 'Match the exact voice of the account you are covering — check its voice guide before writing.'; }
+
+const sel = document.getElementById('fWho');
+Object.keys(CONFIG.chatters).forEach(k=>{
+  const c=CONFIG.chatters[k];const o=document.createElement('option');
+  o.value=k;o.textContent=`${c.name} · ${c.model} ${c.shift}`;sel.appendChild(o);
+});
+
+/* voice-rule panels (identity area + above Part 3) */
+document.querySelector('.idrow').insertAdjacentHTML('afterend',
+  '<div id="voiceHint" class="callout" style="display:none;margin:18px 0 0;"><span class="emoji">🎙</span><div><p class="t">Your model\'s voice</p><p id="voiceHintTxt"></p></div></div>');
+[...document.querySelectorAll('#exam h3')].filter(h=>h.textContent.includes('Part 3')).forEach(h=>{
+  h.insertAdjacentHTML('afterend',
+    '<div class="callout" id="voiceHint2" style="display:none;"><span class="emoji">✍️</span><div><p class="t">Write in your model\'s voice</p><p id="voiceHint2Txt"></p></div></div>');
+});
+function updateVoiceHints(){
+  const c=CONFIG.chatters[sel.value];
+  const v1=document.getElementById('voiceHint'), v2=document.getElementById('voiceHint2');
+  if(!c){ if(v1)v1.style.display='none'; if(v2)v2.style.display='none'; return; }
+  const txt = voiceFor(c)+' Company rules always apply: stay on-platform, no guilt-tripping or pressure, never promise more than we deliver.';
+  if(v1){ v1.style.display='flex'; document.getElementById('voiceHintTxt').textContent=txt; }
+  if(v2){ v2.style.display='flex'; document.getElementById('voiceHint2Txt').textContent='Your written replies are graded as '+c.model+' messages. '+voiceFor(c); }
+}
+sel.addEventListener('change', updateVoiceHints);
+
+const params=new URLSearchParams(location.search);
+const who=(params.get('chatter')||'').toLowerCase();
+if(CONFIG.chatters[who]){
+  const c=CONFIG.chatters[who];sel.value=who;sel.disabled=true;
+  document.getElementById('fName').value=c.name;
+  const n=document.getElementById('lockedNote');n.style.display='block';
+  n.textContent=`Signed in as ${c.name} (${c.model} · ${c.shift}). This is your personal exam link.`;
+}
+updateVoiceHints();
+
+document.querySelectorAll('.opt input').forEach(inp=>{
+  inp.addEventListener('change',()=>{
+    document.querySelectorAll(`input[name="${inp.name}"]`).forEach(o=>o.closest('.opt').classList.remove('picked'));
+    inp.closest('.opt').classList.add('picked');
+  });
+});
+
+const form=document.getElementById('exam');
+const resultEl=document.getElementById('result');
+const errEl=document.getElementById('formErr');
+const trunc=(s,n)=>s.length>n?s.slice(0,n-1)+'…':s;
+
+form.addEventListener('submit',async(e)=>{
+  e.preventDefault();errEl.textContent='';
+  const name=document.getElementById('fName').value.trim();
+  const whoKey=sel.value;
+  if(!name){errEl.textContent='Please enter your name.';return;}
+  if(!whoKey){errEl.textContent='Please select which chatter you are.';return;}
+  const data=new FormData(form);
+  const blanks=[6,7,8,9,10,11,12,13,14,15].filter(n=>!(data.get('q'+n)||'').trim());
+  if(blanks.length){errEl.textContent='Please answer all written questions (missing: Q'+blanks.join(', Q')+').';return;}
+
+  let score=0;const missed=[];
+  for(const q of Object.keys(CORRECT)){ if(data.get(q)===CORRECT[q])score++; else missed.push(q); }
+  const passed=score>=CONFIG.passMark;
+  const c=CONFIG.chatters[whoKey];
+  const ts=new Date().toLocaleString();
+  const written=[6,7,8,9,10,11,12,13,14,15].map(n=>`Q${n}: ${(data.get('q'+n)||'').trim()}`).join('\n');
+
+  /* ---- message 1: the result card (Block Kit) ---- */
+  const head=`${passed?'✅':'⚠️'} ${c.name.toUpperCase()} — ${score}/5 ${passed?'PASS':'BELOW PASS'}`;
+  const resultPayload={ text:`${head} · ${CONFIG.module}`, blocks:[
+    {type:'header',text:{type:'plain_text',text:head,emoji:true}},
+    {type:'section',fields:[
+      {type:'mrkdwn',text:`*Module:*\n${CONFIG.module}`},
+      {type:'mrkdwn',text:`*Chatter:*\n${c.name}${c.slackId?` <@${c.slackId}>`:''} · ${c.model} ${c.shift}`},
+      {type:'mrkdwn',text:`*Missed:*\n${missed.length?missed.map(q=>q.toUpperCase()).join(', '):'None 🎉'}`},
+      {type:'mrkdwn',text:`*Submitted:*\n${ts}`}
+    ]},
+    {type:'divider'},
+    {type:'section',text:{type:'mrkdwn',text:`*Written answers (manager reviews these in ${c.model}'s voice):*\n${trunc(written,2700)}`}}
+  ]};
+
+  /* ---- message 2: automatic coaching ---- */
+  const fixes=missed.map(q=>`*${q.toUpperCase()} — you answered ${data.get(q)||'—'}, correct is ${CORRECT[q]}*\n_Why:_ ${EXPLAIN[q]}\n_Best flow:_ ${BEST[q]}`).join('\n\n');
+  const ansStr=['q1','q2','q3','q4','q5'].map(q=>data.get(q)||'-').join('');
+  const reviewLink=`${REVIEWURL}?m=${MODNUM}&chatter=${encodeURIComponent(whoKey)}&score=${score}&a=${ansStr}`;
+  const coachIntro = missed.length
+    ? `${c.name}, here's what to review from *${CONFIG.module}*:`
+    : `Perfect multiple-choice, ${c.name} 🎉 The written answers still get a manager review — here's the bar they're graded against:`;
+  const coachPayload={ text:`📘 Coaching — ${c.name} · ${CONFIG.module}`, blocks:[
+    {type:'header',text:{type:'plain_text',text:`📘 COACHING — ${c.name.toUpperCase()}`,emoji:true}},
+    {type:'section',text:{type:'mrkdwn',text:coachIntro}},
+    ...(missed.length?[{type:'section',text:{type:'mrkdwn',text:trunc(fixes,2900)}}]:[]),
+    {type:'divider'},
+    {type:'section',text:{type:'mrkdwn',text:`🎙 *Voice check:* ${voiceFor(c)}\n🏛 *Company rules:* stay on-platform · no guilt-tripping or pressure · never promise more than we deliver · notes on every fan.`}},
+    {type:'section',text:{type:'mrkdwn',text:`📊 *Your performance file:* <${reviewLink}|open your personal Module ${MODNUM} review> — what went wrong, why, and the exact flow to use next time. No retake needed, this ends at understanding. Bring it to your next coaching session ✨`}}
+  ]};
+
+  const posts=[];
+  if(c.webhook){ posts.push(sendSlack(c.webhook,resultPayload)); posts.push(sendSlack(c.webhook,coachPayload)); }
+  if(CONFIG.managerWebhook){ posts.push(sendSlack(CONFIG.managerWebhook,resultPayload)); if(missed.length)posts.push(sendSlack(CONFIG.managerWebhook,coachPayload)); }
+  let slackMsg;
+  if(posts.length){
+    try{await Promise.all(posts);slackMsg=`Score + coaching sent to Slack. If nothing appears, use "Copy my results" below.`;}
+    catch(_){slackMsg=`Couldn't reach Slack from here — please "Copy my results" and send it to your manager.`;}
+  }else{ slackMsg=`No Slack webhook set for you yet — "Copy my results" and send it to your manager.`; }
+
+  const report=`${head}\n${CONFIG.module}\n${c.model} · ${c.shift} · ${ts}\nMissed: ${missed.length?missed.map(q=>q.toUpperCase()).join(', '):'none'}\n\nWritten answers:\n${written}`;
+  renderResult(score,passed,slackMsg,report,missed,c,reviewLink);
+  document.getElementById('submitBtn').disabled=true;
+  resultEl.scrollIntoView({behavior:'smooth',block:'start'});
+});
+
+function sendSlack(url,payload){ return fetch(url,{method:'POST',mode:'no-cors',body:JSON.stringify(payload)}); }
+
+function renderResult(score,passed,slackMsg,report,missed,c,reviewLink){
+  const pct=score/5;const R=54,C2=2*Math.PI*R,off=C2*(1-pct);
+  const col=passed?'var(--green)':'var(--amber)';
+  const fixHtml=missed.length?`
+    <div class="q" style="text-align:left;margin-top:22px;">
+      <p class="qn">📘 Instant coaching — review these</p>
+      ${missed.map(q=>`<p style="margin:0 0 12px;"><strong>${q.toUpperCase()} · correct answer: ${CORRECT[q]}</strong><br><span style="color:var(--ink-soft);font-size:15px;">${EXPLAIN[q]}</span></p>`).join('')}
+      <p style="margin:6px 0 0;font-size:14.5px;color:var(--ink-soft);">🎙 ${voiceFor(c)}<br>📊 <a href="${reviewLink}" style="color:var(--gold);font-weight:600;">Open your personal performance review</a> — the full best-response flows are there. No retake needed.</p>
+    </div>`:'';
+  resultEl.style.display='block';
+  resultEl.innerHTML=`
+    <div class="scorecard ${passed?'pass':'fail'}">
+      <div class="ring">
+        <svg width="132" height="132" viewBox="0 0 132 132">
+          <circle cx="66" cy="66" r="${R}" fill="none" stroke="var(--sep)" stroke-width="11"/>
+          <circle cx="66" cy="66" r="${R}" fill="none" stroke="${col}" stroke-width="11" stroke-linecap="round"
+            stroke-dasharray="${C2}" stroke-dashoffset="${off}" transform="rotate(-90 66 66)"/>
+        </svg>
+        <div class="num"><b>${score}/5</b><small>MULTIPLE CHOICE</small></div>
+      </div>
+      <div class="verdict">${passed?'Passed':'Below pass — your review is ready below'}</div>
+      <p class="slack-status">${slackMsg}</p>
+      <div class="actions" style="justify-content:center;margin-top:14px;">
+        <a class="btn" href="${reviewLink}" style="text-decoration:none;">Open my performance review</a>
+        <button type="button" class="btn ghost" id="copyBtn">Copy my results</button>
+      </div>
+      <pre class="copybox" id="copybox">${escapeHtml(report)}</pre>
+    </div>
+    ${fixHtml}`;
+  document.getElementById('copyBtn').addEventListener('click',()=>{
+    navigator.clipboard?.writeText(document.getElementById('copybox').textContent).then(()=>{
+      const b=document.getElementById('copyBtn');b.textContent='Copied ✓';setTimeout(()=>b.textContent='Copy my results',1800);
+    });
+  });
+}
+function escapeHtml(s){return s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+</script>
