@@ -115,7 +115,7 @@ const cls=s=>s===null?'p':(s>=4?'g':s>=3?'a':'r');
 const col=s=>s===null?'var(--ink-faint)':(s>=4?'var(--green)':s>=3?'var(--amber)':'var(--red)');
 
 fetch('results.json?t='+Math.floor(Math.random()*1e6)).then(r=>r.json()).then(D=>{
-  document.getElementById('updated').textContent='Exam scores, every chatter\'s answers, coaching plans, and this week\'s meetings · updated '+D.updated+'.';
+  document.getElementById('updated').textContent='Exam scores, every chatter\'s answers, and coaching plans · updated '+D.updated+'.';
   const C=D.chatters;
   const tabs=document.getElementById('tabs'),pages=document.getElementById('pages');
 
@@ -184,16 +184,6 @@ fetch('results.json?t='+Math.floor(Math.random()*1e6)).then(r=>r.json()).then(D=
       <li><strong>Watch item:</strong> multiple choice may be too easy at 5/5 across the board — the written answers are doing the real differentiation. Grade those on the module rubric and log a written-quality note per chatter.</li>
     </ul></div>
 
-    <h2 style="margin-top:34px;">Best meeting times</h2>
-    <div class="card">
-      <p class="k2">Recommended: Wednesday, July 16 — shifts never fully overlap, so use the two natural handovers</p>
-      <ul class="plan">
-        <li><strong>6:45–7:15 AM PHT</strong> — graveyard → morning handover: catches <b>Leigh</b> (ending) and <b>MJ</b> (starting). Use for the value-setting / price-the-peak theme, with MJ's 1:1 (hold instructions + the missing exam) right after.</li>
-        <li><strong>2:45–3:15 PM PHT</strong> — morning → afternoon handover: catches <b>MJ</b> (ending) and <b>Rosanna</b> (starting). Use for the warm-landing drill — one appreciation message after a big unlock, door left open, no further asks.</li>
-        <li><strong>Jeffrey</strong> — async, or attach him to whichever handover falls on his cover day; his 1:1 topic is the circle-back habit.</li>
-      </ul>
-      <p style="margin-top:10px;color:var(--ink-soft);font-size:14.5px;">Keep each huddle to 20 minutes: one win from the exams, one gap from the scorecards, one drill for tonight.</p>
-    </div>
   </section>`;
 
   /* ---- chatter pages ---- */
