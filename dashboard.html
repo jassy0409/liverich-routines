@@ -1,0 +1,260 @@
+<title>LiveRichMedia · Training Dashboard</title>
+<meta name="color-scheme" content="dark">
+<style>
+  :root{
+    --ground:#100E0A;--panel:#18140D;--panel-2:#1F1A11;--line:#2C2519;--line-soft:#221D14;
+    --ink:#F0E9DA;--ink-soft:#B8AD97;--ink-faint:#8A7F6B;
+    --gold:#D9B26A;--gold-deep:#B48F49;--rose:#CD8598;--green:#74C08C;--amber:#E0A44A;--red:#DE7676;
+    --radius:14px;--maxw:900px;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --mono:"SF Mono","JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:16.5px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+  header.top{border-bottom:1px solid var(--line);padding:44px 0 0;
+    background:radial-gradient(120% 90% at 85% -10%,rgba(217,178,106,.10),transparent 60%);}
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin:0 0 14px;}
+  h1{font-family:var(--serif);font-weight:600;font-size:clamp(30px,5.5vw,46px);line-height:1.05;margin:0 0 8px;}
+  h1 em{color:var(--gold);font-style:italic;}
+  .sub{color:var(--ink-soft);font-size:17px;margin:0 0 8px;max-width:66ch;}
+  .lock{display:inline-flex;gap:9px;align-items:center;font-size:13.5px;color:var(--red);border:1px solid color-mix(in srgb,var(--red) 40%,var(--line));
+    background:color-mix(in srgb,var(--red) 8%,var(--panel));border-radius:999px;padding:5px 13px;margin:6px 0 20px;}
+  /* tabs */
+  .tabs{display:flex;gap:6px;overflow-x:auto;padding:0 0 14px;scrollbar-width:none;}
+  .tabs::-webkit-scrollbar{display:none;}
+  .tab{flex:0 0 auto;font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;
+    color:var(--ink-faint);background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:7px 15px;transition:all .12s;}
+  .tab:hover{color:var(--ink);border-color:var(--gold-deep);}
+  .tab.on{background:linear-gradient(160deg,var(--gold),var(--gold-deep));color:#2a1e08;border-color:transparent;font-weight:700;}
+  .tab .dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-left:7px;vertical-align:1px;}
+  section.page{padding:36px 0 60px;display:none;}
+  section.page.on{display:block;}
+  .sec-no{font-family:var(--mono);font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin:26px 0 10px;}
+  h2{font-family:var(--serif);font-weight:600;font-size:clamp(22px,3.6vw,30px);margin:0 0 10px;}
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:20px 24px;margin:14px 0;}
+  .panel p{margin:0 0 8px;color:var(--ink-soft);font-size:15px;}
+  .statgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0;}
+  .stat{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;}
+  .stat .n{font-family:var(--serif);font-size:38px;font-weight:600;line-height:1.05;}
+  .stat .l{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);margin-top:5px;}
+  .tblwrap{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);margin:14px 0;}
+  table{border-collapse:collapse;width:100%;font-size:14.5px;min-width:560px;}
+  th,td{text-align:left;padding:11px 15px;border-bottom:1px solid var(--line-soft);}
+  th{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);background:var(--panel-2);}
+  tr:last-child td{border-bottom:none;}
+  .score{font-family:var(--mono);font-weight:700;padding:3px 10px;border-radius:8px;font-size:13px;display:inline-block;}
+  .score.g{color:var(--green);background:color-mix(in srgb,var(--green) 12%,var(--panel));}
+  .score.a{color:var(--amber);background:color-mix(in srgb,var(--amber) 12%,var(--panel));}
+  .score.r{color:var(--red);background:color-mix(in srgb,var(--red) 12%,var(--panel));}
+  .score.p{color:var(--ink-faint);background:var(--panel-2);}
+  .callout{border-radius:var(--radius);padding:17px 21px;margin:16px 0;font-size:15px;border:1px solid color-mix(in srgb,var(--gold) 40%,var(--line));
+    background:color-mix(in srgb,var(--gold) 8%,var(--panel));}
+  .callout.red{border-color:color-mix(in srgb,var(--red) 45%,var(--line));background:color-mix(in srgb,var(--red) 8%,var(--panel));}
+  .callout .t{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:600;display:block;margin-bottom:6px;}
+  .callout.red .t{color:var(--red);}
+  .callout p{margin:0 0 6px;color:var(--ink-soft);}
+  ul.plan{margin:8px 0 0;padding-left:20px;}
+  ul.plan li{margin-bottom:7px;color:var(--ink-soft);font-size:15px;}
+  ul.plan li::marker{color:var(--gold-deep);}
+  /* chatter page */
+  .chead{display:flex;gap:22px;align-items:center;flex-wrap:wrap;margin-bottom:6px;}
+  .bignum{font-family:var(--serif);font-size:64px;font-weight:600;line-height:1;}
+  .cmeta{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);}
+  .cmeta b{display:block;font-size:13px;letter-spacing:.16em;margin-bottom:3px;color:var(--ink);}
+  .exam{border:1px solid var(--line);border-radius:var(--radius);background:var(--panel);margin:18px 0;overflow:hidden;}
+  .exam .ehead{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:16px 22px;background:var(--panel-2);border-bottom:1px solid var(--line);}
+  .exam .ehead .m{font-family:var(--serif);font-size:19px;font-weight:600;}
+  .exam .ehead .d{font-family:var(--mono);font-size:11px;color:var(--ink-faint);letter-spacing:.06em;}
+  .exam .body{padding:8px 22px 18px;}
+  .q{padding:14px 0;border-bottom:1px solid var(--line-soft);}
+  .q:last-child{border-bottom:none;}
+  .qn{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:0 0 5px;}
+  .qlabel{font-weight:600;font-size:15.5px;margin:0 0 8px;color:var(--ink);}
+  .pill{font-family:var(--mono);font-size:11px;letter-spacing:.05em;padding:3px 10px;border-radius:999px;border:1px solid;display:inline-block;margin-right:8px;}
+  .pill.good{color:var(--green);border-color:color-mix(in srgb,var(--green) 45%,var(--line));background:color-mix(in srgb,var(--green) 10%,var(--panel));}
+  .pill.bad{color:var(--red);border-color:color-mix(in srgb,var(--red) 45%,var(--line));background:color-mix(in srgb,var(--red) 10%,var(--panel));}
+  .ans{background:var(--panel-2);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:0 10px 10px 0;
+    padding:11px 15px;font-size:14.5px;color:var(--ink);margin-top:6px;line-height:1.55;white-space:pre-wrap;}
+  .ans .who{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:3px;}
+  footer{padding:30px 0 60px;color:var(--ink-faint);font-size:12.5px;}
+  footer .mono{font-family:var(--mono);letter-spacing:.06em;}
+  a{color:var(--gold);}
+</style>
+
+<header class="top"><div class="wrap">
+  <p class="kicker">LiveRichMedia · Chatter Playbook · Training Dashboard</p>
+  <h1>Team <em>results</em></h1>
+  <p class="sub" id="updated"></p>
+  <span class="lock">🔒 Managers only — contains every chatter's answers and coaching plans. Do not share with chatters.</span>
+  <div class="tabs" id="tabs"></div>
+</div></header>
+
+<main id="pages" class="wrap"></main>
+
+<footer><div class="wrap">
+  <p class="mono">LIVERICHMEDIA · CHATTER PLAYBOOK · TRAINING DASHBOARD</p>
+  <p>Data refreshes from the management channels — ask Claude to "update the dashboard" anytime; it also refreshes every Monday with the weekly send.</p>
+</div></footer>
+
+<script>
+/* MC question labels + correct answers per module (labels shown on chatter tabs) */
+const MODQ={
+ 1:{name:"Mastering the Comeback",q:{
+  q1:{label:'Fan: "That\'s too expensive."',correct:"B"},
+  q2:{label:'Fan: "Maybe next Friday."',correct:"C"},
+  q3:{label:'Fan: "I already bought something like that."',correct:"B"},
+  q4:{label:"Which is stalling?",correct:"C"},
+  q5:{label:"Biggest mistake after an objection",correct:"C"}},
+  w:{6:'Spot the mistake: Fan "That\'s expensive" → Chatter "Okay babe ❤️"',
+     7:'What should the chatter have done: Fan "Maybe next week" → "No worries." (chat ends)',
+     8:'Improve: Fan "I already bought that" → "Trust me, it\'s different."',
+     9:'The mistake: Fan "Haha maybe 😜" → 30 min chat, content never mentioned again',
+     10:'Your reply: "That\'s a little too much for me."',
+     11:'Your reply: "I\'ll probably buy it on payday."',
+     12:'Your reply: "I already have that kind of video."',
+     13:'Your reply: "Haha maybe."',
+     14:'Why are objections buying opportunities instead of rejections?',
+     15:'One thing you\'ll start doing differently'}},
+ 6:{name:"The Chase",q:{
+  q1:{label:"A fan says no to your PPV — what is that no?",correct:"B"},
+  q2:{label:"What to have ready BEFORE the pitch",correct:"C"},
+  q3:{label:"What makes a fan chase",correct:"A"},
+  q4:{label:"Chat energy after a no should…",correct:"D"},
+  q5:{label:"Pressing vs pressure",correct:"B"}},
+  w:{6:'Spot the mistake: "nah not tonight" → "ok", barely chats rest of shift',
+     7:'Why does this fail: "come on 🥺 … please? … why are you ignoring me 😢"',
+     8:'What was missed: "can\'t spend tonight" → "no worries!", no booking, no seed',
+     9:'What\'s wrong: big $45 PPV sent with no plan if he declines',
+     10:'Your NEXT-MOVE reply: "nah not tonight"',
+     11:'Your TAKEAWAY reply: "hmm idk, maybe not"',
+     12:'Keep it ALIVE at full energy: "can\'t spend tonight sorry"',
+     13:'The seed you plant 15 minutes later',
+     14:'Why is going quiet after a no worse than any single bad message?',
+     15:'Where did you treat a no as a stop, and what changes TONIGHT?'}}
+};
+const ORDER=["overview","aaliyah","trisha","princess","leigh","mj","rossana","jeffrey"];
+const cls=s=>s===null?'p':(s>=4?'g':s>=3?'a':'r');
+
+fetch('results.json?t='+Math.floor(Math.random()*1e6)).then(r=>r.json()).then(D=>{
+  document.getElementById('updated').textContent='Live team report · updated '+D.updated+' · exam scores, every answer, coaching plans, and this week\'s meeting.';
+  const C=D.chatters;
+  const tabs=document.getElementById('tabs'),pages=document.getElementById('pages');
+
+  /* ---- compute overview stats ---- */
+  const all=Object.values(C);
+  const subs=all.flatMap(c=>c.exams.map(e=>({...e,who:c.name,model:c.model})));
+  const m6=subs.filter(e=>e.m===6);
+  const passRate=m6.length?Math.round(100*m6.filter(e=>e.score>=4).length/m6.length):0;
+  const avg=m6.length?(m6.reduce((s,e)=>s+e.score,0)/m6.length).toFixed(1):'—';
+  const missing=all.filter(c=>c.pending.some(p=>p.m===6));
+
+  /* ---- overview page ---- */
+  let ov=`
+  <section class="page on" id="pg-overview">
+    <div class="statgrid">
+      <div class="stat"><div class="n" style="color:var(--green);">${m6.length}/7</div><div class="l">Module 6 submitted</div></div>
+      <div class="stat"><div class="n" style="color:${passRate>=80?'var(--green)':'var(--amber)'};">${passRate}%</div><div class="l">Pass rate</div></div>
+      <div class="stat"><div class="n" style="color:var(--gold);">${avg}/5</div><div class="l">Average score</div></div>
+      <div class="stat"><div class="n" style="color:${missing.length? 'var(--red)':'var(--green)'};">${missing.length}</div><div class="l">Missing today</div></div>
+    </div>
+
+    <div class="callout"><span class="t">Is it working? — Yes, with one caveat</span>
+      <p><strong style="color:var(--ink);">The training loop is visibly working.</strong> Six of seven chatters submitted the CEO-priority module the same day it was assigned, all six passed 5/5, and the written answers show real understanding — not parroting: they diagnose the failure modes correctly and produce usable flows in their models' voices. The strongest evidence is Leigh: 3/5 on Module 1 last night → 5/5 today after the coaching cycle.</p>
+      <p><strong style="color:var(--ink);">The caveat:</strong> exams measure knowledge; the nightly scorecards measure behavior — and the scorecards still flag the same live gaps the exam answers describe perfectly (pricing the peak, answering concerns before selling, following up warm fans). The next training layer is closing the knowing-vs-doing gap: hold each chatter's live threads against their own exam answers.</p>
+    </div>
+
+    ${missing.length?`<div class="callout red"><span class="t">Action needed today</span>
+      <p>${missing.map(c=>`<strong style="color:var(--ink);">${c.name}</strong> — ${c.pending.find(p=>p.m===6).note}`).join('<br>')}</p></div>`:''}
+
+    <p class="sec-no">Scoreboard</p>
+    <div class="tblwrap"><table>
+      <thead><tr><th>Chatter</th><th>Model · Shift</th><th>Module 1</th><th>Module 6 · The Chase</th><th>Training focus</th></tr></thead>
+      <tbody>${ORDER.slice(1).map(k=>{const c=C[k];
+        const e1=c.exams.find(e=>e.m===1),e6=c.exams.find(e=>e.m===6);
+        const p1=c.pending.find(p=>p.m===1),p6=c.pending.find(p=>p.m===6);
+        return `<tr><td><b>${c.name}</b></td><td style="color:var(--ink-faint);font-size:13px;">${c.model} · ${c.shift}</td>
+          <td>${e1?`<span class="score ${cls(e1.score)}">${e1.score}/5</span>`:`<span class="score p">${p1?'Jul 20':'—'}</span>`}</td>
+          <td>${e6?`<span class="score ${cls(e6.score)}">${e6.score}/5</span>`:`<span class="score r">MISSING</span>`}</td>
+          <td style="color:var(--ink-soft);font-size:13.5px;">${c.focus.split('—')[0].trim()}</td></tr>`;}).join('')}
+      </tbody></table></div>
+
+    <p class="sec-no">Per team</p>
+    <div class="statgrid">
+      <div class="stat"><div class="n" style="color:var(--rose);">Shantal</div><div class="l">Aaliyah 5/5 · Trisha 5/5 · Princess 5/5 — clean sweep. Team theme from scorecards: answer the concern / price the warm comeback before moving on.</div></div>
+      <div class="stat"><div class="n" style="color:var(--rose);">Karina</div><div class="l">Leigh 5/5 · Rosanna 5/5 · MJ missing. Team theme: price the peak and land big spends softly; keep the bratty register, never blunt.</div></div>
+    </div>
+
+    <p class="sec-no">Manager action plan — this week</p>
+    <div class="panel"><ul class="plan">
+      <li><strong style="color:var(--ink);">Today:</strong> chase MJ's Module 6 directly (deadline already passed). Review the six sets of written answers against each model's voice — Trisha's Q12–13 and Leigh's Q10–13 are share-worthy exemplars.</li>
+      <li><strong style="color:var(--ink);">This week's coaching theme:</strong> "your exam answer vs your live thread" — in each 1:1, put one scorecard flag next to the chatter's own exam answer describing the correct play. Self-confrontation beats instruction.</li>
+      <li><strong style="color:var(--ink);">Monday:</strong> Module 1 goes out to everyone via the weekly routine — Leigh retakes context she's already improved on; watch for the same 3/5 questions (content objections, the confident single ask) across the team.</li>
+      <li><strong style="color:var(--ink);">Watch item:</strong> exam MC may be too easy at 5/5-across-the-board — the written answers are doing the real differentiation. Grade those on the module rubric and log a written-quality note per chatter.</li>
+    </ul></div>
+
+    <p class="sec-no">Best meeting times</p>
+    <div class="panel">
+      <p><strong style="color:var(--ink);">Team coaching huddles (recommended: Wednesday July 16)</strong> — shifts never fully overlap, so use the two natural handovers:</p>
+      <ul class="plan">
+        <li><strong style="color:var(--ink);">6:45–7:15 AM PHT</strong> — graveyard → morning handover: catches <b>Aaliyah + Leigh</b> (ending) and <b>Trisha + MJ</b> (starting). Use this one for the Karina value-setting theme and MJ's 1:1 right after.</li>
+        <li><strong style="color:var(--ink);">2:45–3:15 PM PHT</strong> — morning → afternoon handover: catches <b>Trisha + MJ</b> (ending) and <b>Princess + Rosanna</b> (starting). Use this one for the Shantal answer-the-concern theme.</li>
+        <li><strong style="color:var(--ink);">Jeffrey</strong> — async or attach him to whichever handover falls on his cover day; his 1:1 topic is the circle-back habit.</li>
+      </ul>
+      <p style="margin-top:8px;">Keep each huddle to 20 minutes: one win from the exams, one gap from the scorecards, one drill for tonight.</p>
+    </div>
+  </section>`;
+
+  /* ---- chatter pages ---- */
+  let pagesHtml=ov;
+  ORDER.slice(1).forEach(k=>{
+    const c=C[k];
+    const latest=c.exams[0]||null;
+    pagesHtml+=`<section class="page" id="pg-${k}">
+      <div class="chead">
+        <div class="bignum" style="color:${latest?(latest.score>=4?'var(--green)':latest.score>=3?'var(--amber)':'var(--red)'):'var(--red)'};">${latest?latest.score+'/'+latest.max:'—'}</div>
+        <div class="cmeta"><b>${c.name}</b>${c.model} · ${c.shift}<br>${latest?('LATEST: '+latest.module.replace('Module ','M').split('—')[0]+' · '+latest.at):'NO SUBMISSIONS YET'}</div>
+      </div>
+      <div class="callout"><span class="t">Training focus</span><p>${c.focus}</p></div>
+      <div class="panel"><p class="sec-no" style="margin-top:0;">Action plan</p><ul class="plan">${c.plan.map(p=>`<li>${p}</li>`).join('')}</ul></div>
+      ${c.pending.map(p=>`<div class="callout red"><span class="t">Pending</span><p>Module ${p.m}: ${p.note}</p></div>`).join('')}
+      ${c.exams.map(e=>{
+        const M=MODQ[e.m]||{q:{},w:{}};
+        const mc=['q1','q2','q3','q4','q5'].map((q,i)=>{
+          const mine=(e.a||'')[i]||'—';
+          const d=M.q[q]||{label:'Question '+(i+1),correct:'?'};
+          const ok=mine===d.correct;
+          return `<div class="q"><p class="qn">Question ${i+1} · multiple choice</p>
+            <p class="qlabel">${d.label}</p>
+            <span class="pill ${ok?'good':'bad'}">${c.name} answered ${mine}</span>${ok?'':`<span class="pill good">Correct · ${d.correct}</span>`}</div>`;
+        }).join('');
+        const wr=Object.keys(e.written||{}).map(n=>`<div class="q"><p class="qn">Question ${n} · written</p>
+            <p class="qlabel">${(M.w||{})[n]||''}</p>
+            <div class="ans"><span class="who">${c.name}'s answer</span>${e.written[n]}</div></div>`).join('');
+        return `<div class="exam"><div class="ehead"><span class="m">${e.module}</span>
+            <span class="d"><span class="score ${cls(e.score)}" style="margin-right:10px;">${e.score}/${e.max}</span>${e.at}${e.missed.length?' · missed '+e.missed.join(', '):' · all correct'}</span></div>
+          <div class="body">${mc}${wr}</div></div>`;
+      }).join('')}
+    </section>`;
+  });
+  pages.innerHTML=pagesHtml;
+
+  /* ---- tabs ---- */
+  ORDER.forEach(k=>{
+    const t=document.createElement('button');t.className='tab'+(k==='overview'?' on':'');
+    if(k==='overview'){t.textContent='Overview';}
+    else{
+      const c=C[k];const e6=c.exams.find(e=>e.m===6);
+      t.innerHTML=c.name+`<span class="dot" style="background:${e6?(e6.score>=4?'var(--green)':'var(--amber)'):'var(--red)'};"></span>`;
+    }
+    t.addEventListener('click',()=>{
+      document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));t.classList.add('on');
+      document.querySelectorAll('.page').forEach(x=>x.classList.remove('on'));
+      document.getElementById('pg-'+k).classList.add('on');
+      window.scrollTo({top:0});
+    });
+    tabs.appendChild(t);
+  });
+}).catch(()=>{document.getElementById('pages').innerHTML='<p style="padding:60px 0;color:var(--ink-soft);">Could not load results.json — refresh, or ask Claude to update the dashboard.</p>';});
+</script>
