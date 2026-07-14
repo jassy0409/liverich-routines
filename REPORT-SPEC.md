@@ -85,6 +85,17 @@ ends or as list badges only. Top-spender names: first name + VIP tag +
 location only — strip internal chatter notes. Never reproduce explicit thread
 content.
 
+## Run timing — PACIFIC TIME, not UTC
+
+- All run-day date checks use **US Pacific time (PST/PDT)**. The server/UTC
+  date is often one day ahead of Pacific — never trust it for "is today the
+  15th/30th" checks.
+- **Mid-month report: the 15th at 6:00pm Pacific**, covering the 1st–15th.
+- **End-of-month report: the last day of the month at 6:00pm Pacific**,
+  covering the full month.
+- 6pm Pacific = 9–10am next day PHT (chatter morning shift), so the playbook's
+  go-live and shift recommendations land before the PH team's day starts.
+
 ## Delivery per run
 
 1. Save to `/mnt/user-data/outputs/` and `outputs/` (repo), named
