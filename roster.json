@@ -101,9 +101,8 @@
       "model": "Cover",
       "shift": "Off-days",
       "slackId": "U06AJLM4JM7",
-      "channel": "",
-      "channelId": "",
-      "note": "covers off-days; resolve channel by name or skip"
+      "channel": "#jeff-management",
+      "channelId": "C08488V3C2G"
     }
   ],
   "backlog": [
