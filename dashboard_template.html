@@ -1,0 +1,302 @@
+<title>Shantal · Cheap Mass Day · July 14</title>
+<meta name="color-scheme" content="dark">
+<script>document.documentElement.setAttribute('data-theme','dark');</script>
+<style>
+  :root{
+    --ground:#100E0A; --panel:#18140D; --panel-2:#1F1A11;
+    --line:#2C2519; --line-2:#221D14;
+    --text:#F0E9DA; --soft:#B8AD97; --faint:#8A7F6B;
+    --gold:#D9B26A; --gold-deep:#B48F49; --rose:#CD8598;
+    --green:#74C08C; --amber:#E0A44A; --red:#DE7676;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:var(--ground);}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--text); font-size:17px; line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--gold);}
+  :focus-visible{outline:2px solid var(--gold); outline-offset:2px;}
+  .serif{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Liberation Serif",serif;}
+  .mono{font-family:"SF Mono",SFMono-Regular,ui-monospace,"DejaVu Sans Mono",Menlo,Consolas,monospace;}
+  .wrap{max-width:900px; margin:0 auto; padding:0 24px 64px;}
+
+  /* ---------- header ---------- */
+  .hero{
+    position:relative; padding:56px 24px 40px; text-align:center;
+    overflow:hidden; border-bottom:1px solid var(--line-2);
+  }
+  .hero::before{
+    content:""; position:absolute; top:-220px; left:50%; transform:translateX(-50%);
+    width:640px; height:440px; border-radius:50%;
+    background:radial-gradient(circle, rgba(217,178,106,.22), rgba(217,178,106,0) 70%);
+    pointer-events:none;
+  }
+  .kicker{
+    position:relative; display:inline-block; font-size:12px; font-weight:600;
+    letter-spacing:.26em; text-transform:uppercase; color:var(--gold); margin-bottom:18px;
+  }
+  .kicker .sep{color:var(--faint); margin:0 2px;}
+  h1.title{
+    position:relative; font-weight:600; font-size:clamp(34px,6vw,52px);
+    letter-spacing:-0.01em; margin:0 0 14px; color:var(--text);
+  }
+  h1.title em{ color:var(--gold); font-style:italic; font-weight:600; }
+  .dek{ position:relative; color:var(--soft); font-size:16px; max-width:560px; margin:0 auto; }
+
+  /* ---------- stat row ---------- */
+  .stats{
+    display:flex; gap:14px; justify-content:center; flex-wrap:wrap;
+    margin-top:32px; position:relative;
+  }
+  .stat{
+    background:var(--panel); border:1px solid var(--line); border-radius:14px;
+    padding:16px 22px; min-width:150px; text-align:left;
+  }
+  .stat .label{ font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--faint); }
+  .stat .value{ font-size:26px; font-weight:600; margin-top:6px; font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif; }
+  .stat .value.green{ color:var(--green); }
+  .stat .value.red{ color:var(--red); }
+  .stat .note{ font-size:12px; color:var(--faint); margin-top:4px; }
+
+  /* ---------- sections ---------- */
+  section{ padding:44px 0; border-bottom:1px solid var(--line-2); }
+  section:last-of-type{ border-bottom:none; }
+  .section-head{ display:flex; align-items:baseline; justify-content:space-between; margin-bottom:22px; flex-wrap:wrap; gap:10px;}
+  h2.title{
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    font-weight:600; font-size:24px; margin:0; color:var(--text);
+  }
+  h2.title em{ color:var(--gold); font-style:italic; }
+  .section-meta{ font-size:12px; letter-spacing:.15em; text-transform:uppercase; color:var(--faint); }
+
+  /* ---------- shift panel ---------- */
+  .panel{
+    background:var(--panel); border:1px solid var(--line); border-radius:14px;
+    padding:26px 28px; margin-bottom:18px;
+  }
+  .panel-top{ display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:16px;}
+  .chatter{ display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; }
+  .chatter .name{ font-size:19px; font-weight:700; color:var(--text); }
+  .chatter .shift{ font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); }
+  .chatter .time{ font-size:13px; color:var(--faint); }
+  .pill{
+    font-family:"SF Mono",SFMono-Regular,ui-monospace,"DejaVu Sans Mono",monospace;
+    font-size:10.5px; letter-spacing:.06em; text-transform:uppercase;
+    padding:4px 10px; border-radius:99px; border:1px solid; white-space:nowrap;
+  }
+  .pill.tone{ border-color:rgba(217,178,106,.4); background:rgba(217,178,106,.1); color:var(--gold); }
+
+  .block-label{ font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--faint); margin:18px 0 8px; }
+  .block-label:first-child{ margin-top:0; }
+  .price{ color:var(--gold); font-weight:700; }
+
+  .quote{
+    border-left:3px solid var(--gold-deep); background:var(--panel-2);
+    border-radius:0 8px 8px 0; padding:12px 16px; margin:6px 0 4px;
+    font-size:15px; color:var(--text);
+  }
+  .quote + .quote{ margin-top:8px; }
+  .quote .who{ font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--faint); margin-bottom:4px; }
+
+  .tags{ display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; }
+  .tag{
+    font-family:"SF Mono",SFMono-Regular,ui-monospace,"DejaVu Sans Mono",monospace;
+    font-size:11px; padding:5px 10px; border-radius:8px; border:1px solid;
+  }
+  .tag.exclude{ border-color:rgba(222,118,118,.4); background:rgba(222,118,118,.1); color:var(--red); }
+  .tag.include{ border-color:rgba(116,192,140,.4); background:rgba(116,192,140,.1); color:var(--green); }
+  .tag.list{ border-color:rgba(217,178,106,.4); background:rgba(217,178,106,.1); color:var(--gold); }
+
+  .folder{
+    display:flex; align-items:center; gap:8px; font-size:13.5px; color:var(--soft);
+    margin-top:8px;
+  }
+  .folder .ico{ color:var(--faint); }
+
+  /* ---------- rules ---------- */
+  .rules{ display:flex; flex-direction:column; gap:14px; }
+  .rule{ display:flex; gap:14px; align-items:flex-start; }
+  .rule .num{
+    flex:none; width:26px; height:26px; border-radius:50%;
+    background:rgba(217,178,106,.14); border:1px solid rgba(217,178,106,.35);
+    color:var(--gold); font-size:12px; font-weight:700;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .rule .txt{ font-size:15.5px; color:var(--text); padding-top:2px; }
+  .rule .txt b{ color:var(--gold); font-weight:600; }
+
+  .callout{
+    background:linear-gradient(180deg, rgba(217,178,106,.10), rgba(217,178,106,.03));
+    border:1px solid rgba(217,178,106,.28); border-radius:12px;
+    padding:16px 20px; margin-top:20px;
+  }
+  .callout .ctitle{
+    font-family:"SF Mono",SFMono-Regular,ui-monospace,"DejaVu Sans Mono",monospace;
+    font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--gold); margin-bottom:6px;
+  }
+  .callout .cbody{ font-size:14.5px; color:var(--soft); }
+
+  /* ---------- footer ---------- */
+  footer{
+    text-align:center; padding:36px 24px 48px;
+    font-family:"SF Mono",SFMono-Regular,ui-monospace,"DejaVu Sans Mono",monospace;
+    font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold);
+  }
+  footer .sep{ color:var(--faint); margin:0 6px; }
+
+  @media (max-width:640px){
+    .hero{ padding:44px 18px 30px; }
+    .panel{ padding:20px; }
+    .stats{ gap:10px; }
+    .stat{ min-width:130px; padding:14px 16px; }
+  }
+</style>
+
+<div class="hero">
+  <div class="kicker">LIVERICHMEDIA<span class="sep">&middot;</span>SHANTAL<span class="sep">&middot;</span>GAMEPLAN<span class="sep">&middot;</span>JULY 14 2026</div>
+  <h1 class="title">Cheap Mass <em>Day</em></h1>
+  <div class="dek">Built off the June diagnostic &mdash; redeploying the best-performing config of the month across all three shifts.</div>
+  <div class="stats">
+    <div class="stat">
+      <div class="label">Yesterday Gross</div>
+      <div class="value">$1,682.84</div>
+      <div class="note">Jul 13 &middot; both pages</div>
+    </div>
+    <div class="stat">
+      <div class="label">Day Before</div>
+      <div class="value">$2,839.96</div>
+      <div class="note">Jul 12 &middot; outlier high</div>
+    </div>
+    <div class="stat">
+      <div class="label">Change</div>
+      <div class="value red">&minus;40.7%</div>
+      <div class="note">reads as normal, not a dip</div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <section>
+    <div class="section-head">
+      <h2 class="title">Shift <em>Flow</em></h2>
+      <div class="section-meta">Add every buyer to their set list the moment they purchase</div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-top">
+        <div class="chatter">
+          <span class="name">Aaliyah</span>
+          <span class="shift">Graveyard</span>
+          <span class="time">11:00 PM &ndash; 7:00 AM PHT</span>
+        </div>
+        <span class="pill tone">US morning-tone audience</span>
+      </div>
+
+      <div class="block-label">Paid Mass &middot; 3:00 AM PHT &middot; <span class="price">$9.99</span></div>
+      <div class="folder"><span class="ico">&#128193;</span> 6-11-26 LIVE STREAM BIKINI COPY &mdash; 31:52 video &middot; same config as the 6/24 winner (37 buys, best count of the month)</div>
+      <div class="tags">
+        <span class="tag include">Include: Fans</span>
+        <span class="tag include">Include: VIP tier 1</span>
+        <span class="tag include">Include: VIP tier 2</span>
+        <span class="tag exclude">Exclude: SHANTAL ONLY DO NOT OPEN</span>
+        <span class="tag exclude">Exclude: No MM</span>
+        <span class="tag exclude">Exclude: set buyers list</span>
+      </div>
+
+      <div class="block-label">Free Mass &middot; Engagement</div>
+      <div class="quote">
+        <div class="who">Free page</div>
+        Good morning, I hope you're waking up with a smile today. Tell me what's the first thing on your mind this morning &#9728;&#65039;
+      </div>
+
+      <div class="block-label">Bump &middot; Online Fans Only, Exclude Buyers</div>
+      <div class="quote">
+        <div class="who">Reminder</div>
+        Hi, in case you missed it earlier &mdash; the bikini livestream video is still waiting for you. It won't stay up much longer &#128293;
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-top">
+        <div class="chatter">
+          <span class="name">Trisha</span>
+          <span class="shift">Morning</span>
+          <span class="time">7:00 AM &ndash; 3:00 PM PHT</span>
+        </div>
+        <span class="pill tone">US evening-tone audience</span>
+      </div>
+
+      <div class="block-label">Paid Mass &middot; VIP Full Bundle &middot; <span class="price">$49.99</span></div>
+      <div class="folder"><span class="ico">&#128193;</span> LIVESTREAM REPLAY 6/12/2026 $49.99 &mdash; 78:25 + 31:52</div>
+      <div class="tags">
+        <span class="tag include">Include: LOW</span>
+        <span class="tag include">Include: MED</span>
+        <span class="tag include">Include: RE-ENGAGE</span>
+        <span class="tag exclude">Exclude: HIGH</span>
+        <span class="tag exclude">Exclude: No MM</span>
+        <span class="tag exclude">Exclude: SHANTAL ONLY DO NOT OPEN</span>
+        <span class="tag exclude">Exclude: livestream previous buyers</span>
+      </div>
+
+      <div class="block-label">VIP Thank-You Mass &middot; Price TBD</div>
+      <div class="folder"><span class="ico">&#128193;</span> 6-16-26 VIP Mini Nude Towel Set</div>
+
+      <div class="block-label">Free Reminder + Tease</div>
+      <div class="quote">
+        <div class="who">Free page</div>
+        Hi, it's quiet here tonight and I wanted to check in with you. Tell me what's keeping you up this late &#127769;
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-top">
+        <div class="chatter">
+          <span class="name">Princess</span>
+          <span class="shift">Evening <span class="pill" style="border-color:rgba(205,133,152,.4); background:rgba(205,133,152,.1); color:var(--rose); margin-left:6px;">covering &mdash; Arsel removed from rotation</span></span>
+          <span class="time">3:00 PM &ndash; 11:00 PM PHT</span>
+        </div>
+        <span class="pill tone">US late-night-tone audience</span>
+      </div>
+
+      <div class="block-label">Late-Night Tease &middot; Online Fans Only</div>
+      <div class="quote">
+        <div class="who">Free page</div>
+        Hi, the night's still young and I'm in the mood for trouble. Come tell me what kind of trouble you're looking for &#128520;
+      </div>
+
+      <div class="block-label">Free Last-Call Reminder</div>
+      <div class="quote">
+        <div class="who">Free page</div>
+        Points back to the mid-year mass &mdash; no &ldquo;unlock&rdquo; wording, clear CTA close.
+      </div>
+      <div class="tags">
+        <span class="tag exclude">Skip: today's buyers lists</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2 class="title">Team <em>Rules</em></h2>
+    </div>
+    <div class="panel">
+      <div class="rules">
+        <div class="rule"><div class="num">1</div><div class="txt">Add every buyer to the <b>matching set list</b> the moment they purchase, so reminders skip them automatically.</div></div>
+        <div class="rule"><div class="num">2</div><div class="txt">No &ldquo;unlock&rdquo; wording on reminders &mdash; every reminder ends on a clear call to action.</div></div>
+        <div class="rule"><div class="num">3</div><div class="txt">Keep pages separate: free-page captions stay on the free page, VIP-page captions stay on the VIP page.</div></div>
+        <div class="rule"><div class="num">4</div><div class="txt">Bumps go to <b>online fans only</b>, excluding anyone who already bought.</div></div>
+        <div class="rule"><div class="num">5</div><div class="txt">Unsend the previous mass the moment a new one goes out &mdash; never let two live at once.</div></div>
+      </div>
+      <div class="callout">
+        <div class="ctitle">&#128274; Managers Only &mdash; Escalation Protocol</div>
+        <div class="cbody">Any content-mismatch or billing complaint is a compliance hold: no offers, no discounts, hold the thread until Jassy and the model give direction.</div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>LIVERICHMEDIA<span class="sep">&middot;</span>CHATTER PLAYBOOK<span class="sep">&middot;</span>GAMEPLAN<span class="sep">&middot;</span>JULY 14 2026</footer>
