@@ -126,8 +126,7 @@ fetch('results.json?t='+Math.floor(Math.random()*1e6)).then(r=>r.json()).then(D=
   const missing=all.filter(c=>c.pending.some(p=>p.m===6));
 
   /* ---- team blocks ---- */
-  const THEMES={Shantal:'Team theme from the scorecards: answer the concern and price the warm comeback before moving on.',
-                Karina:'Team theme from the scorecards: price the peak, land big spends softly, keep the bratty register — never blunt.',
+  const THEMES={Karina:'Team theme from the scorecards: price the peak, land big spends softly, keep the bratty register — never blunt.',
                 Cover:'Covers all accounts — voice-check one thread per covered account each shift.'};
   const teams={};
   ORDER.slice(1).forEach(k=>{const c=C[k];(teams["Karina"]=teams["Karina"]||[]).push(c);});
@@ -167,8 +166,8 @@ fetch('results.json?t='+Math.floor(Math.random()*1e6)).then(r=>r.json()).then(D=
 
     <div class="callout"><span class="emoji">✅</span><div>
       <p class="t">Is it working? — Yes, with one caveat</p>
-      <p><strong>The training loop is visibly working.</strong> Six of seven chatters submitted the CEO-priority module the same day, all six passed 5/5, and the written answers show real understanding — they diagnose the failure modes and produce usable flows in their models' voices. Strongest evidence: Leigh went 3/5 on Module 1 → 5/5 on Module 6 after one coaching cycle.</p>
-      <p><strong>The caveat:</strong> exams measure knowing; the nightly scorecards measure doing — and the scorecards still flag the live gaps the exam answers describe perfectly (pricing the peak, answering concerns before selling, following up warm fans). Next layer: hold each chatter's live threads against their own exam answers.</p>
+      <p><strong>The training loop is visibly working on this team.</strong> Three of four submitted the CEO-priority module the same day and all three passed 5/5. Strongest evidence: Leigh went 3/5 on Module 1 → 5/5 on Module 6 after one coaching cycle — the coaching loop measurably works. The open item is MJ's missing submission.</p>
+      <p><strong>The caveat:</strong> exams measure knowing; the nightly scorecards measure doing — and the scorecards still flag the live gaps this team's exam answers describe perfectly (Leigh pricing the peak, Rosanna landing big spends softly, Jeffrey circling back on warm spenders). Next layer: hold each chatter's live threads against their own exam answers.</p>
     </div></div>
 
     ${missing.length?`<div class="redbar"><span>⚠️</span><div><b>Action needed today:</b> ${missing.map(c=>`<strong>${c.name}</strong> — ${c.pending.find(p=>p.m===6).note}`).join(' · ')}</div></div>`:''}
@@ -178,7 +177,8 @@ fetch('results.json?t='+Math.floor(Math.random()*1e6)).then(r=>r.json()).then(D=
 
     <h2 style="margin-top:34px;">Manager action plan — this week</h2>
     <div class="card"><ul class="plan">
-      <li><strong>Today:</strong> review the six sets of written answers against each model's voice — Trisha's Q12–13 and Leigh's Q10–13 are share-worthy exemplars.</li>
+      <li><strong>First priority today:</strong> chase MJ's Module 6 exam — it was sent 10:04 AM with a same-day deadline and it's the CEO's directive module. Direct follow-up, not a group nudge.</li>
+      <li><strong>Today:</strong> review the three sets of written answers against Karina's voice — Leigh's Q10–13 are share-worthy exemplars of the bratty-tease register, and the right pairing for Rosanna's delivery polish.</li>
       <li><strong>This week's coaching theme:</strong> "your exam answer vs your live thread" — in each 1:1, put one scorecard flag next to the chatter's own exam answer describing the correct play. Self-confrontation beats instruction.</li>
       <li><strong>Monday:</strong> Module 1 goes to everyone via the weekly routine — watch for the same misses Leigh had (content objections, the confident single ask) across the team.</li>
       <li><strong>Watch item:</strong> multiple choice may be too easy at 5/5 across the board — the written answers are doing the real differentiation. Grade those on the module rubric and log a written-quality note per chatter.</li>
@@ -188,8 +188,8 @@ fetch('results.json?t='+Math.floor(Math.random()*1e6)).then(r=>r.json()).then(D=
     <div class="card">
       <p class="k2">Recommended: Wednesday, July 16 — shifts never fully overlap, so use the two natural handovers</p>
       <ul class="plan">
-        <li><strong>6:45–7:15 AM PHT</strong> — graveyard → morning handover: catches <b>Aaliyah + Leigh</b> (ending) and <b>Trisha + MJ</b> (starting). Use for the Karina value-setting theme, with MJ's 1:1 right after.</li>
-        <li><strong>2:45–3:15 PM PHT</strong> — morning → afternoon handover: catches <b>Trisha + MJ</b> (ending) and <b>Princess + Rosanna</b> (starting). Use for the Shantal answer-the-concern theme.</li>
+        <li><strong>6:45–7:15 AM PHT</strong> — graveyard → morning handover: catches <b>Leigh</b> (ending) and <b>MJ</b> (starting). Use for the value-setting / price-the-peak theme, with MJ's 1:1 (hold instructions + the missing exam) right after.</li>
+        <li><strong>2:45–3:15 PM PHT</strong> — morning → afternoon handover: catches <b>MJ</b> (ending) and <b>Rosanna</b> (starting). Use for the warm-landing drill — one appreciation message after a big unlock, door left open, no further asks.</li>
         <li><strong>Jeffrey</strong> — async, or attach him to whichever handover falls on his cover day; his 1:1 topic is the circle-back habit.</li>
       </ul>
       <p style="margin-top:10px;color:var(--ink-soft);font-size:14.5px;">Keep each huddle to 20 minutes: one win from the exams, one gap from the scorecards, one drill for tonight.</p>
