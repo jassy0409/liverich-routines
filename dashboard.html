@@ -180,11 +180,40 @@ fetch('results.json?t='+Math.floor(Math.random()*1e6)).then(r=>r.json()).then(D=
           <td style="color:var(--ink-soft);font-size:13.5px;">${c.focus.split('—')[0].trim()}</td></tr>`;}).join('')}
       </tbody></table></div>
 
-    <p class="sec-no">Per team</p>
-    <div class="statgrid">
-      <div class="stat"><div class="n" style="color:var(--rose);">Shantal</div><div class="l">Aaliyah 5/5 · Trisha 5/5 · Princess 5/5 — clean sweep. Team theme from scorecards: answer the concern / price the warm comeback before moving on.</div></div>
-      <div class="stat"><div class="n" style="color:var(--rose);">Karina</div><div class="l">Leigh 5/5 · Rosanna 5/5 · MJ missing. Team theme: price the peak and land big spends softly; keep the bratty register, never blunt.</div></div>
-    </div>
+    <p class="sec-no">Team results</p>
+    ${(()=>{
+      const THEMES={Shantal:'Team theme from scorecards: answer the concern and price the warm comeback before moving on.',
+                    Karina:'Team theme from scorecards: price the peak, land big spends softly, keep the bratty register — never blunt.',
+                    Cover:'Covers all accounts — voice-check one thread per covered account each shift.'};
+      const teams={};
+      ORDER.slice(1).forEach(k=>{const c=C[k];(teams[c.model]=teams[c.model]||[]).push(c);});
+      return Object.entries(teams).map(([model,members])=>{
+        const exams=members.flatMap(c=>c.exams);
+        const tavg=exams.length?(exams.reduce((s,e)=>s+e.score,0)/exams.length):null;
+        const sub6=members.filter(c=>c.exams.some(e=>e.m===6)).length;
+        const pend=members.reduce((n,c)=>n+c.pending.filter(p=>p.m===6).length,0);
+        const tcol=tavg===null?'var(--ink-faint)':tavg>=4?'var(--green)':tavg>=3?'var(--amber)':'var(--red)';
+        const rows=members.map(c=>{
+          const oavg=c.exams.length?(c.exams.reduce((s,e)=>s+e.score,0)/c.exams.length):null;
+          const chips=c.exams.slice().sort((a,b)=>a.m-b.m).map(e=>`<span class="score ${cls(e.score)}" title="${e.module}">M${e.m} · ${e.score}/${e.max}</span>`).join(' ')
+            + c.pending.map(p=>` <span class="score r" title="${p.note}">M${p.m} · MISSING</span>`).join('');
+          return `<tr><td><b>${c.name}</b></td><td style="color:var(--ink-faint);font-size:13px;">${c.shift}</td>
+            <td>${chips||'<span class="score p">—</span>'}</td>
+            <td>${oavg===null?'<span class="score p">—</span>':`<span class="score ${cls(Math.round(oavg))}">${oavg.toFixed(1)}/5</span>`}</td></tr>`;
+        }).join('');
+        return `<div class="panel" style="padding:0;overflow:hidden;">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;padding:18px 22px;background:var(--panel-2);border-bottom:1px solid var(--line);">
+            <div><span style="font-family:var(--serif);font-size:24px;font-weight:600;color:var(--rose);">Team ${model}</span>
+              <span style="font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--ink-faint);margin-left:12px;">${sub6}/${members.length} SUBMITTED M6${pend?` · ${pend} MISSING`:''}</span></div>
+            <div style="font-family:var(--serif);font-size:32px;font-weight:600;color:${tcol};">${tavg===null?'—':tavg.toFixed(1)+'/5'}<span style="font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--ink-faint);margin-left:8px;">TEAM AVG</span></div>
+          </div>
+          <div class="tblwrap" style="border:none;border-radius:0;margin:0;"><table style="min-width:520px;">
+            <thead><tr><th>Chatter</th><th>Shift</th><th>Modules taken</th><th>Overall</th></tr></thead>
+            <tbody>${rows}</tbody></table></div>
+          <p style="margin:0;padding:12px 22px;font-size:13.5px;color:var(--ink-soft);border-top:1px solid var(--line-soft);">${THEMES[model]||''}</p>
+        </div>`;
+      }).join('');
+    })()}
 
     <p class="sec-no">Manager action plan — this week</p>
     <div class="panel"><ul class="plan">
