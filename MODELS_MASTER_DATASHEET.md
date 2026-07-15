@@ -9,15 +9,12 @@
 1. Agency-wide operations (shifts, cadence, EOD, complaints flow, ChatterOps rules)
 2. SHANTAL MONIQUE (@shantalmonique)
 3. KARINA PETROVA (@karinkapetro paid · @karinapetrofree free)
-4. STEPH MI
-5. SIBYL VANE / EDEN (@sibyl_vane · @sibbunny)
-6. ERZABEL / BELLA (@erzabel · @erzabelx)
-7. SLOANE QUINN ("Casey")
-8. KATELYN "KK" (legacy)
-9. Manager (Jassy) communication style — formats, verbatim examples
-10. Complaint, refund & chargeback handling — real examples
-11. Live PPV / mass-message caption examples
-12. Source document index
+4. SIBYL VANE / EDEN (@sibyl_vane · @sibbunny)
+5. ERZABEL / BELLA (@erzabel · @erzabelx)
+6. Manager (Jassy) communication style — formats, verbatim examples
+7. Complaint, refund & chargeback handling — real examples
+8. Live PPV / mass-message caption examples
+9. Source document index
 
 ---
 
@@ -31,10 +28,9 @@
 | Karina Free | @karinapetrofree | acct_bd0c6dda969f4631b02b3a9524fa44be | 364264020 |
 | Sibyl Vane | @sibyl_vane / @sibbunny | acct_73ec69accddb469c9b7f998c235214b1 / acct_f8f1861f5b7c48289abefa0f45f4631f | — |
 | Erzabel / Bella | @erzabel / @erzabelx | acct_d221a8614a114ede8c4ea6d326c5bb13 / acct_438bec12b7734785979941481170c0fc | — |
-| Katelyn | @katelyn_runck | acct_454c611dd5374e6bbaac73de35ba7bec | — |
 
 ## Slack channel map
-#shantal-team (C09P2UMSE2G) · #shantal-reports · #karina-team-reports (C0B38BXSM88) · #karina-management · #steph-team (C08HHDA5BKL) · #sloane-team · #bella-team-reports (C0BH44VD0H3, renamed from erzabel-team-reports 2026-07-14) · #jassy-chatters · per-chatter #\*-management channels (aaliyah, trisha, john-arsel, leigh, mj, alyzha, jeff, karen…). Q&As and datasheets live in each team channel's bookmarks.
+#shantal-team (C09P2UMSE2G) · #shantal-reports · #karina-team-reports (C0B38BXSM88) · #karina-management · #bella-team-reports (C0BH44VD0H3, renamed from erzabel-team-reports 2026-07-14) · #jassy-chatters · per-chatter #\*-management channels (aaliyah, trisha, john-arsel, leigh, mj, alyzha, jeff, karen…). Q&As and datasheets live in each team channel's bookmarks.
 
 ## Shift structure (PHT = UTC+8; fan-facing copy framed in PST time-of-day)
 | Account | Shift (PHT) | UTC window | Chatter | Fan-facing tone |
@@ -81,7 +77,7 @@ pussy · dick · cum · balls · clit · cock · "wide open" · "soakin wet"
 Also blocked: explicit sexual roleplay, graphic dirty-talk beyond soft teasing, deceptive captions. Allowed: light teasing, playful flirtation, suggestive-not-explicit, "fade to imagination" — suggest, don't describe. Softer terms (nips, tits) fine.
 
 ### Termination grounds
-Deceptive captions · pet names after warning · any hard-block word in fan copy · unauthorized discounts/price changes · handling a complaint solo · selling extra-spicy to a sub-30-day VIP · repeating warned behaviour after final warning · (Steph account) muting/restricting/blocking any fan. Sales made during a session that angered a fan are void and deducted.
+Deceptive captions · pet names after warning · any hard-block word in fan copy · unauthorized discounts/price changes · handling a complaint solo · selling extra-spicy to a sub-30-day VIP · repeating warned behaviour after final warning. Sales made during a session that angered a fan are void and deducted.
 
 ### Acknowledgement culture
 Every rules update requires each chatter to reply **in their own words, section by section** — "No reply, or an automated-sounding reply, means you have not accepted the updated rules." Generic one-line "noted" doesn't count.
@@ -264,61 +260,7 @@ Pre-VIP content: lingerie, sexy teasing, body oiling, striptease, facetime, phon
 
 ---
 
-# 4 · STEPH MI
-
-## Brand & niche
-Free main page + VIP/SVIP club tiers. Implied content + humor: personality-driven, occasionally risqué. **Persona: big personality, witty, sarcastic, "bro humor" — a comedian, NOT cutesy girl-next-door.** Previous management's explicit X-rated caption style is explicitly discontinued. Sexuality level moderate ~6/10: light teasing, innuendo, humor-based suggestive comments; vulgar only if humorous. NO in-depth dirty talk, explicit descriptions, photo ratings, or detailed body-part commentary. No misleading captions, no overpromising or faking explicit content.
-
-## Identity datasheet (from STEPH MI Q&A)
-| Field | Value |
-|---|---|
-| Name | Steph Mi |
-| Fan-facing home | Los Angeles, CA (**actually Pittsburgh, EST — never tell fans; always appear West Coast time; never reveal timezone changes**) |
-| Birthday | June 1 · Gemini · **never states her age** (privacy) |
-| Born | Germany · ½ Korean, Italian |
-| Height / ring size | 5'5" · 5.5 |
-| Body | Best feature: her butt. 2 tattoos (hip bone; Hello Kitty on right butt cheek — high-school dare). Implants; no future surgery |
-| Education | 5 years interior design (won't name the college) |
-| Work | Model, producer, real estate investor, TV personality, host of her reality golf show |
-| First job | Camp counselor |
-| Family | Lives in a house with family; has a daughter (nanny ~12pm–midnight); closest to "sister" Jamie; no siblings |
-| Pets | 2 dogs: Remy (oldest), Rigley |
-| Cars | Chevy Tahoe, Tesla |
-| Payments | venmo/cashapp: stephmi |
-
-## Persona & voice details
-- Three words: witty, kind, understanding. Mostly extroverted; morning person; dark humor. Texting: lol, lmao, haha, omg.
-- Relationship status line: "in love with my career". Last relationship: "TMI".
-- Secret talent: distinguished expert rifle shooter. Bad at singing/bowling. Fears: SPIDERS, being followed. Can't live without: her daughter, phone, toothbrush, Lumify, stud earrings.
-- Favorites: pink/red/emerald green · water, coffee, energy drinks (cream-foam cold brew, latte) · sushi, pizza, salads · Morgan Wallen, Usher, Drake, hip hop, country · Superbad, The Revenant, Hangover, Game of Thrones · elf makeup · joahbrown + Amazon.
-- Sports: baseball, football, golf — Yankees, Cubs, Pirates, Steelers. No video games ("I'd rather dominate in physical contact sports").
-- Hobbies: working out, cooking (stress relief), golf events, hosting, creating content. Travel: Korea, Thailand, Indonesia, Ireland.
-- Flirt profile: attracted to confidence, wit, emotional maturity, humor, ambition; turned on by strength and "smells amazing"; love language words of affirmation + quality time; ideal date: baseball game + witty banter + game food; crushes Justin Bieber, Matthew McConaughey. Favorite position: doggie ("the less work the better"); loves control in life but not in sex; craziest: a threesome; lost virginity ~15; fetishes: "I'll save those for a late-night convo, or maybe my tell-all book." Exhibitionist: "i don't mind the spotlight butt i like to be as private as i can."
-- Filming: usually her room; schedule depends on daughter/nanny; days off Mon/Tue (sometimes Wed).
-
-## Messaging rules (master sheet + channel rules)
-- **Conduct (termination-level): never mute/restrict/block any fan.** No single-emoji or one-word replies; every message needs engaging tone + a clear CTA; pauses polite and intentional.
-- Selling rules: never mention/compare other prices; ONE upsell per conversation; short human replies; don't stack offers after an unlock; protect lists at all costs; check tier before engaging; never sell content a fan already owns; never promise resends; duplicate claims → ask for screenshot, replace with equivalent-value set.
-- New chatters: 2–3 weeks to learn the account; rebuild fan trust, match her personality.
-
-## Pricing & tiers
-| Tier | Content | Price |
-|---|---|---|
-| General fans | Lingerie, bikini, personality content | $5–39 |
-| VIP | Hand-bra / suggestive poses | $25–200 |
-| SVIP | See-through / wet T-shirt | $100+ (videos priced higher) |
-
-- **SVIP entry: $699 general / $500 for existing VIPs — do not negotiate pricing.** Masses seen at $5/$8/$20/$22/$29/$49.99; $44 Black Friday bundle.
-- Customs: playful implied play (licking/sucking a banana or lollipop, cucumber between boobs) reserved for customs ONLY — never mass-send; **always ask manager before confirming a custom**. Costume-custom flow: chatter only asks for the tip; model provides content; intimate requests need VIP/SVIP + group-chat review with the model.
-- Video calls: SVIP-exclusive, strictly PG, 10–15 min max; first free with SVIP, additional $1K–2K; Steph can end a call instantly if a fan misbehaves.
-- Live streams: vague teasing tip goals (e.g. "Strip down" can mean fully clothed → lingerie).
-- Outside payments (sensitive): ONLY if the fan initiates — never offer; abbreviated app names in messages; delete payment-detail messages after read (Infloww logs can retrieve them to counter false claims); optionally restrict to VIP/SVIP.
-- Content workflow: labeled General/VIP/SVIP by month ("March VIP Content", "Red Dress in Car – VIP"); upload 3–5x/week; a set = 1–3 videos ≥1 min each.
-- Jassy maintains large caption libraries in-channel (conversation starters, teasers, call-outs, late-night, dominant/GF, games) — pull from those.
-
----
-
-# 5 · SIBYL VANE / EDEN (@sibyl_vane · @sibbunny)
+# 4 · SIBYL VANE / EDEN (@sibyl_vane · @sibbunny)
 
 **Naming rule: old fans call her EDEN; ALL new fans know her as SIBYL** (Sibyl Vane / Sivi / Sib / S / Miss Vane). The model ("E") is reachable in Slack DMs; reporting runs as "SIBYL/SYBIL — Daily Managerial Report" (no dedicated team channel).
 
@@ -367,7 +309,7 @@ Backstory: middle-school best friend turned the girls against her out of jealous
 
 ---
 
-# 6 · ERZABEL / BELLA (@erzabel · @erzabelx)
+# 5 · ERZABEL / BELLA (@erzabel · @erzabelx)
 
 New account (channel #bella-team-reports created July 14, 2026). Chatters must review the Model QnA in bookmarks + the vault before working. Jassy's takeover process: "just finished diving in her account mass stats, datas and chatter protocol… executing masses that's best for her account at the moment."
 
@@ -404,88 +346,10 @@ Topless = SVIP-level on the pricing guidelines; upsell sets are tiered up for no
 
 ---
 
-# 7 · SLOANE QUINN ("Casey")
-
-**Naming rule: her real name is Casey (Casey Martin persona in the Q&A), but ONLY "sloane" is ever used on the page with fans.**
-
-## Brand & voice
-- **Persona: "slow seduction and quiet dominance… sloane's tone is intentional. let them chase. DO NOT EVER BEG AND BE TOO PUSHY!!!!! be minimal, direct, and a little dangerous in chat."**
-- Mirror her Instagram voice: soft, personable, elegant, minimal, non-hypersexualized. No vulgarity, aggressive flirting, or crude language. Use her own IG captions as phrasing reference.
-- Begin reserved and respectful; flirty but not overtly sexual; escalate gradually only with Sloane's explicit approval.
-- Gameplans: soft-opener free masses, no immediate pitching — "let fans respond first… lead the convo toward a personal offer once it feels right." $15 price-point bundle plays.
-- Roleplay angle from Q&A: "anything that is sensual but still leaves mystery… the play of not knowing for certain of getting what one wants."
-
-## Content limits (hard)
-- **NO nudity. Implied only** (handbra, covered poses). Tasteful and artistic, never explicit. Anything beyond implied nudity is a hard NO — no exceptions, no negotiation.
-- Livestreams optional, behind paywall/existing fans only, strictly PG.
-
-## Pricing & clubs
-| Tier | Entry | Gets |
-|---|---|---|
-| General | free page (no monthly sub) | Lingerie/bikini in DMs + free wall; no customs |
-| VIP CLUB | $100 lifetime tip | Implied-nudity content access |
-| SVIP CLUB | $1,000 lifetime tip | One free 10–15 min PG Zoom call (additional calls $1.5k); customs within limits |
-
-- Lingerie/bikini = base rate; implied nudity = premium tier; videos > photos. Custom/premium requests $1000+ (high-ticket customs get small flexibility only, e.g. $1,000→$900; general content fixed price, **no fan negotiation** — pricing set by team, Sloane approves).
-- 80% of revenue from DMs — "digital customer service with charisma." Funnel: wall (IG-like teaser + connection) → DMs (monetization) → club → customs.
-- Upload minimum 2 sets/week; video prioritized; free wall/story lifestyle content for authenticity; manager may split full videos into staggered clips.
-- Security: no PayPal/Venmo/CashApp links — everything stays on OF; takedown team monitors leaks.
-
-## Persona datasheet (Casey Martin answers)
-| Field | Value |
-|---|---|
-| Persona | Casey Martin, 37 (10.24.1987, Scorpio), LA-born Californian, British & Polish, 5'7" |
-| Work | Personal trainer, nutrition and wellness coach (online). FIDM. First job Dairy Queen |
-| Body | Glutes ("the mind… lol"); one wrist tattoo in remembrance of a friend who passed; surgery yes (unspecified) |
-| Living | Private — never shares living situation, siblings' details, or relationship (she IS in a relationship — never share) |
-| Pets | Elderly dog Riley + kitten Lily; huge animal lover, fostered a mother cat and kittens |
-| Life | Ballet background (danced 6–7 days/week as a kid; tap/jazz/hip hop; soccer); workouts 5 days/week; "clean freak"; drives a truck; clumsy and owns it |
-| Personality | Loyal, thoughtful, fun; introverted-leaning morning person; secret talent singing (car/shower); most-used emoji: upside-down smile; doesn't abbreviate much |
-| Favorites | Alo, For Love and Lemons, Joah Brown; blues/greens; vanilla-flavored coffee, tea; Italian food, seafood, pasta; RHCP, Foo Fighters, Zach Bryan; comedies/mysteries; outdoors everything (hiking, snowboarding, swimming, fishing, boating, road trips) |
-| Travel | Thailand, Dubai, England, Paris, Monaco, Bahamas, Costa Rica; dreams: Italy, Greece, Bali |
-| Values | Motivated by duty to her calling; goal: reach her last breath regretting nothing; 5 years: settle outside LA, family. Fear: wasting time. Pet peeve: disingenuous people |
-| Flirt | Attracted to men who make her laugh and will talk about anything ("even aliens"); love language gestures; melts when someone REALLY sees her and deeply listens; deal-breaker dishonesty |
-| NSFW | Both sub and dom; positions "the fun is finding out with the person you're with"; lost virginity 17; not an exhibitionist; fetish/fantasy answers deliberately open ("open to hearing options ahah idk") — keep mystery |
 
 ---
 
-# 8 · KATELYN "KK" (legacy, @katelyn_runck)
-
-## Brand & niche
-Elite-runway-model-turned-fitness creator ("a model who is fit"), brand-deal heavy (CLS Sportswear "kate10", Bang "KATE10", Fashion Nova, PLT, OMG Swimwear, Alani Nu, SHEIN, SHEGLAM, LuxeLady Fit), classy implied-only content. Joined OF to give fans personal/sexier content while IG stays mainstream. **Relationship-building account** — her explicit expectation (near-verbatim): previous agencies "sold her out with sex talk or left fans on read"; goal is actual relationships, engagement, authenticity — "these are fans not a pornsite to get off and make me look nasty."
-
-## Identity
-| Field | Value |
-|---|---|
-| Name | Katelyn "KK", middle name Larae · July 20, 1991 · Cancer · 31 (at doc time) |
-| Lives | Fargo ND + LA (Florida winter place, Minnesota summer lakehouse); family all around Fargo |
-| Body | 5'10" · 36-26-36 · 34DD · shoe 9–10 · tattoos: "love yourself first" in Arabic (forearm), "explore never settle" glyph (wrist), OM (back of neck) · minor farm-equipment scars |
-| Relationship | **NOT single** — in a relationship ~1 year (single ~3 years prior). Interested in men |
-| Family | 2 older brothers, 1 older sister; nieces/nephews; very family-close (why she stays in ND) |
-| Pets | Teacup Yorkie Bella (5 mo), mini Yorkie Charlie (16 yrs) |
-| Career | Elite Model Management at 17 (runway) → fitness/bodybuilding competitor → social media. Aesthetics license, studied nursing, opened wellness boutique + medical clinic in early 20s; RYT 200, PT, Fitness Nutrition Specialist. Online store katelynchic |
-| Schedule | Wakes 6:30am, bed ~11:30pm. Car: Escalade; dream car Maserati GranTurismo |
-| Favorites | Chicken/sushi/steak, Sour Patch Kids, pizza, cookie-dough ice cream; Harry Potter; Kygo, Martin Garrix, EDM/pop/rap/country; Diet Coke, Dirty Martini; roses, red; Vikings football; Christmas; Louboutin/Saint Laurent; politics TV + documentaries; lifting, hot yoga (recent back injuries — balanced training), lake sports, water/snow skiing; ticklish everywhere |
-| Travel | Bahamas, Cambodia (favorite — Angkor Wat), Canada, Colombia, Costa Rica, Jamaica, Maldives, Mexico, Thailand, Caymans; wants Ireland, Africa, Italy |
-| Personality | Type A, risk-taker, observant, energetic, creative, motivated, humble; friends say caring, trustworthy, blunt-honest, small circle |
-
-## Content boundaries (critical)
-- **NO full nudity. No completely bare boobs or booty.** Some implied for TOP SPENDERS, classy/artistic; sheer is fine; strip teases fine. High-value offers go to her on WhatsApp — always ask before promising anything.
-- No twerking/dancing on request. Sexting OK if fun/flirty — NO raunchy/cheesy.
-- Fetish customs: yes (feet, findom, sub/dom, dominant tickle) — check specific requests with her. Feet caveat: "I have bunions, LMAO I dont have the prettiest feet."
-- Dick ratings: OK "but at a HIGH dollar."
-- Pet names she uses freely: hun, babe, my love, baby, bae, sweets, boo. Body vocabulary: boobs, cleavage, booty ("respectful names").
-
-## Verbatim fan-handling scripts
-- "Let me see your pussy?" → *"What do I get? (money)"* — sell something semi-similar to previous content, or *"If you tip the right magic number."* (They never actually get it — use it as fun conversation to sell a custom.)
-- "I want to see your nudes" → no nudes, but a sexy artsy implied / maybe a slip of a requested outfit for a HIGH price. "Be playful before. Make them work." Random close selfies (rare for her) can heat things up.
-- "How much to have sex with you?" → *"Lifetime commitment and what's mine is mine, what's yours is mine.."* or *"Bring me the heart of the ocean and we will talk…"* — Disney references welcome (her favorite); classy, keeps convo alive.
-- Favorite position (answer exactly): *"missionary/ doggie — keep it classy lol"*
-- Normal convo topics: how's your day, work, fitness/health/motivation, flirty talk to elicit requests, hobbies, food, why did you subscribe, talents — "Bring it to the next level."
-
----
-
-# 9 · MANAGER (JASSY) COMMUNICATION STYLE
+# 6 · MANAGER (JASSY) COMMUNICATION STYLE
 
 ## Tone rules
 - Warm but direct. Open with **"Hi [name]"** — NEVER "Hey".
@@ -524,7 +388,7 @@ Daily per-model gameplans with per-shift assignments, exact captions, exclude li
 > "SHANTAL GAMEPLAN · FRIDAY JULY 10 · ENGAGEMENT + PAID MASSES
 > Universal excludes — apply to every mass below: • NO MM $3000+ • VIP High Spenders • SHANTAL ONLY DO NOT OPEN
 > AALIYAH — GRAVEYARD (US morning-tone audience)… Paid Mass · 11:00 PM PHT — Gray Top & Green Pants — $22 … Folder: '$29.99–$45 GRAY TOP AND GREEN PANTS PHOTOS' Exclude (+ universal): '1/30/2025 pmm exclude gray top and green pants' (118 users) Tag buyers → 'Gray top green pants part 1' (16 users)…"
-Karina version links a canvas: "Full script + captions are in the canvas below, please read it before your shift… don't wing it from this summary." Steph gameplans add role-per-shift blocks + two mock conversations per chatter (e.g. "this $5 drop is about emotional pull. it should feel personal, not promotional. after unlock, ask a simple question to keep them talking.").
+Karina version links a canvas: "Full script + captions are in the canvas below, please read it before your shift… don't wing it from this summary."
 
 ## Bump scripting on request
 When a chatter asks for a bump, Jassy sends 8–10 numbered non-sales engagement lines with rules: "engagement bumps only, not sales, so send them one at a time to ONLINE or active fans only… No prices, no 'go check what I sent'… Space them out, about one every few hours per fan. Let me know which ones land so I can tune the next batch."
@@ -534,14 +398,13 @@ When a chatter asks for a bump, Jassy sends 8–10 numbered non-sales engagement
 - "i dont want to see PPVs being sent out without proper convo build up"
 - "can we make sure we state what set they bought? … and verify if they're added on the lists?"
 - "why does the fans lists are not moving, like none of you guys adding buyers? … I have never seen anyone added on even one list!"
-- (Steph, rushed sale) "It's clearly no-clothes content, are you seriously not double-checking before sending? … serves as warning.. do not rush sales and risk your position for just quick sales please … yes! im watching closely"
 - Daily "Chatter Performance Check" in each management channel: praise first + one focus metric + a scripted alternative line, e.g. "Give a brand new sub at least one real reply before any price shows up. With someone like Caleb, try something closer to 'I would love to know more about you first, Caleb…' Let him talk before you sell." Voice flags called by name: "on Chris keep babe for fans who are actually spending in the moment, that was the one restricted flag this shift."
 - Weekly training modules ("The Chase") with same-day exams and per-model dashboards (jassy0409.github.io/liverich-routines/dashboard-shantal.html, dashboard-karina.html). Model-facing framing: "Slow traffic is exactly when I retrain hard, so everything converts better when volume comes back."
 - Onboarding pattern: welcome with 💗, assignment + window, links to briefing + manual, bullet summary of rule changes, then required section-by-section acknowledgement in the chatter's own words. Closes warm: "a two minute question beats a wrong message to a VIP."
 
 ---
 
-# 10 · COMPLAINT, REFUND & CHARGEBACK HANDLING — REAL EXAMPLES
+# 7 · COMPLAINT, REFUND & CHARGEBACK HANDLING — REAL EXAMPLES
 
 ## Escalation alert (CRITICAL) format
 > "ESCALATION ALERT, Karina, fan Marco
@@ -590,7 +453,7 @@ Newer variant: "Suggested reply the chatter can adapt, 1 to 2 sentences max, pre
 
 ---
 
-# 11 · LIVE PPV / MASS-MESSAGE CAPTION EXAMPLES
+# 8 · LIVE PPV / MASS-MESSAGE CAPTION EXAMPLES
 
 ## Shantal — real sent masses (July 14–15, 2026)
 | Type | Caption (verbatim) | Price / result |
@@ -677,7 +540,7 @@ Note: all welcome messages currently report **isActive = false** — worth re-en
 
 ---
 
-# 12 · SOURCE DOCUMENT INDEX
+# 9 · SOURCE DOCUMENT INDEX
 
 | Doc | Where |
 |---|---|
@@ -689,23 +552,18 @@ Note: all welcome messages currently report **isActive = false** — worth re-en
 | 🧾 ACCOUNT RULES & GUIDELINES — KARINA PETROVA | Google Doc 1Q408LaMwvDgotKN1v44ZIAlxNZ7J4x-yehvAxatqk2A |
 | KARINA AI Q&A | Google Doc 1LAWgzk5_7kVO2oKHB4QZNIN1NJD31ofevRt6dflqbK4 |
 | KARINA PRICING GUIDELINE.xlsx | Slack file F0B53D5G9C0 |
-| STEPH MI Q&A | Google Sheet 1-CMzzgOoef01vA5PGsh9aWWP2_5asQv1BEHmfVIlrgY (+ PDF) |
-| STEPH MI MASTER SHEET GUIDELINES | Google Doc 1ucnW8J2sfDltndxoBi_bl2Ckfie_2ee4nYGU9vKXyic (+ PDF) |
 | EDEN Q&A | Google Sheet 1NoiYG_chcZUBOdw-tNkVoJKIa1YYkr1QNrjJ7vWeoZ8 |
 | Sibyl datasheet | Google Sheet 1hPAAp8TE68C2S8PNYiTyDTmr-PLOR7p6mEBjvTUJ6HM |
 | Sibyl Vane – Biography | Google Doc 1pk0ducxk0o4XzhPOCVMA9CaXQaLMLofSN8gHigqmqNc |
 | Erzabel Q&A | Google Doc 1AAKMdePSir0x2QQinFrxvJGYHUb9Sox99hsRB5r9ypU |
-| SLOANE QUINN Q&A | Google Sheet 1i6zd95KK7nite26YB7b7XwSX8C0Yk3oixCywGncf59Y |
-| 🧾 SLOANE: ACCOUNT GUIDELINES MASTER SHEET | Google Doc 1kj5ZJfPZu3yx91EYeXBBJciw91I2sVb5Oe18bH_Y5AE |
-| Katelyn Q&A.pdf | Drive 1F3pZz9r6EAMVghQvXow6dGqFAu0NRaYT |
 | Chatter scorecard method | liverich-routines/SKILL.md |
 | Dashboards | jassy0409.github.io/liverich-routines/dashboard-shantal.html / dashboard-karina.html |
 
 ## Known gaps / data-quality flags
-- Several Drive docs are truncated at export (Karina AI Q&A impersonation script tail; Sloane master sheet Section 12; both Sibyl docs' final lines; Shantal questionnaire Socials Q4; Katelyn goals answer).
+- Several Drive docs are truncated at export (Karina AI Q&A impersonation script tail; both Sibyl docs' final lines; Shantal questionnaire Socials Q4).
 - Emoji lists in most Drive docs export as corrupted characters — re-confirm each model's exact emoji set from the originals.
 - Sibyl age discrepancy: bio doc says 23, newer Q&A says 24 (as of May 2025) — Q&A is authoritative.
-- Erzabel has many unanswered NSFW/backstory fields — collect from the model (list in Section 6).
+- Erzabel has many unanswered NSFW/backstory fields — collect from the model (list in Section 5).
 - Karina pricing exists in two versions (spreadsheet tiers vs July ChatterOps ladder) — ChatterOps ladder is newer; confirm which governs.
 
 *Compiled by Claude for Jassy · LiveRich Media · July 15, 2026.*
