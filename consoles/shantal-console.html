@@ -72,7 +72,37 @@ function topics(m){return{
 };}
 function tp(t){return {new:"$100",low:"$149",mid:"$200",vip:"$400",whale:"$500"}[t]}
 function tf(t){return {new:"intro Spicy ~$100. sell Spicy longest before going higher",low:"Spicy at the $149 sale price",mid:"Spicy $200 full price",vip:"Extra Spicy $400, ONLY if VIP is 30+ days old",whale:"XX Spicy $500 to 700, top spenders only, never discount"}[t]}
+function cap(s){return s.charAt(0).toUpperCase()+s.slice(1)}
 function scrub(s){return s.replace(/\b(babe|baby|bby|hun|honey|sweetie|handsome|cheeky|mischievous)\b/gi,"").replace(/\bhey\b/gi,"hello").replace(/\s{2,}/g," ").replace(/\s+([,.!?…])/g,"$1")}
+var LORE=[
+[/fav(ourite|orite)?\s*(food|meal|dish)|what.*eat/i,"Sushi and a medium rare filet mignon. I am a foodie through and through"],
+[/coffee|fav.*drink|starbucks/i,"I do not drink alcohol at all. My weakness is coffee, and a brown sugar shaken espresso is my naughty little treat"],
+[/\bcats?\b|\bpets?\b|\bdogs?\b/i,"My Siberian cat Neo runs this house. Total cat mom, although I love dogs too"],
+[/how old|your age|birthday|when.*born|zodiac|star sign/i,"36, an Aries, born April 2. I only get better"],
+[/how tall|height/i,"5 foot 5 of trouble"],
+[/(brother|sister|sibling)/i,"I have brothers and a sister, but I keep my family off the internet. They live out of state"],
+[/music|what.*listen/i,"Honestly, every genre depending on my mood"],
+[/movie|show|series|netflix|watch(ing)?|marvel/i,"Dexter Resurrection and Tulsa King right now. And I watched every Marvel movie in order back in 2020, Iron Man is my favorite"],
+[/tattoo|piercing/i,"No tattoos, and just my ears pierced these days. My past self was a little wilder"],
+[/hobb(y|ies)|free time|for fun|gym|workout/i,"Lifting in my garage gym four times a week, running, hiking, anything on the water in summer. And baking sourdough"],
+[/what.*(job|work|do for)|podcast/i,"Full time model and creator. I also co founded the Coffee and Cleavage podcast before stepping away last fall, and I am so grateful for that chapter"],
+[/drink|drunk|alcohol|smoke|weed/i,"I do not drink or smoke at all. My vices are caffeine and the gym"],
+[/sport|team|football|seahawks/i,"Seahawks girl through and through. I grew up on basketball and volleyball too"],
+[/\bcar\b|drive/i,"I used to drive a Lexus 😉 and that is all you get"],
+[/book|read/i,"Atomic Habits changed how I live, and I love Gillian Flynn when I want a thrill"],
+[/love language|romantic/i,"Touch and words most of all. Thoughtfulness melts me, not grand gestures"],
+[/turn(s)? (you|u) on|what.*like in a (man|guy)/i,"A deep voice, calm direction, and quiet confidence. Anticipation is everything 😏"],
+[/travel|vacation|trip/i,"Costa Rica and Hawaii have my heart. A Mediterranean cruise is the dream"]];
+function loreOf(m){for(var i=0;i<LORE.length;i++){if(LORE[i][0].test(m))return LORE[i][1]}return null}
+function topicOf(m){var t=" "+m.toLowerCase().replace(/[?!.]+/g," ")+" ";
+ t=t.replace(/\byou\b/g,"QXi").replace(/\bu\b/g,"QXi").replace(/\byour\b/g,"QXmy").replace(/\bur\b/g,"QXmy").replace(/\byours\b/g,"QXmine");
+ t=t.replace(/\bi\b/g,"you").replace(/\bme\b/g,"you").replace(/\bmy\b/g,"your").replace(/\bmine\b/g,"yours").replace(/\bam\b/g,"are");
+ t=t.replace(/QX/g,"").replace(/\s+/g," ").trim();
+ t=t.replace(/^(so|ok|okay|hi+|btw|um+|lol|haha+)\s+/,"").replace(/^(what's|whats|what|why|when|where|how|who|do|does|did|are|is|can|could|will|would|have|has|tell)\s+/,"");
+ if(/^(i|you)\s+(am|are|is|was|were|like|love|hate|want|do|did|have|has|would|could|can|will|think|miss)\b/.test(t))t="if "+t;
+ t=t.replace(/\bi$/,"me");
+ if(t.length>48)t=t.slice(0,48);
+ return t||"that"}
 function gen(){
  var m=document.getElementById("inp").value.trim();
  var nm=document.getElementById("fanname").value.trim();
@@ -137,14 +167,19 @@ function gen(){
    +V("chosen",pk(r,["I was actually hoping you would message me"+n+" 💗 You're not just another sub to me, you know that right?","You have a habit of showing up exactly when I want company 🥰 I like that about you…","Of everyone in my messages tonight, you are the one I was waiting on 😘"]),"make him feel chosen. verbatim from her best chats.")
    +V("playful tease",pk(r,["Careful"+n+"… showing up looking all charming 😉 I am in a dangerously good mood tonight. Want to find out why?","You picked a fun night to appear 😏 I have been feeling a little bold today…","Mmm, good timing 😘 I was just deciding who deserves to see what I filmed earlier…"]),"tease with a hook question; if he bites → discovery → tier offer.");
   } else if(/\?\s*$|^(what|why|when|where|how|do you|are you|can you|will you|did you)\b/i.test(m)){
-   out+=V("answer + flirt",pk(r,["Mmm, good question 😘 Tell me what made you ask and I will give you the honest answer…","I could answer that 😉 but I answer better when I know what you are really hoping for… so tell me","That depends"+n+" 💗 are you asking as a curious fan, or as one of my favorites? The answers are different 😏"]),"an unrecognized question gets a playful clarify, never a random pivot. his next message reveals the real intent.")
-   +V("guess his angle",pk(r,["If you are asking what I think you are asking… the answer is yes, and you are not ready 🥰","I have a feeling I know where this is going 😉 Say it properly and find out…","You are fishing for something 😘 Be brave and ask me the real question…"]),"invites him to state the actual want. specifics = your pitch.")
-   +V("honest + warm",pk(r,["Ask me anything, I like the curious ones 🥰 Just know some answers cost a little more than others 😉","For you I am an open book… well, most chapters 💗 Go on…","I will tell you 😘 but first say hello properly, I missed you today…"]),"keeps it human. never dodge twice in a row, answer something real next message.");
+   var f=loreOf(m), tq=topicOf(m);
+   if(f){
+    out+=V("sweet 🌸",pk(r,[f+" 🥰 Now your turn, same question…",f+" 💗 I love that you asked. Tell me yours?",f+" 🥰 You are learning all my secrets…"]),"real answer from her Q&A. always bounce the question back.")
+    +V("playful 😏",pk(r,["Someone has been studying me 🤭 "+f+". Your turn…","Doing your homework on me? I respect it 😏 "+f,"Getting to know me, hmm? 🤭 Alright: "+f]),"tease the curiosity, still answer honestly.")
+    +V("spicy 🔥",pk(r,[f+"… and if you keep asking such good questions, I might start rewarding them 😘",f+" 😏 The more you know me, the more dangerous this gets…",f+"… careful, the ones who know me this well end up hooked 😉"]),"answer + heat. if he keeps engaging, steer toward discovery, then the tier offer.");   } else {
+    out+=V("sweet 🌸",pk(r,["You want to know "+tq+"? 🥰 Tell me why you are curious and I will spill…","Asking "+tq+"… I love that you want to know me 💗 You first, then me","Hmm, "+tq+" 🥰 I will answer honestly if you answer it too. Deal?"]),"no scripted answer for this one. she engages HIS actual question. get the truth from the Q&A doc or your manager, never invent lore.")
+    +V("playful 😏",pk(r,["Out of nowhere: "+tq+" 🤭 I love the randomness. Let me think…","Bold question 😏 "+cap(tq)+"? What made you think of that…","Asking "+tq+" like it is casual 🤭 Lucky for you I like curious minds. Why do you want to know?"]),"buys a beat while staying ON his question. never change the subject.")
+    +V("spicy 🔥",pk(r,["Mmm, "+tq+"… careful what you ask me, I answer honestly 😏","You really want to know "+tq+"? Some answers cost a little more 😘","Asking "+tq+" at this hour 😉 Dangerous. I like it"]),"answer + heat if the question allows. identity, location, family → use the privacy lines instead.");   }
   } else {
-   out+=V("react + invite",pk(r,["Okay, I was not expecting that today 🥰 I am intrigued, keep talking…","You are kind of fun, you know that? 💗 Tell me the rest…","Mmm, noted 😏 and now I have questions… start from the beginning"]),"react naturally to his statement, then let him lead one more message.")
-   +V("warm hook",pk(r,["This is why you are one of my favorites 💗 Tell me everything…","You always bring me something interesting 😘 So what is the story?","I like where this is going"+n+" 😉 Do not stop now…"]),"keep the thread alive, learn what he cares about, log it.")
-   +V("playful pivot",pk(r,["Noted 😏 And while I have you… I did something a little bad today. Remind me to tell you about it 😉","Interesting… you know what else is interesting? What I almost posted today and did not 💗","Mmhm 😘 My turn to share something… but promise not to fall in love. Promise?"]),"only use this pivot AFTER you have engaged his topic once. never as the first reply.");
-  }
+   var ts=topicOf(m);
+   out+=V("sweet 🌸",pk(r,["Wait, "+ts+"? 🥰 Tell me everything, I am listening…","Okay, "+ts+"… I want the whole story 💗","Aww, "+ts+"? Come here, talk to me 🥰"]),"responds to what HE actually said. let him lead one more message.")
+   +V("playful 😏",pk(r,["So "+ts+", hmm 🤭 You are kind of fun. Keep going…","You cannot just tell me "+ts+" and expect me to be normal about it 😏 Continue…","Okay, "+ts+"? Now I am invested. Do not stop…"]),"react with energy, keep the thread on his topic.")
+   +V("spicy 🔥",pk(r,[cap(ts)+"… interesting 😏 And here I was, thinking about you for a whole other reason…","Mmm, "+ts+"? Noted. Now may I distract you properly? 😘","So "+ts+"… meanwhile I have been a little too proud of what I filmed today 😉 Want to trade stories?"]),"acknowledge his topic FIRST, then bridge to heat. never skip the acknowledgment.");  }
  } else if(mode==="pov"){
   var like=m||"exactly what you told me you like";
   out+=V("made for him",pk(r,["I have been thinking about you"+n+"… so I picked something where it feels like it is just us, filmed like you are right there with me 🥰 It is "+tp(tier)+" and it might be my favorite one. Should I send it?","Confession 😘 my newest one was filmed with "+like+" in mind, eyes on the lens the whole time… "+tp(tier)+" and you will see what I mean","I did something unfair"+n+" 😉 I filmed one knowing you specifically would lose it. "+like+", all of it. Curious?"]),"POV = intimacy sell. anchor at "+tf(tier)+".")

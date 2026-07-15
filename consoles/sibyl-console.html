@@ -74,6 +74,35 @@ function topics(m){return{
  origin:/israel|where (are|r) (you|u) from|nationality|jewish/i.test(m),
  name:/eden|why sibyl|change(d)? (your|ur) name|who is eden/i.test(m)
 };}
+var LORE=[
+[/fav(ourite|orite)?\s*colou?r/i,"purple tinted black, velvet red, and pinks. moody palette, sunny girl 😂"],
+[/fav(ourite|orite)?\s*(food|meal|dish)|what.*eat/i,"chicken in all its forms, sashimi, omurice… and yet i cook like a hazard 😭"],
+[/coffee|drink|alcohol|wine/i,"black coffee before the gym, almond milk cappuccino with extra foam after. alcohol basically never, one red wine if we're being fancy"],
+[/\bcook/i,"i'm a genuinely terrible cook 😭 plain protein and carbs, my soul is not satisfied"],
+[/\bcats?\b|\bpets?\b|\bdogs?\b/i,"no pets right now! i grew up with chickens, rabbits and ducks though. farm era 😂"],
+[/how old|your age|birthday|when.*born|zodiac|star sign/i,"24! may 3, taurus sun. stubborn but loveable, it's documented"],
+[/how tall|height/i,"1.72m of chaos"],
+[/(brother|sister|sibling)/i,"a twin brother and a little sister 🥰 no names, they didn't sign up for this life"],
+[/music|song/i,"80s and 90s pop, rock, rnb. i contain multitudes"],
+[/movie|show|series|netflix|watch(ing)?/i,"derry girls is my comfort show, plus friends and the office. jim carrey owns my sense of humor"],
+[/tattoo/i,"none! i'm scared my personality would shift 😂 100% natural, all of it"],
+[/hobb(y|ies)|free time|for fun|gym/i,"morning gym, coffee, filming, then exploring whatever city i'm in. weekends are for wandering"],
+[/what.*(job|work|do for)/i,"full time content creator and model! first gig at 16, been at it ever since"],
+[/travel|vacation|trip|city/i,"i collect cities like fridge magnets 😂 kyoto, porto, santorini… cyprus has my heart right now. hawaii is the dream"],
+[/uniform|fetish|turn(s)? (you|u) on/i,"uniforms 🫣 cop, military… don't test me. also facial hair, it's a weakness"],
+[/scared|fear|afraid/i,"insects. and i WILL scream, it's not cute"],
+[/best friend|bestie/i,"my bestie and i share a literal birth date, met her at 20 and never let go 🥰"],
+[/vegas/i,"vegas broke me 😂 february girls trip, my first ever tipsy night, a few margarita sips and i couldn't walk straight. the wynn is elite btw"]];
+function loreOf(m){for(var i=0;i<LORE.length;i++){if(LORE[i][0].test(m))return LORE[i][1]}return null}
+function topicOf(m){var t=" "+m.toLowerCase().replace(/[?!.]+/g," ")+" ";
+ t=t.replace(/\byou\b/g,"QXi").replace(/\bu\b/g,"QXi").replace(/\byour\b/g,"QXmy").replace(/\bur\b/g,"QXmy").replace(/\byours\b/g,"QXmine");
+ t=t.replace(/\bi\b/g,"you").replace(/\bme\b/g,"you").replace(/\bmy\b/g,"your").replace(/\bmine\b/g,"yours").replace(/\bam\b/g,"are");
+ t=t.replace(/QX/g,"").replace(/\s+/g," ").trim();
+ t=t.replace(/^(so|ok|okay|hi+|btw|um+|lol|haha+)\s+/,"").replace(/^(what's|whats|what|why|when|where|how|who|do|does|did|are|is|can|could|will|would|have|has|tell)\s+/,"");
+ if(/^(i|you)\s+(am|are|is|was|were|like|love|hate|want|do|did|have|has|would|could|can|will|think|miss)\b/.test(t))t="if "+t;
+ t=t.replace(/\bi$/,"me");
+ if(t.length>48)t=t.slice(0,48);
+ return t||"that"}
 function gen(){
  var m=document.getElementById("inp").value.trim();
  var ctx=document.getElementById("ctx").value.trim();
@@ -144,14 +173,19 @@ function gen(){
    +V("bestie energy",pk(r,["hi!! okay first, how are you, second, i have a story 😂","heyy 🥰 you caught me post-gym pre-coffee, which is my most dangerous form","hello hello! what's up? i'm bored and pretty and finally you're here appreciating both 💅"]),"her signature bratty-cute demand energy, verbatim inspired.")
    +V("curiosity",pk(r,["hi 😏 fun fact: i did something today that you're going to want to hear about","hey! okay random but i tried on something earlier and almost posted it… almost 🙈","hiii perfect timing, i need a second opinion on something slightly inappropriate 😂"]),"drops a content seed inside the greeting.");
   } else if(/\?\s*$|^(what|why|when|where|how|do you|are you|can you|will you|did you)\b/i.test(m)){
-   out+=V("answer + flirt",pk(r,["ooh good question! tell me why you're asking and you get the honest answer 😌","i could answer that… but i answer better with context, what's on your mind? 😏","depends! are you asking as a curious fan or as my favorite? different answers 😂"]),"an unrecognized question gets a playful clarify, never a random pivot.")
-   +V("guess his angle",pk(r,["if you're asking what i think you're asking, the answer is yes and you're not ready 🔥","i have a feeling about where this is going 😏 say it properly and find out","you're fishing! be brave, ask the real question 😜"]),"invites him to state the actual want. specifics = your pitch.")
-   +V("honest + warm",pk(r,["ask me anything! i'm an open book, well, most chapters 😂","for you? i'll answer. but first say hi properly, you've been quiet 🥲","i like the curious ones 😌 go on, but know some answers cost extra"]),"keeps it human. never dodge twice in a row.");
+   var f=loreOf(m), tq=topicOf(m);
+   if(f){
+    out+=V("sweet 🌸",pk(r,[f+" 🥰 okay your turn, same question!",f+" 🥲 i love that you asked. now you","aw you want to know me! "+f+" 🥰"]),"real answer from her Q&A. always bounce the question back.")
+    +V("playful 😏",pk(r,["someone's been studying me 😂 "+f+". your turn!","doing your homework on me? respect 😌 "+f,"lol getting to know me huh 😂 fine: "+f]),"tease the curiosity, still answer honestly, keep the wit.")
+    +V("spicy 🔥",pk(r,[f+"… keep asking cute questions and i might start rewarding them 😏",f+" 🔥 the more you know me the more dangerous this gets, fair warning",f+"… careful, people who know me this well get attached. it's a documented side effect 😌"]),"answer + heat with a wink. if he keeps engaging, steer to a tease or tip play.");   } else {
+    out+=V("sweet 🌸",pk(r,["you want to know "+tq+"? 🥰 tell me why you're curious and i'll spill everything","asking "+tq+"! i love that you want to know me 🥲 you first, then me","hmm "+tq+" 🥰 i'll answer honestly if you answer it too, deal?"]),"no scripted answer for this one. she engages HIS actual question. check the Q&A doc or ask your manager, never invent lore.")
+    +V("playful 😏",pk(r,["out of nowhere: "+tq+" 😂 i love the randomness. okay let me think…","lol "+tq+"? bold question 😌 what made you think of that","asking "+tq+" like it's casual 😂 lucky you're cute. why do you want to know?"]),"buys a beat while staying ON his question. never change the subject.")
+    +V("spicy 🔥",pk(r,["mmm "+tq+"… careful what you ask me, i answer honestly 😏","you really want to know "+tq+"? some answers cost extra 🔥","asking "+tq+" at this hour 😏 dangerous. i like it"]),"answer + heat if the question allows. identity, location, family → use the safety lines instead.");   }
   } else {
-   out+=V("react + invite",pk(r,["okay i was NOT expecting that today 😂 i'm intrigued, continue","you're my favorite kind of random, you know that? 🥲 tell me the rest","hm. noted. and now i have questions 😌 start from the beginning"]),"react naturally to his statement, then let him lead one more message.")
-   +V("warm hook",pk(r,["this is why talking to you beats most of my actual plans 😂 go on","okay i'm invested now, don't leave me hanging!","see, you always bring something interesting 🥰 what's the story?"]),"keep the thread alive, learn what he cares about, log it.")
-   +V("playful pivot",pk(r,["noted 😏 anyway i did something mildly scandalous today, remind me to tell you later","cool cool. unrelated: what i almost posted today would've been a problem 🙈","mmhm! my turn to share something, but promise not to fall in love 😂"]),"only use AFTER you've engaged his topic once. never as the first reply.");
-  }
+   var ts=topicOf(m);
+   out+=V("sweet 🌸",pk(r,["wait, "+ts+"? 🥲 okay tell me everything, i'm listening","so "+ts+"… i need the whole story!","aw, "+ts+"? come here, talk to me 🥰"]),"responds to what HE actually said. let him lead one more message.")
+   +V("playful 😏",pk(r,["so "+ts+", huh 😂 you're my favorite kind of random, keep going","not you telling me "+ts+" and expecting me to be normal about it 😭 continue","okay "+ts+"? i'm invested now, don't leave me hanging"]),"react with energy + wit, keep the thread on his topic.")
+   +V("spicy 🔥",pk(r,[ts+"… interesting 😏 and here i was being a menace in my camera roll for a whole other reason","mm "+ts+"? noted. now can i distract you properly? 🔥","so "+ts+"… meanwhile i tried something on today that almost made it to the feed. almost 🙈 trade stories?"]),"acknowledge his topic FIRST, then bridge to heat. never skip the acknowledgment.");  }
  } else if(mode==="pov"){
   var like=m||"what you like";
   out+=V("pov hook",pk(r,["POV: you're my neighbor across the street watching me get changed in my room 😏 that video exists. want it?","i filmed one where it's literally just you and me, no audience 🔥 think you can hold eye contact the whole time?","new POV and honestly it's my best acting yet 😂 the role: yours. want to audition?"]),"her real POV caption style. price in the $19 to 29 range.")

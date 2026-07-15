@@ -72,6 +72,35 @@ function topics(m){return{
  feedback:/thank(s| you)|loved it|amazing video|that was (so )?(hot|good|amazing)|worth it|best (video|content)/i.test(m),
  buy:/how much|price|cost|buy|purchase|unlock|custom|ppv|bundle|what do (you|u) sell|send me|can i (get|have)/i.test(m)
 };}
+var LORE=[
+[/fav(ourite|orite)?\s*colou?r/i,"baby blue 🤍"],
+[/fav(ourite|orite)?\s*(food|meal|dish)|what.*eat/i,"wienerschnitzel with mashed potatoes. don't judge, it's elite"],
+[/drink|wine|alcohol/i,"piña colada or a pinot noir but honestly i barely drink"],
+[/\bcats?\b|\bpets?\b/i,"three cats. blue and tiger are here with me, lilly is back home in slovakia"],
+[/how old|your age|birthday|when.*born|zodiac|star sign/i,"25, virgo, september baby"],
+[/how tall|height/i,"5'8 and i use every inch of it 🐱"],
+[/(brother|sister|sibling)/i,"one brother, ľubo. that's the whole cast you're getting"],
+[/music|sing|spotify|song/i,"i sing! for real, it's on spotify, karina petro. music is my whole heart"],
+[/movie|show|series|netflix|watch(ing)?/i,"interstellar, i've cried every single time. simpsons and futurama for comfort"],
+[/tattoo/i,"a full arm, a dragon on my back, dragon eyes on my thighs and two little ones on my neck 😌 pick a favorite"],
+[/hobb(y|ies)|free time|for fun/i,"studio time, singing lessons, night drives, cooking, gym. i'm a great cook btw"],
+[/what.*(job|work|do for)/i,"content creator and singer. two jobs, one personality"],
+[/language|speak/i,"english, slovak and czech. trilingual menace"],
+[/sport|ufc|fight/i,"ufc is the only sport i watch. fight nights are sacred"],
+[/spiritual|religio|believe/i,"spiritual, not religious. energy, intuition, making your own path"],
+[/conspiracy/i,"okay now you're speaking my language 😌 i have theories. which one do you want"],
+[/\bcars?\b|drive/i,"i love cars and night drives more than most people tbh. windows down, music up"],
+[/turn(s)? (you|u) on|what.*like in a (man|guy)/i,"tall, funny, charismatic, ambitious. confidence does it for me"]];
+function loreOf(m){for(var i=0;i<LORE.length;i++){if(LORE[i][0].test(m))return LORE[i][1]}return null}
+function topicOf(m){var t=" "+m.toLowerCase().replace(/[?!.]+/g," ")+" ";
+ t=t.replace(/\byou\b/g,"QXi").replace(/\bu\b/g,"QXi").replace(/\byour\b/g,"QXmy").replace(/\bur\b/g,"QXmy").replace(/\byours\b/g,"QXmine");
+ t=t.replace(/\bi\b/g,"you").replace(/\bme\b/g,"you").replace(/\bmy\b/g,"your").replace(/\bmine\b/g,"yours").replace(/\bam\b/g,"are");
+ t=t.replace(/QX/g,"").replace(/\s+/g," ").trim();
+ t=t.replace(/^(so|ok|okay|hi+|btw|um+|lol|haha+)\s+/,"").replace(/^(what's|whats|what|why|when|where|how|who|do|does|did|are|is|can|could|will|would|have|has|tell)\s+/,"");
+ if(/^(i|you)\s+(am|are|is|was|were|like|love|hate|want|do|did|have|has|would|could|can|will|think|miss)\b/.test(t))t="if "+t;
+ t=t.replace(/\bi$/,"me");
+ if(t.length>48)t=t.slice(0,48);
+ return t||"that"}
 function gen(){
  var m=document.getElementById("inp").value.trim();
  var ctx=document.getElementById("ctx").value.trim();
@@ -146,14 +175,19 @@ function gen(){
    +V("soft opener",pk(r,["hey 🤍 it's been quiet and i was thinking about you. how are you?","hi babe 😌 you caught me right as i got comfy… what are you up to?","heyy 🤍 okay weird timing, i was literally about to message you"]),"her soft register for fans who went quiet.")
    +V("confession hook",pk(r,["okay i need to confess something before it eats me 😌","so something happened this morning and i can't tell everyone 🐱 you want it?","i have a secret and you replied at the exact right time 😈"]),"verbatim her top mass, works 1:1. the confession becomes a tease.");
   } else if(/\?\s*$|^(what|why|when|where|how|do you|are you|can you|will you|did you)\b/i.test(m)){
-   out+=V("answer + flirt",pk(r,["good question 😌 tell me why you're asking and you get the honest answer","i could answer that 🐱 but i answer better when i know what you're really after… so?","depends babe 😈 are you asking as a fan or as my favorite? different answers"]),"an unrecognized question gets a playful clarify, never a random pivot. his next message reveals the intent.")
-   +V("guess his angle",pk(r,["if you're asking what i think you're asking… yes, and you're not ready 🥵","i think i know where this is going 😏 say it properly and find out","you're fishing for something 🐱 be brave, ask the real question"]),"invites him to state the actual want. specifics = your pitch.")
-   +V("honest + warm",pk(r,["ask me anything, i like the curious ones 🤍 some answers just cost more than others 😌","open book babe… well, most chapters 🐱 go on","i'll tell you 🤍 but say hi properly first, you've been quiet"]),"keeps it human. never dodge twice, answer something real next message.");
+   var f=loreOf(m), tq=topicOf(m);
+   if(f){
+    out+=V("sweet 🌸",pk(r,[f+" 🤍 okay your turn, same question",f+" 😊 i like that you asked. now you",f+" 🤍 see, ask nicely and i answer"]),"real answer from her Q&A. always bounce the question back.")
+    +V("playful 😏",pk(r,["someone's been studying me 🐱 "+f+". your turn","doing homework on me? respect 😌 "+f,"lol getting to know me huh 🐱 fine: "+f]),"tease the curiosity, still answer honestly.")
+    +V("spicy 🔥",pk(r,[f+"… keep asking cute questions and i might start rewarding them 😈",f+" 🥵 the more you know me the more dangerous this gets",f+"… careful, people who know me this well get attached 😌"]),"answer + heat. if he keeps engaging, climb the ladder.");   } else {
+    out+=V("sweet 🌸",pk(r,["you want to know "+tq+"? 🤍 tell me why you're curious and i'll spill","asking "+tq+"… i like that you want to know me 😊 you first, then me","hm, "+tq+" 🤍 i'll answer honestly if you answer it too. deal?"]),"no scripted answer for this one. she engages HIS actual question. check the Q&A doc or ask your manager, never invent lore.")
+    +V("playful 😏",pk(r,["out of nowhere: "+tq+" 🐱 i love the randomness. okay let me think","lol "+tq+"? bold question 😌 what made you think of that","asking "+tq+" like it's casual 🐱 lucky you're cute. why do you want to know"]),"buys a beat while staying ON his question. never change the subject.")
+    +V("spicy 🔥",pk(r,["mmm "+tq+"… careful what you ask me, i answer honestly 😈","you really want to know "+tq+"? 🥵 some answers cost extra","asking "+tq+" at this hour 😈 dangerous. i like it"]),"answer + heat if the question allows. identity, location, ex → use the safety scripts instead.");   }
   } else {
-   out+=V("react + invite",pk(r,["okay was not expecting that today lol 🐱 i'm intrigued, keep going","you're kind of fun, you know that? 🤍 tell me the rest","hm. noted 😌 and now i have questions, start from the beginning"]),"react naturally to his statement, then let him lead one more message.")
-   +V("warm hook",pk(r,["you always show up with something random and honestly? i like it 😌 what's the story","this is why you're my favorite kind of weird 🐱 continue","okay i'm invested now babe 🤍 don't leave me hanging"]),"keep the thread alive, learn what he cares about, log it.")
-   +V("playful pivot",pk(r,["noted 😏 anyway i did something a little bad today… remind me to tell you later","cool cool cool. unrelated: what i almost posted today would have gotten me in trouble 🥵","mmhm 😌 my turn. i have a thing to show you later if you're good"]),"only use AFTER you've engaged his topic once. never as the first reply.");
-  }
+   var ts=topicOf(m);
+   out+=V("sweet 🌸",pk(r,["wait, "+ts+"? 🤍 tell me everything, i'm listening","okay so "+ts+"… i want the whole story","aw, "+ts+"? come here, talk to me 🤍"]),"responds to what HE actually said. let him lead one more message.")
+   +V("playful 😏",pk(r,["so "+ts+" huh 🐱 you're kind of fun, keep going","not you telling me "+ts+" and expecting me to be normal about it 😌 continue","lol "+ts+"? okay now i'm invested, don't stop"]),"react with energy, keep the thread on his topic.")
+   +V("spicy 🔥",pk(r,[ts+"… interesting 😈 and here i was thinking about you for a whole other reason","mm "+ts+"? noted. now can i distract you properly 🥵","so "+ts+"… meanwhile i did a photoshoot in my bed this morning and i'm kind of proud of it 😌 trade stories?"]),"acknowledge his topic FIRST, then bridge to heat. never skip the acknowledgment.");  }
  } else if(mode==="pov"){
   var like=m||"what you like";
   if(page==="free"){
