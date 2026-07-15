@@ -66,7 +66,10 @@ function topics(m){return{
  day:/work|shift|job|boss|long day|tired|exhaust|gym|workout|travel|drove|weekend/i.test(m),
  horny:/horny|hard|turn(ed)? on|naughty|nudes?|naked|😈|🥵|wanna see|show me/i.test(m),
  money:/broke|tight|can'?t afford|no money|payday|next (week|month)/i.test(m),
- buy:/how much|price|cost|buy|purchase|unlock|custom|ppv|bundle|what do (you|u) sell/i.test(m)
+ inside:/what('| i)?s inside|what can i see|what do i get|what am i (getting|paying)|is it worth|what('| i)?s in (it|there|this)|whats included|what will i see/i.test(m),
+ bot:/are (you|u) (real|a bot|actually|really)|is this really (you|her)|do (you|u) even read/i.test(m),
+ feedback:/thank(s| you)|loved it|amazing video|that was (so )?(hot|good|amazing)|worth it|best (video|content)/i.test(m),
+ buy:/how much|price|cost|buy|purchase|unlock|custom|ppv|bundle|what do (you|u) sell|send me|can i (get|have)/i.test(m)
 };}
 function gen(){
  var m=document.getElementById("inp").value.trim();
@@ -92,6 +95,24 @@ function gen(){
    out+=V("soft check in",pk(r,["hey that's okay 🤍 it's been quiet lately and i was thinking about you anyway. how are you actually doing?","don't stress it babe 😌 just keep me company, that part's free","no pressure ever 🤍 honestly the talking is my favorite part. so what's going on with you?"]),"her real quiet week energy. zero pressure, retention play.")
    +V("keep him warm",pk(r,["then you get me for free today. lucky you 🐱 use it wisely","fine, today's on the house 😌 tell me something interesting then","money comes and goes babe, you being here is the part i notice 🤍"]),"free attention now = payday purchase later. log the date.")
    +V("payday iou",pk(r,["okay but when payday hits i'm collecting 🐱 deal?","i'll save my favorite one for you for when things ease up 😌 don't keep me waiting forever","rain check then 😏 future you owes me and i don't forget"]),"bratty iou sets up the future ask with a smile.");
+  } else if(t.bot){
+   out+=V("laugh it off",pk(r,["lol do bots get this annoyed when you doubt them? 🐱 it's me babe. ask me something a bot couldn't vibe with","a bot would've replied faster ngl 😌 i was making tea. it's me","very much real and very much judging you for asking 🐱"]),"never confirm a team exists. answer light, in first person, always.")
+   +V("prove it playful",pk(r,["it's me 🤍 want proof? tell me something random and watch me actually react to it","real, awake, and in a mood 😈 test me if you want babe","the emojis alone should tell you 😌 no bot has this personality"]),"invite him to keep talking, the conversation itself is the proof.")
+   +V("flip it",pk(r,["you spend a lot of time thinking about me huh 🐱 cute. i'm here, i'm real, now what were you actually going to say?","real enough to notice you've been quiet lately 😌 where have you been?","yes it's me lol 🤍 now that that's settled… what do you actually want to ask me?"]),"redirect to the real conversation quickly.");
+  } else if(t.feedback){
+   out+=V("receive it",pk(r,["okay this made my whole day ngl 🥺 which part got you? i need details","see, this is why you're my favorite 🤍 i was nervous about that one","knew you'd like that one 🐱 i almost kept it to myself"]),"celebrate with him first. the ask comes after the details.")
+   +V("details then seed",pk(r,["tell me your favorite moment 😌 the answer decides what i film next…","i want the full review babe 🥵 and if you're good, the next one's even bolder","your reaction is doing things for my ego 🐱 should i push it further next time?"]),"his answer = intel for the next pitch. log it.")
+   +V("ride the high",pk(r,["since you clearly have taste 😈 i have one more that's even better… want me to prove it?","perfect timing because the follow up exists and it escalates 🥵","happy customers get spoiled here 😌 check your messages in a bit babe"]),"buyers who just praised convert at the highest rate. strike now, respect floors.");
+  } else if(t.inside){
+   if(page==="free"){
+    out+=V("tease contents",pk(r,["inside is the version of me this page isn't allowed to show 😈 it starts at $5.99 and it escalates babe","what's inside would get me banned from the feed 🥵 that's the whole point of the lock","the polite answer: more of me. the honest answer: way more of me 🐱 open it"]),"free page: heat + the $5.99 gateway. never a literal list.")
+    +V("dare",pk(r,["only one way to find out and it costs less than your coffee 😌","i could tell you but where's the fun 🐱 unlock it and report back","curiosity is cute. acting on it is cuter 😈"]),"dare close fits the free page energy.")
+    +V("funnel",pk(r,["this page's locks are the warm up babe 😌 the real vault is on my main page 👑","if you're already curious here… my main page would ruin you 🥵","start here, graduate there 🐱 that's the path"]),"use when he's asked about locks twice without buying.");
+   } else {
+    out+=V("tease contents",pk(r,["inside is me not behaving 😈 it starts cute and it does not stay cute. open it and tell me which minute got you","what's inside is the reason i was blushing at my own phone this morning 🥵","the version of me that doesn't make it to the feed babe 😌 slow, close, and a little unfair"]),"answer with heat, never a checklist. push the unlock.")
+    +V("build value",pk(r,["it's the one i keep rewatching ngl 🥵 that's all the review you need","everything i filmed when i thought nobody would see it… and then decided one person should 🐱","the good stuff 😌 the kind i film once and never repeat"]),"scarcity framing, describe the feeling not the contents.")
+    +V("dare the unlock",pk(r,["one way to find out babe 😈 fair warning, people don't recover fast","open it, then come tell me your favorite part 🥵 that's the deal","curiosity looks good on you 🐱 act on it"]),"short dare close. one more tease if he hesitates, then stop.");
+   }
   } else if(t.buy){
    if(page==="free"){
     out+=V("gateway",pk(r,["someone's curious 😈 the fun starts small over here… $5.99 gets you through my first door and it escalates from there. in?","good question babe 😏 first taste is $5.99 and i promise it's not the shy version of me","it starts at $5.99 🥵 after that it depends how brave you are"]),"free page sells the $5.99 gateway first, then upsells the main page.")
@@ -123,11 +144,14 @@ function gen(){
    out+=V("brat opener",pk(r,["i woke up in a mood and decided you're dealing with me today. lucky you 🐱","oh look who showed up 😌 i was getting bored, perfect timing","hey you 🐱 took you long enough"]),"her signature energy. the attitude IS the hook.")
    +V("soft opener",pk(r,["hey 🤍 it's been quiet and i was thinking about you. how are you?","hi babe 😌 you caught me right as i got comfy… what are you up to?","heyy 🤍 okay weird timing, i was literally about to message you"]),"her soft register for fans who went quiet.")
    +V("confession hook",pk(r,["okay i need to confess something before it eats me 😌","so something happened this morning and i can't tell everyone 🐱 you want it?","i have a secret and you replied at the exact right time 😈"]),"verbatim her top mass, works 1:1. the confession becomes a tease.");
+  } else if(/\?\s*$|^(what|why|when|where|how|do you|are you|can you|will you|did you)\b/i.test(m)){
+   out+=V("answer + flirt",pk(r,["good question 😌 tell me why you're asking and you get the honest answer","i could answer that 🐱 but i answer better when i know what you're really after… so?","depends babe 😈 are you asking as a fan or as my favorite? different answers"]),"an unrecognized question gets a playful clarify, never a random pivot. his next message reveals the intent.")
+   +V("guess his angle",pk(r,["if you're asking what i think you're asking… yes, and you're not ready 🥵","i think i know where this is going 😏 say it properly and find out","you're fishing for something 🐱 be brave, ask the real question"]),"invites him to state the actual want. specifics = your pitch.")
+   +V("honest + warm",pk(r,["ask me anything, i like the curious ones 🤍 some answers just cost more than others 😌","open book babe… well, most chapters 🐱 go on","i'll tell you 🤍 but say hi properly first, you've been quiet"]),"keeps it human. never dodge twice, answer something real next message.");
   } else {
-   var e2=sn?'"'+sn+'"':"that";
-   out+=V("mirror it",pk(r,["wait "+e2+"? lol okay you have my attention 🐱 keep going","hm "+e2+"… interesting 😌 tell me more","not you saying "+e2+" and expecting me to be normal about it 🤍 go on"]),"echo his words so it never feels canned. let him lead one more message.")
+   out+=V("react + invite",pk(r,["okay was not expecting that today lol 🐱 i'm intrigued, keep going","you're kind of fun, you know that? 🤍 tell me the rest","hm. noted 😌 and now i have questions, start from the beginning"]),"react naturally to his statement, then let him lead one more message.")
    +V("warm hook",pk(r,["you always show up with something random and honestly? i like it 😌 what's the story","this is why you're my favorite kind of weird 🐱 continue","okay i'm invested now babe 🤍 don't leave me hanging"]),"keep the thread alive, learn what he cares about, log it.")
-   +V("playful pivot",pk(r,["noted 😏 anyway i did something a little bad today… remind me to tell you later","cool cool cool. unrelated: what i almost posted today would have gotten me in trouble 🥵","mmhm 😌 my turn. i have a thing to show you later if you're good"]),"soft pivot toward a content moment without dropping his topic.");
+   +V("playful pivot",pk(r,["noted 😏 anyway i did something a little bad today… remind me to tell you later","cool cool cool. unrelated: what i almost posted today would have gotten me in trouble 🥵","mmhm 😌 my turn. i have a thing to show you later if you're good"]),"only use AFTER you've engaged his topic once. never as the first reply.");
   }
  } else if(mode==="pov"){
   var like=m||"what you like";
