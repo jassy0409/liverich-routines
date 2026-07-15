@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>LiveRich Chatter Console</title>
+<style>
+:root{--bg:#fdf3f7;--bg2:#f5ecfa;--panel:#ffffffcc;--line:#f0d7e4;--ink:#3d2033;--muted:#a06f8e;--acc:#d0447f;--acc2:#9a5bd6;--soft:#fae0ec;--flag:#fdeaea;--flagln:#e07070;--flagink:#a33232}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:linear-gradient(160deg,var(--bg),var(--bg2));color:var(--ink);font:14px/1.55 ui-sans-serif,system-ui,-apple-system,sans-serif;padding:20px 14px 50px}
+.wrap{max-width:680px;margin:0 auto}
+h1{font-family:Georgia,serif;font-size:21px;margin:0;font-weight:600}
+h1 em{font-style:normal;background:linear-gradient(90deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:var(--muted);font-size:12px;margin:4px 0 0}
+.pick{display:flex;gap:6px;margin:14px 0 8px;flex-wrap:wrap}
+.pick button{background:#fff9;border:1px solid var(--line);color:var(--muted);padding:7px 14px;border-radius:999px;font:inherit;font-size:12.5px;font-weight:700;cursor:pointer}
+.pick button.on{background:linear-gradient(90deg,var(--acc),var(--acc2));border-color:transparent;color:#fff}
+.tabs{display:flex;gap:6px;margin:6px 0 10px}
+.tab{background:#fff9;border:1px solid var(--line);color:var(--muted);padding:6px 12px;border-radius:999px;font:inherit;font-size:12px;font-weight:600;cursor:pointer}
+.tab.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.card{background:var(--panel);backdrop-filter:blur(6px);border:1px solid var(--line);border-radius:16px;padding:12px}
+textarea,input[type=text]{width:100%;background:#fff;border:1px solid var(--line);border-radius:12px;color:var(--ink);padding:9px 11px;font:inherit}
+textarea{resize:vertical;min-height:72px}
+input[type=text]{margin-top:8px;font-size:12.5px}
+button.go{margin-top:10px;width:100%;background:linear-gradient(90deg,var(--acc),var(--acc2));color:#fff;border:0;border-radius:12px;padding:12px 0;font:inherit;font-size:14.5px;font-weight:700;cursor:pointer}
+button.go:disabled{opacity:.6}
+.hintline{font-size:11px;color:var(--muted);margin:8px 2px 0}
+.flag{background:var(--flag);border:1px solid var(--flagln);color:var(--flagink);border-radius:12px;padding:8px 12px;font-size:12px;font-weight:600;margin:12px 0 8px}
+#out{margin-top:14px}
+.v{background:#fff;border:1px solid var(--line);border-radius:16px 16px 16px 4px;padding:11px 13px;margin:8px 0;box-shadow:0 1px 4px #d0447f14}
+.vh{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;gap:8px}
+.vl{font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--acc);font-weight:700}
+.copy{background:var(--soft);border:0;color:var(--acc);border-radius:8px;padding:3px 10px;font:inherit;font-size:11px;font-weight:700;cursor:pointer;flex-shrink:0}
+.vt{margin:0;font-size:14px;white-space:pre-wrap}
+.note{color:var(--muted);font-size:11.5px;font-style:italic;margin-top:5px}
+textarea:focus,input:focus,button:focus-visible{outline:2px solid var(--acc);outline-offset:1px}
+footer{margin-top:22px;border-top:1px dashed var(--line);padding-top:10px;font-size:11px;color:var(--muted);line-height:1.6}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>💗 <em>LiveRich</em> Chatter Console</h1>
+<p class="sub">AI drafts in her exact voice, datasheet rules enforced · you review, you send · never paste real fan names into notes apps, use [Name]</p>
+
+<div class="pick" id="models">
+  <button data-m="shantal" class="on">Shantal 💗</button>
+  <button data-m="karina">Karina 👑</button>
+  <button data-m="bella">Bella 🐉</button>
+</div>
+<div class="tabs" id="tabs">
+  <button class="tab on" data-t="reply">Fan reply</button>
+  <button class="tab" data-t="caption">PPV / Caption studio</button>
+</div>
+
+<div class="card">
+  <textarea id="inp" placeholder="paste what the fan said…"></textarea>
+  <input type="text" id="fan" placeholder="fan name (optional — appears as [Name] otherwise)">
+  <button class="go" id="go">Draft 5 suggestions</button>
+  <p class="hintline" id="status">pick a model, paste the message, go ✨</p>
+</div>
+
+<div id="out" aria-live="polite"></div>
+
+<footer>Every suggestion follows the master datasheet: her voice rules, price floors, hard-block words, VIP protections, and the escalation rules for complaints and refunds. Drafts are suggestions only — a human chatter reviews, adjusts, and sends. Complaints and refund threats always go to management.</footer>
+</div>
+<script>
+(function(){
+"use strict";
+var model="shantal", tab="reply";
+var PH={reply:"paste what the fan said…",caption:'describe the content… e.g. "striptease, 8 min, black dress" or "mass for tonight"'};
+document.querySelectorAll("#models button").forEach(function(b){b.addEventListener("click",function(){
+ document.querySelectorAll("#models button").forEach(function(x){x.classList.remove("on")});b.classList.add("on");model=b.dataset.m;
+});});
+document.querySelectorAll("#tabs .tab").forEach(function(b){b.addEventListener("click",function(){
+ document.querySelectorAll("#tabs .tab").forEach(function(x){x.classList.remove("on")});b.classList.add("on");tab=b.dataset.t;
+ document.getElementById("inp").placeholder=PH[tab];
+});});
+function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;")}
+function render(text){
+ // split numbered suggestions; keep italic strategy notes with their block
+ var blocks=text.split(/\n(?=\d\.\s)/).filter(function(b){return b.trim()});
+ if(blocks.length<2){document.getElementById("out").innerHTML='<div class="v"><p class="vt">'+esc(text)+'</p></div>';return}
+ var html="";
+ blocks.forEach(function(b){
+  var m=b.match(/^(\d)\.\s*(?:\*\*)?([^\n*]*?)(?:\*\*)?\s*(?:—|:|\n)([\s\S]*)$/);
+  var label=m?("#"+m[1]+" · "+m[2].trim()):"suggestion";
+  var body=(m?m[3]:b).trim();
+  var note="";
+  var nm=body.match(/\n_?\*?([^_*\n]{10,160})\*?_?\s*$/);
+  if(nm&&/^_|\*|price:|escalate|tip:/i.test(nm[0].trim())){note=nm[1].trim();body=body.slice(0,nm.index).trim()}
+  body=body.replace(/^_|_$|^\*+|\*+$/g,"").trim();
+  html+='<div class="v"><div class="vh"><span class="vl">'+esc(label)+'</span><button class="copy" data-c="'+esc(body).replace(/"/g,"&quot;")+'">copy</button></div><p class="vt">'+esc(body)+'</p>'+(note?'<p class="note">'+esc(note)+'</p>':'')+'</div>';
+ });
+ document.getElementById("out").innerHTML=html;
+ document.querySelectorAll(".copy").forEach(function(b){b.addEventListener("click",function(){navigator.clipboard.writeText(b.dataset.c);b.textContent="copied ✓";setTimeout(function(){b.textContent="copy"},1200)})});
+}
+document.getElementById("go").addEventListener("click",function(){
+ var input=document.getElementById("inp").value.trim();
+ if(!input){document.getElementById("status").textContent="paste the fan message or content description first";return}
+ var btn=this;btn.disabled=true;
+ document.getElementById("status").textContent="she's typing…";
+ fetch("/api/generate",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({model:model,mode:tab,input:input,fanName:document.getElementById("fan").value.trim()})})
+ .then(function(r){return r.json()})
+ .then(function(d){
+  btn.disabled=false;
+  if(d.error){document.getElementById("status").textContent="error: "+d.error;return}
+  document.getElementById("status").textContent="done — review before sending ✨";
+  render(d.text||"");
+ })
+ .catch(function(){btn.disabled=false;document.getElementById("status").textContent="network error, try again"});
+});
+})();
+</script>
+</body>
+</html>
