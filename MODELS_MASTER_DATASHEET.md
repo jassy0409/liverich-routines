@@ -9,12 +9,11 @@
 1. Agency-wide operations (shifts, cadence, EOD, complaints flow, ChatterOps rules)
 2. SHANTAL MONIQUE (@shantalmonique)
 3. KARINA PETROVA (@karinkapetro paid · @karinapetrofree free)
-4. SIBYL VANE / EDEN (@sibyl_vane · @sibbunny)
-5. ERZABEL / BELLA (@erzabel · @erzabelx)
-6. Manager (Jassy) communication style — formats, verbatim examples
-7. Complaint, refund & chargeback handling — real examples
-8. Live PPV / mass-message caption examples
-9. Source document index
+4. ERZABEL / BELLA (@erzabel · @erzabelx)
+5. Manager (Jassy) communication style — formats, verbatim examples
+6. Complaint, refund & chargeback handling — real examples
+7. Live PPV / mass-message caption examples
+8. Source document index
 
 ---
 
@@ -26,7 +25,6 @@
 | Shantal Monique | @shantalmonique | acct_508c667e12d24250b75ae3d990594010 | 4669068 |
 | Karina VIP (paid) | @karinkapetro | acct_48be256caa4c484cbab6774a098c4edb | 221746288 |
 | Karina Free | @karinapetrofree | acct_bd0c6dda969f4631b02b3a9524fa44be | 364264020 |
-| Sibyl Vane | @sibyl_vane / @sibbunny | acct_73ec69accddb469c9b7f998c235214b1 / acct_f8f1861f5b7c48289abefa0f45f4631f | — |
 | Erzabel / Bella | @erzabel / @erzabelx | acct_d221a8614a114ede8c4ea6d326c5bb13 / acct_438bec12b7734785979941481170c0fc | — |
 
 ## Slack channel map
@@ -260,56 +258,10 @@ Pre-VIP content: lingerie, sexy teasing, body oiling, striptease, facetime, phon
 
 ---
 
-# 4 · SIBYL VANE / EDEN (@sibyl_vane · @sibbunny)
-
-**Naming rule: old fans call her EDEN; ALL new fans know her as SIBYL** (Sibyl Vane / Sivi / Sib / S / Miss Vane). The model ("E") is reachable in Slack DMs; reporting runs as "SIBYL/SYBIL — Daily Managerial Report" (no dedicated team channel).
-
-## Identity datasheet
-| Field | Value |
-|---|---|
-| Name | Sibyl Vane — Eden to old fans |
-| Born | May 3, 2001 · 24 (per newer Q&A, May 2025) · Taurus sun, Aquarius rising, Virgo moon |
-| Origin | **Born in a small town in Israel — NEVER say this publicly (the war). Say: "lives in Cyprus."** Half Ashkenazi, half Mizrachi Jewish; Israeli |
-| Homebase | Nomadic since Aug 2022 — currently Cyprus (July); location updates as she travels |
-| Family | Twin brother and sister one year younger (**names never shared**); closest to them and her maternal grandma (weekly calls); no children; no pets now (grew up with chickens, rabbits, ducks, briefly a dog) |
-| Languages | Hebrew, English |
-| Education | Rebellious teen; dropped out of high school at 17, 6 months before graduation (teachers refused early exams); first modeling gig at 16 |
-| Body | Slim, toned, athletic · 1.72 m · best parts: slender neck, strong abs, boobs · no tattoos ("afraid personality will shift") · 100% natural, no surgery · Oura ring size 8 |
-| Work | Full-time social media content creator & model |
-| Why OF | Self-sufficiency, supporting family, creator freedom. Goal: family safe, happy, provided for |
-| Bestie | **Ilana** — met 2022 (moved in next door), same birth date, 4 years older |
-| Quirks | Terrible cook (plain protein + carbs, "my soul isn't satisfied"); fears insects and "kidnappers and stalkers, from experience"; pet peeve: correcting people's Hebrew; childhood talent: drawing |
-
-## Persona, niche & voice
-- **Persona type:** playful girlfriend experience — natural, approachable. "Witty, warm, cheeky, like your fun but grounded best friend."
-- **Niche:** flirty GFE mixing playful chat, lifestyle vibes, natural beauty. Fans come for intimacy + everyday fun.
-- **Selling strategy:** flirty chat, teasing GFE, PPV content. Services: GFE (sexting for tips).
-- **Voice rule (key):** combines something witty or humorous in her sentences — even the most sexual ones carry wit. Rarely says "daddy"; says "baby" when it's personal; does NOT say "babe" to new people — friendly first, gets intimate as she shares something vulnerable/relatable and connection builds.
-- Laughter: 😂🤣😭🥲. Slang: baby, lol, omg, chill, lit, hun. Favorite emojis: 🥰😏😭😂🤣😍😘🥲😜🙈🔥💕.
-- Casual punctuation, proper-name capitalization, relaxed/mixed writing. Responds in fan's native language when possible.
-- Fan nicknames: baby, hun, love. Fans should feel like they're with a girlfriend who's funny, flirty, genuinely cares.
-- Topics: travel, food, fitness, wellbeing, cities she explores.
-- "Are you real?": *"Haha I'm literally right here chatting with you, baby, why are you doubting me? you're too cute for me to let anyone else handle you."*
-- Unavailable-social asks: *"babe, everything I share is already here, you're not missing out, I save the good stuff for us here."*
-- SVIP welcome copy example (Jassy + model approved): *"hi [name], you made me so happy joining my super VIP, it seriously means a lot to me. let me know when you're free for our facetime date, okay?"*
-- VIP vs SVIP content split example: birthday content shipped in two versions — VIP cleaned, SVIP uncut.
-
-## Lifestyle & backstory color
-Morning gym + coffee → film/work until evening → wind down, walk or call a friend, early sleep. Weekends exploring, local spots, outdoor filming (parks/streets when safe, else Airbnbs/gyms). Food: chicken (all parts), sashimi, omurice, carpaccio, pizza, pasta; Japanese/Italian/Middle Eastern. Basically no alcohol (red wine going out); black coffee pre-workout, almond-milk cappuccino extra foam; no smoking (weed once ever, for anxiety). Colors: purple-tinted black, velvet red, pinks. Music: 80s/90s pop, rock, RnB. TV: Derry Girls (comfort), Friends, The Office. Laughs at Jim Carrey and dumb physical humor. Brands: Agent Provocateur, House of CB; Chanel, Dior makeup. 5 can't-live-withouts: family, bestie Ilana, healthy food, the gym, her autonomy. Three words: "Strong, stubborn but loveable." Introverted-ish; morning person, no alarm.
-**Vegas story (real, usable):** February 2025 girls' trip — first time drunk on 16 Feb 2025 (a few margarita sips, couldn't walk straight back); stayed at the Cosmo, Wynn, Palazzo; Wynn her favorite (photo lighting + Trump tower view).
-Backstory: middle-school best friend turned the girls against her out of jealousy when she started modeling (~15–16); mostly guy friends after; no real friends until meeting her bestie at 20. Travel: Limassol, Nicosia, Kyoto, Saigon, Phnom Penh, Porto, Lisbon, Belgrade, Paris, Frankfurt, Budapest, Santorini, Milan, Phuket, Bangkok, Samui, Madrid, Prague. Dreams: Hawaii, Philippines, Mexico; bucket list China, Philippines, South Korea, South America.
-
-## Relationships & NSFW persona (chatter latitude explicitly granted)
-- Single ~5 years; one boyfriend at 18 for ~6 months (he moved abroad). Dealbreakers: disloyalty, disrespect.
-- Attracted to: confidence, maturity, vulnerability/authenticity; love language: acts of service, gifts, physical touch in person; feels safe when not rushed; romantic gesture: helping her in trouble ("makes the man look like a superhero in my eyes").
-- Non-sexual turn-on: a man clearly obsessed with her and secure enough to admit it. Turn-on: facial hair. Fetish: uniforms/costumes (cop, military). Virginity: 18. Sub/dom: depends on partner. Shower over bath.
-- Real stories: gave a footjob to a guy who complimented her feet — his first, he discovered a fetish with her. Fantasy: "being tied up" / stripping for a man for money in a real strip club. Exhibitionist: "semi… I'll tease you by exposing myself sneakily before other people could see."
-- Explicit latitude: positions, fantasy details, give/receive, roleplay favorites — **"chatters can make that up, whatever sounds good."** (Bio doc marks NSFW answers "customizable for branding.")
-- Socials: IG @kitsune.vane (backup @kitsusibylvane), Twitter @kitsusibylvane.
 
 ---
 
-# 5 · ERZABEL / BELLA (@erzabel · @erzabelx)
+# 4 · ERZABEL / BELLA (@erzabel · @erzabelx)
 
 New account (channel #bella-team-reports created July 14, 2026). Chatters must review the Model QnA in bookmarks + the vault before working. Jassy's takeover process: "just finished diving in her account mass stats, datas and chatter protocol… executing masses that's best for her account at the moment."
 
@@ -349,7 +301,7 @@ Topless = SVIP-level on the pricing guidelines; upsell sets are tiered up for no
 
 ---
 
-# 6 · MANAGER (JASSY) COMMUNICATION STYLE
+# 5 · MANAGER (JASSY) COMMUNICATION STYLE
 
 ## Tone rules
 - Warm but direct. Open with **"Hi [name]"** — NEVER "Hey".
@@ -404,7 +356,7 @@ When a chatter asks for a bump, Jassy sends 8–10 numbered non-sales engagement
 
 ---
 
-# 7 · COMPLAINT, REFUND & CHARGEBACK HANDLING — REAL EXAMPLES
+# 6 · COMPLAINT, REFUND & CHARGEBACK HANDLING — REAL EXAMPLES
 
 ## Escalation alert (CRITICAL) format
 > "ESCALATION ALERT, Karina, fan Marco
@@ -453,7 +405,7 @@ Newer variant: "Suggested reply the chatter can adapt, 1 to 2 sentences max, pre
 
 ---
 
-# 8 · LIVE PPV / MASS-MESSAGE CAPTION EXAMPLES
+# 7 · LIVE PPV / MASS-MESSAGE CAPTION EXAMPLES
 
 ## Shantal — real sent masses (July 14–15, 2026)
 | Type | Caption (verbatim) | Price / result |
@@ -499,21 +451,6 @@ Note: all welcome messages currently report **isActive = false** — worth re-en
   - "i've been saving my favorite video from this week and no one has seen them yet. be nice to me and maybe you're first 🥰🥵"
   - "hi💕 hope you slept well. how is your day shaping up so far?"
 
-### Sibyl paid (@sibbunny) — $19.95/mo, bundles to 12mo -50% · 80 subs · 122k likes
-- **Bio:** "Join my community 💖" · display name "Love of your life" · location "In your heart".
-- **Welcome ($11.11, 9 media incl. audio):** "And a more explicit hint… First pic once you open is just the same, but without the shirt 😬💋❤️‍🔥"
-- PPV $10–$29.99. Caption samples:
-  - "okay don't be mad but I bought another bikini 🤭 it barely covers anything... trying it on for you right now, tell me if I should keep it" ($14.99–19.99, A/B price resends)
-  - "VIPS ONLY 💋 these sheets have seen too much this morning 🤭 slept topless again... wanna see how I woke up?" ($29.99)
-  - "POV: you're my neighbor across the street watching me get changed in my room" ($29)
-  - "10 for 10 🍒 this will make your day MUCH better😉" ($10 · 5 purchases)
-  - "tip what you can and I'll send you back twice the value. Any amount. I don't do this often, so take advantage while I'm in a good mood 😏" (free tip play)
-  - "i'm bored and pretty and you're not here appreciating either. fix that 💅" (free)
-
-### Sibyl free (@sibyl_vane) — free page · 45,152 subs · switchlinks.ai/sib
-- **Bio:** "New here, excited to giving this a try and see what's up here 🙈" · **Welcome: audio-only (11s), empty text.**
-- Mirrors sibbunny captions; ultra-short lowercase teases: "are you coming?" · "where are you rn?" · "not gonna lie i kinda miss talking to you, what are you up to" · "i put on something you'd absolutely lose your mind over…" · one all-emoji PPV (16× 😈, $39, 3 purchases) · "SECRET ACCESS ONLY 💋" variant of the sheets caption ($24.99).
-
 ### Erzabel free (@erzabel) — free funnel → @erzabelx · 120,714 subs · 416k likes
 - **Bio:** "more active on my VIP page @erzabelx" + long legal disclaimer that discloses the account is run by her and her team.
 - **Welcome ($15.55, 16 media):** "Hiiiii welcome <3 — its pretty dangerous that u just subbed to me becos honestly, your actually gonna get addicted to me now 😭 im a pretty busy girl but if u want to get my attention like RIGHT NOW, i want you to open this and tell me just how hard it makes u seeing this side of me. AHHHH IM SO EXCITED. ill be waiting for you okay?"
@@ -535,12 +472,11 @@ Note: all welcome messages currently report **isActive = false** — worth re-en
 |---|---|---|---|
 | Shantal | Proper sentences, no slang | Suggestive, never explicit | Time-of-day anchors, honest set rundowns, scarcity |
 | Karina | all lowercase, texting slang | Teasing ("🐱🥵"), zero PPV on mass | Bratty confessions, questions, 1:1 ladder does the selling |
-| Sibyl | lowercase, witty one-liners | Playful GFE | Bratty demands ("fix that 💅"), POV hooks, price A/B tests |
 | Erzabel | lowercase cutesy "heyyy" + explicit spikes | Hottest of the roster | Fan-girl energy, naughty-check games, 60%-off bundle events |
 
 ---
 
-# 9 · SOURCE DOCUMENT INDEX
+# 8 · SOURCE DOCUMENT INDEX
 
 | Doc | Where |
 |---|---|
@@ -552,18 +488,14 @@ Note: all welcome messages currently report **isActive = false** — worth re-en
 | 🧾 ACCOUNT RULES & GUIDELINES — KARINA PETROVA | Google Doc 1Q408LaMwvDgotKN1v44ZIAlxNZ7J4x-yehvAxatqk2A |
 | KARINA AI Q&A | Google Doc 1LAWgzk5_7kVO2oKHB4QZNIN1NJD31ofevRt6dflqbK4 |
 | KARINA PRICING GUIDELINE.xlsx | Slack file F0B53D5G9C0 |
-| EDEN Q&A | Google Sheet 1NoiYG_chcZUBOdw-tNkVoJKIa1YYkr1QNrjJ7vWeoZ8 |
-| Sibyl datasheet | Google Sheet 1hPAAp8TE68C2S8PNYiTyDTmr-PLOR7p6mEBjvTUJ6HM |
-| Sibyl Vane – Biography | Google Doc 1pk0ducxk0o4XzhPOCVMA9CaXQaLMLofSN8gHigqmqNc |
 | Erzabel Q&A | Google Doc 1AAKMdePSir0x2QQinFrxvJGYHUb9Sox99hsRB5r9ypU |
 | Chatter scorecard method | liverich-routines/SKILL.md |
 | Dashboards | jassy0409.github.io/liverich-routines/dashboard-shantal.html / dashboard-karina.html |
 
 ## Known gaps / data-quality flags
-- Several Drive docs are truncated at export (Karina AI Q&A impersonation script tail; both Sibyl docs' final lines; Shantal questionnaire Socials Q4).
+- Several Drive docs are truncated at export (Karina AI Q&A impersonation script tail; Shantal questionnaire Socials Q4).
 - Emoji lists in most Drive docs export as corrupted characters — re-confirm each model's exact emoji set from the originals.
-- Sibyl age discrepancy: bio doc says 23, newer Q&A says 24 (as of May 2025) — Q&A is authoritative.
-- Erzabel has many unanswered NSFW/backstory fields — collect from the model (list in Section 5).
+- Erzabel has many unanswered NSFW/backstory fields — collect from the model (list in Section 4).
 - Karina pricing exists in two versions (spreadsheet tiers vs July ChatterOps ladder) — ChatterOps ladder is newer; confirm which governs.
 
 *Compiled by Claude for Jassy · LiveRich Media · July 15, 2026.*
