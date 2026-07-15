@@ -31,11 +31,8 @@ textarea:focus,input:focus,.tab:focus-visible,.copy:focus-visible,.pagepick butt
 </style>
 <div class="wrap">
 <h1>🐰 <em>Sibyl</em> Console</h1>
-<p class="sub">witty, warm, cheeky · your fun but grounded best friend · drafts refresh live · you review, you send</p>
+<p class="sub">witty, warm, cheeky · your fun but grounded best friend · 5 tone suggestions per message, live · you review, you send</p>
 <div class="pagepick" role="group" aria-label="Fan type"><button class="on" data-p="new">New fan (knows her as SIBYL)</button><button data-p="old">Old fan (calls her EDEN)</button></div>
-<nav class="tabs">
-<button class="tab on" data-m="reply">Fan reply</button><button class="tab" data-m="pov">POV upsell</button><button class="tab" data-m="vip">VIP offer</button><button class="tab" data-m="seed">Upsell seed</button><button class="tab" data-m="complaint">Complaints</button><button class="tab" data-m="caption">Caption</button>
-</nav>
 <div class="card">
 <textarea id="inp" placeholder="paste what the fan said…"></textarea>
 <input type="text" id="ctx" placeholder="optional: fan name, spend, what he's bought…">
@@ -71,6 +68,7 @@ function topics(m){return{
  bot:/are (you|u) (real|a bot|actually|really)|is this really (you|her)|do (you|u) even read/i.test(m),
  feedback:/thank(s| you)|loved it|amazing video|that was (so )?(hot|good|amazing)|worth it|best (video|content)/i.test(m),
  inside:/what('| i)?s inside|what can i see|what do i get|what am i (getting|paying)|is it worth|what('| i)?s in (it|there|this)|whats included|what will i see/i.test(m),
+ complaint:/refund|money back|charge\s*back|report(ing)? (you|u)|scam|rip\s*off|ignor(ed|ing) me|never repl|no repl|waste of money|not worth|disappointed|mislead|lied to|deceiv|angry|upset with (you|u)/i.test(m),
  buy:/how much|price|cost|buy|purchase|unlock|custom|ppv|bundle|what do (you|u) sell|send me|can i (get|have)/i.test(m),
  origin:/israel|where (are|r) (you|u) from|nationality|jewish/i.test(m),
  name:/eden|why sibyl|change(d)? (your|ur) name|who is eden/i.test(m)
@@ -109,6 +107,7 @@ function gen(){
  var ctx=document.getElementById("ctx").value.trim();
  var out="", r=rng(hash(mode+"|"+page+"|"+m+"|"+ctx+"|"+Date.now()));
  var S=document.getElementById("setdesc").value.trim()||"[describe the set]";
+ var slots=3;
  var sn=m?snippet(m):"";
  if((mode==="reply"||mode==="complaint")&&!m){document.getElementById("out").innerHTML='<p class="hintline">waiting for the fan’s message…</p>';return}
  if(m&&HARDNO.test(m)){
@@ -116,11 +115,19 @@ function gen(){
   +V("decline · witty",pk(r,["lol that's a creative one, i'll give you that 😂 still a no. try something that won't get us both in trouble","points for imagination! deduction for everything else 🤣 pick again","that one's locked forever, no key exists 😭 lucky for you my actual menu is way more fun"]),"decline once with humor, redirect once. second ask = flag your manager.")
   +V("decline · warm",pk(r,["not my thing, and i say that with love 🥲 but tell me what else is in that head of yours…","that's a no from me! but i like that you're honest about what you want 😏 aim it somewhere i can say yes","hard pass on that one 🙈 but you're not getting rid of me that easily, what else you got?"]),"keeps the friendship energy so the convo survives the no.")
   +V("decline · firm",pk(r,["no. and i'm cute so i get to just say no 💅","that's my one hard line! everything else about me is negotiable-ish 😜","permanent no on that. moving on… did you see what i posted today?"]),"never explain the rule, never negotiate.");
+  out+=V("sell pivot · menu","counteroffer: something from my actual repertoire 😏 POV, teasing, the good stuff. pick one","redirect into her real menu.")+V("deflect / protect","i'm going to pretend i didn't read that 😭 clean slate! what's actually going on with you tonight?","safest option: reset the conversation entirely.");
   document.getElementById("out").innerHTML=out;bind();return;
  }
  if(mode==="reply"){
   var t=topics(m);
-  if(t.name&&page==="old"){
+  if(t.complaint){
+  slots=5;
+  out+='<div class="flag">⚠ AGENCY RULE: complaints are NEVER handled solo. Alert management NOW with a screenshot (Sibyl reports run through the daily managerial report + Slack DM to E). Lines below are holding drafts for approval, not to send yourself. No gifts, no discounts, no promises.</div>';
+  if(/refund|money back|charge\s*back|report|scam/i.test(m)){out+='<div class="flag">⚠ refund / chargeback → Jassy resolves refunds directly. never promise anything in chat. after a chargeback: 30 day no sell, chat only.</div>'}
+  out+=V("holding draft · felt ignored",pk(r,["hey, i'm really glad you said something instead of just going quiet 🥲 i do read everything. tell me what went wrong?","okay that one actually got to me. talk to me, what happened?","that's not how i want you to feel here, ever. give me the whole story, i'm listening 🥺"]),"1 to 2 sentences, composed. send to management for approval first.")
+  +V("holding draft · value complaint",pk(r,["i hear you and i take it seriously. give me a bit to look at this properly, i want to give you a real answer not a fast one","your trust matters more than one purchase. let me check exactly what happened first 🥲","fair. i'd rather get this right than rush you an answer"]),"buys time honestly while management decides. never offer a fix, refund, or freebie yourself.")
+  +V("holding draft · heated fan",pk(r,["i understand. i'll give you space for now. we can talk later when things feel calmer.","i'm not going to argue with you. i'd rather get this right than get it fast","i hear you. let me take this seriously instead of replying in a rush"]),"approved calm recovery tone: brief, no added warmth, no selling. then wait for direction.")+V("hold · thank and pause",pk(r,["thank you for telling me straight 🥲 i want to do right by this, give me a bit of time","i'm glad you're honest with me. let me take this seriously, not quickly"]),"protect tone: gratitude + pause, no promises.")+V("hold · reassure",pk(r,["you're heard, promise. this matters and it will be handled properly 🥲","you matter here and this won't get brushed aside. stay with me while i sort it"]),"protect tone: reassurance without committing to anything. management decides the fix.");
+  } else if(t.name&&page==="old"){
    out+=V("roll with eden",pk(r,["still me! eden, sibyl, whatever you call me i still answer 😂 you knew me first, you get privileges","haha you've been here long enough to know all my eras 🥰 it's still your girl","new name, same trouble 😏 you of all people know that"]),"old fans say Eden, roll with it warmly, never explain the change.")
    +V("tease it",pk(r,["a girl's allowed a rebrand 💅 the important parts didn't change, promise","sibyl's the name now but you get grandfather rights 😂 hi","call me whichever, just keep calling 🥲"]),"keep it light, zero backstory.")
    +V("redirect",pk(r,["anyway enough about names… i did something today you're going to want to see 😏","identity crisis resolved, next topic: you. how have you been?","the name changed, my terrible cooking didn't 😭 what's new with you?"]),"move the convo forward fast.");
@@ -146,6 +153,7 @@ function gen(){
    +V("details then seed",pk(r,["i need the full review, favorite moment, star rating, everything 😂 your answer decides what i film next","good taste! and if you liked that… the next one escalates, just saying 😏","your reaction is being noted and studied 😌 should i push it further next time?"]),"his answer = intel for the next pitch. log it.")
    +V("ride the high",pk(r,["since you clearly have excellent taste, the sequel exists and it's worse. or better. depends how you look at it 🔥 want it?","happy fans get spoiled here! check your messages in a bit 😏","you liked THAT? oh you're not ready for what didn't make the cut 🙈"]),"buyers who just praised convert highest. strike now, $10 to 29.99 range.");
   } else if(t.inside){
+   slots=5;
    out+=V("witty / self-aware",pk(r,["it's "+S+" and honestly? my best acting work to date 😭 oscar worthy. the outfit doesn't survive","inside: "+S+". critics (me) are calling it stunning, brave, slightly unhinged 😂"]),"wit first, always. fill the content field so the joke stays honest.")
    +V("girlfriend confession",pk(r,["okay don't judge me but it's "+S+" 🤭 and i enjoyed filming it way too much. like, way too much","confession time: "+S+", filmed slowly, no regrets, some blushing 🙈"]),"bestie-confession energy, invites his reaction.")
    +V("bratty demand",pk(r,["it's "+S+". filmed it, looked amazing, and you're sitting there asking questions instead of watching it. fix that 💅","it's "+S+" and every second you spend asking is a second you're not watching 💅"]),"her fix that energy, verbatim formula.")
@@ -190,37 +198,14 @@ function gen(){
    out+=V("sweet 🌸",pk(r,["wait, "+ts+"? 🥲 okay tell me everything, i'm listening","so "+ts+"… i need the whole story!","aw, "+ts+"? come here, talk to me 🥰"]),"responds to what HE actually said. let him lead one more message.")
    +V("playful 😏",pk(r,["so "+ts+", huh 😂 you're my favorite kind of random, keep going","not you telling me "+ts+" and expecting me to be normal about it 😭 continue","okay "+ts+"? i'm invested now, don't leave me hanging"]),"react with energy + wit, keep the thread on his topic.")
    +V("spicy 🔥",pk(r,[ts+"… interesting 😏 and here i was being a menace in my camera roll for a whole other reason","mm "+ts+"? noted. now can i distract you properly? 🔥","so "+ts+"… meanwhile i tried something on today that almost made it to the feed. almost 🙈 trade stories?"]),"acknowledge his topic FIRST, then bridge to heat. never skip the acknowledgment.");  }
- } else if(mode==="pov"){
-  var like=m||"what you like";
-  out+=V("pov hook",pk(r,["POV: you're my neighbor across the street watching me get changed in my room 😏 that video exists. want it?","i filmed one where it's literally just you and me, no audience 🔥 think you can hold eye contact the whole time?","new POV and honestly it's my best acting yet 😂 the role: yours. want to audition?"]),"her real POV caption style. price in the $19 to 29 range.")
-  +V("his words back",pk(r,["i remembered what you said about "+like+" 😌 and then i filmed it. eyes on the lens the whole time","you mentioned "+like+" once and i took notes like the good student i never was 😂 exhibit a: my newest video","some people talk, i film 😏 your idea, my execution, one unlock away"]),"callbacks to his own words convert best. log preferences.")
-  +V("imagine then open",pk(r,["close your eyes… imagine i'm right in front of you… okay open them, i filmed exactly that, stop imagining 😜","what if watching felt like being there? trick question, i already made it 🔥","the next best thing to being here is this video and honestly? it might be better, i'm very charming on camera 😂"]),"get the yes first, then the price. doubles conversion.");
- } else if(mode==="vip"){
-  out+=V("bestie exclusivity",pk(r,["okay real talk, my VIPs get the version of me that the feed would report 😂 you belong there, i've decided","i keep VIP small because i actually talk to everyone in it 🥰 and you've been earning a spot ngl","the inner circle sees everything first and everything fully 😏 you've been auditioning without knowing it, congrats, you're in… if you want"]),"belonging + humor. VIP gets cleaned sets, SVIP gets uncut + facetime dates.")
-  +V("fomo",pk(r,["VIPS ONLY got something this morning that i can't even describe out here 🙈 these sheets have seen too much","something dropped for my VIPs an hour ago and the reactions are genuinely unhinged 😂 you're missing it live","the best thing i filmed this week never touched the feed 😏 you know where it lives"]),"her real 'sheets' caption energy. concrete same day tease.")
-  +V("svip seed",pk(r,["and above VIP there's a level with facetime dates… but that's a conversation for when you're ready 😌","my super VIPs get me face to face, literally 🥲 it's a whole thing. curious?","there's VIP and then there's the tier where we actually facetime 😏 one step at a time though"]),"SVIP = facetime dates + uncut content. loop Jassy in before quoting SVIP numbers.");
- } else if(mode==="seed"){
-  var up=m||"something new";
-  out+=V("soft plant",pk(r,["don't be mad but i bought another bikini 🤭 it barely covers anything… trying it on for you right now, tell me if i should keep it","i did a thing today ("+up+") and no you can't see it yet, patience is a virtue i'm teaching you 😂","something's coming this week that i'm still blushing about, that's the whole announcement, bye 🙈"]),"her real caption as a seed. NO price, no ask. the ask comes in 1 or 2 days.")
-  +V("secret keeper",pk(r,["okay you can't tell anyone but "+up+" might be my boldest yet 🤫 you're hearing it early because you're you","between us, this week is going to be very good for you specifically 😌 act surprised later","insider info: "+up+" drops soon and my favorites get first look. you're a favorite btw 🥰"]),"insider frame primes an instant buy at drop.")
-  +V("question seed",pk(r,["random but if i filmed one thing exactly how you wanted, what would it be? no reason, definitely no reason 😂","help me settle a debate: the red set or the white one? your answer may have consequences 😏","what's the one thing you always wish i'd film? asking for research, the research is me 💅"]),"his answer = your pitch later this week. log it in fan notes.");
- } else if(mode==="complaint"){
-  out+='<div class="flag">⚠ AGENCY RULE: complaints are NEVER handled solo. Alert management NOW with a screenshot (Sibyl reports run through the daily managerial report + Slack DM to E). Lines below are holding drafts for approval, not to send yourself. No gifts, no discounts, no promises.</div>';
-  if(/refund|money back|charge\s*back|report|scam/i.test(m)){out+='<div class="flag">⚠ refund / chargeback → Jassy resolves refunds directly. never promise anything in chat. after a chargeback: 30 day no sell, chat only.</div>'}
-  out+=V("holding draft · felt ignored",pk(r,["hey, i'm really glad you said something instead of just going quiet 🥲 i do read everything. tell me what went wrong?","okay that one actually got to me. talk to me, what happened?","that's not how i want you to feel here, ever. give me the whole story, i'm listening 🥺"]),"1 to 2 sentences, composed. send to management for approval first.")
-  +V("holding draft · value complaint",pk(r,["i hear you and i take it seriously. give me a bit to look at this properly, i want to give you a real answer not a fast one","your trust matters more than one purchase. let me check exactly what happened first 🥲","fair. i'd rather get this right than rush you an answer"]),"buys time honestly while management decides. never offer a fix, refund, or freebie yourself.")
-  +V("holding draft · heated fan",pk(r,["i understand. i'll give you space for now. we can talk later when things feel calmer.","i'm not going to argue with you. i'd rather get this right than get it fast","i hear you. let me take this seriously instead of replying in a rush"]),"approved calm recovery tone: brief, no added warmth, no selling. then wait for direction.");
- } else {
-  var t2=m&&m.length>2?m:"today";
-  out+=V("bratty demand",pk(r,["i'm bored and pretty and you're not here appreciating either. fix that 💅","are you coming?","where are you rn?"]),"her real captions, verbatim. ultra short lowercase demands.")
-  +V("tease",pk(r,["i put on something you'd absolutely lose your mind over…","okay don't be mad but i bought another bikini 🤭 it barely covers anything","the feed version of "+t2+" is the polite version, just saying 😏"]),"her real tease caption style, trailing hook.")
-  +V("soft",pk(r,["not gonna lie i kinda miss talking to you, what are you up to","say hi if you got a second 💕","hope your day is being kind to you 🥰 come tell me about it"]),"her soft register keeps the feed feeling human between teases.");
+ }
+ if(mode==="reply"&&slots===3){
+  out+=V("sell forward",pk(r,["random but i filmed something that fits this exact mood 🔥 want first look?","not to change the subject but "+(S!=="[describe the set]"?S:"my newest set")+" exists and it's a menace 😂 interested?","okay don't be mad but i bought another bikini 🤭 it barely covers anything… want to see?"]),"the pitch slot. skip it when the moment is wrong: money talk, complaints, fresh boundaries.")
+  +V("deflect / protect",pk(r,["i'll keep that one between us for now 😌 tell me more about you instead!","not getting ahead of ourselves 🥰 i'm enjoying just talking to you","stay here a little longer, i like this 🥲"]),"the safest reply. use for boundary tests, unclear intent, or when you just need to keep it warm.");
  }
  document.getElementById("out").innerHTML=out;bind();
 }
 function bind(){document.querySelectorAll(".copy").forEach(function(b){b.addEventListener("click",function(){navigator.clipboard.writeText(b.dataset.c);b.textContent="copied ✓";setTimeout(function(){b.textContent="copy"},1200)})})}
-var tabs=document.querySelectorAll(".tab");
-tabs.forEach(function(t){t.addEventListener("click",function(){tabs.forEach(function(x){x.classList.remove("on")});t.classList.add("on");mode=t.dataset.m;document.getElementById("inp").placeholder=PH[mode];gen()});});
 document.querySelectorAll(".pagepick button").forEach(function(b){b.addEventListener("click",function(){document.querySelectorAll(".pagepick button").forEach(function(x){x.classList.remove("on")});b.classList.add("on");page=b.dataset.p;gen()});});
 var deb;["inp","ctx","setdesc"].forEach(function(id){document.getElementById(id).addEventListener("input",function(){clearTimeout(deb);deb=setTimeout(gen,350)})});
 gen();

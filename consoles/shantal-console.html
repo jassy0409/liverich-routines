@@ -28,10 +28,7 @@ textarea:focus,input:focus,select:focus,.tab:focus-visible,.copy:focus-visible{o
 </style>
 <div class="wrap">
 <h1>💗 <em>Shantal</em> Console</h1>
-<p class="sub">warm, polished, girlfriend energy · drafts refresh live with every edit · you review, you send</p>
-<nav class="tabs">
-<button class="tab on" data-m="reply">Fan reply</button><button class="tab" data-m="pov">POV upsell</button><button class="tab" data-m="vip">VIP offer</button><button class="tab" data-m="seed">Upsell seed</button><button class="tab" data-m="complaint">Complaints</button><button class="tab" data-m="caption">Caption</button>
-</nav>
+<p class="sub">warm, polished, girlfriend energy · 5 tone suggestions per message, live · you review, you send</p>
 <div class="card">
 <textarea id="inp" placeholder="paste what the fan said…"></textarea>
 <div class="row">
@@ -69,6 +66,7 @@ function topics(m){return{
  bot:/are (you|u) (real|a bot|actually|really)|is this really (you|her)|do (you|u) even read/i.test(m),
  feedback:/thank(s| you)|loved it|amazing video|that was (so )?(hot|good|amazing)|worth it|best (video|content)/i.test(m),
  inside:/what('| i)?s inside|what can i see|what do i get|what am i (getting|paying)|is it worth|what('| i)?s in (it|there|this)|whats included|what will i see/i.test(m),
+ complaint:/refund|money back|charge\s*back|report(ing)? (you|u)|scam|rip\s*off|ignor(ed|ing) me|never repl|no repl|waste of money|not worth|disappointed|mislead|lied to|deceiv|angry|upset with (you|u)/i.test(m),
  buy:/how much|price|cost|buy|purchase|unlock|custom|ppv|bundle|what do (you|u) sell|send me|can i (get|have)/i.test(m)
 };}
 function tp(t){return {new:"$100",low:"$149",mid:"$200",vip:"$400",whale:"$500"}[t]}
@@ -111,6 +109,7 @@ function gen(){
  var n=nm?" "+nm:"";
  var out="", r=rng(hash(mode+"|"+m+"|"+nm+"|"+tier+"|"+Date.now()));
  var S=document.getElementById("setdesc").value.trim()||"[describe the set]";
+ var slots=3;
  var sn=m?snippet(m):"";
  if((mode==="reply"||mode==="complaint")&&!m){document.getElementById("out").innerHTML='<p class="hintline">waiting for the fan’s message…</p>';return}
  if(m&&HARDNO.test(m)){
@@ -118,11 +117,19 @@ function gen(){
   +V("decline · warm",pk(r,["You are sweet for asking, but that is one door I keep closed for everyone 😘 The doors I do open? You have not even seen my favorites yet 🥰","I have to say no to that one, and I say it with love 💗 Now let me steer you somewhere much better…","That is not something I do, not for any price 😉 But I promise what I actually offer will not leave you disappointed…"]),"decline once, pivot once. second ask = flag your manager.")
   +V("decline · playful",pk(r,["Bold of you 😉 Still a no. Now tell me what you actually like and I will make it worth your while…","Points for honesty, but no 🥰 Try again with something on my menu and watch what happens…","Mmm no, that lane stays empty 😘 Lucky for you the rest of the map is very fun…"]),"keeps the energy light so the convo survives the no.")
   +V("decline · redirect",pk(r,["What I can do is spoil you my way 💗 Shower sets, the gym looks, a little leather… where should we start?","Let me offer a trade 😉 You drop that idea, and I show you the one thing everyone begs me for…","How about I choose for you instead? I am very good at knowing what someone actually needs 🥰"]),"pivot straight to her real menu: lingerie, shower, gym, roleplay, leather.");
+  out+=V("sell pivot · her menu","What I can do is spoil you my way 💗 Shower sets, the gym looks, a little leather… where should we start?","redirect into her real menu: tease, shower, gym, roleplay, leather.")+V("deflect / protect","I am going to pretend I did not read that one 😉 Clean slate. What is actually on your mind tonight?","safest option: reset the conversation entirely.");
   document.getElementById("out").innerHTML=out;bind();return;
  }
  if(mode==="reply"){
   var t=topics(m);
-  if(m&&OFFP.test(m)){
+  if(t.complaint){
+  slots=5;
+  out+='<div class="flag">⚠ AGENCY RULE: complaints are NEVER handled solo. Tag management in #shantal team NOW with a screenshot. The lines below are holding drafts to send for approval, not to send yourself. No gifts, no discounts, no promises. Sales made in a session that angered a fan are void.</div>';
+  if(/refund|money back|charge\s*back|report|scam/i.test(m)){out+='<div class="flag">⚠ refund / chargeback language → ESCALATION ALERT format: severity, what tripped it, thread ID. STOP selling. Hold the thread until Jassy and Shantal give direction.</div>'}
+  out+=V("holding draft · felt ignored",pk(r,["I am so sorry if it felt like I disappeared on you, that was truly never my intention and I do read everything you send me. Can we please start fresh"+n+"? I would love to hear how you have been 💗","I completely understand why you are upset, and I want you to know there is a real person here who genuinely cares how you feel. Talk to me"+n+"…","That is not the experience I ever want you to have with me. Tell me exactly what fell short, I am listening 🥺"]),"1 to 2 sentences, precise and composed, never a paragraph. send to management for approval first.")
+  +V("holding draft · value complaint",pk(r,["I hear you, and your trust matters more to me than any single set. Give me a little time to look at this properly"+n+", I want to make it right the correct way 💗","You are right to expect the best from me and I take that seriously. Let me look into exactly what happened before I say anything else…","I am glad you told me instead of going quiet. I want to give you a real answer, not a fast one, so give me a moment 🥺"]),"buys time honestly while management decides. never offer a fix, refund, or freebie yourself.")
+  +V("holding draft · heated fan",pk(r,["I understand. I will give you space for now. We can talk later when things feel calmer.","I am not going to argue with you"+n+", you matter here and I would rather get this right than get it fast.","I hear you. Let me take this seriously instead of replying in a rush…"]),"the approved calm recovery tone: brief, no added warmth, no selling. then wait for direction.")+V("hold · thank and pause",pk(r,["Thank you for telling me directly"+n+". I want to do right by this, so give me a little time 💗","I am glad you were honest with me. Let me take this seriously rather than quickly 🥺"]),"protect tone: gratitude + pause, no promises.")+V("hold · reassure",pk(r,["You are heard, I promise. This matters to me and it will be handled properly 💗","You matter here"+n+", and this will not be brushed aside. Stay with me while I sort it out 🥺"]),"protect tone: reassurance without committing to anything. management decides the fix.");
+  } else if(m&&OFFP.test(m)){
    out+='<div class="flag">⚠ meetup / off platform / personal info. decline below, flag management if he pushes.</div>'
    +V("keep it here",pk(r,["You are sweet for wanting more of me, but everything between us stays right here where I can spoil you properly 😘","This is our little world"+n+", and I like it that way 💗 Trust me, the best of me lives right here…","I keep my life a little mysterious on purpose, it is part of my charm 😉 What I give you here is the real me…"]),"never negotiate platform rules.")
    +V("sweet no",pk(r,["That is my one rule"+n+", nothing leaves this app 🥰 Now come back here, I was enjoying you…","I have to say no, but do not pout 😘 I will make it up to you in ways that are much more fun…","Aww 🥺 no, but the fact that you want more of me? I will remember that…"]),"GFE flavored boundary, then move on.")
@@ -140,6 +147,7 @@ function gen(){
    +V("details then seed",pk(r,["Tell me your favorite moment 😉 Your answer decides what I film next…","I want the full review 😏 And if it is a good one, the next video gets bolder…","You are feeding my ego dangerously right now 🥰 Should I push it further next time?"]),"his answer = intel for the next pitch. log it.")
    +V("ride the high",pk(r,["Since you clearly have excellent taste 😉 the follow up exists, and it escalates… want me to prove it?","The ones who appreciate me properly get spoiled 😘 Watch your messages…","Mmm, you liked that? 💗 You should see what almost did not make the cut…"]),"buyers who just praised convert highest. strike now at "+tf(tier)+".");
   } else if(t.inside){
+   slots=5;
    out+=V("honest & descriptive",pk(r,["Great question"+n+". It is "+S+". I take my time with every layer until there is almost nothing left to the imagination. I think you will replay the ending more than once 😏","Since you asked properly"+n+"… it is "+S+", filmed slowly and deliberately. Every minute earns the next one 😏"]),"her signature: the caption must match the set. fill the content field so this stays honest.")
    +V("warm & personal",pk(r,["I filmed this one on a slow evening when I was feeling a little daring"+n+". It is "+S+", no rush, all tease. I would love to know which part becomes your favorite 😘","This one is special to me"+n+". It is "+S+", and I remember exactly how I felt filming it. I want to know how it makes you feel 😘"]),"relationship-first framing. invite his reaction, that reply is your next conversation.")
    +V("playful power",pk(r,["I could tell you everything"+n+", but where is the fun in that? What I will say is that it is "+S+", I know exactly what I am doing, and you will wish you could tell me to go faster 😈","You want the details"+n+"? I will give you one: I am in complete control the entire time. The rest you will have to see 😈"]),"her power-dynamic register: suggestive, never explicit, she leads.")
@@ -184,37 +192,14 @@ function gen(){
    out+=V("sweet 🌸",pk(r,["Wait, "+ts+"? 🥰 Tell me everything, I am listening…","Okay, "+ts+"… I want the whole story 💗","Aww, "+ts+"? Come here, talk to me 🥰"]),"responds to what HE actually said. let him lead one more message.")
    +V("playful 😏",pk(r,["So "+ts+", hmm 🤭 You are kind of fun. Keep going…","You cannot just tell me "+ts+" and expect me to be normal about it 😏 Continue…","Okay, "+ts+"? Now I am invested. Do not stop…"]),"react with energy, keep the thread on his topic.")
    +V("spicy 🔥",pk(r,[cap(ts)+"… interesting 😏 And here I was, thinking about you for a whole other reason…","Mmm, "+ts+"? Noted. Now may I distract you properly? 😘","So "+ts+"… meanwhile I have been a little too proud of what I filmed today 😉 Want to trade stories?"]),"acknowledge his topic FIRST, then bridge to heat. never skip the acknowledgment.");  }
- } else if(mode==="pov"){
-  var like=m||"exactly what you told me you like";
-  out+=V("made for him",pk(r,["I have been thinking about you"+n+"… so I picked something where it feels like it is just us, filmed like you are right there with me 🥰 It is "+tp(tier)+" and it might be my favorite one. Should I send it?","Confession 😘 my newest one was filmed with "+like+" in mind, eyes on the lens the whole time… "+tp(tier)+" and you will see what I mean","I did something unfair"+n+" 😉 I filmed one knowing you specifically would lose it. "+like+", all of it. Curious?"]),"POV = intimacy sell. anchor at "+tf(tier)+".")
-  +V("his words back",pk(r,["Remember when you told me about "+like+"? I did not forget 😉 I have something filmed exactly that way, like you are the one holding the camera… "+tp(tier)+" and it is yours 💗","I take notes when you talk"+n+" 😘 Exhibit A: my newest video. It is basically your message come to life…","You told me once what does it for you 🥺 So I made it exist. Want to see how well I listened?"]),"callbacks to his own words convert best. log preferences.")
-  +V("imagine then open",pk(r,["Close your eyes for a second"+n+"… imagine I am right in front of you 😘 Now open them. I filmed that exact moment. Want to stop imagining?","What if the next one felt less like watching and more like being there? 💗 Because I made that…","Picture the version of me nobody else gets, looking straight at you 🥰 Now stop picturing. It exists."]),"get the yes first, then name the price. doubles conversion.");
- } else if(mode==="vip"){
-  out+=V("chosen few",pk(r,["Can I tell you something"+n+"? 💗 I keep a smaller circle where I am a lot less shy. My VIPs see the side of me the feed never gets… I think you belong there. Want in? 😉","Not everyone gets this invitation 😘 But you have been sweet, and I notice everything… VIP. Tonight. Say yes","I keep my inner circle small on purpose 🥰 It is where my favorites live… and you have been acting like a favorite lately 😏"]),"VIP entry = $150 one time tip, lifetime ($100 only on approved stream deals). unlocks topless and above. quote the number after he bites.")
-  +V("reward frame",pk(r,["You have been so good to me lately"+n+" 🥰 and I spoil the ones who show up. First look at everything, my boldest sets, and me at my most honest 😘 Should I add you?","Consider this a thank you 💗 The VIP door does not open for everyone… but for you? I am holding it","You earned this one 😉 My VIP list is where the real spoiling happens… come see what I mean"]),"frames VIP as earned. works on chatty non buyers.")
-  +V("today's fomo",pk(r,["My VIPs saw something today that honestly made me blush to post 🙈 I cannot show it out here… but I could show you 😉 Want me to open the door?","Something dropped for my inner circle an hour ago and the reactions are… a lot 😘 You are missing it in real time","The best thing I filmed this week never touched the feed 😏 You know where it lives…"]),"concrete same day tease beats abstract benefits.");
- } else if(mode==="seed"){
-  var up=m||"something special I have been working on";
-  out+=V("soft plant",pk(r,["I should not even say anything yet"+n+"… but I am working on "+up+" and I keep thinking you specifically are going to lose it 😉 That is all I am saying. For now 💗","Something is coming this week that I am almost nervous to post 🥺 That is all you get tonight…","I did a thing today 😏 ("+up+") and no, you cannot see it yet. Patience…"]),"seed only. NO price, no ask. the ask comes in 1 or 2 days.")
-  +V("secret keeper",pk(r,["Promise to keep a secret? 🤫 "+up+" is coming and only a few people get first look. I put you on my list… do not make me regret it 😘","Between us 💗 "+up+" might be my boldest yet. You are hearing it early because you are you…","You did not hear this from me 🤫 but this week is going to be very good for you specifically…"]),"insider frame primes an instant buy at drop.")
-  +V("preference harvest",pk(r,["Random question"+n+" 😉 if I filmed one thing just the way you like it… what would it be? No reason. Definitely no reason 🥰","Help me decide something 💗 the little white dress or the leather? Your answer might matter more than you think…","What is the one thing you always wish I would film? Asking for… research 😏"]),"his answer = your custom pitch next week. log it in fan notes.");
- } else if(mode==="complaint"){
-  out+='<div class="flag">⚠ AGENCY RULE: complaints are NEVER handled solo. Tag management in #shantal team NOW with a screenshot. The lines below are holding drafts to send for approval, not to send yourself. No gifts, no discounts, no promises. Sales made in a session that angered a fan are void.</div>';
-  if(/refund|money back|charge\s*back|report|scam/i.test(m)){out+='<div class="flag">⚠ refund / chargeback language → ESCALATION ALERT format: severity, what tripped it, thread ID. STOP selling. Hold the thread until Jassy and Shantal give direction.</div>'}
-  out+=V("holding draft · felt ignored",pk(r,["I am so sorry if it felt like I disappeared on you, that was truly never my intention and I do read everything you send me. Can we please start fresh"+n+"? I would love to hear how you have been 💗","I completely understand why you are upset, and I want you to know there is a real person here who genuinely cares how you feel. Talk to me"+n+"…","That is not the experience I ever want you to have with me. Tell me exactly what fell short, I am listening 🥺"]),"1 to 2 sentences, precise and composed, never a paragraph. send to management for approval first.")
-  +V("holding draft · value complaint",pk(r,["I hear you, and your trust matters more to me than any single set. Give me a little time to look at this properly"+n+", I want to make it right the correct way 💗","You are right to expect the best from me and I take that seriously. Let me look into exactly what happened before I say anything else…","I am glad you told me instead of going quiet. I want to give you a real answer, not a fast one, so give me a moment 🥺"]),"buys time honestly while management decides. never offer a fix, refund, or freebie yourself.")
-  +V("holding draft · heated fan",pk(r,["I understand. I will give you space for now. We can talk later when things feel calmer.","I am not going to argue with you"+n+", you matter here and I would rather get this right than get it fast.","I hear you. Let me take this seriously instead of replying in a rush…"]),"the approved calm recovery tone: brief, no added warmth, no selling. then wait for direction.");
- } else {
-  var t2=m&&m.length>2?m:"today's look";
-  out+=V("slice of life",pk(r,["My day started with coffee and a camera before 9AM. Productivity looks a little different around here ☕️","Almost halfway through the week and I am not slowing down. Stay close 😏","Dinner plans fell through, so tonight it is wine, the couch, and whoever shows up in my DMs. Lucky you 🍷"]),"her feed voice: full sentences, lifestyle first, one emoji.")
-  +V("watching you",pk(r,["Smiling just because I know you are watching 🥰 I wonder if you will like "+t2+"…","I wonder if you will like what I have on today 😉","All eyes right here 😉"]),"direct address + soft question. her most commented format.")
-  +V("gratitude",pk(r,["Every like, every message, every little bit of support means the world to me 🥰 Thank you for being here 💛","Hope your day is off to a lovely start 💗","Did you make the most of your weekend? I saved the very best for last 😉"]),"warmth posts keep the feed feeling human between teases.");
+ }
+ if(mode==="reply"&&slots===3){
+  out+=V("sell forward",pk(r,["Speaking of which"+n+"… I filmed something recently that fits this exact mood 😏 Would you like the first look?","I do not want to change the subject, but "+(S!=="[describe the set]"?S:"my newest set")+" exists, and I had my favorites in mind when I made it 😉","You have good timing"+n+"… I just finished something I am very proud of 🥰 Say the word and it is yours."]),"the pitch slot. skip it when the moment is wrong: money talk, complaints, fresh boundaries.")
+  +V("deflect / protect",pk(r,["I will keep that thought between us for now 😉 Tell me more about you instead…","Let us not get ahead of ourselves 🥰 I am enjoying just talking with you.","I like this conversation exactly where it is 💗 Stay with me a little longer…"]),"the safest reply. use for boundary tests, unclear intent, or when you just need to keep it warm.");
  }
  document.getElementById("out").innerHTML=out;bind();
 }
 function bind(){document.querySelectorAll(".copy").forEach(function(b){b.addEventListener("click",function(){navigator.clipboard.writeText(b.dataset.c);b.textContent="copied ✓";setTimeout(function(){b.textContent="copy"},1200)})})}
-var tabs=document.querySelectorAll(".tab");
-tabs.forEach(function(t){t.addEventListener("click",function(){tabs.forEach(function(x){x.classList.remove("on")});t.classList.add("on");mode=t.dataset.m;document.getElementById("inp").placeholder=PH[mode];gen()});});
 var deb;["inp","fanname","setdesc"].forEach(function(id){document.getElementById(id).addEventListener("input",function(){clearTimeout(deb);deb=setTimeout(gen,350)})});
 document.getElementById("tier").addEventListener("change",gen);
 gen();
