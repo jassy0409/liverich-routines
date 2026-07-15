@@ -68,6 +68,11 @@ function topics(m){return{
  bot:/are (you|u) (real|a bot|actually|really)|is this really (you|her)|do (you|u) even read/i.test(m),
  feedback:/thank(s| you)|loved it|amazing video|that was (so )?(hot|good|amazing)|worth it|best (video|content)/i.test(m),
  inside:/what('| i)?s inside|what can i see|what do i get|what am i (getting|paying)|is it worth|what('| i)?s in (it|there|this)|whats included|what will i see/i.test(m),
+ refuse:/^(no+|nah+|nope|not interested|no thanks?|not tonight|pass)\b/i.test(m),
+ pricepush:/too (expensive|much|steep|pricey)|expensive|pricey|can'?t (you|u) do (less|better|cheaper)|cheaper|lower( the)? price|that'?s a lot|bit steep|do less/i.test(m),
+ timing:/maybe later|not (tonight|today|right now)|next (week|month|friday|time)|payday|when i get paid|maybe (tomorrow|this weekend)|\bfriday\b/i.test(m),
+ seenit:/already (have|bought|seen|got)|have (that|this|it) already|seen (that|it) (before|already)|same (thing|stuff)/i.test(m),
+ stall:/^(ha+h*a* )?(maybe|we'?ll see|idk|i don'?t know|hmm+|perhaps|possibly)\b/i.test(m),
  complaint:/refund|money back|charge\s*back|report(ing)? (you|u)|scam|rip\s*off|ignor(ed|ing) me|never repl|no repl|waste of money|not worth|disappointed|mislead|lied to|deceiv|angry|upset with (you|u)/i.test(m),
  buy:/how much|price|cost|buy|purchase|unlock|custom|ppv|bundle|what do (you|u) sell|send me|can i (get|have)/i.test(m),
  origin:/israel|where (are|r) (you|u) from|nationality|jewish/i.test(m),
@@ -144,6 +149,26 @@ function gen(){
    out+=V("approved script",pk(r,["haha i'm literally right here chatting with you, why are you doubting me? you're too cute for me to let anyone else handle you 😂","a bot could never be this weird, trust me 😭 it's me","do bots complain about their own cooking? because mine tried to kill me yesterday 🥲 it's me"]),"her approved script + wit. never confirm a team exists.")
    +V("prove it",pk(r,["test me! say something random and watch me have a genuinely unhinged reaction 😂","i'll trade you proof for a good conversation, deal? 😏","the typos alone should prove it's me 😭"]),"the conversation itself is the proof.")
    +V("flip it",pk(r,["you think about me enough to conspiracy-theorize about me? flattered honestly 😌 now what were you actually going to say?","real, awake, and mildly offended 😂 anyway hi, how are you?","yes it's me! now that we've solved that mystery… what's up with you?"]),"redirect to the real conversation quickly.");
+  } else if(t.refuse){
+   out+=V("smaller door · energy up",pk(r,["not tonight?? and here i was thinking you had taste 😏 fine, the big one waits. but i have something smaller that's honestly criminal to keep to myself","a no to THAT one, noted 😌 luckily i contain multitudes… want the lighter one?"]),"playbook: after a no the energy goes UP. next move loaded: the smaller door.")
+   +V("make him define the yes",pk(r,["you said no to THAT one 😌 this is a completely different mood! tell me what you'd say yes to, i'm genuinely curious what impresses you","fair enough 😂 so teach me… what would've been an instant yes?"]),"a no is a direction, not a wall. make HIM define the yes, then deliver it.")
+   +V("stay + book",pk(r,["then don't! 😊 you're not getting rid of me that easy though, we're still talking. how did that thing go?","no pressure 🥲 it'll be here when you cave 😏 now catch me up on your week"]),"a true not-tonight gets full-energy attention and a booking, never silence.");
+  } else if(t.pricepush){
+   out+=V("hold the value",pk(r,["i hear you! this one's genuinely personal to me though 🥲 that's why it costs what it costs","valid concern, wrong item 😌 i price the ones that matter like they matter"]),"ladder rung 1: acknowledge + hold value. never apologize, never discount first.")
+   +V("the smaller door",pk(r,["fair enough 😌 that's my biggest one. i have a lighter one from the same shoot that's honestly just as unhinged… want that instead?","then let me find your size 😂 there's a shorter one i love… interested?"]),"rung 2: lighter option in her range ($10 to 29.99), price given once, plainly.")
+   +V("add value, not discount",pk(r,["okay i refuse to let numbers ruin our vibe 😂 take it and i'll send a little surprise after, something i don't send anyone. deal?","counteroffer: you take it, i add a bonus only my favorites have seen 🥰 fair?"]),"rung 3 is ADD VALUE. actual price cuts need model + manager approval, always.");
+  } else if(t.timing){
+   out+=V("book it",pk(r,["friday it is! 😊 saving it just for you, nobody gets it first. what time do you get home? this is a date now, legally binding","reserved under your name 😌 when should i expect you?"]),"a booking, not a rejection. log payday + time in fan notes — the follow-through IS the sale.")
+   +V("make it a date",pk(r,["rain check accepted 😌 but friday, you and me, don't stand me up or i'll write about you in my journal","i'll hold you to it 😏 show up on time and i'm suspiciously generous"]),"make the appointment feel real. open that day with a callback, never a cold pitch.")
+   +V("keep tonight warm",pk(r,["then we just talk tonight! honestly the best part anyway 🥲 how did that thing you mentioned go?","no rush! you have my attention either way 🥰 tell me about your day"]),"the long game: full-energy attention now. the seed grows on its own.");
+  } else if(t.seenit){
+   out+=V("diagnose first",pk(r,["then let's fix that 😌 what are you in the mood for today? i'll find something you don't have yet","fair! so what's missing from your collection? i'll fill the gap personally 😏"]),"content objection = show me something different. ask before the next offer.")
+   +V("angle change",pk(r,["so not the price, you're just bored of the genre 😏 respect. tell me what you're craving and watch me deliver","a collector! okay then i'll surprise you 😂 what mood are we in tonight?"]),"when objections stack, the last one is the true one. diagnose, don't discount.")
+   +V("the surprise",pk(r,["a challenge! okay give me two minutes 😂 and you owe me a real reaction, star rating and all","say less 😌 i know exactly the one. two minutes"]),"confidence close. deliver something genuinely different from what he named.");
+  } else if(t.stall){
+   out+=V("one confident ask",pk(r,["no pressure! i just know you'd love this one 🥰 want me to send it over?","asking exactly once 😌 should i send it?"]),"one clean ask. if he stalls again, exit warm — a third push costs the fan.")
+   +V("the takeaway",pk(r,["you hesitated 🤔 okay actually forget i offered. that one's special and maybe-energy doesn't get my special things 💅","aaand back in the vault it goes 😌 unless you can convince me you deserve it… i'm listening"]),"the takeaway play: raise the bar, never repeat the pitch.")
+   +V("warm exit",pk(r,["okay okay i'll stop tempting you 😌 tell me about your day instead!","two maybes means not today and that's fine 🥲 so talk to me, what's new?"]),"two maybes = not today. warm exit keeps him coming back.");
   } else if(t.money){
    out+=V("warm",pk(r,["hey no stress 🥰 talking to you is the free part and honestly my favorite part. how's your week going?","that's okay! keep me company instead, i'm bored and pretty and you're not here appreciating either 💅","money comes and goes! you showing up is the bit i actually notice 🥲 so tell me things"]),"never guilt him. log the date, he's back on payday.")
    +V("future pace",pk(r,["i'll save something good for when things ease up 😏 consider it a rain check with interest","then payday me and payday you have a date 😂 don't forget me till then","when it's better, come find me first! i'll make it worth the wait 🥰"]),"creates a return reason at zero pressure.")
