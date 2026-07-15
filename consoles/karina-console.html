@@ -1,177 +1,180 @@
-<title>Karina Console · Chatter Draft Studio</title>
+<title>Karina Console 👑</title>
 <style>
-:root{
-  --bg:#141118;--panel:#1d1824;--field:#120f16;--line:#332a40;
-  --ink:#efeaf4;--muted:#a598b5;--dim:#79688c;--acc:#c05be0;--acc-ink:#1c0f22;
-  --flag-bg:#33202c;--flag-line:#b45b7e;--flag-ink:#f2c4d6;
-}
-:root[data-theme="light"]{
-  --bg:#f7f4fa;--panel:#ffffff;--field:#f0ebf5;--line:#e0d6ea;
-  --ink:#241b2e;--muted:#75648a;--dim:#96879f;--acc:#9333bb;--acc-ink:#ffffff;
-  --flag-bg:#fbe9ef;--flag-line:#c2557d;--flag-ink:#8c2a4f;
-}
+:root{--bg:#f8f3fc;--bg2:#f3ecfa;--panel:#ffffffcc;--line:#e8d8f2;--ink:#33223f;--muted:#8f77a3;--acc:#a04fd0;--acc2:#d05b9e;--soft:#f3e3fa;--flag:#fdeaea;--flagln:#e07070;--flagink:#a33232}
 *{box-sizing:border-box}
-body{margin:0;min-height:100vh;background:var(--bg);color:var(--ink);font:15px/1.6 ui-sans-serif,system-ui,-apple-system,sans-serif;padding:34px 18px 60px}
-.wrap{max-width:720px;margin:0 auto}
-.eyebrow{font-size:11px;letter-spacing:.18em;color:var(--acc);font-weight:600;margin-bottom:10px;text-transform:uppercase}
-h1{font-family:Georgia,serif;font-size:34px;font-weight:700;margin:0;line-height:1.1}
-.sub{color:var(--muted);font-size:14px;margin-top:10px;max-width:540px}
-.pagepick{display:inline-flex;border:1px solid var(--line);border-radius:999px;margin-top:14px;overflow:hidden}
-.pagepick button{background:none;border:0;color:var(--muted);padding:7px 14px;font:inherit;font-size:12.5px;font-weight:600;cursor:pointer}
-.pagepick button.on{background:var(--acc);color:var(--acc-ink)}
-.tabs{display:flex;gap:8px;margin:20px 0 14px;flex-wrap:wrap}
-.tab{background:transparent;border:1px solid var(--line);color:var(--muted);padding:8px 14px;border-radius:999px;font:inherit;font-size:13px;font-weight:500;cursor:pointer}
-.tab.on{background:var(--acc);border-color:var(--acc);color:var(--acc-ink);font-weight:600}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px}
-label{display:block;font-size:13px;color:var(--muted);margin-bottom:8px}
-textarea,input[type=text]{width:100%;background:var(--field);border:1px solid var(--line);border-radius:10px;color:var(--ink);padding:12px;font:inherit;font-size:14.5px}
-textarea{resize:vertical;min-height:74px}
-input[type=text]{margin-top:10px;font-size:13.5px}
+body{margin:0;min-height:100vh;background:linear-gradient(160deg,var(--bg),var(--bg2));color:var(--ink);font:14px/1.55 ui-sans-serif,system-ui,-apple-system,sans-serif;padding:20px 14px 50px}
+.wrap{max-width:640px;margin:0 auto}
+h1{font-family:Georgia,serif;font-size:21px;margin:0;font-weight:600}
+h1 em{font-style:normal;background:linear-gradient(90deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:var(--muted);font-size:12px;margin:4px 0 0}
+.pagepick{display:inline-flex;border:1px solid var(--line);border-radius:999px;margin-top:10px;overflow:hidden;background:#fff9}
+.pagepick button{background:none;border:0;color:var(--muted);padding:6px 12px;font:inherit;font-size:11.5px;font-weight:700;cursor:pointer}
+.pagepick button.on{background:linear-gradient(90deg,var(--acc),var(--acc2));color:#fff}
+.tabs{display:flex;gap:6px;margin:12px 0 10px;flex-wrap:wrap}
+.tab{background:#fff9;border:1px solid var(--line);color:var(--muted);padding:6px 12px;border-radius:999px;font:inherit;font-size:12px;font-weight:600;cursor:pointer}
+.tab.on{background:linear-gradient(90deg,var(--acc),var(--acc2));border-color:transparent;color:#fff}
+.card{background:var(--panel);backdrop-filter:blur(6px);border:1px solid var(--line);border-radius:16px;padding:12px}
+textarea,input[type=text]{width:100%;background:#fff;border:1px solid var(--line);border-radius:12px;color:var(--ink);padding:9px 11px;font:inherit}
+textarea{resize:vertical;min-height:58px}
+input[type=text]{margin-top:8px;font-size:12.5px}
 textarea:focus,input:focus,.tab:focus-visible,.copy:focus-visible,.pagepick button:focus-visible{outline:2px solid var(--acc);outline-offset:1px}
-.hint{font-size:12.5px;color:var(--dim);margin:12px 0 0}
-.flag{background:var(--flag-bg);border:1px solid var(--flag-line);color:var(--flag-ink);border-radius:10px;padding:10px 14px;font-size:13.5px;margin:18px 0 12px}
-.variant{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:10px 0}
-.vhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
-.vlabel{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--acc);font-weight:600}
-.copy{background:transparent;border:1px solid var(--line);color:var(--muted);border-radius:8px;padding:5px 12px;font:inherit;font-size:12.5px;cursor:pointer}
-.vtext{margin:0;font-size:15.5px;line-height:1.6;white-space:pre-wrap}
-.coach{color:var(--muted);font-size:13px;margin-top:6px;font-style:italic}
-.rules{margin-top:34px;border-top:1px solid var(--line);padding-top:18px}
-.rtitle{font-size:11px;letter-spacing:.16em;color:var(--dim);font-weight:600;margin-bottom:12px;text-transform:uppercase}
-.rule{display:flex;gap:12px;font-size:12.5px;line-height:1.55;margin-bottom:7px;flex-wrap:wrap}
-.rt{color:var(--acc);font-weight:600;min-width:170px}.rd{color:var(--muted);flex:1;min-width:240px}
-@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+.hintline{font-size:11px;color:var(--muted);margin:8px 2px 0}
+.flag{background:var(--flag);border:1px solid var(--flagln);color:var(--flagink);border-radius:12px;padding:8px 12px;font-size:12px;font-weight:600;margin:12px 0 8px}
+.v{background:#fff;border:1px solid var(--line);border-radius:16px 16px 16px 4px;padding:10px 13px;margin:8px 0;box-shadow:0 1px 4px #a04fd014}
+.vh{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px}
+.vl{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--acc);font-weight:700}
+.copy{background:var(--soft);border:0;color:var(--acc);border-radius:8px;padding:3px 10px;font:inherit;font-size:11px;font-weight:700;cursor:pointer}
+.vt{margin:0;font-size:14px;white-space:pre-wrap}
+.co{color:var(--muted);font-size:11px;margin-top:5px;font-style:italic}
+.rules{margin-top:22px;border-top:1px dashed var(--line);padding-top:10px;font-size:11px;color:var(--muted);line-height:1.6}
+.rules b{color:var(--acc)}
 </style>
 <div class="wrap">
-<header>
-  <div class="eyebrow">Karina Petro 👑 · Chat team console</div>
-  <h1>lucky u — Karina drafts</h1>
-  <p class="sub">Two pages, one girl: the main page is her softer GFE side, the free page is bolder and more forward. Pick the page and every draft comes out in that register. Drafts regenerate live as you type — you review, you send.</p>
-  <div class="pagepick" role="group" aria-label="Page">
-    <button class="on" data-p="main">Main 👑 (soft / GFE)</button>
-    <button data-p="free">Free 😈 (bold / forward)</button>
-  </div>
-</header>
+<h1>👑 <em>Karina</em> Console</h1>
+<p class="sub">lowercase, playful, real · drafts refresh live with every edit · you review, you send</p>
+<div class="pagepick" role="group" aria-label="Page"><button class="on" data-p="main">Main 👑 soft</button><button data-p="free">Free 😈 bold</button></div>
 <nav class="tabs">
-  <button class="tab on" data-m="reply">Fan reply</button>
-  <button class="tab" data-m="pov">POV upsell</button>
-  <button class="tab" data-m="vip">VIP offer</button>
-  <button class="tab" data-m="seed">Upsell seed</button>
-  <button class="tab" data-m="complaint">Complaints</button>
-  <button class="tab" data-m="caption">Caption</button>
+<button class="tab on" data-m="reply">Fan reply</button><button class="tab" data-m="pov">POV upsell</button><button class="tab" data-m="vip">VIP offer</button><button class="tab" data-m="seed">Upsell seed</button><button class="tab" data-m="complaint">Complaints</button><button class="tab" data-m="caption">Caption</button>
 </nav>
-<section class="card">
-  <label id="hint" for="inp">Paste what the fan said.</label>
-  <textarea id="inp" placeholder='e.g. "you up?"'></textarea>
-  <input type="text" id="ctx" placeholder="Optional context — fan name, spender tier (medium / low / timewaster)…">
-  <p class="hint">Drafts update automatically as you type.</p>
-</section>
+<div class="card">
+<textarea id="inp" placeholder="paste what the fan said…"></textarea>
+<input type="text" id="ctx" placeholder="optional: fan name, tier (medium / low / timewaster)…">
+<p class="hintline">drafts update automatically as you type ✨</p>
+</div>
 <div id="out" aria-live="polite"></div>
-<footer class="rules">
-  <div class="rtitle">Non-negotiables (baked into every draft)</div>
-  <div class="rule"><span class="rt">Voice</span><span class="rd">all lowercase · "u" · 1–2 short lines · 😈🥵🐱🤍😌 · bratty-playful or soft check-in, nothing in between</span></div>
-  <div class="rule"><span class="rt">Never</span><span class="rd">meetups · real location · personal socials · off-platform payment · prohibited content → decline in character + escalate</span></div>
-  <div class="rule"><span class="rt">Timewasters</span><span class="rd">two free hooks max, then a priced ask — if he dodges twice, tag the list and move on</span></div>
-  <div class="rule"><span class="rt">Complaints</span><span class="rd">soothe in character; refund or chargeback talk goes straight to management</span></div>
-</footer>
+<div class="rules"><b>voice:</b> lowercase, short, medium slang (natural, not compressed), 😈🥵🐱🤍😌. <b>never:</b> meetups, real location, personal socials, off platform, prohibited content → decline in character + escalate. <b>timewasters:</b> two free hooks max, then a priced ask. refunds → management.</div>
 </div>
 <script>
 (function(){
 "use strict";
 var mode="reply",page="main";
-var HINTS={
- reply:["Paste what the fan said.",'e.g. "you up?"'],
- pov:["What is he into / what has he bought? (optional)","e.g. loves the bed shoots, bought twice"],
- vip:["Context (optional)","e.g. free-page fan, chatty, never bought"],
- seed:["What content is coming up? (optional)","e.g. new bedroom shoot this weekend"],
- complaint:["Paste the complaint.",'e.g. "u never reply to me"'],
- caption:["Describe the photo/video, or the vibe.","e.g. morning bed selfie"]};
+var PH={reply:"paste what the fan said…",pov:"what is he into, what has he bought? (optional)",vip:"context, optional… e.g. chatty fan, never bought",seed:"what content is coming up? (optional)",complaint:"paste the complaint…",caption:"describe the photo or the vibe…"};
+function hash(s){var h=2166136261;for(var i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)}return h>>>0}
+function rng(seed){var a=seed;return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+function pk(r,arr){return arr[Math.floor(r()*arr.length)]}
 function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&quot;")}
-function V(label,text,coach){return '<div class="variant"><div class="vhead"><span class="vlabel">'+label+'</span><button class="copy" data-c="'+esc(text)+'">Copy</button></div><p class="vtext">'+esc(text)+'</p>'+(coach?'<p class="coach">Coach: '+coach+'</p>':'')+'</div>'}
-var UNSAFE=/meet\s*(up|me|irl)|in person|address|where.*live|whats\s*app|telegram|snap|venmo|cash\s*app|paypal|crypto|real name|(barely|under)\s*(18|age)|incest|step\s*(sis|bro|mom|dad)|scat|toilet/i;
+function noDash(s){return s.replace(/[—–-]/g," ").replace(/\s{2,}/g," ")}
+function V(l,t,c){t=noDash(t);return '<div class="v"><div class="vh"><span class="vl">'+l+'</span><button class="copy" data-c="'+esc(t)+'">copy</button></div><p class="vt">'+esc(t)+'</p>'+(c?'<p class="co">'+c+'</p>':'')+'</div>'}
+function snippet(m){var w=m.replace(/["\n]/g," ").trim().split(/\s+/).slice(0,7).join(" ");return w.length>46?w.slice(0,46):w}
+var HARDNO=/humiliat|race\s*play|racial|age\s*play|(barely|under)\s*(18|age)|school\s*girl|incest|step\s*(sis|bro|mom|dad)|family\s*role|toilet|scat|piss/i;
+var OFFP=/meet\s*(up|me|irl)|in person|address|where.*live|whats\s*app|telegram|snap(chat)?\b|venmo|cash\s*app|paypal|crypto|real name/i;
+function topics(m){return{
+ greet:/^(hey+|hi+|hello|yo|sup|good (morning|evening|night)|gm\b|you up|u up|wyd)/i.test(m),
+ howru:/how (are|r) (you|u)|hru|how's your (day|night)/i.test(m),
+ compliment:/beautiful|gorgeous|stunning|sexy|hot|perfect|amazing|love (you|u|your)|obsessed/i.test(m),
+ lonely:/lonely|alone|miss (you|u)|thinking (about|of) (you|u)|can'?t stop/i.test(m),
+ day:/work|shift|job|boss|long day|tired|exhaust|gym|workout|travel|drove|weekend/i.test(m),
+ horny:/horny|hard|turn(ed)? on|naughty|nudes?|naked|😈|🥵|wanna see|show me/i.test(m),
+ money:/broke|tight|can'?t afford|no money|payday|next (week|month)/i.test(m),
+ buy:/how much|price|cost|buy|purchase|unlock|custom|ppv|bundle|what do (you|u) sell/i.test(m)
+};}
 function gen(){
- var m=document.getElementById("inp").value.trim();var out="";
- if((mode==="reply"||mode==="complaint")&&!m){document.getElementById("out").innerHTML='<p class="hint" style="padding:0 4px">waiting for the fan’s message…</p>';return}
- if(m&&UNSAFE.test(m)){
-  out='<div class="flag">⚠ Hard-no territory (meetup, personal info, off-platform, or prohibited content) — decline below, log it, flag management if he pushes.</div>'
-  +V("decline · bratty","lol nice try 🐱 everything u get from me lives right here. now behave and ask me something fun","Decline once with brat energy, redirect immediately.")
-  +V("decline · soft","i keep my little world in here, it's safer for both of us 🤍 but i'm all yours in this chat… so use me properly 😌","Softer no for attached fans.")
-  +V("decline · firm","that's a no from me. not now, not ever 😌 but since ur here… want to see what i did this morning instead?","Never negotiate; pivot to content.");
+ var m=document.getElementById("inp").value.trim();
+ var ctx=document.getElementById("ctx").value.trim();
+ var out="", r=rng(hash(mode+"|"+page+"|"+m+"|"+ctx+"|"+Date.now()));
+ var sn=m?snippet(m):"";
+ if((mode==="reply"||mode==="complaint")&&!m){document.getElementById("out").innerHTML='<p class="hintline">waiting for the fan’s message…</p>';return}
+ if(m&&HARDNO.test(m)){
+  out='<div class="flag">⚠ hard no request. decline below, log it, escalate to management if he asks again.</div>'
+  +V("decline · playful",pk(r,["lol nice try 🐱 that's not happening, not for any price. ask me something fun instead","points for confidence but no 😌 pick something i actually do and i'll make it worth it","that one's a permanent no babe 🤍 lucky for you everything else about me is a yes waiting to happen"]),"decline once, redirect once. second ask = flag your manager.")
+  +V("decline · soft",pk(r,["no to that one, and i mean it 😌 but i hate saying no twice in a row… so give me something i can say yes to","that's my one locked door 🤍 the open ones are honestly more fun, promise","mmm no babe. but i like that you tell me what's in your head… just aim it somewhere better 😈"]),"softer no for attached fans.")
+  +V("decline · firm",pk(r,["hard no. not negotiating that one 😌 moving on… want to see what i filmed this morning instead?","no. and i won't explain it either 🐱 now be good","that stays off the menu forever babe. everything else? we can talk 🥵"]),"never explain the rule, never negotiate.");
   document.getElementById("out").innerHTML=out;bind();return;
  }
  if(mode==="reply"){
-  if(/(broke|tight|can'?t afford|no money|payday)/i.test(m)){
-   out+=V("soft check-in","hey that's okay 🤍 it's been quiet lately and i was thinking about u anyway. how are u actually doing?","Her real quiet-week format. Zero pressure — retention play.")
-   +V("keep him warm","don't stress babe, just keep me company 😌 talking to u is the not-boring part of my day ngl","Free attention now = payday purchase later. Log the date.")
-   +V("brat tease","fine, u get me for free today. LUCKY U 🐱 but when payday hits i'm collecting, deal?","Bratty IOU — sets up the future ask with a smile.");
-  } else if(/(how much|price|buy|custom|video|unlock|show|more|see)/i.test(m)){
+  var t=topics(m);
+  if(m&&OFFP.test(m)){
+   out+='<div class="flag">⚠ meetup / off platform / personal info. decline below, flag management if he pushes.</div>'
+   +V("keep it here",pk(r,["everything you get from me lives right here babe 🤍 that's the deal. now behave and ask me something fun","lol no 🐱 my world stays in this app. lucky for you the best part of me is already in this chat","i keep things simple, nothing leaves this app 😌 don't pout, i'll make staying here worth it"]),"never negotiate platform rules.")
+   +V("soft no",pk(r,["it's safer for both of us this way 🤍 and honestly? i'm way more fun in here anyway","aw babe no 🥺 but the fact you want more of me… noted 😏","that's a no forever, but stay right here and i'll give you my full attention instead 😌"]),"boundary with warmth so the convo survives.")
+   +V("redirect",pk(r,["want to feel closer to me? there's a better way and it's already in this app 😈","the only place you get more of me is behind my little paywall babe 🥵 and it's worth it","closer access exists 😏 just not out there. want me to show you where?"]),"turn the boundary into a funnel moment.");
+  } else if(t.money){
+   out+=V("soft check in",pk(r,["hey that's okay 🤍 it's been quiet lately and i was thinking about you anyway. how are you actually doing?","don't stress it babe 😌 just keep me company, that part's free","no pressure ever 🤍 honestly the talking is my favorite part. so what's going on with you?"]),"her real quiet week energy. zero pressure, retention play.")
+   +V("keep him warm",pk(r,["then you get me for free today. lucky you 🐱 use it wisely","fine, today's on the house 😌 tell me something interesting then","money comes and goes babe, you being here is the part i notice 🤍"]),"free attention now = payday purchase later. log the date.")
+   +V("payday iou",pk(r,["okay but when payday hits i'm collecting 🐱 deal?","i'll save my favorite one for you for when things ease up 😌 don't keep me waiting forever","rain check then 😏 future you owes me and i don't forget"]),"bratty iou sets up the future ask with a smile.");
+  } else if(t.buy){
    if(page==="free"){
-    out+=V("free page · gateway","mmm someone's curious 😈 the naughty stuff starts small… $5.99 gets u through my first door and i promise it escalates. in?","Free page sells the $5.99 gateway first, then upsells the main page.")
-    +V("free page · dare","u sure u can handle it? 🥵 prove it. unlock what i just sent and tell me what it does to u","Dare framing fits the free page's 'if youre not scared' energy.")
-    +V("free page · funnel up","this page is the trailer babe 😌 my main page @KarinkaPetro is the whole movie… come find me there and say i sent u 👑","Cross-page funnel — her core growth motion.");
+    out+=V("gateway",pk(r,["someone's curious 😈 the fun starts small over here… $5.99 gets you through my first door and it escalates from there. in?","good question babe 😏 first taste is $5.99 and i promise it's not the shy version of me","it starts at $5.99 🥵 after that it depends how brave you are"]),"free page sells the $5.99 gateway first, then upsells the main page.")
+    +V("dare",pk(r,["think you can handle it? 🥵 unlock what i sent and tell me what it does to you","depends 😈 are you asking to look or asking to survive it?","i could tell you the price or you could just find out what's behind it 🐱 braver option wins"]),"dare framing fits the free page energy.")
+    +V("funnel up",pk(r,["honestly? this page is the trailer 😌 my main page is the whole movie… come find me there and say i sent you 👑","the real answer lives on my main page babe 👑 this one's just the preview","if you're asking prices you're ready for the main page 😏 that's where i stop behaving"]),"cross page funnel, her core growth motion.");
    } else {
-    out+=V("main · mood pricing","i woke up in a mood and decided u're dealing with me today. lucky u 🐱 i'll send it for $15 because i'm feeling generous","Small-mid PPV in brat voice. Never below $10.")
-    +V("main · earn it","be nice to me and maybe u're first 🥰🥵 i've been saving my favorite video from this week and no one has seen it yet","Verbatim her real tease — makes the sale feel like a privilege.")
-    +V("main · direct","ok since u asked properly 😌 $20 and it's in ur messages in two minutes. timer starts now","Direct close for repeat buyers — speed framing works.");
+    out+=V("mood pricing",pk(r,["i woke up in a mood and decided you're dealing with me today. lucky you 🐱 $15 and it's yours because i'm feeling generous","depends on my mood and today it's a good one 😌 $15 and i'll send my favorite from this week","for you? $15 tonight 🥵 tomorrow me might not be this nice"]),"small to mid PPV in her voice. never below $10.")
+    +V("earn it",pk(r,["be nice to me and maybe you're first 🥰🥵 i've been saving my favorite video from this week and nobody has seen it yet","i don't just send it to anyone babe 😌 convince me you deserve first look","it exists, it's unseen, and i'm picky about who gets it 🐱 make your case"]),"her real tease format. makes the sale feel like a privilege.")
+    +V("direct",pk(r,["since you asked properly 😌 $20 and it's in your messages in two minutes","okay straight answer: $20, no games, and it's better than whatever you're imagining 🥵","$20 babe. and when you're done watching you're going to want to talk about it 😈"]),"direct close for repeat buyers. speed framing works.");
    }
+  } else if(t.horny){
+   out+=V("match it",pk(r,["oh you're in that mood 😈 good. keep talking, i want details","dangerous energy for a tuesday babe 🥵 what exactly are you picturing?","careful 🐱 you say stuff like that and i stop behaving"]),"match his energy, then steer to discovery. no price yet.")
+   +V("tease then gate",pk(r,["funny timing… what i filmed this morning is exactly that energy 🥵 want proof?","i did a tiny photoshoot in my bed this morning and i'm kind of proud of it 😌 want a peek?","i have something saved that fits that mood perfectly 😈 be nice and maybe it's yours"]),"her real hook format. the unlock follows his yes.")
+   +V("make him say it",pk(r,["tell me exactly what you want to see 😏 the specific ones get rewarded","use your words babe 🥵 paint the picture and i'll match it","and what would you do if i was right there? go on 😈"]),"consented specifics = your pitch, at floor or above.");
+  } else if(t.lonely){
+   out+=V("soft",pk(r,["hey 🤍 it's been quiet and i was honestly thinking about you too. are you okay?","then stay right here 😌 i'm not going anywhere tonight. talk to me","aw babe 🥺 you have me now. tell me what's going on"]),"lonely fans want presence, not a pitch. bond tonight, sell later.")
+   +V("reward it",pk(r,["you miss me? say it again 🐱 that made my night ngl","that's actually really sweet 🤍 come here, tell me what you missed most","good 😌 i like being missed. you have my full attention now, what do we do with it?"]),"reward the vulnerability, keep him talking.")
+   +V("gentle hook",pk(r,["i'm good at fixing lonely 😏 stay here with me… and maybe later i'll show you something that helps","you're not alone babe, you literally have me in your pocket 🤍 what do you need tonight?","the ones who stick around get spoiled 😌 just saying"]),"plants the upsell for later without asking now.");
+  } else if(t.compliment){
+   out+=V("receive it",pk(r,["stop, you're going to make me smile at my phone like an idiot 🥺","say it again slower 🐱 i wasn't ready","okay that one actually got me 🤍 you're good at this"]),"receive it warmly, never deflect.")
+   +V("playful heat",pk(r,["flattery works on me, i won't even pretend 😌 keep going and see what happens","careful babe, compliments unlock the version of me that misbehaves 😈","if you think that's cute you should see the ones i didn't post 🥵"]),"turn the compliment into curiosity about unposted content.")
+   +V("bond it",pk(r,["you're officially on my favorites list now 🐱 tell me about you, i want details","messages like that are why i actually like opening this app 🤍 what made you smile today?","sweet and well timed 😌 i just got comfy… how's your night going?"]),"anchor the good feeling, then chat.");
+  } else if(t.day||t.howru){
+   var echo=sn?'"'+sn+'"':"that";
+   out+=V("mirror + care",pk(r,["wait, "+echo+"? okay tell me everything 🤍 i'm listening","that sounds like a lot babe 🥺 come decompress with me","long days can feel heavy 🤍 what helps you wind down tonight?"]),"mirror his actual words. her real wind down line included.")
+   +V("share hers",pk(r,["i'm good now that you're here ngl 😌 today was slow until this exact moment","my evening got so much better the second you opened this. tell me about yours 🤍","just got comfy in bed and my timing is apparently perfect 🐱 how was your day?"]),"verbatim her real mass energy, works 1:1.")
+   +V("cozy hook",pk(r,["okay you handle the day, i'll handle the night 😈 deal?","you survived it babe 😌 come get your reward","rough days get the soft version of me 🤍 lucky you… tonight only 🐱"]),"plants heat inside the comfort. unlock comes if he bites.");
+  } else if(t.greet){
+   out+=V("brat opener",pk(r,["i woke up in a mood and decided you're dealing with me today. lucky you 🐱","oh look who showed up 😌 i was getting bored, perfect timing","hey you 🐱 took you long enough"]),"her signature energy. the attitude IS the hook.")
+   +V("soft opener",pk(r,["hey 🤍 it's been quiet and i was thinking about you. how are you?","hi babe 😌 you caught me right as i got comfy… what are you up to?","heyy 🤍 okay weird timing, i was literally about to message you"]),"her soft register for fans who went quiet.")
+   +V("confession hook",pk(r,["okay i need to confess something before it eats me 😌","so something happened this morning and i can't tell everyone 🐱 you want it?","i have a secret and you replied at the exact right time 😈"]),"verbatim her top mass, works 1:1. the confession becomes a tease.");
   } else {
-   out+=V("brat opener","i woke up in a mood and decided u're dealing with me today. lucky u 🐱","Her signature line energy. The attitude IS the hook.")
-   +V("soft check-in","it has been quiet lately and i have been thinking about u. are u okay? 🤍","Her real retention message — use on fans who went quiet.")
-   +V("confession hook","okay i need to confess something before it eats me 😌","Verbatim her top mass, works 1:1 too. The 'confession' becomes a tease.");
+   var e2=sn?'"'+sn+'"':"that";
+   out+=V("mirror it",pk(r,["wait "+e2+"? lol okay you have my attention 🐱 keep going","hm "+e2+"… interesting 😌 tell me more","not you saying "+e2+" and expecting me to be normal about it 🤍 go on"]),"echo his words so it never feels canned. let him lead one more message.")
+   +V("warm hook",pk(r,["you always show up with something random and honestly? i like it 😌 what's the story","this is why you're my favorite kind of weird 🐱 continue","okay i'm invested now babe 🤍 don't leave me hanging"]),"keep the thread alive, learn what he cares about, log it.")
+   +V("playful pivot",pk(r,["noted 😏 anyway i did something a little bad today… remind me to tell you later","cool cool cool. unrelated: what i almost posted today would have gotten me in trouble 🥵","mmhm 😌 my turn. i have a thing to show you later if you're good"]),"soft pivot toward a content moment without dropping his topic.");
   }
  } else if(mode==="pov"){
-  var like=m||"what u like";
+  var like=m||"what you like";
   if(page==="free"){
-   out+=V("free · dare pov","i filmed something where it's literally just u and me, no feed, no audience 😈 think u can look me in the eyes the whole time? unlock and prove it","Dare + POV intimacy — free-page register.")
-   +V("free · gateway pov","the version of me on this page is the polite one babe 😌 the POV stuff… that lives behind a $5.99 door. coming through or staying scared?","Ties POV upsell to the gateway price.")
-   +V("free · curiosity","everyone sees my posts. almost nobody sees the ones filmed like THEY'RE in the room 🥵 want to be almost nobody?","Exclusivity flip — playful wording drives unlocks.");
+   out+=V("dare pov",pk(r,["i filmed something where it's just you and me, no feed, no audience 😈 think you can look me in the eyes the whole time?","imagine me talking straight to you and only you 🥵 that video exists babe… scared?","there's a version of me that only performs for one person at a time 😌 want to be the person?"]),"dare + pov intimacy, free page register.")
+   +V("gateway pov",pk(r,["the me on this page is the polite one 😌 the eye contact stuff lives behind a $5.99 door… coming through?","$5.99 and suddenly it's a private show babe 😈 your call","first taste of the personal stuff is $5.99 🥵 it escalates from there, fair warning"]),"ties the pov upsell to the gateway price.")
+   +V("curiosity",pk(r,["everyone sees my posts. almost nobody sees the ones filmed like they're in the room 🥵 want in?","group content is fun but the one on one style hits different 😈 curious?","i make two kinds of videos babe. you've only seen the public kind 😌"]),"exclusivity flip drives unlocks.");
   } else {
-   out+=V("main · made for him","ngl i filmed my last one thinking about "+like+" 🥵 it feels like u're right there. $20 and u'll see what i mean","POV intimacy sell in her lowercase voice. Never below $10.")
-   +V("main · earn it pov","i have one video i almost didn't post because it felt too… personal 😳 it's basically u and me. be sweet and maybe i'll let u have it","Privilege framing — get the yes, then the price.")
-   +V("main · brat pov","imagine me looking straight at u and only u 🐱 ok stop imagining, i filmed it. $15 says u can't watch it just once","Bratty bet framing — fits her voice, invites the unlock.");
+   out+=V("made for him",pk(r,["ngl i filmed my last one thinking about "+like+" 🥵 it feels like you're right there. $20 and you'll see what i mean","so i remembered what you said about "+like+" 😌 and then i filmed it. eyes on the camera the whole time babe","i made one that's basically a private moment between us 🐱 $20, and you have to tell me your reaction after"]),"pov intimacy sell in her voice. never below $10.")
+   +V("earn it pov",pk(r,["i have one video i almost didn't post because it felt too personal 😳 it's basically you and me. be sweet and maybe i'll let you have it","this one's different babe, it's the kind i get shy about 🥺 which is exactly why you'll love it","not everyone gets the personal ones 😌 you've been good lately though…"]),"privilege framing. get the yes, then the price.")
+   +V("brat bet",pk(r,["imagine me looking straight at you and only you 🐱 okay stop imagining, i filmed it. $15 says you can't watch it just once","bet you $15 this video lives in your head for a week 😈 loser pays. that's you. pay up","i filmed it, i rewatched it, i got flustered by my own video 🥵 $15 to understand why"]),"bratty bet framing invites the unlock.");
   }
  } else if(mode==="vip"){
   if(page==="free"){
-   out+=V("free · trailer/movie","this page is the trailer babe 😌 my main page @KarinkaPetro is the whole movie — uncut, unshy, all of it 👑 come find me there","Core free→main funnel line.")
-   +V("free · fomo","the girls… i mean the fans on my main page saw something today u didn't 😈 stay curious or come see. ur choice babe","Same-day FOMO beats abstract benefits.")
-   +V("free · dare","u've been lurking here long enough 🐱 subscribe to my real page and i'll actually learn ur name. deal?","Brat challenge for long-time free lurkers.");
+   out+=V("trailer movie",pk(r,["this page is the trailer babe 😌 my main page is the whole movie, uncut, unshy, all of it 👑 come find me there","you've seen the preview 🐱 the full version of me lives on my main page… what are you waiting for?","free me is fun. main page me is a problem 😈 👑 your move"]),"core free → main funnel line.")
+   +V("fomo",pk(r,["my main page saw something today that you didn't 😈 stay curious or come see, your choice","real time fomo babe: something dropped over there an hour ago and it's getting reactions 🥵","the best thing i filmed this week never touched this page 😌 you know where it went"]),"same day fomo beats abstract benefits.")
+   +V("dare",pk(r,["you've been lurking here long enough 🐱 subscribe to my real page and i'll actually learn your name. deal?","free page loyalty is cute but i reward the ones who cross over 👑","scared money doesn't get spoiled babe 😈 main page. today"]),"brat challenge for long time free lurkers.");
   } else {
-   out+=V("main · inner circle","u're already one of my favorites ngl 🤍 stick close — my favorites get first look at everything and the stuff i never post. don't tell the others 😌","On main, 'VIP' = favorites treatment; primes bigger asks.")
-   +V("main · rebill soft","i like having u around, u know that? 😌 keep that rebill on for me and i'll make it worth ur while this month 🥵","Retention ask in her soft register.")
-   +V("main · brat claim","ok i've decided u're mine now 🐱 that means u don't get to disappear. stay subscribed and i'll be nice… ish 😈","Bratty ownership frame — works on her most engaged fans.");
+   out+=V("inner circle",pk(r,["you're already one of my favorites ngl 🤍 stick close, my favorites get first look at everything and the stuff i never post","i keep a mental list of the good ones 😌 you're on it. don't tell the others","being my favorite comes with perks babe 🐱 you're about to find out which ones"]),"on main, vip = favorites treatment; primes bigger asks.")
+   +V("rebill soft",pk(r,["i like having you around, you know that? 😌 keep that rebill on for me and i'll make this month worth it 🥵","don't you dare let that subscription lapse 🐱 i have plans for you","stay subscribed babe 🤍 the next few weeks are going to be very good to you specifically"]),"retention ask in her voice.")
+   +V("brat claim",pk(r,["okay i've decided you're mine now 🐱 that means you don't get to disappear. stay close and i'll be nice… ish 😈","congrats, you've been claimed 😌 the exit is now closed","new rule: you check in on me daily and i spoil you accordingly 🐱 starting now"]),"bratty ownership frame for engaged fans.");
   }
  } else if(mode==="seed"){
   var up=m||"something new";
-  out+=V("soft plant","not telling u yet but i did a tiny photoshoot in my bed this morning and i'm kind of proud of it 😌 that's all u get. for now","Verbatim her real seed format. NO price, no ask — ask comes later.")
-  +V("secret","ok u can't tell anyone but "+up+" is coming and i keep rewatching it 🥵 u're getting first look because i said so 🐱","Insider frame — primes an instant unlock at drop.")
-  +V("question seed","random but… if i filmed one thing exactly how u wanted, what would it be? 😈 no reason. definitely no reason","His answer = your pitch later this week. Log it in fan notes.");
+  out+=V("soft plant",pk(r,["not telling you yet but i did a tiny photoshoot in my bed this morning and i'm kind of proud of it 😌 that's all you get. for now","something's coming this week and i keep rewatching it 🥵 that's the whole announcement. bye","i did a thing today 😈 ("+up+") and no you can't see it yet. patience babe"]),"seed only. NO price, no ask. the ask comes in 1 or 2 days.")
+  +V("secret",pk(r,["okay you can't tell anyone but "+up+" is coming and it might be my boldest one 🐱 you're getting first look because i said so","between us 🤫 "+up+" drops soon and only my favorites hear about it early. act surprised later","you didn't hear this from me but this week is going to be very good for you specifically 😌"]),"insider frame primes an instant unlock at drop.")
+  +V("question seed",pk(r,["random but… if i filmed one thing exactly how you wanted, what would it be? 😈 no reason. definitely no reason","help me settle something 🐱 bed shoot or mirror shoot? your answer might matter more than you think","what's the one thing you always wish i'd film? asking for research purposes obviously 😌"]),"his answer = your pitch later this week. log it in fan notes.");
  } else if(mode==="complaint"){
   var refund=/refund|money back|charge\s*back|report|scam/i.test(m);
-  if(refund){out+='<div class="flag">⚠ Refund / chargeback language — soothe below, then flag management immediately. Never promise a refund in chat.</div>'}
-  out+=V("own it soft","hey. i'm glad u said it instead of just leaving 🤍 that's not how i want u to feel here. tell me what went wrong, i'm listening","Validate first, never argue with the feeling.")
-  +V("make-good","ur right to expect better from me 🥺 let me send u one of my favorites on me and u tell me if i fixed it. fair?","Small free make-good saves the sub.")
-  +V("de-escalate","i hear u babe 😌 don't go quiet on me tho. one more chance to remind u why u're here?","Two touches max — still heated? stop selling, escalate.");
+  if(refund){out+='<div class="flag">⚠ refund / chargeback language. soothe below, then flag management immediately. never promise a refund in chat.</div>'}
+  var ce=sn?'"'+sn+'"':"that";
+  out+=V("own it soft",pk(r,["hey. i'm glad you said "+ce+" instead of just leaving 🤍 that's not how i want you to feel here. tell me what went wrong, i'm listening","okay reading "+ce+" actually got to me 🥺 talk to me babe, what happened?","come here 🥺 if something felt off i want the whole story. i'd rather fix it than lose you"]),"validate first, never argue with the feeling.")
+  +V("make good",pk(r,["you're right to expect better from me 🥺 let me send you one of my favorites on me and you tell me if i fixed it. fair?","let me make it right properly 🤍 something good, no charge, just for you. then we're even?","i can't undo it but i can outdo it 😌 check your messages in a minute"]),"a small free make good saves the sub.")
+  +V("de escalate",pk(r,["i hear you babe 😌 don't go quiet on me though. one more chance to remind you why you're here?","you're allowed to be annoyed with me 🥺 just don't disappear, okay?","fair. taking that one on the chin 😌 now let me earn it back"]),"two touches max. still heated? stop selling, escalate.");
  } else {
-  var t=m&&m.length>2?m:"today";
-  out+=V("brat","i woke up like this and honestly? ur problem now 🐱","Lowercase brat one-liner — her feed voice.")
-  +V("tease","the feed gets this version. my DMs get the other one 😈","Feed→DM funnel caption, works with any photo of "+t+".")
-  +V("soft","hope today was gentle on u 🤍 come tell me about it","Her soft register — makes the bratty posts hit harder.");
+  var t2=m&&m.length>2?m:"today";
+  out+=V("brat",pk(r,["i woke up like this and honestly? your problem now 🐱","posting this and going back to bed. discuss","the audacity of me today 😌"]),"lowercase brat one liner, her feed voice.")
+  +V("tease",pk(r,["the feed gets this version. my DMs get the other one 😈","this is the photo i was allowed to post 🥵 imagine the rest","if you're seeing this, you're seeing the polite version of "+t2]),"feed → dm funnel caption.")
+  +V("soft",pk(r,["hope today was gentle on you 🤍 come tell me about it","it's been quiet lately and i've been thinking about you 🤍 are you okay?","checking in on my favorites 😌 that means you"]),"her soft register makes the bratty posts hit harder.");
  }
  document.getElementById("out").innerHTML=out;bind();
 }
-function bind(){document.querySelectorAll(".copy").forEach(function(b){b.addEventListener("click",function(){navigator.clipboard.writeText(b.dataset.c);b.textContent="copied";setTimeout(function(){b.textContent="Copy"},1200)})})}
+function bind(){document.querySelectorAll(".copy").forEach(function(b){b.addEventListener("click",function(){navigator.clipboard.writeText(b.dataset.c);b.textContent="copied ✓";setTimeout(function(){b.textContent="copy"},1200)})})}
 var tabs=document.querySelectorAll(".tab");
-tabs.forEach(function(t){t.addEventListener("click",function(){
- tabs.forEach(function(x){x.classList.remove("on")});t.classList.add("on");mode=t.dataset.m;
- document.getElementById("hint").textContent=HINTS[mode][0];
- document.getElementById("inp").placeholder=HINTS[mode][1];
- gen();
-});});
-document.querySelectorAll(".pagepick button").forEach(function(b){b.addEventListener("click",function(){
- document.querySelectorAll(".pagepick button").forEach(function(x){x.classList.remove("on")});b.classList.add("on");page=b.dataset.p;gen();
-});});
-var deb;
-["inp","ctx"].forEach(function(id){document.getElementById(id).addEventListener("input",function(){clearTimeout(deb);deb=setTimeout(gen,400)})});
+tabs.forEach(function(t){t.addEventListener("click",function(){tabs.forEach(function(x){x.classList.remove("on")});t.classList.add("on");mode=t.dataset.m;document.getElementById("inp").placeholder=PH[mode];gen()});});
+document.querySelectorAll(".pagepick button").forEach(function(b){b.addEventListener("click",function(){document.querySelectorAll(".pagepick button").forEach(function(x){x.classList.remove("on")});b.classList.add("on");page=b.dataset.p;gen()});});
+var deb;["inp","ctx"].forEach(function(id){document.getElementById(id).addEventListener("input",function(){clearTimeout(deb);deb=setTimeout(gen,350)})});
 gen();
 })();
 </script>
