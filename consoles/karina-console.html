@@ -39,6 +39,7 @@ textarea:focus,input:focus,.tab:focus-visible,.copy:focus-visible,.pagepick butt
 <div class="card">
 <textarea id="inp" placeholder="paste what the fan said…"></textarea>
 <input type="text" id="ctx" placeholder="optional: fan name, tier (medium / low / timewaster)…">
+<input type="text" id="setdesc" placeholder="content description for content questions… e.g. slow striptease, 8 min, black dress">
 <p class="hintline"><label style="display:inline;font-size:11px;color:inherit"><input type="checkbox" id="vipnow"> VIP actively spending right now (allows babe/bb/hun)</label> · drafts update as you type ✨</p>
 </div>
 <div id="out" aria-live="polite"></div>
@@ -105,6 +106,7 @@ function gen(){
  var m=document.getElementById("inp").value.trim();
  var ctx=document.getElementById("ctx").value.trim();
  var out="", r=rng(hash(mode+"|"+page+"|"+m+"|"+ctx+"|"+Date.now()));
+ var S=document.getElementById("setdesc").value.trim()||"[describe the set]";
  var sn=m?snippet(m):"";
  if((mode==="reply"||mode==="complaint")&&!m){document.getElementById("out").innerHTML='<p class="hintline">waiting for the fan’s message…</p>';return}
  if(m&&HARDNO.test(m)){
@@ -134,15 +136,11 @@ function gen(){
    +V("details then seed",pk(r,["tell me your favorite moment 😌 the answer decides what i film next…","i want the full review babe 🥵 and if you're good, the next one's even bolder","your reaction is doing things for my ego 🐱 should i push it further next time?"]),"his answer = intel for the next pitch. log it.")
    +V("ride the high",pk(r,["since you clearly have taste 😈 i have one more that's even better… want me to prove it?","perfect timing because the follow up exists and it escalates 🥵","happy customers get spoiled here 😌 check your messages in a bit babe"]),"buyers who just praised convert at the highest rate. strike now, respect floors.");
   } else if(t.inside){
-   if(page==="free"){
-    out+=V("tease contents",pk(r,["inside is the version of me this page isn't allowed to show 😈 it starts at $5.99 and it escalates babe","what's inside would get me banned from the feed 🥵 that's the whole point of the lock","the polite answer: more of me. the honest answer: way more of me 🐱 open it"]),"free page: heat + the $5.99 gateway. never a literal list.")
-    +V("dare",pk(r,["only one way to find out and it costs less than your coffee 😌","i could tell you but where's the fun 🐱 unlock it and report back","curiosity is cute. acting on it is cuter 😈"]),"dare close fits the free page energy.")
-    +V("funnel",pk(r,["this page's locks are the warm up babe 😌 the real vault is on my main page 👑","if you're already curious here… my main page would ruin you 🥵","start here, graduate there 🐱 that's the path"]),"use when he's asked about locks twice without buying.");
-   } else {
-    out+=V("tease contents",pk(r,["inside is me not behaving 😈 it starts cute and it does not stay cute. open it and tell me which minute got you","what's inside is the reason i was blushing at my own phone this morning 🥵","the version of me that doesn't make it to the feed babe 😌 slow, close, and a little unfair"]),"answer with heat, never a checklist. push the unlock.")
-    +V("build value",pk(r,["it's the one i keep rewatching ngl 🥵 that's all the review you need","everything i filmed when i thought nobody would see it… and then decided one person should 🐱","the good stuff 😌 the kind i film once and never repeat"]),"scarcity framing, describe the feeling not the contents.")
-    +V("dare the unlock",pk(r,["one way to find out babe 😈 fair warning, people don't recover fast","open it, then come tell me your favorite part 🥵 that's the deal","curiosity looks good on you 🐱 act on it"]),"short dare close. one more tease if he hesitates, then stop.");
-   }
+   out+=V("bratty tease",pk(r,["hmm someone's curious 🤭 it's "+S+". that's all u get for free","curiosity noted 🐱 it's "+S+" and that's the free preview of the answer"]),"short, withholding, on brand. fill the content field so the tease stays honest.")
+   +V("confession style",pk(r,["okay confession, i filmed "+S+" and i've rewatched it like five times myself 😼 it's that good. want it or not?","confession: "+S+" and i got flustered watching my own video 😳 that's the review"]),"her mass confession voice, works 1:1. the want it or not close forces a reply.")
+   +V("playful challenge",pk(r,["it's "+S+"… the real question is if u can handle watching it without losing your mind 🥵","i could describe it or u could prove u can handle it 😈 "+S+". your move"]),"dare framing. if he says he can handle it, that's your yes.")
+   +V("mysterious",pk(r,["if i told u everything there'd be no surprise left 😏 just know i take my time and i knew exactly who'd be watching","some things u don't spoil 😌 i'll just say i filmed it like someone specific was going to see it"]),"make him chase. reveals nothing, implies everything.")
+   +V("mood driven",pk(r,["i was in a Mood when i filmed this one lol. "+S+", slow everything. lucky u 🐱","woke up in a mood, hit record, and "+S+" happened 🐱 some days ur just lucky"]),"her signature mood energy. lucky u is the close.");
   } else if(t.buy){
    if(page==="free"){
     out+=V("gateway",pk(r,["someone's curious 😈 the fun starts small over here… $5.99 gets you through my first door and it escalates from there. in?","good question babe 😏 first taste is $5.99 and i promise it's not the shy version of me","it starts at $5.99 🥵 after that it depends how brave you are"]),"free page sells the $5.99 gateway first, then upsells the main page.")
@@ -232,7 +230,7 @@ function bind(){document.querySelectorAll(".copy").forEach(function(b){b.addEven
 var tabs=document.querySelectorAll(".tab");
 tabs.forEach(function(t){t.addEventListener("click",function(){tabs.forEach(function(x){x.classList.remove("on")});t.classList.add("on");mode=t.dataset.m;document.getElementById("inp").placeholder=PH[mode];gen()});});
 document.querySelectorAll(".pagepick button").forEach(function(b){b.addEventListener("click",function(){document.querySelectorAll(".pagepick button").forEach(function(x){x.classList.remove("on")});b.classList.add("on");page=b.dataset.p;gen()});});
-var deb;["inp","ctx"].forEach(function(id){document.getElementById(id).addEventListener("input",function(){clearTimeout(deb);deb=setTimeout(gen,350)})});
+var deb;["inp","ctx","setdesc"].forEach(function(id){document.getElementById(id).addEventListener("input",function(){clearTimeout(deb);deb=setTimeout(gen,350)})});
 document.getElementById("vipnow").addEventListener("change",gen);
 gen();
 })();

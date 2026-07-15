@@ -35,6 +35,7 @@ textarea:focus,input:focus,.tab:focus-visible,.copy:focus-visible{outline:2px so
 <div class="card">
 <textarea id="inp" placeholder='paste what the fan said…'></textarea>
 <input type="text" id="ctx" placeholder="optional: fan name, tier, what he's bought…">
+<input type="text" id="setdesc" placeholder="content description for content questions… e.g. slow striptease, 8 min, black dress">
 <p class="hintline" id="hint">drafts update automatically as you type ✨</p>
 </div>
 <div id="out" aria-live="polite"></div>
@@ -104,6 +105,7 @@ function gen(){
  var m=document.getElementById("inp").value.trim();
  var ctx=document.getElementById("ctx").value.trim();
  var n=name(ctx), out="", r=rng(hash(mode+"|"+m+"|"+ctx+"|"+Date.now()));
+ var S=document.getElementById("setdesc").value.trim()||"[describe the set]";
  var sn=m?snippet(m):"";
  if((mode==="reply"||mode==="complaint")&&!m){document.getElementById("out").innerHTML='<p class="hintline">waiting for the fan’s message…</p>';return}
  if(m&&HARDNO.test(m)){
@@ -141,9 +143,11 @@ function gen(){
    +V("details then seed",pk(r,["tell me your favorite moment 😏 your answer decides what i film next…","i want the full review babe 🥵 and if it's good, the next one gets bolder","your reaction is feeding my ego dangerously 🤭 should i push it further next time?"]),"his answer = intel for the next pitch. log it.")
    +V("ride the high",pk(r,["since you clearly have taste 😈 the follow up exists and it escalates… want me to prove it?","happy fans get spoiled around here 😌 check your messages in a bit bby","mmm you liked that? 🥵 you should see what almost didn't make the cut…"]),"buyers who just praised convert highest. strike now, respect floors.");
   } else if(t.inside){
-   out+=V("tease the contents",pk(r,["mmm inside is the version of me the feed never gets 🥵 it starts sweet and it… does not stay sweet bby. unlock it and tell me which minute got you 😈","good question 🤭 let's just say i start dressed and confident and end up neither… you'll see exactly what i mean when you open it 😏","what's inside is me showing off for one person at a time bby 😈 and tonight that person could be you…"]),"answer the question with heat, never with a literal list. push the unlock.")
-   +V("build the value",pk(r,["it's the one i keep rewatching myself ngl 🥵 slow, close up, and very unfair. you'll understand once it's open babe","everything i couldn't post 🤭 the angles, the sounds, the part where i stop performing and just… enjoy it 😈","the good stuff bby 😏 the kind i film once and never repeat. that's why it's locked…"]),"describe the feeling of it, not a checklist. scarcity framing.")
-   +V("dare the unlock",pk(r,["only one way to find out 😈 and fair warning… people don't usually recover fast","i could tell you or you could feel it 🤭 open it bby, then come tell me your favorite part","curiosity looks good on you 😏 act on it…"]),"short dare close. if he hesitates, drop ONE more concrete tease then stop.");
+   out+=V("giddy fan-girl",pk(r,["omggg okay so it's "+S+" 😭🥵 i was literally shaking filming it becos it's the most of me i've ever shown… open it and tell me how it makes u feel, i'll be waiting","okok so 😭 it's "+S+" and i'm still not over it… open it and report back IMMEDIATELY, i need to know ur reaction 🥵"]),"her welcome-message energy: giddy, breathless, reaction-demanding. fill the content field so it stays honest.")
+   +V("naughty-check game",pk(r,["naughty check first, scale of 1-10 how naughty are u feeling rn? 🤭 becos inside is "+S+" and it's NOT for the weak","quick game 🤭 rate ur mood 1-10 first… becos "+S+" is waiting inside and anything under a 7 isn't ready for it 😈"]),"her signature move. his number is your opening for the close.")
+   +V("question flip",pk(r,["u want to know what's inside? 😏 wrong question. the right one is what it does to u by the end… and bby, it does everything 🥵","asking what's inside 😏 cute. ask instead how many times u'll rewatch "+S+". answer: too many"]),"flips his question into heat. only promise what the set actually delivers.")
+   +V("deal framing",pk(r,["it's my special 😈 "+S+", every angle, and it's on sale today only… don't miss out bby 😉","ok deal time 😈 "+S+", the full thing, discounted for today because i'm in a good mood… tomorrow it goes back up"]),"her 60% off bundle event style. today-only must be real, actually expire it.")
+   +V("bratty attitude",pk(r,["it's me putting on ur personal show 🍑 "+S+". i don't do this for just anyone so consider urself lucky u even got the offer 🤭","inside is "+S+" aka the version of me most people don't deserve 🍑 ur welcome in advance 🤭"]),"ABG attitude register. scarcity through status, not price.");
   } else if(t.buy){
    out+=V("discovery first",pk(r,["mmm before i just hand it over… tell me exactly what you were imagining bby 😏 i want to pick the perfect one","eager 🤭 i like it. describe what's in your head and i'll match it… i know my vault by heart","slow down babe 😌 first tell me what does it for you… then i'll blow your mind properly"]),"his answer tells you the tier. never quote below floor.")
    +V("tier offer",pk(r,["okay so 🤭 lingerie sets start at 10, implied at 50… but the ones i'm proud of? those live higher bby. how brave are you feeling?","depends how deep you want to go babe 😈 i have everything from cute (10) to i can't say it out loud (way more)","for you? i'd start you with my favorite set 🥵 tell me your budget and i'll make it hit way above it"]),"anchor with the floor ladder: lingerie 10+, implied 50+, topless 150+, nudes 400+, solo/JOI 500+, B/G 800+.")
@@ -216,7 +220,7 @@ function gen(){
 function bind(){document.querySelectorAll(".copy").forEach(function(b){b.addEventListener("click",function(){navigator.clipboard.writeText(b.dataset.c);b.textContent="copied ✓";setTimeout(function(){b.textContent="copy"},1200)})})}
 var tabs=document.querySelectorAll(".tab");
 tabs.forEach(function(t){t.addEventListener("click",function(){tabs.forEach(function(x){x.classList.remove("on")});t.classList.add("on");mode=t.dataset.m;document.getElementById("inp").placeholder=PH[mode];gen()});});
-var deb;["inp","ctx"].forEach(function(id){document.getElementById(id).addEventListener("input",function(){clearTimeout(deb);deb=setTimeout(gen,350)})});
+var deb;["inp","ctx","setdesc"].forEach(function(id){document.getElementById(id).addEventListener("input",function(){clearTimeout(deb);deb=setTimeout(gen,350)})});
 gen();
 })();
 </script>

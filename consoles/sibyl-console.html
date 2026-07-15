@@ -39,6 +39,7 @@ textarea:focus,input:focus,.tab:focus-visible,.copy:focus-visible,.pagepick butt
 <div class="card">
 <textarea id="inp" placeholder="paste what the fan said…"></textarea>
 <input type="text" id="ctx" placeholder="optional: fan name, spend, what he's bought…">
+<input type="text" id="setdesc" placeholder="content description for content questions… e.g. slow striptease, 8 min, black dress">
 <p class="hintline">drafts update automatically as you type ✨</p>
 </div>
 <div id="out" aria-live="polite"></div>
@@ -107,6 +108,7 @@ function gen(){
  var m=document.getElementById("inp").value.trim();
  var ctx=document.getElementById("ctx").value.trim();
  var out="", r=rng(hash(mode+"|"+page+"|"+m+"|"+ctx+"|"+Date.now()));
+ var S=document.getElementById("setdesc").value.trim()||"[describe the set]";
  var sn=m?snippet(m):"";
  if((mode==="reply"||mode==="complaint")&&!m){document.getElementById("out").innerHTML='<p class="hintline">waiting for the fan’s message…</p>';return}
  if(m&&HARDNO.test(m)){
@@ -144,9 +146,11 @@ function gen(){
    +V("details then seed",pk(r,["i need the full review, favorite moment, star rating, everything 😂 your answer decides what i film next","good taste! and if you liked that… the next one escalates, just saying 😏","your reaction is being noted and studied 😌 should i push it further next time?"]),"his answer = intel for the next pitch. log it.")
    +V("ride the high",pk(r,["since you clearly have excellent taste, the sequel exists and it's worse. or better. depends how you look at it 🔥 want it?","happy fans get spoiled here! check your messages in a bit 😏","you liked THAT? oh you're not ready for what didn't make the cut 🙈"]),"buyers who just praised convert highest. strike now, $10 to 29.99 range.");
   } else if(t.inside){
-   out+=V("witty tease",pk(r,["inside is the version of me that would get this caption deleted 😂 open it and see what i mean","let's just say the first pic is the same as the preview… minus the shirt 😬💋","what's inside is me being way braver than i am on the feed 🙈 you'll see"]),"her real welcome copy energy. answer with wit + heat, never a list.")
-   +V("build value",pk(r,["it's the set i keep going back to, which is embarrassing because i'm IN it 😭","these sheets have seen too much and the camera saw all of it 😏","everything the feed isn't allowed to know about me, basically 🔥"]),"describe the feeling, scarcity framing.")
-   +V("dare",pk(r,["one way to find out and it costs less than your lunch 😜","open it and report back, i genuinely want the review 😂","curiosity suits you! act on it 💅"]),"short dare close, her price range $10 to 29.99.");
+   out+=V("witty / self-aware",pk(r,["it's "+S+" and honestly? my best acting work to date 😭 oscar worthy. the outfit doesn't survive","inside: "+S+". critics (me) are calling it stunning, brave, slightly unhinged 😂"]),"wit first, always. fill the content field so the joke stays honest.")
+   +V("girlfriend confession",pk(r,["okay don't judge me but it's "+S+" 🤭 and i enjoyed filming it way too much. like, way too much","confession time: "+S+", filmed slowly, no regrets, some blushing 🙈"]),"bestie-confession energy, invites his reaction.")
+   +V("bratty demand",pk(r,["it's "+S+". filmed it, looked amazing, and you're sitting there asking questions instead of watching it. fix that 💅","it's "+S+" and every second you spend asking is a second you're not watching 💅"]),"her fix that energy, verbatim formula.")
+   +V("POV hook",pk(r,["POV: you're right here with me while "+S+" happens just for you… except you keep asking what's in the bundle instead of pressing play 🙄😂","POV: front row seat to "+S+" and you're reading the menu instead of eating 😭 press play"]),"her proven POV caption formula, flipped at his hesitation.")
+   +V("intimate late night",pk(r,["everyone's asleep except us baby… it's "+S+", just me and the camera. perfect timing don't you think 💋","it's late, it's quiet, and "+S+" is sitting right there waiting for you baby 💋 seems like fate"]),"only once rapport is there. baby auto strips for new fans via the toggle.");
   } else if(t.buy){
    out+=V("discovery first",pk(r,["ooh eager! okay tell me what's in your head first 😏 i want to send the right kind of trouble","before i spoil you, describe what you were imagining… i'm very good at matching energy 😌","slow down lol 😂 first: what do you like? then: prepare yourself"]),"his answer tells you what to pitch. PPV range $10 to 29.99.")
    +V("priced offer",pk(r,["okay so my newest set is $19.99 and honestly? it barely covers anything and neither does the bikini 🤭 want it?","i have exactly the thing. $24.99 and it's the boldest thing i've filmed this month 🔥","for you, $14.99 tonight 😏 tomorrow it goes back up and i pretend this never happened"]),"her A/B price style: $10 to 29.99, resend at adjusted price to non buyers later.")
@@ -218,7 +222,7 @@ function bind(){document.querySelectorAll(".copy").forEach(function(b){b.addEven
 var tabs=document.querySelectorAll(".tab");
 tabs.forEach(function(t){t.addEventListener("click",function(){tabs.forEach(function(x){x.classList.remove("on")});t.classList.add("on");mode=t.dataset.m;document.getElementById("inp").placeholder=PH[mode];gen()});});
 document.querySelectorAll(".pagepick button").forEach(function(b){b.addEventListener("click",function(){document.querySelectorAll(".pagepick button").forEach(function(x){x.classList.remove("on")});b.classList.add("on");page=b.dataset.p;gen()});});
-var deb;["inp","ctx"].forEach(function(id){document.getElementById(id).addEventListener("input",function(){clearTimeout(deb);deb=setTimeout(gen,350)})});
+var deb;["inp","ctx","setdesc"].forEach(function(id){document.getElementById(id).addEventListener("input",function(){clearTimeout(deb);deb=setTimeout(gen,350)})});
 gen();
 })();
 </script>

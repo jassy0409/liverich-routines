@@ -38,6 +38,7 @@ textarea:focus,input:focus,select:focus,.tab:focus-visible,.copy:focus-visible{o
 <input type="text" id="fanname" placeholder="fan name (e.g. Tony)">
 <select id="tier"><option value="new">new sub</option><option value="low">low spender</option><option value="mid">regular</option><option value="vip">VIP $500+</option><option value="whale">whale $1K+</option></select>
 </div>
+<input type="text" id="setdesc" placeholder="content description for content questions… e.g. slow striptease, 8 min, black dress">
 <p class="hintline">drafts update automatically as you type ✨</p>
 </div>
 <div id="out" aria-live="polite"></div>
@@ -109,6 +110,7 @@ function gen(){
  var tier=document.getElementById("tier").value;
  var n=nm?" "+nm:"";
  var out="", r=rng(hash(mode+"|"+m+"|"+nm+"|"+tier+"|"+Date.now()));
+ var S=document.getElementById("setdesc").value.trim()||"[describe the set]";
  var sn=m?snippet(m):"";
  if((mode==="reply"||mode==="complaint")&&!m){document.getElementById("out").innerHTML='<p class="hintline">waiting for the fan’s message…</p>';return}
  if(m&&HARDNO.test(m)){
@@ -138,9 +140,11 @@ function gen(){
    +V("details then seed",pk(r,["Tell me your favorite moment 😉 Your answer decides what I film next…","I want the full review 😏 And if it is a good one, the next video gets bolder…","You are feeding my ego dangerously right now 🥰 Should I push it further next time?"]),"his answer = intel for the next pitch. log it.")
    +V("ride the high",pk(r,["Since you clearly have excellent taste 😉 the follow up exists, and it escalates… want me to prove it?","The ones who appreciate me properly get spoiled 😘 Watch your messages…","Mmm, you liked that? 💗 You should see what almost did not make the cut…"]),"buyers who just praised convert highest. strike now at "+tf(tier)+".");
   } else if(t.inside){
-   out+=V("tease the contents",pk(r,["Mmm, inside is the side of me the feed never gets to see 😘 It starts sweet and it does not stay that way… open it and tell me which part got you 😉","Good question 💗 Let me just say I start in the little white dress and end up in far less… you will see exactly what I mean when you unlock it 🥰","What is inside is me showing off for one person at a time 😏 And tonight, that person could be you…"]),"answer with heat, never a literal list. push the unlock.")
-   +V("build the value",pk(r,["It is the one I catch myself rewatching 😘 Slow, close, and honestly a little unfair… you will understand once it is open","Everything I could not post out here 😉 The angles, the teasing, the part where I stop performing and just enjoy it…","The good stuff"+n+" 💗 The kind I film once and never repeat. That is exactly why it is locked…"]),"describe the feeling of it, not a checklist. scarcity framing.")
-   +V("dare the unlock",pk(r,["There is only one way to find out 😉 Fair warning… no one recovers quickly","I could describe it, or you could feel it 😘 Open it, then come tell me your favorite part…","Curiosity looks good on you 🥰 Act on it…"]),"short dare close. one more concrete tease if he hesitates, then stop.");
+   out+=V("honest & descriptive",pk(r,["Great question"+n+". It is "+S+". I take my time with every layer until there is almost nothing left to the imagination. I think you will replay the ending more than once 😏","Since you asked properly"+n+"… it is "+S+", filmed slowly and deliberately. Every minute earns the next one 😏"]),"her signature: the caption must match the set. fill the content field so this stays honest.")
+   +V("warm & personal",pk(r,["I filmed this one on a slow evening when I was feeling a little daring"+n+". It is "+S+", no rush, all tease. I would love to know which part becomes your favorite 😘","This one is special to me"+n+". It is "+S+", and I remember exactly how I felt filming it. I want to know how it makes you feel 😘"]),"relationship-first framing. invite his reaction, that reply is your next conversation.")
+   +V("playful power",pk(r,["I could tell you everything"+n+", but where is the fun in that? What I will say is that it is "+S+", I know exactly what I am doing, and you will wish you could tell me to go faster 😈","You want the details"+n+"? I will give you one: I am in complete control the entire time. The rest you will have to see 😈"]),"her power-dynamic register: suggestive, never explicit, she leads.")
+   +V("grateful / chosen",pk(r,["I appreciate you asking instead of just guessing"+n+". It is "+S+", one of my favorites I have ever filmed. You have been so good to me this week, I think you have earned seeing this side of me 💗","You always ask so nicely"+n+" 💗 It is "+S+", and honestly I had my favorites in mind when I filmed it. That includes you…"]),"her 'I appreciate you' signature. earned-access framing for loyal fans.")
+   +V("scarcity",pk(r,["It is my boldest one this month"+n+", "+S+" from start to finish. I only leave my favorites up for a few days, so I would not wait too long on this one 🥵","This is the one I almost did not post"+n+". "+cap(S)+", and it will not stay at this price for long 🥵"]),"her mass scarcity style softened for 1:1. genuine deadlines only, actually expire it.");
   } else if(t.buy){
    out+=V("discovery first",pk(r,["Mmm before I just hand it over"+n+"… tell me what you were hoping to see 😉 I like knowing exactly what you like so I can pick the perfect one 💗","Someone is eager 😘 First tell me what is in your head… I promise my vault can match it","I could send you anything, but I would rather send you the right thing 🥰 So paint me a picture…"]),"his answer tells you which vault content and which tier: "+tf(tier)+".")
    +V("tier offer",pk(r,["You read my mind 😉 I made something I think fits you perfectly. It is one of my favorites I have ever filmed, and for you I would start at "+tp(tier)+"… want me to send it? 🥰","I have exactly the thing"+n+" 💗 For you it is "+tp(tier)+", and I do not say this lightly… it is worth every penny 😘","Lucky timing 😉 My newest one is everything you just described, and "+tp(tier)+" makes it yours tonight…"]),"anchor at the tier floor: "+tf(tier)+". never go below.")
@@ -211,7 +215,7 @@ function gen(){
 function bind(){document.querySelectorAll(".copy").forEach(function(b){b.addEventListener("click",function(){navigator.clipboard.writeText(b.dataset.c);b.textContent="copied ✓";setTimeout(function(){b.textContent="copy"},1200)})})}
 var tabs=document.querySelectorAll(".tab");
 tabs.forEach(function(t){t.addEventListener("click",function(){tabs.forEach(function(x){x.classList.remove("on")});t.classList.add("on");mode=t.dataset.m;document.getElementById("inp").placeholder=PH[mode];gen()});});
-var deb;["inp","fanname"].forEach(function(id){document.getElementById(id).addEventListener("input",function(){clearTimeout(deb);deb=setTimeout(gen,350)})});
+var deb;["inp","fanname","setdesc"].forEach(function(id){document.getElementById(id).addEventListener("input",function(){clearTimeout(deb);deb=setTimeout(gen,350)})});
 document.getElementById("tier").addEventListener("change",gen);
 gen();
 })();
