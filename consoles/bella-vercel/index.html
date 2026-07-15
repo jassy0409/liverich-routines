@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex,nofollow" />
+<title>Bella Console</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--pink:#E88FB4;--bg1:#17131A;--bg2:#1E1620;--card:#241C27;--line:#3A2E3B;--txt:#F3EDF1;--mut:#B7A9B4;--dim:#8E7D8B}
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100vh;background:linear-gradient(180deg,var(--bg1),var(--bg2));color:var(--txt);font-family:'Inter',system-ui,sans-serif;padding:34px 18px 60px}
+  .wrap{max-width:720px;margin:0 auto}
+  .eyebrow{font-size:11px;letter-spacing:.18em;color:var(--pink);font-weight:600;margin-bottom:10px}
+  h1{font-family:'Fraunces',serif;font-size:34px;font-weight:700;margin:0;line-height:1.1}
+  .sub{color:var(--mut);font-size:14px;line-height:1.55;margin-top:10px;max-width:520px}
+  .tabs{display:flex;gap:8px;margin:22px 0 14px}
+  .tab{background:transparent;border:1px solid var(--line);color:#C9BAC6;padding:9px 16px;border-radius:999px;font-size:13.5px;font-weight:500;font-family:inherit;cursor:pointer;transition:.15s}
+  .tab.on{background:var(--pink);border-color:var(--pink);color:#231320;font-weight:600}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px}
+  label{display:block;font-size:13px;color:#C9BAC6;margin-bottom:8px}
+  textarea,input{width:100%;background:#17121A;border:1px solid var(--line);border-radius:10px;color:var(--txt);padding:12px;font-size:14.5px;font-family:inherit}
+  textarea{resize:vertical}
+  textarea:focus,input:focus{outline:2px solid var(--pink);outline-offset:1px}
+  input{margin-top:10px;font-size:13.5px;padding:11px 12px}
+  .go{margin-top:14px;width:100%;background:var(--pink);color:#231320;border:none;border-radius:10px;padding:13px 0;font-size:15px;font-weight:600;font-family:inherit;cursor:pointer}
+  .go:disabled{opacity:.6;cursor:wait}
+  .err{color:#F2A6A6;font-size:13px;margin-top:10px}
+  .flag{background:#3A2430;border:1px solid #B45B7E;color:#F2C4D6;border-radius:10px;padding:10px 14px;font-size:13.5px;margin:18px 0 12px}
+  .variant{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:10px}
+  .vhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+  .vlabel{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--pink);font-weight:600}
+  .copy{background:transparent;border:1px solid #4A3B4B;color:#C9BAC6;border-radius:8px;padding:5px 12px;font-size:12.5px;font-family:inherit;cursor:pointer}
+  .vtext{margin:0;font-size:15.5px;line-height:1.6;white-space:pre-wrap}
+  .coach{color:var(--mut);font-size:13px;margin-top:4px;font-style:italic}
+  .results{margin-top:18px}
+  footer{margin-top:34px;border-top:1px solid var(--line);padding-top:18px}
+  .rt{font-size:11px;letter-spacing:.16em;color:var(--dim);font-weight:600;margin-bottom:12px;text-transform:uppercase}
+  .rule{display:flex;gap:12px;font-size:12.5px;line-height:1.55;margin-bottom:7px}
+  .rule b{color:var(--pink);min-width:170px;font-weight:600}
+  .rule span{color:var(--mut)}
+  .pw{margin-top:12px}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">ERZABEL 🐉 · CHAT TEAM CONSOLE</div>
+    <h1>Bella writes it with you</h1>
+    <p class="sub">Replies, masses and captions in her exact voice — persona rules, price floors and hard-no's enforced on every draft.</p>
+  </header>
+
+  <nav class="tabs" id="tabs"></nav>
+
+  <section class="card">
+    <label id="hint"></label>
+    <textarea id="input" rows="3"></textarea>
+    <input id="ctx" placeholder="Optional context — fan name, spender tier, what he's bought before…" style="display:none">
+    <input id="pw" class="pw" type="password" placeholder="Team password">
+    <button class="go" id="go">Draft as Bella</button>
+    <div class="err" id="err" hidden></div>
+  </section>
+
+  <section class="results" id="results"></section>
+
+  <footer>
+    <div class="rt">Non-negotiables (baked into every draft)</div>
+    <div class="rule"><b>Single. Always.</b><span>Guy in B/G tapes = her ex. One line, then redirect.</span></div>
+    <div class="rule"><b>Never Bali. Never Indonesian.</b><span>She's Southeast Asian, lives in LA, traveling Europe rn.</span></div>
+    <div class="rule"><b>Floors</b><span>Lingerie 10-50 · Implied 50-100 · VIP 50 · Topless 150-200 · Nudes 400 · Solo/JOI 500 · B/G 800 · SVIP 500</span></div>
+    <div class="rule"><b>Customs</b><span>YES: solo, JOI, tickling, BDSM, feet · NO: humiliation, raceplay, ageplay, incest RP, toilet</span></div>
+  </footer>
+</div>
+
+<script>
+const MODES = {
+  reply:   { title:"Fan reply",    hint:"Paste what the fan said. Add context if you have it.", ph:'e.g. "who\u2019s the guy in your new video??"', ctx:true },
+  mass:    { title:"Mass message", hint:"Describe the goal — or leave blank for a fresh engagement opener.", ph:"e.g. paid drop for the new pool video, $25", ctx:false },
+  caption: { title:"Post caption", hint:"Describe the photo/video, or the vibe you want.", ph:"e.g. mirror selfie in white lingerie", ctx:false },
+};
+let mode = "reply";
+const $ = (id) => document.getElementById(id);
+
+function renderTabs(){
+  $("tabs").innerHTML = "";
+  for (const [k,m] of Object.entries(MODES)){
+    const b = document.createElement("button");
+    b.className = "tab" + (mode===k ? " on" : "");
+    b.textContent = m.title;
+    b.onclick = () => { mode=k; renderTabs(); $("results").innerHTML=""; $("err").hidden=true; };
+    $("tabs").appendChild(b);
+  }
+  $("hint").textContent = MODES[mode].hint;
+  $("input").placeholder = MODES[mode].ph;
+  $("ctx").style.display = MODES[mode].ctx ? "block" : "none";
+}
+renderTabs();
+$("pw").value = sessionStorage.getItem("bella_pw") || "";
+
+$("go").onclick = async () => {
+  const input = $("input").value.trim();
+  if (mode==="reply" && !input){ $("err").textContent="Paste the fan\u2019s message first."; $("err").hidden=false; return; }
+  $("err").hidden = true; $("results").innerHTML = "";
+  $("go").disabled = true; $("go").textContent = "Bella is typing\u2026";
+  sessionStorage.setItem("bella_pw", $("pw").value);
+  try{
+    const r = await fetch("/api/generate", {
+      method:"POST", headers:{"Content-Type":"application/json"},
+      body: JSON.stringify({ mode, input, ctx: $("ctx").value.trim(), password: $("pw").value })
+    });
+    const data = await r.json();
+    if(!r.ok) throw new Error(data.error || "Failed");
+    const box = $("results");
+    if (data.escalate){
+      const f = document.createElement("div"); f.className="flag";
+      f.textContent = "\u26A0 Hard-no territory — decline sent below. If he pushes again, escalate to management.";
+      box.appendChild(f);
+    }
+    (data.variants||[]).forEach((v)=>{
+      const d = document.createElement("div"); d.className="variant";
+      const h = document.createElement("div"); h.className="vhead";
+      const l = document.createElement("span"); l.className="vlabel"; l.textContent=v.label;
+      const c = document.createElement("button"); c.className="copy"; c.textContent="Copy";
+      c.onclick = async ()=>{ await navigator.clipboard.writeText(v.text); c.textContent="Copied"; setTimeout(()=>c.textContent="Copy",1200); };
+      h.append(l,c);
+      const p = document.createElement("p"); p.className="vtext"; p.textContent=v.text;
+      d.append(h,p); box.appendChild(d);
+    });
+    if (data.coach){
+      const co = document.createElement("div"); co.className="coach"; co.textContent="Coach: "+data.coach;
+      box.appendChild(co);
+    }
+  }catch(e){
+    $("err").textContent = e.message || "Couldn\u2019t generate — try again.";
+    $("err").hidden = false;
+  }
+  $("go").disabled = false; $("go").textContent = "Draft as Bella";
+};
+</script>
+</body>
+</html>

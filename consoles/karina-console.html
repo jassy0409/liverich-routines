@@ -1,0 +1,145 @@
+<title>Karina Console · Chatter Draft Studio</title>
+<style>
+:root{
+  --bg:#141118;--panel:#1d1824;--field:#120f16;--line:#332a40;
+  --ink:#efeaf4;--muted:#a598b5;--dim:#79688c;--acc:#c05be0;--acc-ink:#1c0f22;
+  --warm:#e0a05b;--flag-bg:#33202c;--flag-line:#b45b7e;--flag-ink:#f2c4d6;
+}
+:root[data-theme="light"]{
+  --bg:#f7f4fa;--panel:#ffffff;--field:#f0ebf5;--line:#e0d6ea;
+  --ink:#241b2e;--muted:#75648a;--dim:#96879f;--acc:#9333bb;--acc-ink:#ffffff;
+  --warm:#a8712e;--flag-bg:#fbe9ef;--flag-line:#c2557d;--flag-ink:#8c2a4f;
+}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:var(--bg);color:var(--ink);font:15px/1.6 ui-sans-serif,system-ui,-apple-system,sans-serif;padding:34px 18px 60px}
+.wrap{max-width:720px;margin:0 auto}
+.eyebrow{font-size:11px;letter-spacing:.18em;color:var(--acc);font-weight:600;margin-bottom:10px;text-transform:uppercase}
+h1{font-family:Georgia,serif;font-size:34px;font-weight:700;margin:0;line-height:1.1}
+.sub{color:var(--muted);font-size:14px;margin-top:10px;max-width:540px}
+.pagepick{display:inline-flex;border:1px solid var(--line);border-radius:999px;margin-top:14px;overflow:hidden}
+.pagepick button{background:none;border:0;color:var(--muted);padding:7px 14px;font:inherit;font-size:12.5px;font-weight:600;cursor:pointer}
+.pagepick button.on{background:var(--acc);color:var(--acc-ink)}
+.tabs{display:flex;gap:8px;margin:20px 0 14px}
+.tab{background:transparent;border:1px solid var(--line);color:var(--muted);padding:9px 16px;border-radius:999px;font:inherit;font-size:13.5px;font-weight:500;cursor:pointer}
+.tab.on{background:var(--acc);border-color:var(--acc);color:var(--acc-ink);font-weight:600}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px}
+label{display:block;font-size:13px;color:var(--muted);margin-bottom:8px}
+textarea,input[type=text]{width:100%;background:var(--field);border:1px solid var(--line);border-radius:10px;color:var(--ink);padding:12px;font:inherit;font-size:14.5px}
+textarea{resize:vertical;min-height:74px}
+input[type=text]{margin-top:10px;font-size:13.5px}
+textarea:focus,input:focus,.tab:focus-visible,.go:focus-visible,.copy:focus-visible,.pagepick button:focus-visible{outline:2px solid var(--acc);outline-offset:1px}
+.go{margin-top:14px;width:100%;background:var(--acc);color:var(--acc-ink);border:0;border-radius:10px;padding:13px 0;font:inherit;font-size:15px;font-weight:600;cursor:pointer}
+.flag{background:var(--flag-bg);border:1px solid var(--flag-line);color:var(--flag-ink);border-radius:10px;padding:10px 14px;font-size:13.5px;margin:18px 0 12px}
+.variant{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:10px 0}
+.vhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.vlabel{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--acc);font-weight:600}
+.copy{background:transparent;border:1px solid var(--line);color:var(--muted);border-radius:8px;padding:5px 12px;font:inherit;font-size:12.5px;cursor:pointer}
+.vtext{margin:0;font-size:15.5px;line-height:1.6;white-space:pre-wrap}
+.coach{color:var(--muted);font-size:13px;margin-top:6px;font-style:italic}
+.rules{margin-top:34px;border-top:1px solid var(--line);padding-top:18px}
+.rtitle{font-size:11px;letter-spacing:.16em;color:var(--dim);font-weight:600;margin-bottom:12px;text-transform:uppercase}
+.rule{display:flex;gap:12px;font-size:12.5px;line-height:1.55;margin-bottom:7px;flex-wrap:wrap}
+.rt{color:var(--acc);font-weight:600;min-width:170px}.rd{color:var(--muted);flex:1;min-width:240px}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+<div class="wrap">
+<header>
+  <div class="eyebrow">Karina Petro 👑 · Chat team console</div>
+  <h1>lucky u — Karina drafts</h1>
+  <p class="sub">Two pages, one girl: the main page is her softer GFE side, the free page is bolder and more forward. Pick the page, and every draft comes out in that register. Drafts only — you review, you send.</p>
+  <div class="pagepick" role="group" aria-label="Page">
+    <button class="on" data-p="main">Main 👑 (soft / GFE)</button>
+    <button data-p="free">Free 😈 (bold / forward)</button>
+  </div>
+</header>
+<nav class="tabs">
+  <button class="tab on" data-m="reply">Fan reply</button>
+  <button class="tab" data-m="mass">Mass message</button>
+  <button class="tab" data-m="caption">Post caption</button>
+</nav>
+<section class="card">
+  <label id="hint" for="inp">Paste what the fan said.</label>
+  <textarea id="inp" placeholder='e.g. "you up?"'></textarea>
+  <input type="text" id="ctx" placeholder="Optional context — fan name, spender tier (medium / low / timewaster)…">
+  <button class="go" id="gen">Draft as Karina</button>
+</section>
+<div id="out" aria-live="polite"></div>
+<footer class="rules">
+  <div class="rtitle">Non-negotiables (baked into every draft)</div>
+  <div class="rule"><span class="rt">Voice</span><span class="rd">all lowercase · "u" · 1–2 short lines · 😈🥵🐱🤍😌 · bratty-playful or soft check-in, nothing in between</span></div>
+  <div class="rule"><span class="rt">Masses are free</span><span class="rd">her list runs on free engagement hooks that drive DMs — the sell happens 1:1, not in the blast</span></div>
+  <div class="rule"><span class="rt">Never</span><span class="rd">meetups · real location · personal socials · off-platform payment · anything on the prohibited list → decline in character + escalate</span></div>
+  <div class="rule"><span class="rt">Timewasters</span><span class="rd">two free hooks max, then a priced ask — if he dodges twice, tag the list and move on</span></div>
+</footer>
+</div>
+<script>
+(function(){
+"use strict";
+var mode="reply",page="main";
+var HINTS={reply:["Paste what the fan said.",'e.g. "you up?"'],mass:["Goal or theme — or leave blank for a fresh engagement hook.","e.g. quiet-week check-in / new bedroom shoot tease"],caption:["Describe the photo/video, or the vibe.","e.g. morning bed selfie"]};
+var tabs=document.querySelectorAll(".tab");
+tabs.forEach(function(t){t.addEventListener("click",function(){
+ tabs.forEach(function(x){x.classList.remove("on")});t.classList.add("on");mode=t.dataset.m;
+ document.getElementById("hint").textContent=HINTS[mode][0];
+ document.getElementById("inp").placeholder=HINTS[mode][1];
+ document.getElementById("ctx").style.display=mode==="reply"?"":"none";
+ document.getElementById("out").innerHTML="";
+});});
+document.querySelectorAll(".pagepick button").forEach(function(b){b.addEventListener("click",function(){
+ document.querySelectorAll(".pagepick button").forEach(function(x){x.classList.remove("on")});b.classList.add("on");page=b.dataset.p;document.getElementById("out").innerHTML="";
+});});
+function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&quot;")}
+function V(label,text,coach){return '<div class="variant"><div class="vhead"><span class="vlabel">'+label+'</span><button class="copy" data-c="'+esc(text)+'">Copy</button></div><p class="vtext">'+esc(text)+'</p>'+(coach?'<p class="coach">Coach: '+coach+'</p>':'')+'</div>'}
+var UNSAFE=/meet\s*(up|me|irl)|in person|address|where.*live|whats\s*app|telegram|snap|venmo|cash\s*app|paypal|crypto|real name|(barely|under)\s*(18|age)|incest|step\s*(sis|bro|mom|dad)|scat|toilet/i;
+function genReply(m){
+ if(UNSAFE.test(m)){
+  return '<div class="flag">⚠ Hard-no territory (meetup, personal info, off-platform, or prohibited content) — decline below, log it, and flag management if he pushes.</div>'
+  +V("decline · bratty","lol nice try 🐱 everything u get from me lives right here. now behave and ask me something fun","Decline once with brat energy, redirect immediately.")
+  +V("decline · soft","i keep my little world in here, it's safer for both of us 🤍 but i'm all yours in this chat… so use me properly 😌","Softer no for attached fans.")
+  +V("decline · firm","that's a no from me. not now, not ever 😌 but since ur here… want to see what i did this morning instead?","Never negotiate; pivot to content.");
+ }
+ if(/(broke|tight|can'?t afford|no money|payday)/i.test(m)){
+  return V("soft check-in","hey that's okay 🤍 it's been quiet lately and i was thinking about u anyway. how are u actually doing?","Her real quiet-week format. Zero pressure — retention play.")
+  +V("keep him warm","don't stress babe, just keep me company 😌 talking to u is the not-boring part of my day ngl","Free attention now = payday purchase later. Log the date.")
+  +V("brat tease","fine, u get me for free today. LUCKY U 🐱 but when payday hits i'm collecting, deal?","Bratty IOU — sets up the future ask with a smile.");
+ }
+ if(/(how much|price|buy|custom|video|unlock|show|more|see)/i.test(m)){
+  var priced=page==="free"
+   ? [V("free page · gateway","mmm someone's curious 😈 the naughty stuff starts small… $5.99 gets u through my first door and i promise it escalates. in?","Free page sells the $5.99 gateway first, then upsells to the main page."),
+      V("free page · dare","u sure u can handle it? 🥵 prove it. unlock what i just sent and tell me what it does to u","Dare framing fits the free page's 'if youre not scared' energy."),
+      V("free page · funnel up","this page is the trailer babe 😌 my main page @KarinkaPetro is the whole movie… come find me there and say i sent u 👑","Cross-page funnel — her core growth motion.")]
+   : [V("main · mood pricing","i woke up in a mood and decided u're dealing with me today. lucky u 🐱 i'll send it for $15 because i'm feeling generous","Main page sells small-mid PPV in brat voice. Never below $10."),
+      V("main · earn it","be nice to me and maybe u're first 🥰🥵 i've been saving my favorite video from this week and no one has seen it yet","Verbatim her real tease format — makes the sale feel like a privilege."),
+      V("main · direct","ok since u asked properly 😌 $20 and it's in ur messages in two minutes. timer starts now","Direct close for fans who already buy — speed framing works on repeat buyers.")];
+  return priced.join("");
+ }
+ return V("brat opener","i woke up in a mood and decided u're dealing with me today. lucky u 🐱","Her signature line. Short, no question needed — the attitude IS the hook.")
+ +V("soft check-in","it has been quiet lately and i have been thinking about u. are u okay? 🤍","Her real retention message — use on fans who went quiet.")
+ +V("confession hook","okay i need to confess something before it eats me 😌","Verbatim her top mass, works 1:1 too. Whatever he replies, the 'confession' is a tease.");
+}
+function genMass(g){
+ var t=g&&g.length>3?g:null;
+ if(page==="free"){
+  return V("free page · dare hook","let's come up with something kinky together, no holding back 😈 message me if u're not scared","Her free-page welcome energy as a blast. Replies get the $5.99 gateway.")
+  +V("free page · tease","i did something today that would get me in trouble on the feed 🥵 "+(t?("("+t+") "):"")+"want to see how bad it is?","Feed-vs-DM contrast frames the DM as the uncensored zone.")
+  +V("free page · funnel","the girls on my main page saw something today that u haven't 👑 come find me there or stay curious forever 😌","FOMO cross-promo to the paid page — her core conversion motion.");
+ }
+ return V("soft opener","my evening got so much better the second you opened this. tell me about yours 🤍","Verbatim her real mass. Warm, free, reply-driven.")
+ +V("brat opener","still in a good mood and taking company applications. door's open 🥵","Her bratty register — playful scarcity, zero pressure.")
+ +V("wind-down","long days can feel heavy. what helps you wind down tonight? maybe this 😈"+(t?"  ("+t+", attach 1 photo)":"  (attach 1 photo)"),"Care + heat in one line — her best-performing evening format.");
+}
+function genCaption(g){
+ var t=g&&g.length>2?g:"today";
+ return V("brat","i woke up like this and honestly? ur problem now 🐱","Lowercase brat one-liner — her feed voice.")
+ +V("tease","the feed gets this version. my DMs get the other one 😈","Feed→DM funnel caption, works with any photo of "+t+".")
+ +V("soft","hope today was gentle on u 🤍 come tell me about it","Her soft register — posts like this make the bratty ones hit harder.");
+}
+document.getElementById("gen").addEventListener("click",function(){
+ var m=document.getElementById("inp").value.trim();var out;
+ if(mode==="reply"){ if(!m){document.getElementById("out").innerHTML='<div class="flag">Paste the fan’s message first.</div>';return;} out=genReply(m); }
+ else if(mode==="mass") out=genMass(m); else out=genCaption(m);
+ document.getElementById("out").innerHTML=out;
+ document.querySelectorAll(".copy").forEach(function(b){b.addEventListener("click",function(){navigator.clipboard.writeText(b.dataset.c);b.textContent="copied";setTimeout(function(){b.textContent="Copy"},1200)})});
+});
+})();
+</script>

@@ -1,0 +1,148 @@
+<title>Bella Console · Erzabel Chat Team</title>
+<style>
+:root{
+  --bg1:#17131a;--bg2:#1e1620;--panel:#241c27;--field:#17121a;--line:#3a2e3b;
+  --ink:#f3edf1;--muted:#b7a9b4;--dim:#8e7d8b;--pink:#e88fb4;--pink-ink:#231320;
+  --flag-bg:#3a2430;--flag-line:#b45b7e;--flag-ink:#f2c4d6;
+}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:linear-gradient(180deg,var(--bg1) 0%,var(--bg2) 100%);color:var(--ink);font:15px/1.6 ui-sans-serif,system-ui,-apple-system,sans-serif;padding:34px 18px 60px}
+.wrap{max-width:720px;margin:0 auto}
+.eyebrow{font-size:11px;letter-spacing:.18em;color:var(--pink);font-weight:600;margin-bottom:10px}
+h1{font-family:Georgia,'Times New Roman',serif;font-size:34px;font-weight:700;margin:0;line-height:1.1}
+.sub{color:var(--muted);font-size:14px;margin-top:10px;max-width:520px}
+.tabs{display:flex;gap:8px;margin:22px 0 14px}
+.tab{background:transparent;border:1px solid var(--line);color:#c9bac6;padding:9px 16px;border-radius:999px;font:inherit;font-size:13.5px;font-weight:500;cursor:pointer}
+.tab.on{background:var(--pink);border-color:var(--pink);color:var(--pink-ink);font-weight:600}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px}
+label{display:block;font-size:13px;color:#c9bac6;margin-bottom:8px}
+textarea,input[type=text]{width:100%;background:var(--field);border:1px solid var(--line);border-radius:10px;color:var(--ink);padding:12px;font:inherit;font-size:14.5px}
+textarea{resize:vertical;min-height:74px}
+input[type=text]{margin-top:10px;font-size:13.5px}
+textarea:focus,input:focus,.tab:focus-visible,.go:focus-visible,.copy:focus-visible{outline:2px solid var(--pink);outline-offset:1px}
+.go{margin-top:14px;width:100%;background:var(--pink);color:var(--pink-ink);border:0;border-radius:10px;padding:13px 0;font:inherit;font-size:15px;font-weight:600;cursor:pointer}
+.flag{background:var(--flag-bg);border:1px solid var(--flag-line);color:var(--flag-ink);border-radius:10px;padding:10px 14px;font-size:13.5px;margin:18px 0 12px}
+.variant{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:10px 0}
+.vhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.vlabel{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--pink);font-weight:600}
+.copy{background:transparent;border:1px solid #4a3b4b;color:#c9bac6;border-radius:8px;padding:5px 12px;font:inherit;font-size:12.5px;cursor:pointer}
+.vtext{margin:0;font-size:15.5px;line-height:1.6;white-space:pre-wrap}
+.coach{color:var(--muted);font-size:13px;margin-top:6px;font-style:italic}
+.rules{margin-top:34px;border-top:1px solid var(--line);padding-top:18px}
+.rtitle{font-size:11px;letter-spacing:.16em;color:var(--dim);font-weight:600;margin-bottom:12px;text-transform:uppercase}
+.rule{display:flex;gap:12px;font-size:12.5px;line-height:1.55;margin-bottom:7px;flex-wrap:wrap}
+.rt{color:var(--pink);font-weight:600;min-width:170px}.rd{color:var(--muted);flex:1;min-width:240px}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+<div class="wrap">
+<header>
+  <div class="eyebrow">ERZABEL 🐉 · CHAT TEAM CONSOLE</div>
+  <h1>Bella writes it with you</h1>
+  <p class="sub">Replies, masses and captions in her exact voice — persona rules, price floors and hard-no's enforced on every draft. Drafts only: you review, you send.</p>
+</header>
+<nav class="tabs">
+  <button class="tab on" data-m="reply">Fan reply</button>
+  <button class="tab" data-m="mass">Mass message</button>
+  <button class="tab" data-m="caption">Post caption</button>
+</nav>
+<section class="card">
+  <label id="hint" for="inp">Paste what the fan said.</label>
+  <textarea id="inp" placeholder='e.g. "who&#39;s the guy in your new video??"'></textarea>
+  <input type="text" id="ctx" placeholder="Optional context — fan name, spender tier, what he's bought before…">
+  <button class="go" id="gen">Draft as Bella</button>
+</section>
+<div id="out" aria-live="polite"></div>
+<footer class="rules">
+  <div class="rtitle">Non-negotiables (baked into every draft)</div>
+  <div class="rule"><span class="rt">Single. Always.</span><span class="rd">Guy in B/G tapes = her ex. One line, then redirect.</span></div>
+  <div class="rule"><span class="rt">Never Bali. Never Indonesian.</span><span class="rd">She's Southeast Asian, lives in LA, traveling Europe rn.</span></div>
+  <div class="rule"><span class="rt">Floors</span><span class="rd">Lingerie 10–50 · Implied 50–100 · VIP 50 · Topless 150–200 · Nudes 400 · Solo/JOI 500 · B/G 800 · SVIP 500</span></div>
+  <div class="rule"><span class="rt">Customs</span><span class="rd">YES: solo, JOI, tickling, BDSM, feet · NO: humiliation, raceplay, ageplay, incest RP, toilet — decline in character + escalate</span></div>
+</footer>
+</div>
+<script>
+(function(){
+"use strict";
+var mode="reply";
+var HINTS={reply:["Paste what the fan said.",'e.g. "who’s the guy in your new video??"'],mass:["Describe the goal — or leave blank for a fresh engagement opener.","e.g. paid drop for the new pool video, $25"],caption:["Describe the photo/video, or the vibe you want.","e.g. mirror selfie in white lingerie"]};
+var tabs=document.querySelectorAll(".tab");
+tabs.forEach(function(t){t.addEventListener("click",function(){
+ tabs.forEach(function(x){x.classList.remove("on")});t.classList.add("on");mode=t.dataset.m;
+ document.getElementById("hint").textContent=HINTS[mode][0];
+ document.getElementById("inp").placeholder=HINTS[mode][1];
+ document.getElementById("ctx").style.display=mode==="reply"?"":"none";
+ document.getElementById("out").innerHTML="";
+});});
+function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&quot;")}
+function V(label,text,coach){return '<div class="variant"><div class="vhead"><span class="vlabel">'+label+'</span><button class="copy" data-c="'+esc(text)+'">Copy</button></div><p class="vtext">'+esc(text)+'</p>'+(coach?'<p class="coach">Coach: '+coach+'</p>':'')+'</div>'}
+var HARDNO=[/humiliat/i,/race\s*play|racial/i,/age\s*play|(barely|under)\s*(18|age)|school\s*girl/i,/incest|step\s*(sis|bro|mom|dad)|family\s*role/i,/toilet|scat|piss/i];
+var IDENTITY=[/bali|indonesia/i,/boyfriend|married|dating|the guy in|who.?s (that|the) (guy|man)/i,/meet\s*(up|me|irl)|in person|address|where.*live/i,/whats\s*app|telegram|snap|venmo|cash\s*app|paypal|crypto/i,/real name/i];
+function genReply(m,ctx){
+ var name=(ctx.match(/name[:\s]+(\w+)/i)||[])[1]||"";var n=name?" "+name:" babe";
+ if(HARDNO.some(function(r){return r.test(m)})){
+  return '<div class="flag">⚠ Hard-no custom — decline sent below. If he pushes again, escalate to management.</div>'
+  +V("Decline · pivot to yes-list","mmm that one's not on my menu bby, not for any price 🤭 but i promise you don't need it… have you seen what i can do in a solo? 🥵",'Decline once, pivot once. Second ask = stop and flag your manager.')
+  +V("Decline · playful","lol you're bold, i'll give you that 😏 that's a no from me babe. now be good and tell me what you ACTUALLY like…","Keeps the energy light so the convo survives the no.")
+  +V("Decline · firm-sweet","no bby, that's one thing i don't do 🥺 but i'd hate to leave you empty handed… JOI, feet, a little BDSM? pick one 😈","Redirects straight into the customs YES list.");
+ }
+ if(/bali|indonesia/i.test(m)){
+  return V("Vague + playful","a lady keeps a little mystery babe 🤭 i'm just your southeast asian girl in LA… well, europe right now 😉 where are YOU from?","Never confirm or deny specifics — flip the question back to him.")
+  +V("Change subject","hmm why, planning to study me? 😏 focus bby, i have something way more interesting to show you than a map…","Deflect + tease + hook.")
+  +V("LA story","i'm an LA girl at heart babe 🥰 but europe has me right now, the light here is unreal for filming… want to see what i shot today?","Reinforces the LA-plus-Europe story and opens a sell.");
+ }
+ if(/boyfriend|married|dating|who.?s (that|the) (guy|man)|the guy in/i.test(m)){
+  return V("The one line","that's old news babe, i'm single now 😉 why, are you applying? 🤭","THE scripted line. One line only, never more detail, redirect instantly.")
+  +V("Redirect to him","single, always bby 🥰 all this attention is yours if you want it… so what would you do with it?","Turns the jealousy moment into GFE.")
+  +V("Tease pivot","jealous already? 🤭 i like that. he's ancient history — you're the one in my messages right now 😈","Makes him feel like the winner. Never revisit the ex after this.");
+ }
+ if(/meet\s*(up|me|irl)|in person|address|where.*live|whats\s*app|telegram|snap|venmo|cash\s*app|paypal|crypto|real name/i.test(m)){
+  return '<div class="flag">⚠ Meetup / off-platform / personal info — decline below and flag to management if he pushes.</div>'
+  +V("Keep it here","everything between us stays right here bby 🥰 it's the only place i can really spoil you… speaking of which 😈","Never negotiate on platform rules.")
+  +V("Mystery","i keep my world small on purpose babe 🤭 what i give you here is the realest part of me anyway… want proof?","Deflect into a tease.")
+  +V("Sweet no","you're sweet 🥺 but this is our place, i don't do anything off the app. now come back here and pay attention to me 😏","GFE-flavored boundary.");
+ }
+ if(/(broke|tight|can'?t afford|no money|payday)/i.test(m)){
+  return V("Gracious","that's okay bby 🥺 you being here means more than you think. tell me about your day instead?","Never guilt him — he'll be back on payday. Log the date.")
+  +V("Future-pace","aww babe 🥰 i'll save something special just for you for when things ease up ok? don't keep me waiting too long 🤭","Creates a return reason at zero pressure.")
+  +V("Tiny ask","no stress at all bby 💕 even a little tip when you can makes me smile so hard… but honestly just talk to me, that's my favorite","Only if rapport is strong.");
+ }
+ if(/(how much|price|buy|custom|video|unlock|show|more)/i.test(m)){
+  return V("VIP funnel","mmm eager 🤭 ok"+n+" here's the thing — my VIP is $50 and that's where i stop being shy… want in? 😈","Cold or new fan → pitch VIP ($50) first. Floors: topless $150+, nudes $400+, solo/JOI $500+, B/G $800+.")
+  +V("Discovery first","before i spoil you… tell me exactly what you were imagining bby 😏 i want to pick the perfect one for you","His answer tells you which tier to pitch. Never quote below floor.")
+  +V("SVIP tease","i have two sides babe. VIP gets you the flirty me for $50… SVIP gets the me i don't talk about in public 🥵 which one are you?","Two-door frame — anchors SVIP at $500 so VIP feels easy.");
+ }
+ return V("Sweet GFE","heyyy"+n+" 🥰 you just made my whole morning. i was journaling and thinking about who'd message me first… how's your week starting?","Openers end in a question — that's her reply engine.")
+ +V("Flirty tease","well well"+n+" 😏 you have good timing, i just got back from pilates and i'm feeling dangerous… want to know why? 🤭","Hook question; if he bites, move to discovery then VIP pitch.")
+ +V("Playful hook","ngl i was hoping you'd show up"+n+" 🥺 i filmed something recently that i keep rewatching… respond fast and maybe i'll share 🥵","Her real mass format repurposed 1:1 — leads straight to a PPV.");
+}
+function genMass(g){
+ var price=(g.match(/\$?(\d+(?:\.\d\d)?)/)||[])[1];var theme=g.replace(/\$?\d+(\.\d\d)?/,"").trim();
+ if(g&&(price||/drop|ppv|paid|sell|bundle/i.test(g))){
+  var p=price&&parseFloat(price)>=10?price:"25";
+  var t=theme&&theme.length>3?theme:"my newest video";
+  var warn=price&&parseFloat(price)<10?'<div class="flag">⚠ Floor — PPV masses never go below $10. Bumped to $25.</div>':"";
+  return warn+V("Paid drop $"+p,"okay i can't keep this to myself anymore 🥵 "+t+" — and bby it's the boldest thing i've filmed in a while. $"+p+" today only, then it goes back up. don't make me wait 😈","Hook → what's inside → urgency → price. Her top drops are $10–30 bundles.")
+  +V("Discount angle $"+p,"i'm in a good mood so someone's getting lucky 🤭 "+t+", usually way more, yours for $"+p+" tonight because i like you. respond fast bby ⏳","Insider-discount frame — feels personal, moves non-buyers.")
+  +V("Curiosity gate $"+p,"i almost didn't send this one… 🥺 "+t+" and honestly i got shy watching it back. $"+p+" if you promise to tell me what you think after 😏","The 'tell me after' line converts buyers into chatters — double win.");
+ }
+ return V("Free opener","hi bby, how has the start of the week been for you? 💕","Verbatim her best opener format. Free, no media, pure reply-bait.")
+ +V("Free tease + photo","do you think you can resist me walking around your house wearing this… 🤭 (attach 1 photo)","One line of heat + one photo. Ends open so the reply starts the sale.")
+ +V("Free secret hook","do you mind if i tell you a little secret? 😏","Two-step: everyone who replies gets the tease 1:1, then the PPV. Her proven reply engine.");
+}
+function genCaption(g){
+ var t=g&&g.length>2?g:"today's look";
+ return V("Tease question","caught u looking? 👀","Her signature one-liner: lowercase, dare energy, 0–1 emoji.")
+ +V("Playful line","breakfast.. but im the breakfast 🤭","Food/lifestyle twist — works with any casual photo of "+t+".")
+ +V("Cross-promo","let's get your heart racing @erzabelx 🤭","Her standard free-page → VIP funnel caption. Use 2–3× a week, not every post.");
+}
+document.getElementById("gen").addEventListener("click",function(){
+ var m=document.getElementById("inp").value.trim();
+ var ctx=document.getElementById("ctx").value.trim();
+ var out;
+ if(mode==="reply"){ if(!m){document.getElementById("out").innerHTML='<div class="flag">Paste the fan’s message first.</div>';return;} out=genReply(m,ctx); }
+ else if(mode==="mass") out=genMass(m); else out=genCaption(m);
+ document.getElementById("out").innerHTML=out;
+ document.querySelectorAll(".copy").forEach(function(b){b.addEventListener("click",function(){navigator.clipboard.writeText(b.dataset.c);b.textContent="Copied";setTimeout(function(){b.textContent="Copy"},1200)})});
+});
+})();
+</script>

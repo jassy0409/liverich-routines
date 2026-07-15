@@ -1,0 +1,198 @@
+<title>Shantal Console · Chatter Draft Studio</title>
+<style>
+:root{
+  --bg:#faf6f2;--panel:#ffffff;--ink:#2e2226;--muted:#8a7379;--line:#eadfd8;
+  --accent:#b0455e;--accent-soft:#f6e3e8;--gold:#a8814d;--good:#3e7d5a;--warn:#a33d2e;--warn-soft:#f9e6e2;
+}
+@media (prefers-color-scheme: dark){:root{
+  --bg:#221a1d;--panel:#2c2226;--ink:#f0e6e9;--muted:#a58f96;--line:#3e3136;
+  --accent:#d97b92;--accent-soft:#3d272d;--gold:#c9a165;--good:#7dbb99;--warn:#e08a79;--warn-soft:#43241f;
+}}
+:root[data-theme="dark"]{
+  --bg:#221a1d;--panel:#2c2226;--ink:#f0e6e9;--muted:#a58f96;--line:#3e3136;
+  --accent:#d97b92;--accent-soft:#3d272d;--gold:#c9a165;--good:#7dbb99;--warn:#e08a79;--warn-soft:#43241f;
+}
+:root[data-theme="light"]{
+  --bg:#faf6f2;--panel:#ffffff;--ink:#2e2226;--muted:#8a7379;--line:#eadfd8;
+  --accent:#b0455e;--accent-soft:#f6e3e8;--gold:#a8814d;--good:#3e7d5a;--warn:#a33d2e;--warn-soft:#f9e6e2;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:16px/1.6 ui-sans-serif,system-ui,-apple-system,sans-serif;margin:0;padding:0 1.25rem 4rem}
+.wrap{max-width:860px;margin:0 auto}
+header{padding:2.5rem 0 1.5rem;border-bottom:1px solid var(--line)}
+.eyebrow{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:600}
+h1{font-family:Georgia,'Times New Roman',serif;font-weight:500;font-size:2rem;margin:.35rem 0 .3rem;text-wrap:balance}
+.sub{color:var(--muted);max-width:60ch;margin:0}
+.rules{display:flex;gap:.5rem;flex-wrap:wrap;margin:1.1rem 0 0}
+.rule{font-size:.75rem;background:var(--accent-soft);color:var(--accent);border-radius:999px;padding:.25rem .7rem;font-weight:600}
+.tabs{display:flex;gap:.4rem;margin:1.6rem 0 1rem}
+.tab{border:1px solid var(--line);background:var(--panel);color:var(--muted);padding:.5rem 1rem;border-radius:8px;cursor:pointer;font:inherit;font-size:.9rem;font-weight:600}
+.tab.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:1.25rem;margin-bottom:1rem}
+label{display:block;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700;margin:.8rem 0 .3rem}
+label:first-child{margin-top:0}
+textarea,input[type=text],select{width:100%;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit;padding:.6rem .75rem}
+textarea{min-height:88px;resize:vertical}
+.row{display:flex;gap:.9rem;flex-wrap:wrap}.row>div{flex:1;min-width:180px}
+button.go{margin-top:1.1rem;background:var(--accent);color:#fff;border:0;border-radius:8px;padding:.7rem 1.4rem;font:inherit;font-weight:700;cursor:pointer}
+button.go:focus-visible,.tab:focus-visible,.copy:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.draft{border-left:3px solid var(--accent);padding:1rem 1.1rem;background:var(--panel);border-radius:0 10px 10px 0;border-top:1px solid var(--line);border-right:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:.9rem}
+.draft h3{margin:0 0 .4rem;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.draft p.msg{margin:.2rem 0 .6rem;white-space:pre-wrap}
+.tip{font-size:.82rem;color:var(--muted);margin:0;border-top:1px dashed var(--line);padding-top:.5rem}
+.copy{float:right;font-size:.75rem;border:1px solid var(--line);background:none;color:var(--muted);border-radius:6px;padding:.2rem .6rem;cursor:pointer;font-weight:600}
+.escalate{background:var(--warn-soft);border:1px solid var(--warn);color:var(--warn);border-radius:10px;padding:1rem 1.1rem;margin-bottom:.9rem;font-weight:600}
+.pricenote{font-size:.8rem;color:var(--gold);font-weight:600;margin:.4rem 0 0}
+footer{margin-top:2.5rem;font-size:.78rem;color:var(--muted);border-top:1px solid var(--line);padding-top:1rem;max-width:70ch}
+</style>
+<div class="wrap">
+<header>
+  <div class="eyebrow">LiveRich Chatter Ops · VIP page</div>
+  <h1>Shantal Console</h1>
+  <p class="sub">Drafts in Shantal's voice — warm, polished, full sentences, girlfriend energy. Every draft is generated against her persona rules. Chatters review before sending; nothing sends from here.</p>
+  <div class="rules">
+    <span class="rule">Voice: warm · capitalized · 😉🥰💗😘</span>
+    <span class="rule">Never meetups / real location / off-platform</span>
+    <span class="rule">Price floors enforced</span>
+    <span class="rule">Hard no → decline in character + escalate</span>
+  </div>
+</header>
+
+<div class="tabs" role="tablist">
+  <button class="tab on" data-m="reply">Fan reply</button>
+  <button class="tab" data-m="mass">Mass message</button>
+  <button class="tab" data-m="caption">Post caption</button>
+</div>
+
+<div class="card" id="form">
+  <div id="f-reply">
+    <label for="fanmsg">Fan's message</label>
+    <textarea id="fanmsg" placeholder="Paste what the fan said…"></textarea>
+    <div class="row">
+      <div><label for="fanname">Fan name / nickname</label><input type="text" id="fanname" placeholder="e.g. Tony"></div>
+      <div><label for="tier">Spend tier</label>
+        <select id="tier">
+          <option value="new">New sub — build rapport</option>
+          <option value="low">Low spender (&lt;$100)</option>
+          <option value="mid">Regular ($100–$500)</option>
+          <option value="vip">VIP ($500+) — nickname them</option>
+          <option value="whale">Whale ($1K+, no MM under $3000)</option>
+        </select></div>
+    </div>
+  </div>
+  <div id="f-mass" hidden>
+    <div class="row">
+      <div><label for="bucket">Bucket</label>
+        <select id="bucket">
+          <option value="opener">GFE opener (free, ends in question)</option>
+          <option value="tease">Tease w/ photo (free)</option>
+          <option value="drop">Paid drop (PPV)</option>
+          <option value="rebump">Re-bump / urgency</option>
+        </select></div>
+      <div><label for="mprice">PPV price (drops only)</label><input type="text" id="mprice" placeholder="29.99"></div>
+    </div>
+    <label for="mtheme">Content / theme (optional)</label>
+    <input type="text" id="mtheme" placeholder="e.g. white dress → micro bikini try-on, ~2hr compilation">
+  </div>
+  <div id="f-caption" hidden>
+    <label for="ctheme">What's the photo / vibe?</label>
+    <input type="text" id="ctheme" placeholder="e.g. sundress on the balcony, morning coffee">
+  </div>
+  <button class="go" id="gen">Generate 3 drafts</button>
+</div>
+
+<div id="out" aria-live="polite"></div>
+
+<footer>Drafts only — a chatter reviews and sends. Ladder: intro $9.99–19 · Part 1 $35–40 · Part 2 $69 · Spicy $150–300 · Extra Spicy $400–600 · XXXtra $600–800 · AfterCare $1K+ · whale customs $3000+. Requests for meetups, her real location, personal socials, off-platform payment, or anything on the prohibited list get an in-character decline here and must be flagged to management.</footer>
+</div>
+<script>
+(function(){
+"use strict";
+var mode="reply";
+var tabs=document.querySelectorAll(".tab");
+tabs.forEach(function(t){t.addEventListener("click",function(){
+  tabs.forEach(function(x){x.classList.remove("on")});t.classList.add("on");mode=t.dataset.m;
+  document.getElementById("f-reply").hidden=mode!=="reply";
+  document.getElementById("f-mass").hidden=mode!=="mass";
+  document.getElementById("f-caption").hidden=mode!=="caption";
+  document.getElementById("out").innerHTML="";
+});});
+function pick(a){return a[Math.floor(Math.random()*a.length)]}
+var HARD=[/meet\s*(up|me|irl)/i,/in\s*person/i,/where\s+do\s+you\s+live/i,/your\s+address/i,/phone\s*number/i,/whats\s*app/i,/telegram/i,/snap\s*chat/i,/venmo|cash\s*app|paypal|crypto|bitcoin/i,/real\s+name/i,/(young|barely|under)\s*(18|age)/i,/school\s*girl.*age/i];
+var DECLINES=[
+"You are sweet for wanting more of me, but everything between us stays right here where I can spoil you properly 😘 Now come back to the fun part… what did you think of what I sent you last?",
+"Mmm I keep my world a little mysterious on purpose, it is part of my charm 😉 What I can give you is right here, and trust me, it is the best of me 💗",
+"I like you, so I will say this nicely… that is one door I keep closed for everyone. But the doors I do open? You have not even seen my favorite ones yet 🥰"];
+function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&quot;")}
+function draftHTML(title,msg,tip){
+ return '<div class="draft"><button class="copy" data-c="'+esc(msg)+'">Copy</button><h3>'+title+'</h3><p class="msg">'+esc(msg)+'</p><p class="tip">'+tip+'</p></div>';
+}
+function genReply(){
+ var m=document.getElementById("fanmsg").value.trim();
+ var n=document.getElementById("fanname").value.trim();
+ var tier=document.getElementById("tier").value;
+ var name=n?" "+n:"";
+ var out="";
+ if(HARD.some(function(r){return r.test(m)})){
+   out+='<div class="escalate">⚠ ESCALATE TO MANAGEMENT — this request touches a hard-no (meetup, personal info, off-platform, or prohibited content). Send an in-character decline below, log the fan, and flag your manager before continuing the conversation.</div>';
+   DECLINES.forEach(function(d,i){out+=draftHTML("Decline "+(i+1)+" · stays in character",d,"Redirect immediately after — never negotiate on hard-no territory.")});
+   document.getElementById("out").innerHTML=out;bind();return;
+ }
+ var money=/(broke|tight|can'?t afford|no money|payday|next week)/i.test(m);
+ var buying=/(how much|price|buy|custom|video|more|unlock|show me)/i.test(m);
+ var floor={new:"$9.99–19 intro",low:"$9.99–19 intro or $35–40 Part 1",mid:"$35–69 (Part 1 → Part 2)",vip:"$150–300 Spicy tier",whale:"$600+ only — never discount a whale"}[tier];
+ if(money){
+   out+=draftHTML("Gracious · keep the door open","That's alright"+name+" 😘 You being here and talking to me is what I actually look forward to. Tell me about your day instead, and when the timing is right I will make it worth the wait 💗","Never guilt a fan about money — Shantal's graciousness is why they come back on payday.");
+   out+=draftHTML("Soft future-pace","I understand completely"+name+" 🥰 How about this… I will set something special aside just for you, and you come find me when things ease up. Deal? 😉","Creates a standing reason to return without any pressure.");
+   out+=draftHTML("Micro-ask","No pressure at all"+name+" 💗 If you ever feel like spoiling me just a little, even a $10 tip makes my whole day and I always remember who does it 😘","Only use if rapport is already strong — the $10 highlight-tip move from her real chats.");
+ } else if(buying){
+   out+=draftHTML("Rapport → tier offer","You read my mind"+name+" 😉 I made something I think fits you perfectly. It is one of my favorites I have ever filmed, and for you I would start at "+({new:"$19",low:"$35",mid:"$69",vip:"$150",whale:"$600"}[tier])+"… want me to send it? 🥰","Anchor at the tier floor for a "+tier+" fan: "+floor+". Never go below the floor.");
+   out+=draftHTML("Curiosity build","Mmm before I just hand it over"+name+"… tell me what you were hoping to see 😉 I like knowing exactly what you like so I can pick the perfect one for you 💗","Discovery first — the answer tells you which vault content to pitch and at what tier.");
+   out+=draftHTML("Bundle frame","Someone is eager 😘 Lucky for you"+name+", I just put together a little set — the kind of thing I usually keep for my VIPs. Say the word and it is yours before I change my mind 😉","Bundle + soft urgency. Attach media locked at the tier floor: "+floor+".");
+ } else {
+   out+=draftHTML("Warm GFE","Well hello"+name+" 🥰 You just made my evening better. I was starting to think you forgot about me… how has your day been treating you?","Openers always end in a question — that is her reply engine.");
+   out+=draftHTML("Make him feel chosen","I was actually hoping you would message me"+name+" 💗 You're not just another sub to me, you know that right? Now catch me up — what is new with you? 😘","The 'you're not just another sub' line is verbatim from her top-performing chats.");
+   out+=draftHTML("Playful tease","Careful"+name+"… showing up in my messages looking all charming 😉 I am in a dangerously good mood tonight. Want to find out why? 🥰","Tease with a hook question; if he bites, move to discovery, then tier offer.");
+ }
+ document.getElementById("out").innerHTML=out;bind();
+}
+function genMass(){
+ var b=document.getElementById("bucket").value;
+ var p=(document.getElementById("mprice").value.trim()||"29.99").replace(/^\$/,"");
+ var t=document.getElementById("mtheme").value.trim();
+ var theme=t||"a little something I filmed just for you";
+ var out="";
+ if(b==="drop"&&parseFloat(p)<10){out+='<div class="escalate">⚠ Price floor — Shantal PPV drops never go below $10. Bumped guidance to $29.99 range.</div>';p="29.99";}
+ if(b==="opener"){
+  out+=draftHTML("Evening wind-down","I am finally off my feet with the whole evening to spend right here. How did your "+day()+" treat you?","Free, no media. Her highest-reply opener format — always a question.");
+  out+=draftHTML("Morning coffee","Good morning 💗 Coffee is poured and I woke up in a dangerously good mood. What is on your plate this "+day()+"? ☀️","Send 8–10am fan-local. Warm, zero sell — the sell comes 2 messages later in 1:1.");
+  out+=draftHTML("Late night","It is late, it is quiet, and I am still up thinking about the ones who stayed 🌻 This is my favorite hour to talk. Come keep me company before I call it a night 💗","Late-night loyalty framing converts her most attached fans into chats.");
+ } else if(b==="tease"){
+  out+=draftHTML("Weakness confession","Fuck. I have a weakness and today it got the better of me… "+theme+" 😉 How quickly would you undress me? I'm waiting…","Attach ONE photo. The confession → dare structure is her proven tease format.");
+  out+=draftHTML("Guess game","I put something on today purely because I knew it would drive you crazy 😘 One photo, no context. Tell me what you would do about it…","Single free photo, invitation to reply — replies feed the 1:1 pipeline.");
+  out+=draftHTML("Choice hook","I could not decide what to wear for you today, so I narrowed it to two 😉 This is option one. Be good and maybe you will see option two 💗","Two-part tease: option two goes out 3–4 hours later as the paid drop.");
+ } else if(b==="rebump"){
+  out+=draftHTML("Before bed","Still haven't looked? You definitely should… this is my boldest share all week and I am taking it back before I go to bed 😘💗","Send ~4hr after the drop to non-openers only. Genuine deadline — actually expire it.");
+  out+=draftHTML("Afternoon nudge","Quick reminder before your afternoon gets busy 😉 That little treat I sent is still waiting in your messages and it will not be this price forever… just saying 💗","Soft urgency, no new media. Keep it to one re-bump per drop.");
+  out+=draftHTML("Deserves attention","That long treat I sent earlier is still waiting in your message. Surely it deserves your full attention… make time before your day gets away 😘","Works best on longer content — frames it as an experience, not a purchase.");
+ } else {
+  out+=draftHTML("Bundle drop · $"+p,"SUPER SPECIAL just for you 🔥 "+cap(theme)+" — I tease, I play, and I push you right to the limit before the finale 😘 All of it, every minute, unlocked for just $"+p+" today. I promise it is worth every second 💗","Bundle framing + named price + today-only. Her $29.99 pool-special format (1,794 views).");
+  out+=draftHTML("Favorite-of-mine frame · $"+p,"I do not say this about everything I film… but this one is one of my favorites I have ever made 🥰 "+cap(theme)+". I want YOU to see it, so it is $"+p+" instead of what my VIPs paid. Do not tell them 😉","Insider-discount angle — pairs a compliment with the price cut so it feels personal.");
+  out+=draftHTML("Thank-you spoil · $"+p,"I put together something special as my way of spoiling the ones who actually stay 💛 "+cap(theme)+", yours for $"+p+". Thank you for being here — you make this my favorite thing to do 🥰","Gratitude frame from her real mid-year mass. Best for retention weeks, not cold lists.");
+ }
+ document.getElementById("out").innerHTML=out;bind();
+}
+function genCaption(){
+ var t=document.getElementById("ctheme").value.trim()||"today's look";
+ var out="";
+ out+=draftHTML("Slice of life","My "+day()+" started with coffee and a camera before 9AM. Productivity looks a little different around here ☕️","Her feed voice: full sentences, lifestyle first, one emoji. Feels like a girlfriend's story, not an ad.");
+ out+=draftHTML("Watching you watch","Smiling just because I know you are watching 🥰 I wonder if you will like "+t+"…","Direct address + soft question — her caption format with the most comments.");
+ out+=draftHTML("Open invitation","Plans fell through, so tonight it is "+t+", the couch, and whoever shows up in my DMs. Lucky you 🍷","DM-driving caption — points feed traffic straight at the chat queue.");
+ document.getElementById("out").innerHTML=out;bind();
+}
+function day(){return ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"][new Date().getDay()]}
+function cap(s){return s.charAt(0).toUpperCase()+s.slice(1)}
+function bind(){document.querySelectorAll(".copy").forEach(function(b){b.addEventListener("click",function(){navigator.clipboard.writeText(b.dataset.c);b.textContent="Copied ✓";setTimeout(function(){b.textContent="Copy"},1500)})})}
+document.getElementById("gen").addEventListener("click",function(){ if(mode==="reply")genReply(); else if(mode==="mass")genMass(); else genCaption(); });
+})();
+</script>
