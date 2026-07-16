@@ -1,10 +1,14 @@
-# Apple Design Pack
+# JASSY'S DESIGN
 
-A complete, self-contained design system reference distilled from Apple's own
-design sessions (the iOS design system, Liquid Glass guidance, design
-principles, and search patterns) plus measured specs captured from live
-Apple.com marketing pages. Give this to any designer or AI assistant and ask
-for work "in this system."
+Jassy's personal design system: Apple's design language — Liquid Glass,
+concentric corners, typography-first hierarchy, measured Apple.com specs —
+reimagined in a soft, feminine, girly style. Blush pinks, lavender, rose
+gold, and creamy off-whites replace Apple's grays and blues, while every
+structural rule of the Apple system stays intact. Give this to any designer
+or AI assistant and ask for work "in Jassy's Design."
+
+**The vibe in one line:** an Apple keynote page that grew up on rose gold —
+clean, luxurious, airy, and unmistakably feminine, never cluttered or cutesy.
 
 How to use it: read Part 1 for the why, Part 2 for the hard rules, Parts 3–8
 for the system detail, Part 9 for Apple.com-style marketing pages, and Part 10
@@ -284,6 +288,12 @@ Font: SF Pro Display (≥20px) / SF Pro Text (<20px), falling back to
 sections. Never thin or regular for big headlines. Large type uses NEGATIVE
 letter-spacing; small type slightly positive.
 
+**Jassy's accent type:** one elegant serif-italic word is allowed inside a
+hero headline (New York italic, falling back to "Playfair Display", Georgia
+italic) — e.g. "Made *beautifully* simple." Maximum one per section, hero
+and closing sections only. Everything else stays SF Pro. No script or
+handwriting fonts anywhere.
+
 | Role | px | weight | line-height | tracking |
 |---|---|---|---|---|
 | Page-landing hero | 80 | 600 | 84 | −1.2 |
@@ -299,14 +309,24 @@ letter-spacing; small type slightly positive.
 | Body | 17–21 | 400 | ~1.4 | small+ |
 | Caption / legal | 14 | 400–500 | 20 | normal |
 
-### Color
-- Light backgrounds: #FFFFFF and the signature gray #F5F5F7 (alternate
-  sections). Dark: #000000 or #1D1D1F.
-- Text on light: primary #1D1D1F, secondary #6E6E73.
-- Text on dark: headlines #F5F5F7 (off-white, NOT pure white for large type),
-  secondary #D2D2D7, emphasis rgba(255,255,255,0.92).
-- Accents: link/CTA blue #0066CC (#2997FF on dark). One accent eyebrow per
+### Color — Jassy's palette
+- Light backgrounds: creamy white #FFFBFC and the signature blush
+  #FBF3F6 (alternate sections, replacing Apple's #F5F5F7). Optional soft
+  lavender section #F7F4FB for variety — never two tinted sections in a row.
+- Dark backgrounds: deep plum-black #1A1418 or mauve-charcoal #241C22
+  (replacing #000000 / #1D1D1F). Dark mode stays warm, never cold gray.
+- Text on light: primary #2B2228 (warm near-black), secondary #8E7F88
+  (mauve-gray).
+- Text on dark: headlines #FBF3F6 (blush off-white, NOT pure white for large
+  type), secondary #D9CCD4, emphasis rgba(255,240,246,0.92).
+- Accents: link/CTA pink #E0407B (#FF8AB8 on dark). One accent eyebrow per
   section, used sparingly.
+- Hero gradients (for gradient text ON key words only): rose gold
+  #E8A87C → #E0407B, or pink-to-lavender #FF8AB8 → #A78BDB. Never gradient
+  backgrounds behind body text.
+- Rule of restraint: pink is the ACCENT, not the wallpaper. Most of the page
+  is creamy white / blush; saturated pink appears only on CTAs, links,
+  eyebrows, and hero gradient words.
 
 ### Spacing & layout
 - Major sections: padding-top ~160px, padding-bottom ~216px; tighter sections
@@ -317,11 +337,16 @@ letter-spacing; small type slightly positive.
 ### Components
 - **Hero:** full-bleed product image; centered headline + one-line subhead;
   CTA pair (filled blue "Learn more" + outline "Buy"). Text in the top third.
-- **Card:** rounded rect 28–32px radius; surface-color hierarchy (light gray /
-  elevated dark / full-bleed photo) instead of borders; full-bleed image
-  clipped by the corners; two-tone caption (white key phrase + gray remainder).
-- **Buttons:** pill, border-radius 980px. Primary = filled blue, white text.
-  Secondary = blue text + thin blue outline, transparent fill.
+- **Card:** rounded rect 28–32px radius; surface-color hierarchy (blush
+  #FBF3F6 / soft lavender #F7F4FB / elevated dark plum / full-bleed photo)
+  instead of borders; full-bleed image clipped by the corners; two-tone
+  caption (blush-white key phrase + mauve-gray remainder). An optional
+  1px inner highlight rgba(255,255,255,0.6) on light cards gives a pearly,
+  soft-glow finish — never a hard drop shadow.
+- **Buttons:** pill, border-radius 980px. Primary = filled pink #E0407B,
+  white text (on dark: #FF8AB8 fill with #2B1220 text). Secondary = pink text
+  + thin pink outline, transparent fill. Optional soft variant: blush
+  #FBE4EE fill with #E0407B text for gentle tertiary actions.
 - **Horizontal carousel:** scroll-snap-type: x mandatory on the track;
   scroll-snap-align: start per card; prev/next arrows + optional dots.
 - **Sticky gallery:** a pinned section whose inner track scrolls horizontally
@@ -331,6 +356,9 @@ letter-spacing; small type slightly positive.
 - Reveal on scroll: opacity 0→1 + translateY 30px→0, staggered ~80ms.
 - Media hover: scale 1.0→1.05 over ~400ms, clipped to corners.
 - Easing: cubic-bezier(0.28, 0.11, 0.32, 1).
+- Jassy's touch: motion stays soft and dreamy — slightly longer fades are
+  fine, but NO bounces, sparkles, floating hearts, or particle effects.
+  Elegance over cuteness, always.
 
 ### Per-template variants
 - Category landing (Mac, iPad): 80px hero → "Explore the lineup" 48px →
@@ -359,6 +387,13 @@ letter-spacing; small type slightly positive.
 10. Marketing pages: SF Pro stack, headlines ≥600 weight, negative tracking
     on big type, correct light/dark text colors, pill buttons, generous
     asymmetric section padding, reveal-on-scroll and hover-scale motion.
+11. Jassy's palette check: backgrounds creamy white/blush (never gray),
+    dark mode warm plum (never cold black), pink #E0407B only on accents
+    and CTAs, at most one serif-italic accent word per hero, rose-gold or
+    pink-lavender gradients on hero words only.
+12. Girly ≠ cluttered: no sparkles, hearts, glitter, or script fonts. The
+    femininity comes from the palette, the pearly surfaces, and the soft
+    motion — the structure stays pure Apple.
 
 ### Official design resources
 Everything lives at developer.apple.com/design/resources: platform UI kits for
