@@ -22,12 +22,12 @@ PHT = UTC+8. Fan-facing copy is framed in PST time-of-day cues; scoring windows 
 |---|---|---|---|---|---|
 | Shantal | graveyard 11pm-7am | 15:00-23:00 (same day) | Aaliyah | #aaliyah-management C09U784EE23 | U09U798V24X |
 | Shantal | morning 7am-3pm | 23:00 prev - 07:00 | Trisha | #trisha-management C08FFLCF92N | U08H7941KTN |
-| Shantal | afternoon 3pm-11pm | 07:00-15:00 | Arsel | #john-arsel-management C0B0D5MH742 | U0B06PSRL83 |
+| Shantal | afternoon 3pm-11pm | 07:00-15:00 | Princess | #princessf-management C0B5D3AJYB1 | U0B5Y66UDAQ |
 | Karina | graveyard 11pm-7am | 15:00-23:00 (same day) | Leigh | #leigh-management C0AHBUAPXJN | U0AHFGZ5ZM2 |
 | Karina | morning 7am-3pm | 23:00 prev - 07:00 | MJ | #mj-management C07435SAD42 | U06ALHQ6PUH |
-| Karina | afternoon 3pm-11pm | 07:00-15:00 | Alyzha | #alyzha-management C0B2EGZ5DDG | U0B38R4A37S |
+| Karina | afternoon 3pm-11pm | 07:00-15:00 | Rosanna | #rosanna-management C0AUM8Z0SSD | U0AV2KV1DUG |
 
-Jeffrey (U06AJLM4JM7) covers off-days. Days off: Trisha/MJ Sunday, Arsel/Alyzha Monday, Aaliyah/Leigh Tuesday nights. If a covering chatter worked the shift, attribute to whoever actually worked and post to the worker's channel.
+Jeffrey (U06AJLM4JM7) covers off-days. Days off: Trisha/MJ Sunday, Princess/Rosanna Monday (inherited from the afternoon slot — confirm with Jassy), Aaliyah/Leigh Tuesday nights. If a covering chatter worked the shift, attribute to whoever actually worked and post to the worker's channel. Roster updated Jul 17 2026: Arsel and Alyzha left the team; Princess took Shantal afternoons, Rosanna took Karina afternoons.
 
 Attribution: the API has NO chatter-attribution field. Bin messages and sales by their PHT/UTC timestamp into the shift window. Card footer always reads "attribution by shift window" plus "threads read: [names]".
 
