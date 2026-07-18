@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+</head>
+<body>
+<title>Shantal Gameplan — Fight Night Saturday · Robe &amp; Lotion Edition</title>
+<style>
+  :root{
+    --bg:#171717; --panel:#202022; --panel2:#1a1a1c; --line:#2e2e30;
+    --accent:#f2545b; --accent-dim:#3a1417;
+    --gold:#efb23b; --gold-bg:#3a2a08;
+    --txt:#f2f2f2; --muted:#a9a9ad; --dim:#7d7d82;
+    --red:#e2544b; --red-bg:#3a1512; --red-dim:#f0997b;
+    --green:#4fc17a; --green-bg:#0c3320;
+    --blue:#7db4f4; --blue-bg:#0e2947;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg); color:var(--txt);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    display:flex; min-height:100vh; line-height:1.5;
+  }
+  .sidebar{
+    width:250px; flex-shrink:0; background:var(--panel2);
+    border-right:1px solid var(--line);
+    height:100vh; position:sticky; top:0; overflow-y:auto; padding:20px 0;
+  }
+  .sidebar::-webkit-scrollbar{width:7px}
+  .sidebar::-webkit-scrollbar-thumb{background:#333;border-radius:4px}
+  .brand{display:flex;align-items:center;gap:10px;padding:0 20px 18px;border-bottom:1px solid var(--line);margin-bottom:12px}
+  .brand-badge{width:34px;height:34px;border-radius:9px;background:var(--accent-dim);display:flex;align-items:center;justify-content:center;font-size:17px}
+  .brand-title{font-size:15px;font-weight:700;letter-spacing:.2px}
+  .brand-sub{font-size:11px;color:var(--dim)}
+  .nav-label{font-size:10px;letter-spacing:.12em;color:var(--dim);padding:14px 20px 6px;text-transform:uppercase}
+  .nav-item{
+    display:flex;align-items:center;gap:11px;padding:9px 20px;cursor:pointer;
+    font-size:13.5px;color:var(--muted);border-left:3px solid transparent;transition:.15s;
+  }
+  .nav-item .ic{width:20px;text-align:center;font-size:15px}
+  .nav-item:hover{background:#232325;color:var(--txt)}
+  .nav-item.active{color:var(--accent);border-left-color:var(--accent);background:#232325}
+  .nav-item .count{margin-left:auto;font-size:10px;background:var(--red-bg);color:var(--red-dim);border-radius:10px;padding:1px 7px;font-weight:700}
+  .nav-item .count.g{background:var(--green-bg);color:var(--green)}
+  .main{flex:1;overflow-y:auto;height:100vh;padding:34px 44px 80px}
+  .main::-webkit-scrollbar{width:9px}
+  .main::-webkit-scrollbar-thumb{background:#2c2c2e;border-radius:5px}
+  .page-head{margin-bottom:26px}
+  .page-head h1{font-size:27px;font-weight:800;letter-spacing:.2px;line-height:1.2}
+  .page-head .sub{color:var(--muted);font-size:13.5px;margin-top:7px}
+  .pills{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+  .pill{font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;letter-spacing:.03em}
+  .pill.red{background:var(--red-bg);color:var(--red-dim)}
+  .pill.green{background:var(--green-bg);color:var(--green)}
+  .pill.gold{background:var(--gold-bg);color:var(--gold)}
+  .pill.blue{background:var(--blue-bg);color:var(--blue)}
+  .section{display:none;animation:fade .45s ease both}
+  .section.show{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  .stagger>*{animation:rise .5s ease both}
+  @keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+  .stagger>*:nth-child(1){animation-delay:.05s}
+  .stagger>*:nth-child(2){animation-delay:.12s}
+  .stagger>*:nth-child(3){animation-delay:.19s}
+  .stagger>*:nth-child(4){animation-delay:.26s}
+  .stagger>*:nth-child(5){animation-delay:.33s}
+  .stagger>*:nth-child(6){animation-delay:.40s}
+  .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-bottom:26px}
+  .stat{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:17px 18px;position:relative;overflow:hidden}
+  .stat .lbl{font-size:10.5px;letter-spacing:.1em;color:var(--dim);text-transform:uppercase}
+  .stat .num{font-size:30px;font-weight:800;margin-top:8px;line-height:1;font-variant-numeric:tabular-nums}
+  .stat .num.gold{color:var(--gold)} .stat .num.red{color:var(--accent)} .stat .num.blue{color:var(--blue)} .stat .num.green{color:var(--green)}
+  .stat .foot{font-size:11.5px;color:var(--muted);margin-top:9px}
+  .stat .ic{position:absolute;top:15px;right:16px;font-size:17px;opacity:.85}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:20px 22px;margin-bottom:16px}
+  .card-h{display:flex;align-items:center;gap:11px;margin-bottom:15px;flex-wrap:wrap}
+  .card-h .ci{width:30px;height:30px;border-radius:8px;background:var(--accent-dim);display:flex;align-items:center;justify-content:center;font-size:15px}
+  .card-h h3{font-size:16.5px;font-weight:700}
+  .card-h .tag{margin-left:auto;font-size:10px;font-weight:700;letter-spacing:.05em;padding:3px 9px;border-radius:6px;background:var(--red-bg);color:var(--red-dim)}
+  .card-h .tag.g{background:var(--green-bg);color:var(--green)}
+  .card-h .tag.b{background:var(--blue-bg);color:var(--blue)}
+  .row{display:flex;gap:11px;padding:11px 13px;border-radius:9px;background:var(--panel2);margin-bottom:8px;align-items:flex-start;font-size:13.5px}
+  .row .mk{flex-shrink:0;width:18px;height:18px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;margin-top:1px}
+  .mk.x{background:var(--red-bg);color:var(--red)}
+  .mk.ok{background:var(--green-bg);color:var(--green)}
+  .mk.n{background:var(--accent-dim);color:var(--accent)}
+  .row b{color:#fff;font-weight:700}
+  .row .t{color:var(--muted)}
+  .why{background:var(--panel2);border-left:3px solid var(--accent);border-radius:0 9px 9px 0;padding:13px 16px;margin-top:6px;font-size:13px;color:var(--muted)}
+  .why b{color:var(--accent);font-weight:700}
+  .note{background:var(--red-bg);border-radius:9px;padding:13px 16px;margin-top:12px;font-size:13px;color:var(--red-dim)}
+  .note b{color:#fff}
+  .tmpl{background:#1c1214;border:1px dashed var(--accent);border-radius:10px;padding:15px 18px;font-style:italic;color:#f6b8ba;font-size:14px;margin:12px 0}
+  .tmpl .when{display:block;font-style:normal;font-weight:800;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:7px}
+  .ptable{width:100%;border-collapse:separate;border-spacing:0;background:var(--panel2);border:1px solid var(--line);border-radius:11px;overflow:hidden;margin-bottom:12px}
+  .ptable th,.ptable td{padding:11px 14px;font-size:13.5px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+  .ptable tr:last-child td{border-bottom:none}
+  .ptable th{font-size:10.5px;color:var(--dim);text-transform:uppercase;letter-spacing:.08em}
+  .ptable .p{color:var(--gold);font-weight:800;white-space:nowrap;font-variant-numeric:tabular-nums}
+  .ptable .t{color:var(--muted)}
+  .twrap{overflow-x:auto}
+  .timeline{position:relative;margin:6px 0 4px;padding-left:26px}
+  .timeline::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:2px;background:var(--line)}
+  .t-item{position:relative;padding:0 0 18px}
+  .t-item::before{content:"";position:absolute;left:-24px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--panel);border:3px solid var(--accent)}
+  .t-item.done::before{background:var(--green);border-color:var(--green)}
+  .t-item.money::before{border-color:var(--gold)}
+  .t-time{font-size:12px;font-weight:800;letter-spacing:.06em;color:var(--accent);text-transform:uppercase}
+  .t-time .sub{color:var(--dim);font-weight:600;letter-spacing:normal;text-transform:none}
+  .t-item.money .t-time{color:var(--gold)}
+  .t-item.done .t-time{color:var(--green)}
+  .t-title{font-size:14.5px;font-weight:700;margin-top:2px}
+  .t-body{font-size:13px;color:var(--muted);margin-top:3px}
+  .foot-note{text-align:center;color:var(--dim);font-size:11px;letter-spacing:.08em;border-top:1px solid var(--line);margin-top:30px;padding-top:18px}
+  .kbd-hint{position:fixed;bottom:14px;right:18px;font-size:11px;color:var(--dim);background:var(--panel);border:1px solid var(--line);border-radius:7px;padding:5px 10px}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important}}
+  @media(max-width:680px){.sidebar{position:fixed;left:-260px;z-index:40}.main{padding:24px 18px 80px}}
+</style>
+
+<nav class="sidebar">
+  <div class="brand">
+    <div class="brand-badge">🥊</div>
+    <div><div class="brand-title">Fight Night Ops</div><div class="brand-sub">Shantal Monique · Sat 11PM–Sun 11PM PHT</div></div>
+  </div>
+  <div class="nav-label">Gameplan</div>
+  <div class="nav-item active" data-s="overview"><span class="ic">🏠</span> Overview</div>
+  <div class="nav-item" data-s="timeline"><span class="ic">🕒</span> Send Timeline <span class="count g">3 shifts</span></div>
+  <div class="nav-item" data-s="rounds"><span class="ic">💰</span> Rounds &amp; Pricing <span class="count g">$</span></div>
+  <div class="nav-item" data-s="exclusions"><span class="ic">⛔</span> Exclusions <span class="count">5</span></div>
+  <div class="nav-item" data-s="wall"><span class="ic">📱</span> Wall Posts</div>
+  <div class="nav-label">Quick Info</div>
+  <div class="nav-item" data-s="summary"><span class="ic">✅</span> Shift Cheat Sheet</div>
+</nav>
+
+<main class="main">
+
+  <!-- OVERVIEW -->
+  <section class="section show" id="overview">
+    <div class="page-head">
+      <h1>🥊 Fight Night Saturday — Robe &amp; Lotion Edition</h1>
+      <div class="sub">Core theme: <b style="color:#fff">"Think you can knock me out today? Or survive all rounds with me without tapping out?"</b> · All times PHT · captions match the fans' actual time of day.</div>
+      <div class="pills"><span class="pill red">UFC Du Plessis vs Usman · Sat 5PM LA</span><span class="pill gold">Robe &amp; Lotion series</span><span class="pill green">Check-ins already scheduled</span></div>
+    </div>
+    <div class="stat-grid stagger">
+      <div class="stat"><span class="ic">🥊</span><div class="lbl">Round 1 · entry</div><div class="num gold">$29.99</div><div class="foot">deadline 3:00 AM PHT sharp</div></div>
+      <div class="stat"><span class="ic">😈</span><div class="lbl">Round 2 · knockout</div><div class="num red">$69.99</div><div class="foot">VIP ONLY · timed to live fights</div></div>
+      <div class="stat"><span class="ic">🔥</span><div class="lbl">Final spicy round</div><div class="num blue">$300</div><div class="foot">flat · VIP ONLY · never standalone</div></div>
+      <div class="stat"><span class="ic">🗂️</span><div class="lbl">Buyer list</div><div class="num green">7/19</div><div class="foot">FIGHT NIGHT ROBE LOTION ALL BUYERS — tag on unlock</div></div>
+    </div>
+    <div class="card stagger">
+      <div class="card-h"><div class="ci">📜</div><h3>Key rules — read before any send</h3><span class="tag g">MANDATORY</span></div>
+      <div class="row"><span class="mk n">1</span><div class="t"><b>All send times are PHT.</b> Captions match the fan's actual time of day — it's their morning when it's our midnight.</div></div>
+      <div class="row"><span class="mk n">2</span><div class="t"><b>No location references. No extra dashes.</b></div></div>
+      <div class="row"><span class="mk n">3</span><div class="t"><b>Round 1 paid mass goes out NO LATER than 3:00 AM PHT.</b> It is the only door into the premium rounds tonight.</div></div>
+      <div class="row"><span class="mk n">4</span><div class="t"><b>Round 2 is VIP ONLY</b> and timed exactly for the live fights.</div></div>
+      <div class="row"><span class="mk n">5</span><div class="t"><b>Spicy round is $300 minimum, VIP ONLY, never sold standalone.</b> No discounts, no exceptions.</div></div>
+      <div class="why"><b>Status:</b> the two pure-engagement check-ins (11:30 PM + 1:30 AM PHT) are already scheduled by Jassy. Everything with a price on it is run by the shift chatter per the timeline.</div>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section class="section" id="timeline">
+    <div class="page-head"><h1>Send Timeline — three shifts</h1><div class="sub">Every send in order. Green = already scheduled. Gold = money send.</div><div class="pills"><span class="pill green">2 scheduled</span><span class="pill gold">3 paid sends</span><span class="pill red">2 free bumps</span></div></div>
+
+    <div class="card stagger">
+      <div class="card-h"><div class="ci">🌙</div><h3>Shift 1 · Graveyard — fight day kickoff</h3><span class="tag b">FANS' MORNING VIBE</span></div>
+      <div class="timeline">
+        <div class="t-item done">
+          <div class="t-time">11:30 PM PHT <span class="sub">· check-in · SCHEDULED ✓</span></div>
+          <div class="t-title">Fight-day good morning</div>
+          <div class="t-body">"Good morning everyone 🥊 It is finally Fight Night Saturday. The energy is amazing already hope you are ready for what I have lined up 😉"</div>
+        </div>
+        <div class="t-item done">
+          <div class="t-time">1:30 AM PHT <span class="sub">· warm-up tease · SCHEDULED ✓</span></div>
+          <div class="t-title">Prepping something special</div>
+          <div class="t-body">"I am all warmed up and prepping something special just for today 🧴 Fight nights are my favorite and I have a full card of rounds waiting for you later. Keep your notifications on 💋"</div>
+        </div>
+        <div class="t-item money">
+          <div class="t-time">3:00 AM PHT <span class="sub">· HARD DEADLINE · paid mass</span></div>
+          <div class="t-title">ROUND 1 OPENS — $29.99</div>
+          <div class="t-body">"ROUND 1 IS OPEN NOW 🥊 BEFORE THE MAIN FIGHTS — your entry round for just $29.99. Open this now and you get access to the premium rounds tonight. Think you can survive them? Let's test it 😉" · Folder: 9/10 🧖🏼🧴 $35 Robe Lotion Part1 · Include: general fans, low/med spenders, re-engagers · Exclude: master list + prior Part 1 buyers.</div>
+        </div>
+        <div class="t-item">
+          <div class="t-time">6:00 AM PHT <span class="sub">· free bump</span></div>
+          <div class="t-title">Round 1 reminder</div>
+          <div class="t-body">"Round 1 closes before the main bouts start 🥊 Grab your spot now for $29.99 this is the only way to unlock the premium rounds tonight. Don't get left outside the cage 😉"</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card stagger">
+      <div class="card-h"><div class="ci">🥊</div><h3>Shift 2 · Jeffrey — MAIN CARD LIVE</h3><span class="tag">VIP ONLY WINDOW</span></div>
+      <div class="timeline">
+        <div class="t-item money">
+          <div class="t-time">10:00 AM PHT <span class="sub">· paid mass · VIP ONLY</span></div>
+          <div class="t-title">ROUND 2 — KNOCKOUT ROUND $69.99</div>
+          <div class="t-body">"THIS IS YOUR KNOCKOUT ROUND 🥊 I am glistening all over oiled up and slippery… no holding back no slow starts just pure heat every second. Watch every curve move… and tell me exactly what you think after you finish the last hottest minute of this video 😈" · Folder: 9/10 🧖🏼🧴 $99 Robe Lotion Part2 · Include: VIP Low/Med + Re-engage only · Exclude: master list + prior Part 2 buyers + all non-VIPs.</div>
+        </div>
+        <div class="t-item">
+          <div class="t-time">12:30 PM PHT <span class="sub">· free tease</span></div>
+          <div class="t-title">Championship round tease</div>
+          <div class="t-body">"CHAMPIONSHIP ROUND COMING UP 🥊 The last round is the boldest one yet robe falls away nothing held back VIP ONLY. $300 flat no exceptions no discounts 😉"</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card stagger">
+      <div class="card-h"><div class="ci">🌆</div><h3>Shift 3 · Afternoon — post-fight wrap</h3><span class="tag b">FANS' LATE NIGHT VIBE</span></div>
+      <div class="timeline">
+        <div class="t-item money">
+          <div class="t-time">5:00 PM PHT <span class="sub">· last call</span></div>
+          <div class="t-title">Round 1 final bell</div>
+          <div class="t-body">"Final bell for Round 1 🥊 $29.99 closes any minute now. Lock in your access before the cage shuts 💋"</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROUNDS & PRICING -->
+  <section class="section" id="rounds">
+    <div class="page-head"><h1>Rounds, Folders &amp; Pricing</h1><div class="sub">Three rounds, one story. Fans must go the distance — each round earns the next.</div><div class="pills"><span class="pill red">Never sell Spicy standalone</span></div></div>
+    <div class="card stagger">
+      <div class="card-h"><div class="ci">💰</div><h3>The fight card</h3><span class="tag g">EXACT FOLDERS</span></div>
+      <div class="twrap"><table class="ptable">
+        <tr><th>Round</th><th>Vault folder</th><th>Launch price</th><th>Audience</th></tr>
+        <tr><td class="t">Round 1 · Entry</td><td class="t">9/10 🧖🏼🧴 $35 Robe Lotion Part1</td><td class="p">$29.99</td><td class="t">General fans, low/med spenders, re-engagers</td></tr>
+        <tr><td class="t">Round 2 · Knockout</td><td class="t">9/10 🧖🏼🧴 $99 Robe Lotion Part2</td><td class="p">$69.99</td><td class="t">VIP ONLY (Low/Med/Re-engage lists)</td></tr>
+        <tr><td class="t">Final Spicy Round</td><td class="t">9/10 🧖🏼🧴 $300 Robe Lotion Spicy</td><td class="p">$300 flat</td><td class="t">VIP ONLY · $300 minimum · never standalone</td></tr>
+      </table></div>
+      <div class="row"><span class="mk ok">✓</span><div class="t"><b>Unified buyer list:</b> "7/19 FIGHT NIGHT ROBE LOTION ALL BUYERS" — tag every buyer <b>the second they unlock</b>, every round.</div></div>
+      <div class="note"><b>Ladder logic:</b> Round 1 is the only entry ticket. Round 2 sells while the fights are live. Spicy is the championship — quoted only to VIPs who went the distance, $300 flat, no discounts.</div>
+    </div>
+  </section>
+
+  <!-- EXCLUSIONS -->
+  <section class="section" id="exclusions">
+    <div class="page-head"><h1>Master Exclusions — every send</h1><div class="sub">Applied to ALL masses today, engagement and paid alike. List IDs verified on the account.</div><div class="pills"><span class="pill red">Zero tolerance</span></div></div>
+    <div class="card stagger">
+      <div class="card-h"><div class="ci">⛔</div><h3>Exclude from every mass</h3><span class="tag">ALL SENDS</span></div>
+      <div class="twrap"><table class="ptable">
+        <tr><th>List</th><th>List ID</th><th>Why</th></tr>
+        <tr><td class="t">No MM</td><td class="p">1206433451</td><td class="t">Opted out of mass messages</td></tr>
+        <tr><td class="t"># ❌ NO MM❌ $3000+</td><td class="p">1234087011</td><td class="t">Whales — personal outreach only</td></tr>
+        <tr><td class="t">🚨 SHANTAL ONLY DO NOT OPEN</td><td class="p">1248575538</td><td class="t">Model-handled fans — hands off</td></tr>
+        <tr><td class="t">FREELOADERS/TIMEWASTERS</td><td class="p">1299850298</td><td class="t">No buying intent — skip</td></tr>
+        <tr><td class="t">** *VIP High Spenders 🏆🟢</td><td class="p">104020308</td><td class="t">Personal outreach only, no mass blasts</td></tr>
+      </table></div>
+      <div class="row"><span class="mk x">✕</span><div class="t"><b>Round 1 extra exclusion:</b> all prior Robe Lotion buyers (e.g. list "9/10 🧖🏼🧴 $35 Robe Lotion part1" · ID 1297999704) — they own it, pivot them to Round 2.</div></div>
+      <div class="row"><span class="mk x">✕</span><div class="t"><b>Round 2 extra exclusion:</b> prior Part 2 buyers + every non-VIP fan.</div></div>
+    </div>
+  </section>
+
+  <!-- WALL POSTS -->
+  <section class="section" id="wall">
+    <div class="page-head"><h1>Wall Posts</h1><div class="sub">Four posts spread across the day — build the itch, never quote prices on the wall.</div></div>
+    <div class="card stagger">
+      <div class="card-h"><div class="ci">📱</div><h3>Post copy, in order</h3></div>
+      <div class="tmpl"><span class="when">1 · Fight day open</span>"Fight Night Saturday is here 🥊 I have been prepping all week can you keep up? 😉"</div>
+      <div class="tmpl"><span class="when">2 · Round 1 live</span>"Round 1 open now get in before the main fights start 💋"</div>
+      <div class="tmpl"><span class="when">3 · Mid-card itch</span>"The hottest rounds are saved for those who go the distance 🥊"</div>
+      <div class="tmpl"><span class="when">4 · Fights live</span>"Fights are live right now don't miss your knockout chance 😈"</div>
+    </div>
+  </section>
+
+  <!-- SUMMARY -->
+  <section class="section" id="summary">
+    <div class="page-head"><h1>Shift Cheat Sheet</h1><div class="sub">Know these cold before you clock in.</div><div class="pills"><span class="pill green">Active</span></div></div>
+    <div class="card stagger">
+      <div class="card-h"><div class="ci">✅</div><h3>The essentials</h3></div>
+      <div class="row"><span class="mk n">1</span><div class="t"><b>Theme:</b> "Think you can knock me out today? Or survive all rounds without tapping out?" Fight-night voice in every reply.</div></div>
+      <div class="row"><span class="mk n">2</span><div class="t"><b>Rounds:</b> R1 $29.99 (entry, by 3 AM PHT) → R2 $69.99 (VIP ONLY, live-fight window) → Spicy $300 flat (VIP ONLY, never standalone).</div></div>
+      <div class="row"><span class="mk n">3</span><div class="t"><b>Folders:</b> 9/10 🧖🏼🧴 Robe Lotion Part1 / Part2 / Spicy. One story, one buyer list: <b>7/19 FIGHT NIGHT ROBE LOTION ALL BUYERS</b> — tag instantly on unlock.</div></div>
+      <div class="row"><span class="mk n">4</span><div class="t"><b>Exclusions on every send:</b> No MM · ❌NO MM❌ $3000+ · 🚨 SHANTAL ONLY · FREELOADERS/TIMEWASTERS · VIP High Spenders 🏆🟢. Round 1 also excludes prior Robe Lotion buyers.</div></div>
+      <div class="row"><span class="mk n">5</span><div class="t"><b>Times are PHT, captions are fan-time.</b> No location references, no extra dashes.</div></div>
+      <div class="row"><span class="mk n">6</span><div class="t"><b>Check-ins are pure engagement</b> — already scheduled, no selling in them. Whales and high spenders get personal outreach only.</div></div>
+    </div>
+    <div class="foot-note">FIGHT NIGHT GAMEPLAN · SHANTAL MONIQUE · SAT 11PM – SUN 11PM PHT · QUESTIONS → @JASSY</div>
+  </section>
+
+</main>
+
+<div class="kbd-hint">← → to navigate</div>
+
+<script>
+  const items=[...document.querySelectorAll('.nav-item')];
+  const secs=[...document.querySelectorAll('.section')];
+  const order=items.map(i=>i.dataset.s);
+  function show(id){
+    items.forEach(i=>i.classList.toggle('active',i.dataset.s===id));
+    secs.forEach(s=>s.classList.toggle('show',s.id===id));
+    document.querySelector('.main').scrollTop=0;
+  }
+  items.forEach(i=>i.addEventListener('click',()=>show(i.dataset.s)));
+  let idx=0;
+  document.addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'){idx=Math.min(order.length-1,idx+1);show(order[idx])}
+    if(e.key==='ArrowLeft'){idx=Math.max(0,idx-1);show(order[idx])}
+  });
+  items.forEach((it,n)=>it.addEventListener('click',()=>idx=n));
+</script>
+
+</body>
+</html>
