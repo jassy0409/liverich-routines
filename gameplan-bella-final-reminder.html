@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+</head>
+<body>
+<title>Bella Mass Send — Final Reminder Last Call · Both Pages</title>
+<style>
+  :root{
+    --bg:#171717; --panel:#202022; --panel2:#1a1a1c; --line:#2e2e30;
+    --accent:#ff6fa5; --accent-dim:#3a1626;
+    --gold:#efb23b; --gold-bg:#3a2a08;
+    --txt:#f2f2f2; --muted:#a9a9ad; --dim:#7d7d82;
+    --red:#e2544b; --red-bg:#3a1512; --red-dim:#f0997b;
+    --green:#4fc17a; --green-bg:#0c3320;
+    --blue:#7db4f4; --blue-bg:#0e2947;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg); color:var(--txt);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    display:flex; min-height:100vh; line-height:1.5;
+  }
+  .sidebar{
+    width:250px; flex-shrink:0; background:var(--panel2);
+    border-right:1px solid var(--line);
+    height:100vh; position:sticky; top:0; overflow-y:auto; padding:20px 0;
+  }
+  .sidebar::-webkit-scrollbar{width:7px}
+  .sidebar::-webkit-scrollbar-thumb{background:#333;border-radius:4px}
+  .brand{display:flex;align-items:center;gap:10px;padding:0 20px 18px;border-bottom:1px solid var(--line);margin-bottom:12px}
+  .brand-badge{width:34px;height:34px;border-radius:9px;background:var(--accent-dim);display:flex;align-items:center;justify-content:center;font-size:17px}
+  .brand-title{font-size:15px;font-weight:700;letter-spacing:.2px}
+  .brand-sub{font-size:11px;color:var(--dim)}
+  .nav-label{font-size:10px;letter-spacing:.12em;color:var(--dim);padding:14px 20px 6px;text-transform:uppercase}
+  .nav-item{
+    display:flex;align-items:center;gap:11px;padding:9px 20px;cursor:pointer;
+    font-size:13.5px;color:var(--muted);border-left:3px solid transparent;transition:.15s;
+  }
+  .nav-item .ic{width:20px;text-align:center;font-size:15px}
+  .nav-item:hover{background:#232325;color:var(--txt)}
+  .nav-item.active{color:var(--accent);border-left-color:var(--accent);background:#232325}
+  .nav-item .count{margin-left:auto;font-size:10px;background:var(--red-bg);color:var(--red-dim);border-radius:10px;padding:1px 7px;font-weight:700}
+  .nav-item .count.g{background:var(--green-bg);color:var(--green)}
+  .main{flex:1;overflow-y:auto;height:100vh;padding:34px 44px 80px}
+  .main::-webkit-scrollbar{width:9px}
+  .main::-webkit-scrollbar-thumb{background:#2c2c2e;border-radius:5px}
+  .page-head{margin-bottom:26px}
+  .page-head h1{font-size:27px;font-weight:800;letter-spacing:.2px;line-height:1.2}
+  .page-head .sub{color:var(--muted);font-size:13.5px;margin-top:7px}
+  .pills{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+  .pill{font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;letter-spacing:.03em}
+  .pill.red{background:var(--red-bg);color:var(--red-dim)}
+  .pill.green{background:var(--green-bg);color:var(--green)}
+  .pill.gold{background:var(--gold-bg);color:var(--gold)}
+  .pill.blue{background:var(--blue-bg);color:var(--blue)}
+  .pill.pink{background:var(--accent-dim);color:var(--accent)}
+  .section{display:none;animation:fade .45s ease both}
+  .section.show{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  .stagger>*{animation:rise .5s ease both}
+  @keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+  .stagger>*:nth-child(1){animation-delay:.05s}
+  .stagger>*:nth-child(2){animation-delay:.12s}
+  .stagger>*:nth-child(3){animation-delay:.19s}
+  .stagger>*:nth-child(4){animation-delay:.26s}
+  .stagger>*:nth-child(5){animation-delay:.33s}
+  .stagger>*:nth-child(6){animation-delay:.40s}
+  .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-bottom:26px}
+  .stat{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:17px 18px;position:relative;overflow:hidden}
+  .stat .lbl{font-size:10.5px;letter-spacing:.1em;color:var(--dim);text-transform:uppercase}
+  .stat .num{font-size:30px;font-weight:800;margin-top:8px;line-height:1;font-variant-numeric:tabular-nums}
+  .stat .num.gold{color:var(--gold)} .stat .num.red{color:var(--accent)} .stat .num.blue{color:var(--blue)} .stat .num.green{color:var(--green)}
+  .stat .foot{font-size:11.5px;color:var(--muted);margin-top:9px}
+  .stat .ic{position:absolute;top:15px;right:16px;font-size:17px;opacity:.85}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:20px 22px;margin-bottom:16px}
+  .card-h{display:flex;align-items:center;gap:11px;margin-bottom:15px;flex-wrap:wrap}
+  .card-h .ci{width:30px;height:30px;border-radius:8px;background:var(--accent-dim);display:flex;align-items:center;justify-content:center;font-size:15px}
+  .card-h h3{font-size:16.5px;font-weight:700}
+  .card-h .tag{margin-left:auto;font-size:10px;font-weight:700;letter-spacing:.05em;padding:3px 9px;border-radius:6px;background:var(--red-bg);color:var(--red-dim)}
+  .card-h .tag.g{background:var(--green-bg);color:var(--green)}
+  .card-h .tag.b{background:var(--blue-bg);color:var(--blue)}
+  .row{display:flex;gap:11px;padding:11px 13px;border-radius:9px;background:var(--panel2);margin-bottom:8px;align-items:flex-start;font-size:13.5px}
+  .row .mk{flex-shrink:0;width:18px;height:18px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;margin-top:1px}
+  .mk.x{background:var(--red-bg);color:var(--red)}
+  .mk.ok{background:var(--green-bg);color:var(--green)}
+  .mk.n{background:var(--accent-dim);color:var(--accent)}
+  .row b{color:#fff;font-weight:700}
+  .row .t{color:var(--muted)}
+  .why{background:var(--panel2);border-left:3px solid var(--accent);border-radius:0 9px 9px 0;padding:13px 16px;margin-top:6px;font-size:13px;color:var(--muted)}
+  .why b{color:var(--accent);font-weight:700}
+  .note{background:var(--red-bg);border-radius:9px;padding:13px 16px;margin-top:12px;font-size:13px;color:var(--red-dim)}
+  .note b{color:#fff}
+  .tmpl{background:#1c1216;border:1px dashed var(--accent);border-radius:10px;padding:15px 18px;font-style:italic;color:#f6b8cf;font-size:14px;margin:12px 0}
+  .tmpl .when{display:block;font-style:normal;font-weight:800;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:7px}
+  .ptable{width:100%;border-collapse:separate;border-spacing:0;background:var(--panel2);border:1px solid var(--line);border-radius:11px;overflow:hidden;margin-bottom:12px}
+  .ptable th,.ptable td{padding:11px 14px;font-size:13.5px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+  .ptable tr:last-child td{border-bottom:none}
+  .ptable th{font-size:10.5px;color:var(--dim);text-transform:uppercase;letter-spacing:.08em}
+  .ptable .p{color:var(--gold);font-weight:800;white-space:nowrap;font-variant-numeric:tabular-nums}
+  .ptable .t{color:var(--muted)}
+  .twrap{overflow-x:auto}
+  .timeline{position:relative;margin:6px 0 4px;padding-left:26px}
+  .timeline::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:2px;background:var(--line)}
+  .t-item{position:relative;padding:0 0 18px}
+  .t-item::before{content:"";position:absolute;left:-24px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--panel);border:3px solid var(--accent)}
+  .t-item.done::before{background:var(--green);border-color:var(--green)}
+  .t-item.money::before{border-color:var(--gold)}
+  .t-time{font-size:12px;font-weight:800;letter-spacing:.06em;color:var(--accent);text-transform:uppercase}
+  .t-time .sub{color:var(--dim);font-weight:600;letter-spacing:normal;text-transform:none}
+  .t-item.money .t-time{color:var(--gold)}
+  .t-item.done .t-time{color:var(--green)}
+  .t-title{font-size:14.5px;font-weight:700;margin-top:2px}
+  .t-body{font-size:13px;color:var(--muted);margin-top:3px}
+  .foot-note{text-align:center;color:var(--dim);font-size:11px;letter-spacing:.08em;border-top:1px solid var(--line);margin-top:30px;padding-top:18px}
+  .kbd-hint{position:fixed;bottom:14px;right:18px;font-size:11px;color:var(--dim);background:var(--panel);border:1px solid var(--line);border-radius:7px;padding:5px 10px}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important}}
+  @media(max-width:680px){.sidebar{position:fixed;left:-260px;z-index:40}.main{padding:24px 18px 80px}}
+</style>
+<nav class="sidebar">
+  <div class="brand">
+    <div class="brand-badge">⏰</div>
+    <div><div class="brand-title">Final Reminder Mass</div><div class="brand-sub">Bella · Both Pages · Last Call</div></div>
+  </div>
+  <div class="nav-label">Mass Send</div>
+  <div class="nav-item active" data-s="overview"><span class="ic">🏠</span> The Play</div>
+  <div class="nav-item" data-s="paid"><span class="ic">💎</span> Paid Page <span class="count g">SENT</span></div>
+  <div class="nav-item" data-s="free"><span class="ic">🆓</span> Free Page <span class="count g">SENT</span></div>
+  <div class="nav-item" data-s="flow"><span class="ic">💬</span> Response Flow <span class="count">CHATTERS</span></div>
+  <div class="nav-label">Quick Info</div>
+  <div class="nav-item" data-s="summary"><span class="ic">✅</span> Chatter Cheat Sheet</div>
+</nav>
+
+<main class="main">
+
+  <!-- THE PLAY -->
+  <section class="section show" id="overview">
+    <div class="page-head">
+      <h1>⏰ Final Reminder — Last Call on the Paid Masses</h1>
+      <div class="sub">One final urgency mass on <b style="color:#fff">each Bella page</b>, chasing the paid masses from earlier this shift. Pure FOMO — "it's coming down and never coming back" — to squeeze the last opens before the offers expire. Jassy sent both; chatters work the replies.</div>
+      <div class="pills"><span class="pill pink">BOTH PAGES</span><span class="pill gold">Chases earlier paid masses</span><span class="pill red">Last call · no resend</span><span class="pill green">Jassy sent it</span></div>
+    </div>
+    <div class="stat-grid stagger">
+      <div class="stat"><span class="ic">💎</span><div class="lbl">Paid page target</div><div class="num gold">$24.99</div><div class="foot">"neediest i've ever been" bundle from 2:20 AM</div></div>
+      <div class="stat"><span class="ic">🆓</span><div class="lbl">Free page target</div><div class="num gold">$4</div><div class="foot">collector's photoset from 3:03 AM</div></div>
+      <div class="stat"><span class="ic">🕦</span><div class="lbl">Reminder times</div><div class="num blue">11:30 AM</div><div class="foot">her time (Paris) · 11:30 + 11:35 · 5:30 PM PHT</div></div>
+      <div class="stat"><span class="ic">📝</span><div class="lbl">Format</div><div class="num red">Text only</div><div class="foot">no media — points fans back to the paid mass</div></div>
+    </div>
+    <div class="card stagger">
+      <div class="card-h"><div class="ci">🧠</div><h3>Why this works</h3><span class="tag g">READ FIRST</span></div>
+      <div class="row"><span class="mk n">1</span><div class="t"><b>The paid mass already did the selling.</b> This reminder only removes the "I'll open it later" excuse — the deadline is NOW, and it's framed as never coming back.</div></div>
+      <div class="row"><span class="mk n">2</span><div class="t"><b>Social proof + exclusion:</b> "the ones who already opened it know exactly why" — fans hate being the one left out more than they hate spending.</div></div>
+      <div class="row"><span class="mk n">3</span><div class="t"><b>Text-only on purpose.</b> No new media means the only way to see anything is to scroll back and unlock the paid mass sitting in their DMs.</div></div>
+      <div class="why"><b>The "pulling it down" line is positioning only</b> — nothing actually gets deleted or archived. The urgency lives in the caption, same rule as always.</div>
+    </div>
+  </section>
+
+  <!-- PAID PAGE -->
+  <section class="section" id="paid">
+    <div class="page-head"><h1>💎 Paid Page — @erzabelx</h1><div class="sub">Chases the $24.99 "neediest i've ever been" bundle sent at 2:20 AM her time.</div><div class="pills"><span class="pill gold">Chasing $24.99 bundle</span><span class="pill blue">11:30 AM her time · 5:30 PM PHT</span></div></div>
+    <div class="card stagger">
+      <div class="card-h"><div class="ci">📩</div><h3>What went out</h3><span class="tag g">EXACT CAPTION</span></div>
+      <div class="tmpl"><span class="when">Reminder caption — Bella's voice</span>okay i'm only saying this once 🥵 that little bundle i sent you earlier is the neediest i've EVER been on camera… and i'm pulling it down soon, it's not getting resent. the ones who already opened it know exactly why 😈 don't be the one who scrolled past me</div>
+      <div class="twrap"><table class="ptable">
+        <tr><th>Item</th><th>Spec</th></tr>
+        <tr><td class="t">Chasing</td><td class="t">$24.99 paid bundle mass from <b>2:20 AM her time</b> this shift</td></tr>
+        <tr><td class="t">Media</td><td class="t">None — text-only reminder</td></tr>
+        <tr><td class="t">Send time</td><td class="t">11:30 AM her time (Paris) · 5:30 PM PHT</td></tr>
+        <tr><td class="t">Sender</td><td class="t">Jassy — already in the queue</td></tr>
+      </table></div>
+    </div>
+    <div class="card stagger">
+      <div class="card-h"><div class="ci">⛔</div><h3>Excluded from this reminder</h3><span class="tag">SAME STACK AS HER MASSES</span></div>
+      <div class="twrap"><table class="ptable">
+        <tr><th>List</th><th>List ID</th></tr>
+        <tr><td class="t">$2500+ Spent 💰</td><td class="p">1285513083</td></tr>
+        <tr><td class="t">$500 – $2500 Spent 💰</td><td class="p">1285513082</td></tr>
+        <tr><td class="t">❌ PERM EXCLUDE MM</td><td class="p">1261160735</td></tr>
+      </table></div>
+      <div class="note"><b>In one line:</b> top spenders and the no-MM list never see this — they get worked 1:1, not massed.</div>
+    </div>
+  </section>
+
+  <!-- FREE PAGE -->
+  <section class="section" id="free">
+    <div class="page-head"><h1>🆓 Free Page — @erzabel</h1><div class="sub">Chases the $4 collector's photoset sent at 3:03 AM her time.</div><div class="pills"><span class="pill gold">Chasing $4 photoset</span><span class="pill blue">11:35 AM her time · 5:35 PM PHT</span></div></div>
+    <div class="card stagger">
+      <div class="card-h"><div class="ci">📩</div><h3>What went out</h3><span class="tag g">EXACT CAPTION</span></div>
+      <div class="tmpl"><span class="when">Reminder caption — Bella's voice</span>babe… the collector's set i sent you is still sitting there unopened and it's breaking my heart a little 🥺 it's $4. FOUR. once i archive it, it's gone for good and you'll never see that side of me again 🥵 the real ones already opened it… don't make me remember you as the one who didn't 😈</div>
+      <div class="twrap"><table class="ptable">
+        <tr><th>Item</th><th>Spec</th></tr>
+        <tr><td class="t">Chasing</td><td class="t">$4 collector's photoset mass from <b>3:03 AM her time</b> this shift</td></tr>
+        <tr><td class="t">Media</td><td class="t">None — text-only reminder</td></tr>
+        <tr><td class="t">Send time</td><td class="t">11:35 AM her time (Paris) · 5:35 PM PHT</td></tr>
+        <tr><td class="t">Sender</td><td class="t">Jassy — already in the queue</td></tr>
+      </table></div>
+    </div>
+    <div class="card stagger">
+      <div class="card-h"><div class="ci">⛔</div><h3>Excluded from this reminder</h3><span class="tag">SAME STACK AS HER MASSES</span></div>
+      <div class="twrap"><table class="ptable">
+        <tr><th>List</th><th>List ID</th></tr>
+        <tr><td class="t">$2500+ Spent 💰</td><td class="p">1285513001</td></tr>
+        <tr><td class="t">$500 – $2500 Spent 💰</td><td class="p">1285513000</td></tr>
+        <tr><td class="t">❌ PERM EXCLUDE MM</td><td class="p">1261160649</td></tr>
+      </table></div>
+      <div class="note"><b>In one line:</b> same rule as the paid page — high spenders and no-MM fans are out.</div>
+    </div>
+  </section>
+
+  <!-- RESPONSE FLOW -->
+  <section class="section" id="flow">
+    <div class="page-head"><h1>💬 Response Flow</h1><div class="sub">The reminder lands, fans reply — here's how to turn opens into unlocks and unlocks into the next spend.</div><div class="pills"><span class="pill pink">Bella's voice: lowercase, bratty, needy</span></div></div>
+    <div class="card stagger">
+      <div class="card-h"><div class="ci">💬</div><h3>Work the replies</h3><span class="tag g">IN ORDER</span></div>
+      <div class="timeline">
+        <div class="t-item">
+          <div class="t-time">Fan replies but hasn't unlocked</div>
+          <div class="t-title">Feed the FOMO, don't re-pitch the price</div>
+          <div class="t-body">Tease what's inside without describing it: "mmm you're cutting it close… i wasn't kidding about taking it down 🥺 open it and you'll get why i almost didn't post it". Keep the deadline alive — never offer to resend or discount.</div>
+        </div>
+        <div class="t-item money">
+          <div class="t-time">Fan unlocks the paid mass</div>
+          <div class="t-title">Reward + escalate</div>
+          <div class="t-body">React like he made her night: "omg you actually opened it 🥵 okay now i'm shy… tell me your favorite part". His answer is the bridge to the next sell — a custom angle of whatever he liked most.</div>
+        </div>
+        <div class="t-item money">
+          <div class="t-time">Fan is hot after unlocking</div>
+          <div class="t-title">Chain to the next spend</div>
+          <div class="t-body">Bella stays needy, not salesy: "i have something even worse than that saved… but you have to promise you can handle me 😈". Pitch the follow-up set or a custom — floor pricing applies, no discounts.</div>
+        </div>
+      </div>
+      <div class="note"><b>Voice check:</b> Bella types lowercase, bratty and needy, European-morning energy (she's on Paris time). Never sound like a receipt or a countdown bot.</div>
+    </div>
+  </section>
+
+  <!-- SUMMARY -->
+  <section class="section" id="summary">
+    <div class="page-head"><h1>Chatter Cheat Sheet</h1><div class="sub">The whole play in five lines.</div><div class="pills"><span class="pill green">Active</span></div></div>
+    <div class="card stagger">
+      <div class="card-h"><div class="ci">✅</div><h3>The essentials</h3></div>
+      <div class="row"><span class="mk n">1</span><div class="t"><b>Jassy sent</b> a final text-only reminder on both pages — 11:30 / 11:35 AM her time (5:30 / 5:35 PM PHT) — last call on this shift's paid masses.</div></div>
+      <div class="row"><span class="mk n">2</span><div class="t"><b>Paid page @erzabelx</b> → chasing the <b>$24.99 bundle</b> from 2:20 AM. <b>Free page @erzabel</b> → chasing the <b>$4 collector's set</b> from 3:03 AM.</div></div>
+      <div class="row"><span class="mk n">3</span><div class="t"><b>Top spenders + no-MM lists excluded</b> on both pages — same standing stack as all her masses.</div></div>
+      <div class="row"><span class="mk n">4</span><div class="t"><b>You work the replies:</b> feed the FOMO → celebrate the unlock → chain to the next sell. No resends, no discounts, no breaking the deadline.</div></div>
+      <div class="row"><span class="mk n">5</span><div class="t"><b>Nothing actually gets taken down</b> — the "pulling it down / archiving" line is caption positioning only.</div></div>
+    </div>
+    <div class="foot-note">FINAL REMINDER MASS · BELLA (ERZABELLE) · QUESTIONS → @JASSY</div>
+  </section>
+
+</main>
+
+<div class="kbd-hint">← → to navigate</div>
+
+<script>
+  const items=[...document.querySelectorAll('.nav-item')];
+  const secs=[...document.querySelectorAll('.section')];
+  const order=items.map(i=>i.dataset.s);
+  function show(id){
+    items.forEach(i=>i.classList.toggle('active',i.dataset.s===id));
+    secs.forEach(s=>s.classList.toggle('show',s.id===id));
+    document.querySelector('.main').scrollTop=0;
+  }
+  items.forEach(i=>i.addEventListener('click',()=>show(i.dataset.s)));
+  let idx=0;
+  document.addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'){idx=Math.min(order.length-1,idx+1);show(order[idx])}
+    if(e.key==='ArrowLeft'){idx=Math.max(0,idx-1);show(order[idx])}
+  });
+  items.forEach((it,n)=>it.addEventListener('click',()=>idx=n));
+</script>
+
+</body>
+</html>
