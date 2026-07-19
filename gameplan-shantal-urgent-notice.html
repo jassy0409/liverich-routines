@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+</head>
+<body>
+<title>Shantal Module — Urgent Notice Discount-List Mass · Rules &amp; Upsell Flow</title>
+<style>
+  :root{
+    --bg:#171717; --panel:#202022; --panel2:#1a1a1c; --line:#2e2e30;
+    --accent:#f2545b; --accent-dim:#3a1417;
+    --gold:#efb23b; --gold-bg:#3a2a08;
+    --txt:#f2f2f2; --muted:#a9a9ad; --dim:#7d7d82;
+    --red:#e2544b; --red-bg:#3a1512; --red-dim:#f0997b;
+    --green:#4fc17a; --green-bg:#0c3320;
+    --blue:#7db4f4; --blue-bg:#0e2947;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg); color:var(--txt);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    display:flex; min-height:100vh; line-height:1.5;
+  }
+  .sidebar{
+    width:250px; flex-shrink:0; background:var(--panel2);
+    border-right:1px solid var(--line);
+    height:100vh; position:sticky; top:0; overflow-y:auto; padding:20px 0;
+  }
+  .sidebar::-webkit-scrollbar{width:7px}
+  .sidebar::-webkit-scrollbar-thumb{background:#333;border-radius:4px}
+  .brand{display:flex;align-items:center;gap:10px;padding:0 20px 18px;border-bottom:1px solid var(--line);margin-bottom:12px}
+  .brand-badge{width:34px;height:34px;border-radius:9px;background:var(--accent-dim);display:flex;align-items:center;justify-content:center;font-size:17px}
+  .brand-title{font-size:15px;font-weight:700;letter-spacing:.2px}
+  .brand-sub{font-size:11px;color:var(--dim)}
+  .nav-label{font-size:10px;letter-spacing:.12em;color:var(--dim);padding:14px 20px 6px;text-transform:uppercase}
+  .nav-item{
+    display:flex;align-items:center;gap:11px;padding:9px 20px;cursor:pointer;
+    font-size:13.5px;color:var(--muted);border-left:3px solid transparent;transition:.15s;
+  }
+  .nav-item .ic{width:20px;text-align:center;font-size:15px}
+  .nav-item:hover{background:#232325;color:var(--txt)}
+  .nav-item.active{color:var(--accent);border-left-color:var(--accent);background:#232325}
+  .nav-item .count{margin-left:auto;font-size:10px;background:var(--red-bg);color:var(--red-dim);border-radius:10px;padding:1px 7px;font-weight:700}
+  .nav-item .count.g{background:var(--green-bg);color:var(--green)}
+  .main{flex:1;overflow-y:auto;height:100vh;padding:34px 44px 80px}
+  .main::-webkit-scrollbar{width:9px}
+  .main::-webkit-scrollbar-thumb{background:#2c2c2e;border-radius:5px}
+  .page-head{margin-bottom:26px}
+  .page-head h1{font-size:27px;font-weight:800;letter-spacing:.2px;line-height:1.2}
+  .page-head .sub{color:var(--muted);font-size:13.5px;margin-top:7px}
+  .pills{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+  .pill{font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;letter-spacing:.03em}
+  .pill.red{background:var(--red-bg);color:var(--red-dim)}
+  .pill.green{background:var(--green-bg);color:var(--green)}
+  .pill.gold{background:var(--gold-bg);color:var(--gold)}
+  .pill.blue{background:var(--blue-bg);color:var(--blue)}
+  .section{display:none;animation:fade .45s ease both}
+  .section.show{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  .stagger>*{animation:rise .5s ease both}
+  @keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+  .stagger>*:nth-child(1){animation-delay:.05s}
+  .stagger>*:nth-child(2){animation-delay:.12s}
+  .stagger>*:nth-child(3){animation-delay:.19s}
+  .stagger>*:nth-child(4){animation-delay:.26s}
+  .stagger>*:nth-child(5){animation-delay:.33s}
+  .stagger>*:nth-child(6){animation-delay:.40s}
+  .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-bottom:26px}
+  .stat{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:17px 18px;position:relative;overflow:hidden}
+  .stat .lbl{font-size:10.5px;letter-spacing:.1em;color:var(--dim);text-transform:uppercase}
+  .stat .num{font-size:30px;font-weight:800;margin-top:8px;line-height:1;font-variant-numeric:tabular-nums}
+  .stat .num.gold{color:var(--gold)} .stat .num.red{color:var(--accent)} .stat .num.blue{color:var(--blue)} .stat .num.green{color:var(--green)}
+  .stat .foot{font-size:11.5px;color:var(--muted);margin-top:9px}
+  .stat .ic{position:absolute;top:15px;right:16px;font-size:17px;opacity:.85}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:20px 22px;margin-bottom:16px}
+  .card-h{display:flex;align-items:center;gap:11px;margin-bottom:15px;flex-wrap:wrap}
+  .card-h .ci{width:30px;height:30px;border-radius:8px;background:var(--accent-dim);display:flex;align-items:center;justify-content:center;font-size:15px}
+  .card-h h3{font-size:16.5px;font-weight:700}
+  .card-h .tag{margin-left:auto;font-size:10px;font-weight:700;letter-spacing:.05em;padding:3px 9px;border-radius:6px;background:var(--red-bg);color:var(--red-dim)}
+  .card-h .tag.g{background:var(--green-bg);color:var(--green)}
+  .card-h .tag.b{background:var(--blue-bg);color:var(--blue)}
+  .row{display:flex;gap:11px;padding:11px 13px;border-radius:9px;background:var(--panel2);margin-bottom:8px;align-items:flex-start;font-size:13.5px}
+  .row .mk{flex-shrink:0;width:18px;height:18px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;margin-top:1px}
+  .mk.x{background:var(--red-bg);color:var(--red)}
+  .mk.ok{background:var(--green-bg);color:var(--green)}
+  .mk.n{background:var(--accent-dim);color:var(--accent)}
+  .row b{color:#fff;font-weight:700}
+  .row .t{color:var(--muted)}
+  .why{background:var(--panel2);border-left:3px solid var(--accent);border-radius:0 9px 9px 0;padding:13px 16px;margin-top:6px;font-size:13px;color:var(--muted)}
+  .why b{color:var(--accent);font-weight:700}
+  .note{background:var(--red-bg);border-radius:9px;padding:13px 16px;margin-top:12px;font-size:13px;color:var(--red-dim)}
+  .note b{color:#fff}
+  .tmpl{background:#1c1214;border:1px dashed var(--accent);border-radius:10px;padding:15px 18px;font-style:italic;color:#f6b8ba;font-size:14px;margin:12px 0}
+  .tmpl .when{display:block;font-style:normal;font-weight:800;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:7px}
+  .ptable{width:100%;border-collapse:separate;border-spacing:0;background:var(--panel2);border:1px solid var(--line);border-radius:11px;overflow:hidden;margin-bottom:12px}
+  .ptable th,.ptable td{padding:11px 14px;font-size:13.5px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+  .ptable tr:last-child td{border-bottom:none}
+  .ptable th{font-size:10.5px;color:var(--dim);text-transform:uppercase;letter-spacing:.08em}
+  .ptable .p{color:var(--gold);font-weight:800;white-space:nowrap;font-variant-numeric:tabular-nums}
+  .ptable .t{color:var(--muted)}
+  .twrap{overflow-x:auto}
+  .timeline{position:relative;margin:6px 0 4px;padding-left:26px}
+  .timeline::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:2px;background:var(--line)}
+  .t-item{position:relative;padding:0 0 18px}
+  .t-item::before{content:"";position:absolute;left:-24px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--panel);border:3px solid var(--accent)}
+  .t-item.done::before{background:var(--green);border-color:var(--green)}
+  .t-item.money::before{border-color:var(--gold)}
+  .t-time{font-size:12px;font-weight:800;letter-spacing:.06em;color:var(--accent);text-transform:uppercase}
+  .t-time .sub{color:var(--dim);font-weight:600;letter-spacing:normal;text-transform:none}
+  .t-item.money .t-time{color:var(--gold)}
+  .t-item.done .t-time{color:var(--green)}
+  .t-title{font-size:14.5px;font-weight:700;margin-top:2px}
+  .t-body{font-size:13px;color:var(--muted);margin-top:3px}
+  .foot-note{text-align:center;color:var(--dim);font-size:11px;letter-spacing:.08em;border-top:1px solid var(--line);margin-top:30px;padding-top:18px}
+  .kbd-hint{position:fixed;bottom:14px;right:18px;font-size:11px;color:var(--dim);background:var(--panel);border:1px solid var(--line);border-radius:7px;padding:5px 10px}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important}}
+  @media(max-width:680px){.sidebar{position:fixed;left:-260px;z-index:40}.main{padding:24px 18px 80px}}
+</style>
+<nav class="sidebar">
+  <div class="brand">
+    <div class="brand-badge">‼️</div>
+    <div><div class="brand-title">Urgent Notice Play</div><div class="brand-sub">Shantal Monique · Discount-List Mass</div></div>
+  </div>
+  <div class="nav-label">Module</div>
+  <div class="nav-item active" data-s="overview"><span class="ic">🏠</span> The Play</div>
+  <div class="nav-item" data-s="mass"><span class="ic">📩</span> The Mass <span class="count g">JASSY SENDS</span></div>
+  <div class="nav-item" data-s="ladder"><span class="ic">💰</span> Upsell Ladder <span class="count g">$</span></div>
+  <div class="nav-item" data-s="rules"><span class="ic">⛔</span> Rules &amp; Tagging <span class="count">!</span></div>
+  <div class="nav-label">Quick Info</div>
+  <div class="nav-item" data-s="summary"><span class="ic">✅</span> Chatter Cheat Sheet</div>
+</nav>
+
+<main class="main">
+
+  <!-- THE PLAY -->
+  <section class="section show" id="overview">
+    <div class="page-head">
+      <h1>‼️ Urgent Notice — Monthly Discount List Mass</h1>
+      <div class="sub">A cheap paid mass to <b style="color:#fff">NON-VIPs only</b>, positioned as a list-cleanup notice. The mass is the door — the money is in the DM ladder that follows: $25 video → VIP entry at $99–$150 → Part 2 as the welcome bundle.</div>
+      <div class="pills"><span class="pill red">NON-VIPS ONLY</span><span class="pill gold">Robe Lotion series</span><span class="pill green">Jassy sends the mass</span></div>
+    </div>
+    <div class="stat-grid stagger">
+      <div class="stat"><span class="ic">📩</span><div class="lbl">The mass</div><div class="num gold">7 pics</div><div class="foot">Robe Lotion Part 1 — pictures ONLY, no video</div></div>
+      <div class="stat"><span class="ic">🎬</span><div class="lbl">Upsell 1</div><div class="num red">$25</div><div class="foot">the 2-min Part 1 video, after engagement</div></div>
+      <div class="stat"><span class="ic">👑</span><div class="lbl">VIP entry</div><div class="num blue">$99–150</div><div class="foot">tip for VIP · Part 2 locked as welcome bundle</div></div>
+      <div class="stat"><span class="ic">🔒</span><div class="lbl">VIP ACCESS ONLY</div><div class="num green">P2 + Spicy</div><div class="foot">$99 Part 2 · $300 Spicy — never to non-VIPs</div></div>
+    </div>
+    <div class="card stagger">
+      <div class="card-h"><div class="ci">🧠</div><h3>Why this works</h3><span class="tag g">READ FIRST</span></div>
+      <div class="row"><span class="mk n">1</span><div class="t"><b>The caption is a pattern interrupt.</b> "Open up to stay on my monthly discount list. Keep scrolling if you want to be removed.." — fear of losing access makes cold non-VIPs open when a normal tease wouldn't.</div></div>
+      <div class="row"><span class="mk n">2</span><div class="t"><b>The mass is cheap on purpose.</b> It exists to identify who still opens and pays — every buyer is a live lead for the ladder, not the payday itself.</div></div>
+      <div class="row"><span class="mk n">3</span><div class="t"><b>The ladder does the earning:</b> $25 video → VIP pitch → $99–$150 VIP entry with Part 2 as the reward. A cold fan can end the night as a VIP.</div></div>
+    </div>
+  </section>
+
+  <!-- THE MASS -->
+  <section class="section" id="mass">
+    <div class="page-head"><h1>The Mass — Jassy sends it</h1><div class="sub">Chatters do NOT send this. Your job starts the moment fans open and reply.</div><div class="pills"><span class="pill red">Exact caption below — do not edit</span></div></div>
+    <div class="card stagger">
+      <div class="card-h"><div class="ci">📩</div><h3>Send spec</h3><span class="tag g">POSITIONING</span></div>
+      <div class="tmpl"><span class="when">Caption — exactly this</span>‼️𝗨𝗥𝗚𝗘𝗡𝗧 𝗡𝗢𝗧𝗜𝗖𝗘‼️ Open up to stay on my monthly discount list. Keep scrolling if you want to be removed..</div>
+      <div class="twrap"><table class="ptable">
+        <tr><th>Item</th><th>Spec</th></tr>
+        <tr><td class="t">Content</td><td class="t"><b>7 pictures ONLY</b> from folder 9/10 🧖🏼🧴 $35 Robe Lotion Part1 — the 2-min video stays OUT of the mass (it's Upsell 1)</td></tr>
+        <tr><td class="t">Audience</td><td class="t">NON-VIPs only (general fans)</td></tr>
+        <tr><td class="t">Price</td><td class="t">Cheap unlock — Jassy sets it on send</td></tr>
+        <tr><td class="t">Sender</td><td class="t">Jassy — chatters work the replies</td></tr>
+      </table></div>
+    </div>
+    <div class="card stagger">
+      <div class="card-h"><div class="ci">⛔</div><h3>Excluded from this mass</h3><span class="tag">VERIFIED LIST IDS</span></div>
+      <div class="twrap"><table class="ptable">
+        <tr><th>List</th><th>List ID</th></tr>
+        <tr><td class="t">** *VIP High Spenders 🏆🟢</td><td class="p">104020308</td></tr>
+        <tr><td class="t">**VIP LOW SPENDERS 🏆🔴</td><td class="p">1013435948</td></tr>
+        <tr><td class="t">* *VIP Med Spenders 🏆🟡</td><td class="p">1020237293</td></tr>
+        <tr><td class="t">** VIP Re-Engage 🏆🔵</td><td class="p">1029177510</td></tr>
+        <tr><td class="t">🚨 SHANTAL ONLY DO NOT OPEN</td><td class="p">1248575538</td></tr>
+        <tr><td class="t">No MM</td><td class="p">1206433451</td></tr>
+        <tr><td class="t"># ❌ NO MM❌ $3000+</td><td class="p">1234087011</td></tr>
+        <tr><td class="t">Prior Part 1 buyers (9/10 🧖🏼🧴 $35 Robe Lotion part1)</td><td class="p">1297999704</td></tr>
+      </table></div>
+      <div class="row"><span class="mk n">!</span><div class="t"><b>FREELOADERS/TIMEWASTERS (1299850298)</b> stays excluded per the standing master rule unless Jassy says otherwise on send.</div></div>
+      <div class="note"><b>In one line:</b> every VIP tier, Shantal-only fans, all no-MM lists and prior Part 1 buyers are OUT. This only reaches cold/general non-VIPs.</div>
+    </div>
+  </section>
+
+  <!-- UPSELL LADDER -->
+  <section class="section" id="ladder">
+    <div class="page-head"><h1>The Upsell Ladder</h1><div class="sub">Same set, climbing value. Every step only offers what the fan doesn't own yet.</div><div class="pills"><span class="pill gold">$25 → $99–150 VIP → VIP-only folders</span></div></div>
+    <div class="card stagger">
+      <div class="card-h"><div class="ci">💰</div><h3>Step by step</h3><span class="tag g">IN ORDER</span></div>
+      <div class="timeline">
+        <div class="t-item money">
+          <div class="t-time">Step 1 <span class="sub">· after the fan opens the mass + engages</span></div>
+          <div class="t-title">Sell the 2-minute video — $25</div>
+          <div class="t-body">Warm the reply first (react to what he says, tease what the pictures led to), then offer the 2-min Robe Lotion Part 1 video at $25. Engagement BEFORE the pitch — never cold-drop it.</div>
+        </div>
+        <div class="t-item money">
+          <div class="t-time">Step 2 <span class="sub">· buyer is hot and asking for more</span></div>
+          <div class="t-title">Pitch the VIP CLUB — $99–$150 tip</div>
+          <div class="t-body">Part 2 and Spicy are VIP ACCESS ONLY — that is the hook. Pitch VIP entry at a $99–$150 tip, and sweeten it: <b>Part 2 ($99 Robe Lotion Part2) comes locked as their VIP ENTRY ACCESS / WELCOME BUNDLE</b> the moment they join. They tip for the club and instantly have their first VIP unlock waiting.</div>
+        </div>
+        <div class="t-item">
+          <div class="t-time">Step 3 <span class="sub">· new VIP, later in the chat / next shift</span></div>
+          <div class="t-title">The Spicy round stays in reserve</div>
+          <div class="t-body">9/10 🧖🏼🧴 $300 Robe Lotion Spicy is the top shelf — VIP ACCESS ONLY, $300, pitched personally to VIPs who finished Part 2. Never offered to a non-VIP, never discounted.</div>
+        </div>
+      </div>
+      <div class="note"><b>Hard wall:</b> $99 Robe Lotion Part2 and 9/10 🧖🏼🧴 $300 Robe Lotion Spicy NEVER go to non-VIPs at any price. The only way in is the VIP tip.</div>
+    </div>
+  </section>
+
+  <!-- RULES & TAGGING -->
+  <section class="section" id="rules">
+    <div class="page-head"><h1>Rules &amp; Tagging</h1><div class="sub">The play collapses if tagging is sloppy — tag first, chat second.</div><div class="pills"><span class="pill red">Zero tolerance</span></div></div>
+    <div class="card stagger">
+      <div class="card-h"><div class="ci">🗂️</div><h3>Tagging</h3><span class="tag g">INSTANT</span></div>
+      <div class="row"><span class="mk ok">✓</span><div class="t"><b>Every fan who buys the mass</b> → add to list <b>9/10 🧖🏼🧴 $35 Robe Lotion Part1</b> the second they unlock.</div></div>
+      <div class="row"><span class="mk ok">✓</span><div class="t"><b>Every fan who tips $99–$150 for VIP</b> → add to the VIP list, send the locked Part 2 as their welcome bundle, and note the entry tip in their fan notes.</div></div>
+      <div class="row"><span class="mk ok">✓</span><div class="t">Video buyers ($25) noted in fan notes so the next shift knows where each fan sits on the ladder.</div></div>
+    </div>
+    <div class="card stagger">
+      <div class="card-h"><div class="ci">⛔</div><h3>Do NOT</h3><span class="tag">STRICT</span></div>
+      <div class="row"><span class="mk x">✕</span><div class="t">Send Part 2 or Spicy to a non-VIP "just this once" — VIP ACCESS ONLY, no exceptions.</div></div>
+      <div class="row"><span class="mk x">✕</span><div class="t">Cold-pitch the $25 video before the fan has engaged — warm the reply first.</div></div>
+      <div class="row"><span class="mk x">✕</span><div class="t">Change the mass caption or resend it manually — Jassy owns the send.</div></div>
+      <div class="row"><span class="mk x">✕</span><div class="t">Actually remove anyone from any list because they didn't open — the "removal" is positioning, not an action.</div></div>
+      <div class="row"><span class="mk x">✕</span><div class="t">Discount VIP below $99 or the Spicy below $300.</div></div>
+    </div>
+  </section>
+
+  <!-- SUMMARY -->
+  <section class="section" id="summary">
+    <div class="page-head"><h1>Chatter Cheat Sheet</h1><div class="sub">The whole play in six lines.</div><div class="pills"><span class="pill green">Active</span></div></div>
+    <div class="card stagger">
+      <div class="card-h"><div class="ci">✅</div><h3>The essentials</h3></div>
+      <div class="row"><span class="mk n">1</span><div class="t"><b>Jassy sends</b> the ‼️URGENT NOTICE‼️ discount-list mass — 7 Robe Lotion Part 1 pictures, non-VIPs only, all VIP/no-MM/Shantal-only lists excluded.</div></div>
+      <div class="row"><span class="mk n">2</span><div class="t"><b>You work the replies:</b> engage first, then the 2-min video at <b>$25</b>.</div></div>
+      <div class="row"><span class="mk n">3</span><div class="t"><b>Hot buyers → VIP pitch:</b> $99–$150 tip for VIP club, with <b>Part 2 locked as their welcome bundle / entry access</b>.</div></div>
+      <div class="row"><span class="mk n">4</span><div class="t"><b>Part 2 ($99) + Spicy ($300) are VIP ACCESS ONLY.</b> Spicy is reserve for finished-Part-2 VIPs.</div></div>
+      <div class="row"><span class="mk n">5</span><div class="t"><b>Tag instantly:</b> mass buyers → 9/10 🧖🏼🧴 $35 Robe Lotion Part1 list · new VIPs → VIP list + welcome bundle + notes.</div></div>
+      <div class="row"><span class="mk n">6</span><div class="t"><b>Nobody actually gets removed from anything</b> — the urgency is the caption, not a cleanup.</div></div>
+    </div>
+    <div class="foot-note">URGENT NOTICE MODULE · SHANTAL MONIQUE · QUESTIONS → @JASSY</div>
+  </section>
+
+</main>
+
+<div class="kbd-hint">← → to navigate</div>
+
+<script>
+  const items=[...document.querySelectorAll('.nav-item')];
+  const secs=[...document.querySelectorAll('.section')];
+  const order=items.map(i=>i.dataset.s);
+  function show(id){
+    items.forEach(i=>i.classList.toggle('active',i.dataset.s===id));
+    secs.forEach(s=>s.classList.toggle('show',s.id===id));
+    document.querySelector('.main').scrollTop=0;
+  }
+  items.forEach(i=>i.addEventListener('click',()=>show(i.dataset.s)));
+  let idx=0;
+  document.addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'){idx=Math.min(order.length-1,idx+1);show(order[idx])}
+    if(e.key==='ArrowLeft'){idx=Math.max(0,idx-1);show(order[idx])}
+  });
+  items.forEach((it,n)=>it.addEventListener('click',()=>idx=n));
+</script>
+
+</body>
+</html>
