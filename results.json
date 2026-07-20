@@ -1,173 +1,284 @@
 {
-  "updated": "2026-07-14 16:45 PHT",
+  "updated": "2026-07-20 09:05 PHT",
   "chatters": {
     "aaliyah": {
-      "name": "Aaliyah", "model": "Shantal", "shift": "Graveyard",
-      "focus": "Avoids dead ends — her exam thinking is excellent (5/5 and strong written answers), but shift scorecards keep flagging the same live gap: concerns and objections from fans get an offer instead of an answer (Karl), flagged VIPs sit unread (Ken), and threads close flat. The knowledge is in; the live habit isn't yet.",
+      "name": "Aaliyah",
+      "model": "Shantal",
+      "shift": "Graveyard",
+      "focus": "Avoids dead ends, still the recurring pillar (12 to 16 every night this week). The new pattern is pushing the ladder after a fan flags spend fatigue: Drew named his $600.00 ceiling and the next close asked for another $500.00, Matt said prices escalate too quick and got a $50.00 ask right after. Separately, Nick said yes to an unlock and the thread sat four hours before a follow-up. The selling is strong ($936.99 verified on 7/18); the reads on slow-down signals are the gap.",
       "plan": [
-        "Coach against her own words: her Q14 answer (staying active keeps control) is the standard — hold her live chats to it in the next scorecard review.",
-        "Drill: fan raises a concern → answer the concern FIRST, then sell. Roleplay the Karl thread in the next huddle.",
-        "Flagged VIPs are the first reply of the shift, before anything on the board.",
-        "Retire the two restricted phrases that keep resurfacing in her threads."
+        "When a fan names his own ceiling or complains about price, the next message reconnects with zero numbers in it. Rebuild warmth first, reopen the ladder later.",
+        "Timer habit: any VIP who says yes gets a reopen within 10 to 15 minutes if the PPV sits unopened.",
+        "Real questions from long-tenure VIPs get answered the same night, even short (Andrew's custom question sat unread).",
+        "Language stays in sensation words, not blunt anatomy — three restricted flags this week."
       ],
       "exams": [
-        {"m": 6, "module": "Module 6 — The Chase", "score": 5, "max": 5, "a": "BCADB", "missed": [], "at": "7/14/2026, 12:07 PM", "written": {
-          "6": "I gave up too easily and withdrew attention, essentially punishing the fan for saying no instead of maintaining a warm connection.",
-          "7": "I am acting desperate, begging, and guilt-tripping completely kills the model's persona.",
-          "8": "I missed the opportunity to plant a seed for a future interaction.",
-          "9": "The pitch lacks a downsell.",
-          "10": "I completely understand,, so let us arrange a special date for later this week when you have more time to devote to me. What do you think?",
-          "11": "Would you prefer a slightly later time to ensure we are completely uninterrupted?",
-          "12": "That is your choice, but I only keep this premium content available for a very limited time, so are you going to claim it now or let someone else take your spot?",
-          "13": "I am getting ready to step away, but I am leaving a very special surprise locked in your inbox for tomorrow morning, so can I trust you to check it the moment you wake up?",
-          "14": "Going quiet completely surrenders the conversation and lets a temporary \"no\" become permanent, whereas staying active allows you to maintain total control, pivot the energy, and guide the fan to an inevitable purchase.",
-          "15": "I used to let a rejection stop the momentum completely, but next time I am treating every single \"no\" as a direct invitation to play a sharper angle."
-        }}
+        {
+          "m": 6,
+          "module": "Module 6 — The Chase",
+          "score": 5,
+          "max": 5,
+          "a": "BCADB",
+          "missed": [],
+          "at": "7/14/2026, 12:07 PM",
+          "written": {
+            "6": "I gave up too easily and withdrew attention, essentially punishing the fan for saying no instead of maintaining a warm connection.",
+            "7": "I am acting desperate, begging, and guilt-tripping completely kills the model's persona.",
+            "8": "I missed the opportunity to plant a seed for a future interaction.",
+            "9": "The pitch lacks a downsell.",
+            "10": "I completely understand,, so let us arrange a special date for later this week when you have more time to devote to me. What do you think?",
+            "11": "Would you prefer a slightly later time to ensure we are completely uninterrupted?",
+            "12": "That is your choice, but I only keep this premium content available for a very limited time, so are you going to claim it now or let someone else take your spot?",
+            "13": "I am getting ready to step away, but I am leaving a very special surprise locked in your inbox for tomorrow morning, so can I trust you to check it the moment you wake up?",
+            "14": "Going quiet completely surrenders the conversation and lets a temporary \"no\" become permanent, whereas staying active allows you to maintain total control, pivot the energy, and guide the fan to an inevitable purchase.",
+            "15": "I used to let a rejection stop the momentum completely, but next time I am treating every single \"no\" as a direct invitation to play a sharper angle."
+          }
+        }
       ],
-      "pending": [{"m": 1, "note": "Module 1 exam not yet taken for real (the 7/13 attempts on her link were manager tests). Officially assigned Monday July 20."}]
+      "pending": [
+        {
+          "m": 1,
+          "note": "Assigned today, Monday July 20, via the weekly routine (the 7/13 attempts on her link were manager tests)."
+        }
+      ]
     },
     "trisha": {
-      "name": "Trisha", "model": "Shantal", "shift": "Morning",
-      "focus": "VIP funnel discipline — exam performance is the strongest on the team (5/5, written answers already in Shantal's voice with real flows). Shift focus is process, not craft: the Tim thread showed caution labels being read after the sale instead of before it.",
+      "name": "Trisha",
+      "model": "Shantal",
+      "shift": "Morning",
+      "focus": "Protect the number — still the strongest exam performer on the team, and the live gap has moved from caution labels to price protection: a missed-message fix turned into a $60.00 discount (Johnny, $100.00 down to $40.00), and K. stacked about $75.00 across two unlocks without ever hearing the VIP club named. The Remy save (pinning his promise to his morning coffee) shows the instincts are elite when she uses them.",
       "plan": [
-        "Her written answers are near-model quality — use Q12/Q13 as team examples in the next Shantal huddle.",
-        "Process drill: check for caution labels BEFORE the first send on every thread, same as checking spend history.",
-        "Keep the temperature-check habit from her scorecard note (ask before the next drop after an unlock)."
+        "Fix mistakes by adding value at the same price, never by cutting it: \"let me add a little extra to this set at the same price so it's worth the wait.\"",
+        "Two or three buys in one sitting = name the VIP club directly while the fan is warm, don't just ride the ladder.",
+        "Keep the pinned-promise habit from the Remy thread — it turns maybes into sales.",
+        "Dial back direct body wording a touch, one restricted flag this week."
       ],
       "exams": [
-        {"m": 6, "module": "Module 6 — The Chase", "score": 5, "max": 5, "a": "BCADB", "missed": [], "at": "7/14/2026, 3:40 PM", "written": {
-          "6": "After a no, instead of just replying ok, the chatter should have added more personality, more words and the tone should be more upbeat and with more character. Instead of saying okay, the chatter could have kept the conversation interesting and made him describe what would make him say yes tonight.",
-          "7": "That's practically begging and would likely turn off the fan. Fans chase honest scarcity, confidence and playful takeaways.",
-          "8": "What the chatter missed is keeping the conversation going. She can play the long game and plant a seed in the middle of conversation, giving him a hint of what he can get and eventually re-offer it.",
-          "9": "If the chatter is going to make an upsell, she should be prepared for her next move in case she gets a no. She can offer a different set, maybe a smaller one that aligns with the interests of the fan. She can create curiosity, and position a different setup for the upsell, then book another sale.",
-          "10": "No worries, I understand. No rush on the full thing.. Would you like me to send you the first part for now? I know this is exactly your taste and I want you to have it.",
-          "11": "I can sense your hesitation, so forget it. That kind of energy doesn't get my extra naughty surprise.. I want someone who can keep up with me.",
-          "12": "I understand, and no pressure at all. I'm glad that you took the time to check on me. How did work treat you today? I remember you mentioned last week that your CEO is visiting your store today. Did it go well?",
-          "13": "Since you've worked really hard today, remember that bikini try-on I mentioned to you earlier? I have just finished uploading it, and I wanted you to be the first to enjoy it as your reward for doing well at work. I keep it exclusive for my special ones and it has your name written all over it.",
-          "14": "Going quiet after a no is worse than a single bad message, because the fan would think we are only after his money. Keeping the conversation alive and interesting builds up a connection between the fan and the creator, and through this, we would be able to plant a seed or maybe book another time for him to enjoy the set offered. Going quiet makes you lose a sale; keeping the conversation going opens a door for an upsell.",
-          "15": "When it comes to Miss Shantal's high spending fans, I'm very wary when it comes to doing another upsell after they have said no, as I'm afraid it would seem that the model is too pushy and would scare them away but now that I have read the module about the chase, instead of just accepting their rejection, I'll find another way to make an upsell. I'll try to open smaller doors like upselling first parts of the PPV instead of the full set, change angles…"
-        }}
+        {
+          "m": 6,
+          "module": "Module 6 — The Chase",
+          "score": 5,
+          "max": 5,
+          "a": "BCADB",
+          "missed": [],
+          "at": "7/14/2026, 3:40 PM",
+          "written": {
+            "6": "After a no, instead of just replying ok, the chatter should have added more personality, more words and the tone should be more upbeat and with more character. Instead of saying okay, the chatter could have kept the conversation interesting and made him describe what would make him say yes tonight.",
+            "7": "That's practically begging and would likely turn off the fan. Fans chase honest scarcity, confidence and playful takeaways.",
+            "8": "What the chatter missed is keeping the conversation going. She can play the long game and plant a seed in the middle of conversation, giving him a hint of what he can get and eventually re-offer it.",
+            "9": "If the chatter is going to make an upsell, she should be prepared for her next move in case she gets a no. She can offer a different set, maybe a smaller one that aligns with the interests of the fan. She can create curiosity, and position a different setup for the upsell, then book another sale.",
+            "10": "No worries, I understand. No rush on the full thing.. Would you like me to send you the first part for now? I know this is exactly your taste and I want you to have it.",
+            "11": "I can sense your hesitation, so forget it. That kind of energy doesn't get my extra naughty surprise.. I want someone who can keep up with me.",
+            "12": "I understand, and no pressure at all. I'm glad that you took the time to check on me. How did work treat you today? I remember you mentioned last week that your CEO is visiting your store today. Did it go well?",
+            "13": "Since you've worked really hard today, remember that bikini try-on I mentioned to you earlier? I have just finished uploading it, and I wanted you to be the first to enjoy it as your reward for doing well at work. I keep it exclusive for my special ones and it has your name written all over it.",
+            "14": "Going quiet after a no is worse than a single bad message, because the fan would think we are only after his money. Keeping the conversation alive and interesting builds up a connection between the fan and the creator, and through this, we would be able to plant a seed or maybe book another time for him to enjoy the set offered. Going quiet makes you lose a sale; keeping the conversation going opens a door for an upsell.",
+            "15": "When it comes to Miss Shantal's high spending fans, I'm very wary when it comes to doing another upsell after they have said no, as I'm afraid it would seem that the model is too pushy and would scare them away but now that I have read the module about the chase, instead of just accepting their rejection, I'll find another way to make an upsell. I'll try to open smaller doors like upselling first parts of the PPV instead of the full set, change angles…"
+          }
+        }
       ],
       "pending": []
     },
     "princess": {
-      "name": "Princess", "model": "Shantal", "shift": "Afternoon",
-      "focus": "Value setting at the peak — exam shows she understands the chase (5/5, excellent takeaway and booking answers). Scorecards show warm comebacks going unpriced (David glowing post-purchase, chat drifted to yard work) and price inconsistency on the VIP ask (Bohus).",
+      "name": "Princess",
+      "model": "Shantal",
+      "shift": "Afternoon",
+      "focus": "Hold discipline first, direct answers second. The serious one: after a hold alert on Billy's disputed $200.00 tip, a brand new $200.00 charge went into that same thread and his refund question went unanswered — live chargeback risk. Separately, Ken asked twice what the surprise actually was and got mystery instead of an answer, then went quiet on a $175.00 invite. Drew shows the ceiling when she reads it right: a pricing mixup reframed warm into $625.00 from one fan.",
       "plan": [
-        "Her Q12 (pin it for now + when do you treat yourself) is exactly the booking flow — push her to use it live on warm comebacks.",
-        "One price, said the same way every time, on VIP asks. No shifting numbers mid-thread.",
-        "Close-the-loop habit: acknowledge every fresh purchase before any new topic."
+        "Hold means hold: once a thread is marked held, nothing priced goes out until Jassy or Shantal clears it, even hours later when it goes quiet.",
+        "A direct question gets a direct answer first, then the tease built around it. Mystery is for fans who aren't already asking to buy.",
+        "When a fan names his budget, ladder down to meet him (Danny said no twice to $200.00 and got it anyway).",
+        "Tagged VIP buys = ladder him further right then, not just an acknowledgment (Dan)."
       ],
       "exams": [
-        {"m": 6, "module": "Module 6 — The Chase", "score": 5, "max": 5, "a": "BCADB", "missed": [], "at": "7/14/2026, 10:52 AM", "written": {
-          "6": "He treated the no as the end of conversation. He let the chat die instead of using it for the next move. If the fan is saying no, take it as an opportunity to do strategy to make him hook.",
-          "7": "Chatter begged and repeated the same offer. Begging lowers value and kills attraction of subs. Don't look needy.",
-          "8": "Chatter needs to find out when the sub is able to spend and keep the conversation alive for later opportunity.",
-          "9": "He pitched without making the sub feel like he wants to open this. Build anticipation, urgency. You should know what your next move is.",
-          "10": "Not tonight? I had a feeling you'd say that. The big one can wait. I actually have something a little lighter that's fun in a completely different way, (name)",
-          "11": "Hmm… maybe you're not quite ready for that one then. It's actually a one-day bundle, so I'm only offering it today. What made you pass on it?",
-          "12": "That's alright. Just pin it for now, okay? I'd rather you enjoy it when the timing feels right. Out of curiosity, when do you usually treat yourself?",
-          "13": "I just remembered something I almost sent earlier, and now I'm debating whether I should even show it to anyone. Think you're ready for it, (name)?",
-          "14": "For me, the fan loses interest because the conversation feels over. Staying engaging keeps the relationship alive and creates more chances for a future yes.",
-          "15": "I'll make sure every pitch has a next move ready. I'll keep conversations engaging after a no. Also I'll use booking or curiosity to keep the opportunity alive."
-        }}
+        {
+          "m": 6,
+          "module": "Module 6 — The Chase",
+          "score": 5,
+          "max": 5,
+          "a": "BCADB",
+          "missed": [],
+          "at": "7/14/2026, 10:52 AM",
+          "written": {
+            "6": "He treated the no as the end of conversation. He let the chat die instead of using it for the next move. If the fan is saying no, take it as an opportunity to do strategy to make him hook.",
+            "7": "Chatter begged and repeated the same offer. Begging lowers value and kills attraction of subs. Don't look needy.",
+            "8": "Chatter needs to find out when the sub is able to spend and keep the conversation alive for later opportunity.",
+            "9": "He pitched without making the sub feel like he wants to open this. Build anticipation, urgency. You should know what your next move is.",
+            "10": "Not tonight? I had a feeling you'd say that. The big one can wait. I actually have something a little lighter that's fun in a completely different way, (name)",
+            "11": "Hmm… maybe you're not quite ready for that one then. It's actually a one-day bundle, so I'm only offering it today. What made you pass on it?",
+            "12": "That's alright. Just pin it for now, okay? I'd rather you enjoy it when the timing feels right. Out of curiosity, when do you usually treat yourself?",
+            "13": "I just remembered something I almost sent earlier, and now I'm debating whether I should even show it to anyone. Think you're ready for it, (name)?",
+            "14": "For me, the fan loses interest because the conversation feels over. Staying engaging keeps the relationship alive and creates more chances for a future yes.",
+            "15": "I'll make sure every pitch has a next move ready. I'll keep conversations engaging after a no. Also I'll use booking or curiosity to keep the opportunity alive."
+          }
+        }
       ],
       "pending": []
     },
     "leigh": {
-      "name": "Leigh", "model": "Karina", "shift": "Graveyard",
-      "focus": "Pricing the peak — the only chatter with two data points, and the trend is real: Module 1 was 3/5 (missed content-objection and stalling reads), Module 6 was 5/5 with written answers that show she absorbed the coaching. Scorecards flag the same live gap repeatedly: the hottest minute of the night passes without a price on it (Sam begging at the peak, Samo hot for hours fully free).",
+      "name": "Leigh",
+      "model": "Karina",
+      "shift": "Graveyard",
+      "focus": "The moment after a complaint — two data points on exams and trending right (3/5 on Module 1 to 5/5 on Module 6), and the live theme this week is selling past a named bad experience: jordanb44 said he wasn't interested after a bad experience and got another pitch, Mark called his last buy boring and got a $20.00 offer in the same breath. And SVIP Sam's $750.00 to $1,000.00 custom, the biggest lever on the board, sat untouched a full shift after two flags.",
       "plan": [
-        "Celebrate the 3/5 → 5/5 jump — the coaching loop visibly worked on her; say so.",
-        "Live drill: when a fan is begging by name, the next unlock is already priced in his hand. No hype without a number behind it.",
-        "Revisit her Module 1 misses (content objections and the confident single ask) in one 10-minute huddle.",
-        "Pet names only for actively spending VIPs — recurring restricted flag."
+        "Complaint first, pitch second: when a fan names a bad experience, check in and fix the feeling before any new number goes out.",
+        "SVIP Sam's custom is the single biggest lever on the board: soft reopen the moment he's online, loop Jassy in before firming any number.",
+        "Protect a new VIP's first day (Dean flipped then wobbled with \"not enough for me\") — sell the relationship before the next content.",
+        "Pet names only for actively spending VIPs, still one flag this week (Viktor's free-page opener)."
       ],
       "exams": [
-        {"m": 6, "module": "Module 6 — The Chase", "score": 5, "max": 5, "a": "BCADB", "missed": [], "at": "7/14/2026, 2:29 PM", "written": {
-          "6": "The chatter accepted the first no as the end of the sale. Instead of keeping the conversation alive or engaging or trying another approach, the chatter went quiet on the fan.",
-          "7": "Begging is not a sales strategy. It usually creates pressure and makes it uncomfortable for the fan; the chatter should be confident enough to guide the conversation to the fan.",
-          "8": "It's a missed opportunity to keep the sale alive. Instead the chatter could have said they can do it another time when he's ready to spoil the model, or created anticipation for later.",
-          "9": "Chatter has no follow-up plan, went straight to the highest offer and didn't build curiosity. The chatter should always know what's next and keep the fan alive in the conversation.",
-          "10": "hehe that's okay — what if i showed u something a little smaller first? i think i've got something that'll still make u smile...",
-          "11": "hehe maybe i'll keep it to myself then — i'd rather save it for someone who's really curious enough to unlock it",
-          "12": "no worries at all — so tell me... what's your favorite kind of content? i wanna remember it for when the timing's better.",
-          "13": "now i'm lowkey debating if i should even show u what i was talking about earlier",
-          "14": "Going quiet after a no is worse because the conversation just dies. Even if you send a bad message, you can still recover and try a different approach. But if you stop talking, you lose the chance to build interest, keep the fan engaged, and turn that no into a yes later. Curiosity can build the fan's fantasy over wanting to spoil you.",
-          "15": "Looking back, I realized there were times I accepted a no too quickly and just moved on. Tonight I'm going to make sure I always have a next move ready — changing my approach, asking questions, planting a seed, or offering something different. Instead of seeing no as the end, I'll treat it as a chance to keep the conversation alive."
-        }},
-        {"m": 1, "module": "Module 1 — Mastering the Comeback", "score": 3, "max": 5, "a": "BCABC", "missed": ["Q3", "Q4"], "at": "7/13/2026, 11:21 PM", "written": {
-          "6": "The chatter ended the conversation immediately when the chatter could have offered a lower price first of $30.",
-          "7": "The chatter should say something like 'got it and i'll make sure that u get to have a fun time with me next week' to make the fan come back for more next week.",
-          "8": "I'd say something like 'what do you want to see today? i want u to be a happy man today'",
-          "9": "The mistake here is making the fan wait and letting him not have the opportunity to buy the content. You made him wait and now he thinks maybe you aren't interested in what you're trying to offer.",
-          "10": "Then I can give u something that goes with ur budget, how far can u go?",
-          "11": "Then i'll save it for u on your payday. Message me once it's ur payday and let's have fun..",
-          "12": "And what video do u want from me? U know that i like surprises...",
-          "13": "Hmmmm maybe? Are u scared that ur not gonna be able to resist me?",
-          "14": "For me, objections are buying opportunities because they usually mean the person is still interested enough to continue the conversation. If someone truly isn't interested, they would leave or ignore the offer.",
-          "15": "I'll read fan tones more, plus I will not decline offers immediately. I will know the difference between objections and rejection and lead more sales with it. Make them hungry and build good rapport."
-        }}
+        {
+          "m": 6,
+          "module": "Module 6 — The Chase",
+          "score": 5,
+          "max": 5,
+          "a": "BCADB",
+          "missed": [],
+          "at": "7/14/2026, 2:29 PM",
+          "written": {
+            "6": "The chatter accepted the first no as the end of the sale. Instead of keeping the conversation alive or engaging or trying another approach, the chatter went quiet on the fan.",
+            "7": "Begging is not a sales strategy. It usually creates pressure and makes it uncomfortable for the fan; the chatter should be confident enough to guide the conversation to the fan.",
+            "8": "It's a missed opportunity to keep the sale alive. Instead the chatter could have said they can do it another time when he's ready to spoil the model, or created anticipation for later.",
+            "9": "Chatter has no follow-up plan, went straight to the highest offer and didn't build curiosity. The chatter should always know what's next and keep the fan alive in the conversation.",
+            "10": "hehe that's okay — what if i showed u something a little smaller first? i think i've got something that'll still make u smile...",
+            "11": "hehe maybe i'll keep it to myself then — i'd rather save it for someone who's really curious enough to unlock it",
+            "12": "no worries at all — so tell me... what's your favorite kind of content? i wanna remember it for when the timing's better.",
+            "13": "now i'm lowkey debating if i should even show u what i was talking about earlier",
+            "14": "Going quiet after a no is worse because the conversation just dies. Even if you send a bad message, you can still recover and try a different approach. But if you stop talking, you lose the chance to build interest, keep the fan engaged, and turn that no into a yes later. Curiosity can build the fan's fantasy over wanting to spoil you.",
+            "15": "Looking back, I realized there were times I accepted a no too quickly and just moved on. Tonight I'm going to make sure I always have a next move ready — changing my approach, asking questions, planting a seed, or offering something different. Instead of seeing no as the end, I'll treat it as a chance to keep the conversation alive."
+          }
+        },
+        {
+          "m": 1,
+          "module": "Module 1 — Mastering the Comeback",
+          "score": 3,
+          "max": 5,
+          "a": "BCABC",
+          "missed": [
+            "Q3",
+            "Q4"
+          ],
+          "at": "7/13/2026, 11:21 PM",
+          "written": {
+            "6": "The chatter ended the conversation immediately when the chatter could have offered a lower price first of $30.",
+            "7": "The chatter should say something like 'got it and i'll make sure that u get to have a fun time with me next week' to make the fan come back for more next week.",
+            "8": "I'd say something like 'what do you want to see today? i want u to be a happy man today'",
+            "9": "The mistake here is making the fan wait and letting him not have the opportunity to buy the content. You made him wait and now he thinks maybe you aren't interested in what you're trying to offer.",
+            "10": "Then I can give u something that goes with ur budget, how far can u go?",
+            "11": "Then i'll save it for u on your payday. Message me once it's ur payday and let's have fun..",
+            "12": "And what video do u want from me? U know that i like surprises...",
+            "13": "Hmmmm maybe? Are u scared that ur not gonna be able to resist me?",
+            "14": "For me, objections are buying opportunities because they usually mean the person is still interested enough to continue the conversation. If someone truly isn't interested, they would leave or ignore the offer.",
+            "15": "I'll read fan tones more, plus I will not decline offers immediately. I will know the difference between objections and rejection and lead more sales with it. Make them hungry and build good rapport."
+          }
+        }
       ],
       "pending": []
     },
     "mj": {
-      "name": "MJ", "model": "Karina", "shift": "Morning",
-      "focus": "SUBMISSION MISSING — Module 6 was assigned at 10:04 AM with a same-day deadline and has not been submitted. Separately, scorecards flag two serious items: paid offers continued on a thread after two explicit hold instructions (Peter), and warm emotional investment from paying VIPs stays unconverted (Guillermo).",
+      "name": "MJ",
+      "model": "Karina",
+      "shift": "Morning",
+      "focus": "Reading the exit — Module 6 came in same day after a direct chase (10:24 PM, 5/5 with genuinely strong written answers in Karina's register). The live gap this week: when a fan leaves or names his own price, she pushes instead of reading it. EJ said he'd unsubscribed and got chased with a guilt line; VIP John named $25 for a tease and got negotiated up instead of closed, and the thread died.",
       "plan": [
-        "FIRST: chase the Module 6 exam today — deadline was explicit, and it's the CEO's directive module.",
-        "Hold instructions are a full stop, not a suggestion — reconfirm this rule 1:1, not in a group setting.",
-        "Value-setting drill: when a paying VIP is pouring out affection, meet the words AND attach a next step.",
-        "Voice check from the last scorecard: keep the heat in the bratty tease register, not blunt anatomy."
-      ],
-      "exams": [],
-      "pending": [{"m": 6, "note": "Sent 10:04 AM with today deadline — no submission as of 4:45 PM. Needs a direct follow-up."}]
-    },
-    "rossana": {
-      "name": "Rosanna", "model": "Karina", "shift": "Afternoon",
-      "focus": "Landing the sale softly — 5/5 with correct instincts in the written answers (her Q12 full-energy pivot is exactly the play). Scorecard theme: after a fan spends big and cools, the asks keep coming instead of a warm landing (Jaco). Written answers also show English polish opportunities — the ideas are right, the delivery needs a pass.",
-      "plan": [
-        "Drill the warm landing: after a big unlock, one appreciation message and a door left open — no further asks that session.",
-        "Pair her with Leigh's Q10–13 answers as Karina-voice examples of the same plays with cleaner delivery.",
-        "Keep the classy-dirty register from her scorecard note — no blunt wording even in hot threads."
+        "Credit the turnaround first: the exam landed same day once chased, and her Q10–13 flows are clean Karina voice. The knowledge is in.",
+        "Exit drill: a fan who says bye or unsubscribes gets a warm door-open line, never a chase. Her own Q12 answer is the template.",
+        "When a VIP names his own number, that IS the sale — lock it in before he cools. No negotiating up from a named price.",
+        "After a whale confirms he's satisfied, name the next piece while the glow is live (SVIP Sam went quiet with no second attempt)."
       ],
       "exams": [
-        {"m": 6, "module": "Module 6 — The Chase", "score": 5, "max": 5, "a": "BCADB", "missed": [], "at": "7/14/2026, 4:14 PM", "written": {
-          "6": "The chatter replied just \"ok\" — it should be an alive conversation with more words, more personal.",
-          "7": "It's begging, and begging kills the fantasy. Pressing = a NEW angle, NEW value, HIGHER energy. Never the same door three times.",
-          "8": "Chatter did not ask when, did not book it, and did not take notes.",
-          "9": "No clear caption for the PPV.",
-          "10": "not tonight?? and here i am waiting for you — alright! but i have something smaller that you might like",
-          "11": "hmm thinking? i offered something very special just for you and a \"maybe not\" answer doesn't get my special things here",
-          "12": "THEN DONT :) you can't get away from me that easy though! i'm still here, how was your day so far?",
-          "13": "I'm just getting ready for bed right now, but i have something to show you — a small preview of what i'm wearing.. do you want to see?",
-          "14": "Going quiet makes it much harder to follow up later. Maintaining a friendly and alive conversation even after he said NO — keep talking to him for future interaction.",
-          "15": "In a recent chat with David I said \"No worries.\" Tonight I will acknowledge the No with a friendly chat and keep messages alive."
-        }}
+        {
+          "m": 6,
+          "module": "Module 6 — The Chase",
+          "score": 5,
+          "max": 5,
+          "a": "BCADB",
+          "missed": [],
+          "at": "7/14/2026, 10:24 PM",
+          "written": {
+            "6": "The reply felt too flat. Instead of just saying \"OK\" the chatter should keep the conversation going and try to build engagement. If the fan can't spend tonight the chatter should find out when they'll be able to spend and continue the conversation from there.",
+            "7": "Instead of begging the fan to spend, try to talk to him in a different way, tease him more, and once he's ready send it again with a different caption, more personalized based on what he wants.",
+            "8": "The reply is too flat. If he can't spend tonight, ask him when he'll be able to spend, save that date, and tease him by saying you'll save the big bundle for him until then.",
+            "9": "Before sending a PPV the chatter needs to make sure they know what the fan wants to see. Understand the fan's preferences before sending anything to reduce the chances of rejection. Every PPV should also include a detailed, personalized caption that matches the fan's interests and builds anticipation.",
+            "10": "haha ok babe no pressure, when do you think you'll be in the mood? i'll save the good stuff for you 😉",
+            "11": "your loss then babe, i was gonna save something fun just for you... maybe i'll give it to someone who's a little more curious 😉",
+            "12": "aww that's ok babe, no stressing tonight, come keep me company for a bit instead... what's the best part of your day so far?",
+            "13": "i've been thinking about you, no rush or anything, but i may have set something aside that made me think of you, now i'm wondering if you're gonna make me wait",
+            "14": "Going quiet after a \"no\" kills the conversation. Even if the fan can't spend, keeping the chat fun and engaging builds connection and creates a better chance they'll spend later.",
+            "15": "I realized I sometimes accepted a no too quickly and let the conversation lose momentum, but now I'll keep the chat engaging, learn what the fan wants and find a better opportunity instead of treating no as the end."
+          }
+        }
+      ],
+      "pending": []
+    },
+    "rossana": {
+      "name": "Rosanna",
+      "model": "Karina",
+      "shift": "Afternoon",
+      "focus": "Tier and price discipline — Antata joined VIP for $200.00 expecting a Diamond-only video, it had to be unsent, and the account is now carrying a live scam accusation in the escalation thread. Days earlier VIP John was offered a $500.00 reveal at $200.00 \"between us\" and still said no. The pacing instincts are real (the Demetrice 1-to-10 heat check before the $45.00 unlock was textbook); the pricing rules are what need to hold.",
+      "plan": [
+        "Tier check before anything is offered to a VIP: Diamond content stays with Diamond fans, no exceptions, even mid-conversation.",
+        "Never cut a price solo and never make it a secret — hold the number warm: \"i'm not dropping this one, when you're ready it's still yours.\"",
+        "Free-page heat becomes a priced offer the same session (Digital got playful and it fizzled with nothing landed).",
+        "Classy-dirty register, babe only in actively spending moments — recurring flag."
+      ],
+      "exams": [
+        {
+          "m": 6,
+          "module": "Module 6 — The Chase",
+          "score": 5,
+          "max": 5,
+          "a": "BCADB",
+          "missed": [],
+          "at": "7/14/2026, 4:14 PM",
+          "written": {
+            "6": "The chatter replied just \"ok\" — it should be an alive conversation with more words, more personal.",
+            "7": "It's begging, and begging kills the fantasy. Pressing = a NEW angle, NEW value, HIGHER energy. Never the same door three times.",
+            "8": "Chatter did not ask when, did not book it, and did not take notes.",
+            "9": "No clear caption for the PPV.",
+            "10": "not tonight?? and here i am waiting for you — alright! but i have something smaller that you might like",
+            "11": "hmm thinking? i offered something very special just for you and a \"maybe not\" answer doesn't get my special things here",
+            "12": "THEN DONT :) you can't get away from me that easy though! i'm still here, how was your day so far?",
+            "13": "I'm just getting ready for bed right now, but i have something to show you — a small preview of what i'm wearing.. do you want to see?",
+            "14": "Going quiet makes it much harder to follow up later. Maintaining a friendly and alive conversation even after he said NO — keep talking to him for future interaction.",
+            "15": "In a recent chat with David I said \"No worries.\" Tonight I will acknowledge the No with a friendly chat and keep messages alive."
+          }
+        }
       ],
       "pending": []
     },
     "jeffrey": {
-      "name": "Jeffrey", "model": "Cover", "shift": "Off-days",
-      "focus": "Follow-through on warm fans — 5/5 with the most self-aware Q15 on the team (admits he escapes long chatty threads). Scorecards agree: strong ladders, but warm spenders go silent after one follow-up (Chris flagged warm three times, never re-contacted), and stalled VIPs get a pause instead of a middle step (Aussie).",
+      "name": "Jeffrey",
+      "model": "Cover",
+      "shift": "Off-days",
+      "focus": "Caution labels before anything else — Tim is flagged NO SALES and a $35.00 unlock landed on his thread anyway on 7/19, the third time in two weeks (July 11, 14, 19). The selling itself is elite: $500.00 from Brian in one shift (a $300.00 tip plus the $200.00 set) and the Akxel ladder was clean. The pre-open label check is the gap, and stacked buyers (Akxel, Eyan) still never hear the VIP club named.",
       "plan": [
-        "His Q15 admission is the coaching door — build his plan around ONE more circle-back on every warm spender before shift end.",
-        "Middle-step drill: when a VIP says no to the top number, offer the in-between price, never a pause.",
-        "As cover he writes in every voice — spot-check one thread per account against its voice guide each covered shift."
+        "Before opening any thread, check the name for a caution label the same way you'd check spend history. Flagged fans stay warm and completely free until Jassy or the model clears them.",
+        "A fan stacking multiple buys in one sitting gets the VIP club named while he's still warm.",
+        "Set a reminder for every promised whale follow-up — Sam came back online minutes after clock-out on 7/14.",
+        "As cover he writes in every voice — keep the one-thread-per-account voice spot-check each covered shift."
       ],
       "exams": [
-        {"m": 6, "module": "Module 6 — The Chase", "score": 5, "max": 5, "a": "BCADB", "missed": [], "at": "7/14/2026, 3:15 PM", "written": {
-          "6": "Stopped the moment the fan said no and didn't think of something to keep the fan engaged; never planted a booking seed and didn't find other ways to spark curiosity.",
-          "7": "The chatter is begging, which kills the fan's desire.",
-          "8": "Never asked why the fan was feeling that. Didn't try to divert the conversation toward an upsell, no booking, no seed planted.",
-          "9": "No backup plan, never asked why the fan declined, and didn't offer a cheaper set/bundle.",
-          "10": "You are making me work for your attention tonight, aren't you? If you're not ready for that one, I'm not convinced there's nothing I can tempt you with tonight.",
-          "11": "That answer told me everything I needed to know, so let's leave this one alone for now. I'd rather keep it for someone who already knows when something is worth having.",
-          "12": "That's completely fine with me — I'd rather keep enjoying your company than make tonight feel like a long sales conversation. So tell me, did you end up buying the shoes you mentioned earlier?",
-          "13": "I saw what you sent me earlier, and those shoes and your OOTD reminded me we have the same taste. I bought what I'm wearing in that set and thought you'd like a peek. No pressure — open it when the timing is right.",
-          "14": "Because it immediately changes the meaning of the conversation and can make the fan feel the attention was only about the money, which makes everything feel transactional.",
-          "15": "I don't really give up on the first NO, but if the fan has been on the account a long time and is just chatty, I stop talking and make excuses to escape. I'll be more patient, talk genuinely, keep a backup plan if he declines, build curiosity, set bookings, and plant seeds for future sales."
-        }}
+        {
+          "m": 6,
+          "module": "Module 6 — The Chase",
+          "score": 5,
+          "max": 5,
+          "a": "BCADB",
+          "missed": [],
+          "at": "7/14/2026, 3:15 PM",
+          "written": {
+            "6": "Stopped the moment the fan said no and didn't think of something to keep the fan engaged; never planted a booking seed and didn't find other ways to spark curiosity.",
+            "7": "The chatter is begging, which kills the fan's desire.",
+            "8": "Never asked why the fan was feeling that. Didn't try to divert the conversation toward an upsell, no booking, no seed planted.",
+            "9": "No backup plan, never asked why the fan declined, and didn't offer a cheaper set/bundle.",
+            "10": "You are making me work for your attention tonight, aren't you? If you're not ready for that one, I'm not convinced there's nothing I can tempt you with tonight.",
+            "11": "That answer told me everything I needed to know, so let's leave this one alone for now. I'd rather keep it for someone who already knows when something is worth having.",
+            "12": "That's completely fine with me — I'd rather keep enjoying your company than make tonight feel like a long sales conversation. So tell me, did you end up buying the shoes you mentioned earlier?",
+            "13": "I saw what you sent me earlier, and those shoes and your OOTD reminded me we have the same taste. I bought what I'm wearing in that set and thought you'd like a peek. No pressure — open it when the timing is right.",
+            "14": "Because it immediately changes the meaning of the conversation and can make the fan feel the attention was only about the money, which makes everything feel transactional.",
+            "15": "I don't really give up on the first NO, but if the fan has been on the account a long time and is just chatty, I stop talking and make excuses to escape. I'll be more patient, talk genuinely, keep a backup plan if he declines, build curiosity, set bookings, and plant seeds for future sales."
+          }
+        }
       ],
       "pending": []
     }
