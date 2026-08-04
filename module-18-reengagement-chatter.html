@@ -1,0 +1,160 @@
+<title>Playbook · Module 18 · Re-engaging Cold & Expired Fans (Chatter Edition)</title>
+<meta name="color-scheme" content="dark"><script>document.documentElement.setAttribute('data-theme','dark');</script>
+<style>:root{--bg:#ECECF1;--card:#FFF;--card-2:#FBFBFD;--sep:rgba(60,60,67,.14);--ink:#1C1C1E;--ink-2:#3C3C43;--ink-soft:#6E6E73;--ink-faint:#8E8E93;--gold:#C99A3E;--gold-deep:#A97F27;--gold-soft:rgba(201,154,62,.14);--imsg:#1E8CFF;--imsg-2:#0A74E6;--grey:#E9E9EB;--green:#34C759;--red:#FF3B30;--shadow-sm:0 1px 2px rgba(0,0,0,.05);--r-md:18px;--r-sm:12px;--maxw:820px;--sans:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;}
+@media(prefers-color-scheme:dark){:root{--bg:#000;--card:#1C1C1E;--card-2:#2C2C2E;--sep:rgba(84,84,88,.36);--ink:#F5F5F7;--ink-2:#EBEBF0;--ink-soft:#AEAEB2;--ink-faint:#8E8E93;--gold:#E8C170;--gold-deep:#D9B26A;--gold-soft:rgba(232,193,112,.16);--grey:#3A3A3C;--green:#30D158;}}
+:root[data-theme="dark"]{--bg:#000;--card:#1C1C1E;--card-2:#2C2C2E;--sep:rgba(84,84,88,.36);--ink:#F5F5F7;--ink-2:#EBEBF0;--ink-soft:#AEAEB2;--ink-faint:#8E8E93;--gold:#E8C170;--gold-deep:#D9B26A;--gold-soft:rgba(232,193,112,.16);--grey:#3A3A3C;--green:#30D158;}
+:root[data-theme="light"]{--bg:#ECECF1;--card:#FFF;--card-2:#FBFBFD;--sep:rgba(60,60,67,.14);--ink:#1C1C1E;--ink-soft:#6E6E73;--ink-faint:#8E8E93;--gold:#C99A3E;--gold-deep:#A97F27;--gold-soft:rgba(201,154,62,.14);--grey:#E9E9EB;--green:#34C759;}
+*{box-sizing:border-box;}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px;}
+.topbar{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--bg) 72%,transparent);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--sep);}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:52px;}
+.topbar .brand{font-size:15px;font-weight:600;}.topbar .brand span{color:var(--gold);}
+.topbar .pill{font-size:12px;font-weight:600;color:var(--ink-soft);background:var(--card);border:1px solid var(--sep);padding:5px 11px;border-radius:999px;}
+header.hero{padding:64px 0 36px;text-align:center;}
+.eyebrow{font-size:13px;font-weight:600;text-transform:uppercase;color:var(--gold);margin:0 0 14px;}
+h1{font-weight:700;font-size:clamp(36px,7vw,58px);line-height:1.03;letter-spacing:-.03em;margin:0 auto 16px;max-width:15ch;text-wrap:balance;}
+h1 em{font-style:normal;background:linear-gradient(120deg,var(--gold),var(--gold-deep));-webkit-background-clip:text;background-clip:text;color:transparent;}
+.lede{font-size:20px;color:var(--ink-soft);max-width:52ch;margin:0 auto;line-height:1.45;}
+section{padding:34px 0;}h2{font-weight:700;font-size:clamp(24px,4vw,32px);letter-spacing:-.02em;margin:0 0 8px;}
+.sub{font-size:18px;color:var(--ink-soft);margin:0 0 20px;max-width:60ch;}
+.card{background:var(--card);border:1px solid var(--sep);border-radius:var(--r-md);padding:22px 24px;margin:16px 0;box-shadow:var(--shadow-sm);}
+.card .k{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);margin:0 0 8px;}
+.card h3{margin:0 0 10px;font-size:21px;font-weight:700;}
+.card p{margin:0 0 10px;color:var(--ink-2);font-size:15.5px;}
+.lab{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin:14px 0 6px;}
+.lab.goal{color:var(--gold-deep);}.lab.no{color:var(--red);}.lab.yes{color:var(--green);}
+.chat{display:grid;gap:6px;margin:8px 0 4px;}
+.m{max-width:82%;padding:9px 14px;border-radius:17px;font-size:15px;line-height:1.38;}
+.m.in{align-self:flex-start;background:var(--grey);color:var(--ink);border-bottom-left-radius:5px;}
+.m.out{align-self:flex-end;margin-left:auto;color:#fff;background:linear-gradient(160deg,var(--imsg),var(--imsg-2));border-bottom-right-radius:5px;}
+.m.bad{align-self:flex-end;margin-left:auto;color:#fff;background:linear-gradient(160deg,#FF6B61,#E5382C);border-bottom-right-radius:5px;}
+.who{display:block;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.72;margin-bottom:2px;}
+.callout{background:var(--card);border:1px solid var(--sep);border-radius:var(--r-md);padding:20px 24px;margin:22px 0;display:flex;gap:16px;align-items:flex-start;}
+.callout .e{font-size:26px;line-height:1;}.callout .t{font-weight:700;margin:0 0 4px;}.callout p{margin:0;color:var(--ink-soft);font-size:15.5px;}
+table{border-collapse:collapse;width:100%;font-size:15px;min-width:430px;}
+.tblwrap{overflow-x:auto;background:var(--card);border:1px solid var(--sep);border-radius:var(--r-md);margin:16px 0;}
+th,td{text-align:left;padding:13px 18px;border-bottom:1px solid var(--sep);}
+th{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);background:var(--card-2);}
+tr:last-child td{border-bottom:none;}td b{font-weight:600;}
+ul.rules{list-style:none;margin:0;padding:0;}
+ul.rules li{display:flex;gap:13px;align-items:flex-start;padding:13px 0;border-bottom:1px solid var(--sep);font-size:16px;}
+ul.rules li:last-child{border-bottom:none;}
+ul.rules .n{width:24px;height:24px;border-radius:50%;background:var(--gold-soft);color:var(--gold-deep);font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;flex:0 0 auto;margin-top:2px;}
+.cta{display:block;text-align:center;background:linear-gradient(160deg,var(--gold),var(--gold-deep));color:#2a1e08;font-weight:600;font-size:17px;text-decoration:none;border-radius:14px;padding:16px 30px;margin:28px auto 0;max-width:420px;box-shadow:0 6px 18px var(--gold-soft);}
+footer{padding:36px 0 66px;color:var(--ink-faint);font-size:13px;text-align:center;}
+footer .mm{font-weight:600;color:var(--ink-soft);}
+.phasebar{display:flex;gap:6px;justify-content:center;margin:26px auto 0;flex-wrap:wrap;}
+.ph{font-size:12.5px;font-weight:600;padding:6px 13px;border-radius:999px;border:1px solid var(--sep);background:var(--card);color:var(--ink-faint);text-decoration:none;}
+.ph:hover{border-color:var(--gold);color:var(--ink);}
+.ph.on{background:linear-gradient(160deg,var(--gold),var(--gold-deep));color:#2a1e08;border-color:transparent;}
+</style>
+<div class="topbar"><div class="wrap"><div class="brand">LiveRich<span>Media</span> · Playbook</div><div class="pill">Module 18 · Chatter Edition</div></div></div>
+<header class="hero"><div class="wrap">
+  <p class="eyebrow">The Chatter Playbook · Module 18</p>
+  <h1>Re-engaging <em>Cold Fans</em></h1>
+  <p class="lede">A fan who went quiet is not necessarily gone. He might be busy. He might feel awkward about the gap. He might be waiting for a reason to come back. Your job is to give him one — without making him feel guilty about leaving.</p>
+  <div class="phasebar">
+    <a class="ph" href="module-11-domination-chatter.html">11 · Domination</a>
+    <a class="ph" href="module-12-fan-psychology-chatter.html">12 · Psychology</a>
+    <a class="ph" href="module-13-personality-types-chatter.html">13 · Personalities</a>
+    <a class="ph" href="module-14-difficult-fans-chatter.html">14 · Difficult Fans</a>
+    <a class="ph" href="module-15-tier-upgrades-chatter.html">15 · Tier Upgrades</a>
+    <a class="ph" href="module-16-shift-discipline-chatter.html">16 · Shift Discipline</a>
+    <a class="ph" href="module-17-mass-messages-chatter.html">17 · Mass Messages</a>
+    <a class="ph on" href="module-18-reengagement-chatter.html">18 · Re-engagement</a>
+    <a class="ph" href="module-19-custom-content-chatter.html">19 · Custom Content</a>
+  </div>
+</div></header>
+<main><div class="wrap">
+
+<section>
+  <div class="callout"><span class="e">💤</span><div>
+    <p class="t">Why fans go cold — and why most of them come back</p>
+    <p>The most common reasons a fan goes quiet: life got busy, money got tight, he felt embarrassed about the gap the longer it stretched, or the last interaction ended flat. None of these are permanent states. The fans who never come back are a minority — most are waiting for a low-pressure reason to re-engage. Your job is to provide it.</p>
+  </div></div>
+</section>
+
+<section>
+  <h2>Cold vs expired — know the difference</h2>
+  <div class="card">
+    <p class="k">Cold fan</p>
+    <h3>Still subscribed — just quiet. Gone 7–30 days without engaging.</h3>
+    <p>A cold fan is still on the page. He's paying the subscription. He just isn't opening messages or starting conversations. This is the easiest win: one specific, warm, low-pressure message can reactivate him entirely. Use a callback from fan notes if available. If no notes exist, use an open-loop question that doesn't require him to know the context.</p>
+  </div>
+  <div class="card">
+    <p class="k">Expired fan</p>
+    <h3>Subscription lapsed. He's off the page. Getting him back requires a different approach.</h3>
+    <p>An expired fan made a decision — at some point, he decided not to renew. That decision was made for a reason. Your re-engagement message needs to give him something new — a reason that didn't exist before. A callback alone won't do it. You need a hook: something he's missing, something that just became available, something that addresses why he might have left.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Re-engagement openers — what works</h2>
+
+  <div class="card">
+    <p class="k">Opener type 1 · The callback (cold fans with notes)</p>
+    <h3>Pick up a thread from before like no time has passed.</h3>
+    <div class="chat">
+      <div class="m bad"><span class="who">✕ Guilt-tripping</span>hey stranger 😢 where have you been?? i've been waiting for you</div>
+      <div class="m bad"><span class="who">✕ Transactional</span>hey! long time no chat 😊 i just dropped some new content you might like!</div>
+      <div class="m out"><span class="who">✓ Callback — no mention of the gap</span>hey — i was actually thinking about you the other day. you mentioned that thing with your lease was coming up — did that ever get sorted?</div>
+    </div>
+    <p class="lab goal">He's surprised she remembered. The gap becomes irrelevant because the conversation picks up exactly where it left off.</p>
+  </div>
+
+  <div class="card">
+    <p class="k">Opener type 2 · The curiosity hook (cold fans with no notes)</p>
+    <h3>Open a loop he didn't know existed.</h3>
+    <div class="chat">
+      <div class="m out"><span class="who">✓ Curiosity hook — no history needed</span>i've been sitting on something for a while and i just decided to finally film it. the guys who actually talk to me get to see it first 👀</div>
+    </div>
+    <p class="lab goal">No context needed. No gap mentioned. Just an open loop that invites a response from wherever he is.</p>
+  </div>
+
+  <div class="card">
+    <p class="k">Opener type 3 · The "I thought of you" (warm but lapsed)</p>
+    <h3>Make him feel like he was in her mind.</h3>
+    <div class="chat">
+      <div class="m out"><span class="who">✓ Thought of you — personal, no pressure</span>i filmed something this week that genuinely reminded me of you — i don't know why, it just did 😊 you okay?</div>
+    </div>
+    <p class="lab goal">Two things: she thought of him, and she asked about him. That's warmth and genuine interest in one message.</p>
+  </div>
+
+  <div class="card">
+    <p class="k">Opener type 4 · The new access offer (expired fans)</p>
+    <h3>Give him something that didn't exist when he left.</h3>
+    <div class="chat">
+      <div class="m out"><span class="who">✓ New access — for expired fans</span>hey — i know it's been a while. i've been doing something different on the page lately that i think you'd actually appreciate. it's not the same as before. genuinely. if you want to take another look, i'd love to have you back 😊</div>
+    </div>
+    <p class="lab goal">Acknowledges the gap once, briefly, without drama. Offers something new. Warm close. No pressure.</p>
+  </div>
+</section>
+
+<section>
+  <h2>The 3-attempt rule</h2>
+  <div class="card">
+    <p class="k">When to stop trying</p>
+    <h3>Three well-spaced attempts. Then accept and move on.</h3>
+    <p>Re-engagement attempts should be spaced at least 5–7 days apart. The first uses your best opener. The second tries a different angle. The third is a final, warm, low-pressure message that leaves the door open without begging. After three attempts with no response, remove him from the re-engagement list. He's not ready — and continuing to message him damages deliverability.</p>
+    <ul class="rules" style="margin-top:12px;">
+      <li><span class="n">1</span><span><strong>Attempt 1:</strong> Best callback or curiosity hook. Wait 5–7 days.</span></li>
+      <li><span class="n">2</span><span><strong>Attempt 2:</strong> Different angle — thought of you, or new content hook. Wait 7 days.</span></li>
+      <li><span class="n">3</span><span><strong>Attempt 3:</strong> The open door. "I hope you're well — you're always welcome back when you're ready 😊" — then stop.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>Golden rules of re-engagement</h2>
+  <div class="card"><ul class="rules">
+    <li><span class="n">★</span><span>Never mention the gap. Pick up a thread and move forward like it didn't happen.</span></li>
+    <li><span class="n">★</span><span>No guilt trips. Ever. They make re-entry feel costly — and he'll stay gone to avoid the discomfort.</span></li>
+    <li><span class="n">★</span><span>Cold fans need a callback. Expired fans need something new. Know the difference and respond accordingly.</span></li>
+    <li><span class="n">★</span><span>Three attempts maximum. After that, accept and move on — continued messaging hurts deliverability.</span></li>
+    <li><span class="n">★</span><span>Fan notes make re-engagement infinitely easier. A callback from a real memory is worth ten generic openers.</span></li>
+  </ul></div>
+  <a class="cta" href="module-18-exam-chatter.html">Ready? Take the Module 18 exam →</a>
+</section>
+
+</div></main>
+<footer><div class="wrap"><p class="mm">LIVERICHMEDIA · THE CHATTER PLAYBOOK · MODULE 18 · RE-ENGAGING COLD & EXPIRED FANS</p><p>Study this page, then take the exam. Your manager gets your score automatically.</p></div></footer>

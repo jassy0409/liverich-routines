@@ -1,0 +1,168 @@
+<title>Playbook · Module 15 · Upselling & Tier Upgrades (Chatter Edition)</title>
+<meta name="color-scheme" content="dark"><script>document.documentElement.setAttribute('data-theme','dark');</script>
+<style>:root{--bg:#ECECF1;--card:#FFF;--card-2:#FBFBFD;--sep:rgba(60,60,67,.14);--ink:#1C1C1E;--ink-2:#3C3C43;--ink-soft:#6E6E73;--ink-faint:#8E8E93;--gold:#C99A3E;--gold-deep:#A97F27;--gold-soft:rgba(201,154,62,.14);--imsg:#1E8CFF;--imsg-2:#0A74E6;--grey:#E9E9EB;--green:#34C759;--red:#FF3B30;--shadow-sm:0 1px 2px rgba(0,0,0,.05);--r-md:18px;--r-sm:12px;--maxw:820px;--sans:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;}
+@media(prefers-color-scheme:dark){:root{--bg:#000;--card:#1C1C1E;--card-2:#2C2C2E;--sep:rgba(84,84,88,.36);--ink:#F5F5F7;--ink-2:#EBEBF0;--ink-soft:#AEAEB2;--ink-faint:#8E8E93;--gold:#E8C170;--gold-deep:#D9B26A;--gold-soft:rgba(232,193,112,.16);--grey:#3A3A3C;--green:#30D158;}}
+:root[data-theme="dark"]{--bg:#000;--card:#1C1C1E;--card-2:#2C2C2E;--sep:rgba(84,84,88,.36);--ink:#F5F5F7;--ink-2:#EBEBF0;--ink-soft:#AEAEB2;--ink-faint:#8E8E93;--gold:#E8C170;--gold-deep:#D9B26A;--gold-soft:rgba(232,193,112,.16);--grey:#3A3A3C;--green:#30D158;}
+:root[data-theme="light"]{--bg:#ECECF1;--card:#FFF;--card-2:#FBFBFD;--sep:rgba(60,60,67,.14);--ink:#1C1C1E;--ink-soft:#6E6E73;--ink-faint:#8E8E93;--gold:#C99A3E;--gold-deep:#A97F27;--gold-soft:rgba(201,154,62,.14);--grey:#E9E9EB;--green:#34C759;}
+*{box-sizing:border-box;}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px;}
+.topbar{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--bg) 72%,transparent);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--sep);}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:52px;}
+.topbar .brand{font-size:15px;font-weight:600;}.topbar .brand span{color:var(--gold);}
+.topbar .pill{font-size:12px;font-weight:600;color:var(--ink-soft);background:var(--card);border:1px solid var(--sep);padding:5px 11px;border-radius:999px;}
+header.hero{padding:64px 0 36px;text-align:center;}
+.eyebrow{font-size:13px;font-weight:600;text-transform:uppercase;color:var(--gold);margin:0 0 14px;}
+h1{font-weight:700;font-size:clamp(36px,7vw,58px);line-height:1.03;letter-spacing:-.03em;margin:0 auto 16px;max-width:15ch;text-wrap:balance;}
+h1 em{font-style:normal;background:linear-gradient(120deg,var(--gold),var(--gold-deep));-webkit-background-clip:text;background-clip:text;color:transparent;}
+.lede{font-size:20px;color:var(--ink-soft);max-width:52ch;margin:0 auto;line-height:1.45;}
+section{padding:34px 0;}h2{font-weight:700;font-size:clamp(24px,4vw,32px);letter-spacing:-.02em;margin:0 0 8px;}
+.sub{font-size:18px;color:var(--ink-soft);margin:0 0 20px;max-width:60ch;}
+.card{background:var(--card);border:1px solid var(--sep);border-radius:var(--r-md);padding:22px 24px;margin:16px 0;box-shadow:var(--shadow-sm);}
+.card .k{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);margin:0 0 8px;}
+.card h3{margin:0 0 10px;font-size:21px;font-weight:700;}
+.card p{margin:0 0 10px;color:var(--ink-2);font-size:15.5px;}
+.lab{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin:14px 0 6px;}
+.lab.goal{color:var(--gold-deep);}.lab.no{color:var(--red);}.lab.yes{color:var(--green);}
+.chat{display:grid;gap:6px;margin:8px 0 4px;}
+.m{max-width:82%;padding:9px 14px;border-radius:17px;font-size:15px;line-height:1.38;}
+.m.in{align-self:flex-start;background:var(--grey);color:var(--ink);border-bottom-left-radius:5px;}
+.m.out{align-self:flex-end;margin-left:auto;color:#fff;background:linear-gradient(160deg,var(--imsg),var(--imsg-2));border-bottom-right-radius:5px;}
+.m.bad{align-self:flex-end;margin-left:auto;color:#fff;background:linear-gradient(160deg,#FF6B61,#E5382C);border-bottom-right-radius:5px;}
+.who{display:block;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.72;margin-bottom:2px;}
+.callout{background:var(--card);border:1px solid var(--sep);border-radius:var(--r-md);padding:20px 24px;margin:22px 0;display:flex;gap:16px;align-items:flex-start;}
+.callout .e{font-size:26px;line-height:1;}.callout .t{font-weight:700;margin:0 0 4px;}.callout p{margin:0;color:var(--ink-soft);font-size:15.5px;}
+table{border-collapse:collapse;width:100%;font-size:15px;min-width:430px;}
+.tblwrap{overflow-x:auto;background:var(--card);border:1px solid var(--sep);border-radius:var(--r-md);margin:16px 0;}
+th,td{text-align:left;padding:13px 18px;border-bottom:1px solid var(--sep);}
+th{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);background:var(--card-2);}
+tr:last-child td{border-bottom:none;}td b{font-weight:600;}
+ul.rules{list-style:none;margin:0;padding:0;}
+ul.rules li{display:flex;gap:13px;align-items:flex-start;padding:13px 0;border-bottom:1px solid var(--sep);font-size:16px;}
+ul.rules li:last-child{border-bottom:none;}
+ul.rules .n{width:24px;height:24px;border-radius:50%;background:var(--gold-soft);color:var(--gold-deep);font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;flex:0 0 auto;margin-top:2px;}
+.cta{display:block;text-align:center;background:linear-gradient(160deg,var(--gold),var(--gold-deep));color:#2a1e08;font-weight:600;font-size:17px;text-decoration:none;border-radius:14px;padding:16px 30px;margin:28px auto 0;max-width:420px;box-shadow:0 6px 18px var(--gold-soft);}
+footer{padding:36px 0 66px;color:var(--ink-faint);font-size:13px;text-align:center;}
+footer .mm{font-weight:600;color:var(--ink-soft);}
+.phasebar{display:flex;gap:6px;justify-content:center;margin:26px auto 0;flex-wrap:wrap;}
+.ph{font-size:12.5px;font-weight:600;padding:6px 13px;border-radius:999px;border:1px solid var(--sep);background:var(--card);color:var(--ink-faint);text-decoration:none;}
+.ph:hover{border-color:var(--gold);color:var(--ink);}
+.ph.on{background:linear-gradient(160deg,var(--gold),var(--gold-deep));color:#2a1e08;border-color:transparent;}
+.tier-ladder{display:flex;flex-direction:column;gap:0;border-radius:var(--r-md);overflow:hidden;border:1px solid var(--sep);margin:18px 0;}
+.tier-row{display:flex;align-items:center;gap:16px;padding:14px 18px;border-bottom:1px solid var(--sep);background:var(--card);}
+.tier-row:last-child{border-bottom:none;}
+.tier-icon{font-size:22px;flex:0 0 auto;}
+.tier-info strong{display:block;font-size:15px;margin-bottom:2px;}
+.tier-info span{font-size:13px;color:var(--ink-soft);}
+</style>
+<div class="topbar"><div class="wrap"><div class="brand">LiveRich<span>Media</span> · Playbook</div><div class="pill">Module 15 · Chatter Edition</div></div></div>
+<header class="hero"><div class="wrap">
+  <p class="eyebrow">The Chatter Playbook · Module 15</p>
+  <h1>Upselling &amp; <em>Tier Upgrades</em></h1>
+  <p class="lede">The upgrade from Free to VIP, VIP to SVIP, or SVIP to Diamond is the highest-value single action a chatter can drive. This module teaches you how to read upgrade readiness and make the ask feel like a natural next step — not a sales pitch.</p>
+  <div class="phasebar">
+    <a class="ph" href="module-11-domination-chatter.html">11 · Domination</a>
+    <a class="ph" href="module-12-fan-psychology-chatter.html">12 · Psychology</a>
+    <a class="ph" href="module-13-personality-types-chatter.html">13 · Personalities</a>
+    <a class="ph" href="module-14-difficult-fans-chatter.html">14 · Difficult Fans</a>
+    <a class="ph on" href="module-15-tier-upgrades-chatter.html">15 · Tier Upgrades</a>
+    <a class="ph" href="module-16-shift-discipline-chatter.html">16 · Shift Discipline</a>
+    <a class="ph" href="module-17-mass-messages-chatter.html">17 · Mass Messages</a>
+    <a class="ph" href="module-18-reengagement-chatter.html">18 · Re-engagement</a>
+    <a class="ph" href="module-19-custom-content-chatter.html">19 · Custom Content</a>
+  </div>
+</div></header>
+<main><div class="wrap">
+
+<section>
+  <div class="callout"><span class="e">🏆</span><div>
+    <p class="t">Why tier upgrades are the highest-leverage move on the page</p>
+    <p>A single PPV sale earns once. A tier upgrade changes a fan's access level permanently — meaning every piece of content he sees from that point forward is more valuable to him, and he is more invested in staying. Driving upgrades is not just about one sale. It is about fundamentally changing a fan's relationship to the page.</p>
+  </div></div>
+</section>
+
+<section>
+  <h2>Karina's tier ladder — know it cold</h2>
+  <div class="tier-ladder">
+    <div class="tier-row"><span class="tier-icon">⭕</span><div class="tier-info"><strong>Non-VIP — Free Page</strong><span>No nipples. Teaser content only. This fan is in Intrigue — the goal is to move him up.</span></div></div>
+    <div class="tier-row"><span class="tier-icon">🏆</span><div class="tier-info"><strong>VIP</strong><span>Topless, no explicit content. This fan has invested. The goal is to build Rapport and move toward SVIP.</span></div></div>
+    <div class="tier-row"><span class="tier-icon">💎💎</span><div class="tier-info"><strong>SVIP</strong><span>Full nudity, no BG/GG content. High-value tier. Protect these fans aggressively.</span></div></div>
+    <div class="tier-row"><span class="tier-icon">🐳🐳</span><div class="tier-info"><strong>Diamond</strong><span>Full access — everything. These are whales. Treat every interaction as relationship maintenance.</span></div></div>
+  </div>
+  <div class="callout"><span class="e">🚫</span><div>
+    <p class="t">Free page rule — absolute</p>
+    <p>The Free page never contains VIP funnel invites. Free page copy teases toward an upgrade naturally — it never explicitly asks fans to join the VIP. That invite lives in DMs only, in the right conversation, at the right moment.</p>
+  </div></div>
+</section>
+
+<section>
+  <h2>Reading upgrade readiness</h2>
+  <p class="sub">The upgrade ask only lands when the fan is already leaning toward it. Make it before he's ready and you create resistance. Make it at the right moment and he says yes before you've finished the sentence.</p>
+  <div class="tblwrap"><table>
+    <thead><tr><th>Signal</th><th>What it means</th><th>Your move</th></tr></thead>
+    <tbody>
+      <tr><td>He asks what's on the VIP page</td><td><b>Direct upgrade intent</b></td><td>Describe one specific thing he'd get — not a list. Then invite.</td></tr>
+      <tr><td>He buys the same tier PPV repeatedly</td><td><b>He wants more but hasn't been offered it</b></td><td>Introduce the next tier as the natural next level for him.</td></tr>
+      <tr><td>"Is there more than this?"</td><td><b>Actively looking for the upgrade path</b></td><td>Describe what more looks like, at his current spend level, and invite.</td></tr>
+      <tr><td>He tips generously / multiple times</td><td><b>High-value fan — Spender type</b></td><td>Exclusive upgrade framing — "the guys at [tier] get [specific thing]"</td></tr>
+      <tr><td>He's been on Free for 3+ weeks and still active</td><td><b>Engaged but hasn't upgraded — nudge needed</b></td><td>One warm, specific upgrade invite in DM. Not a blast. Personalised.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section>
+  <h2>How to make the upgrade ask</h2>
+  <div class="card">
+    <p class="k">The 3-part upgrade invite</p>
+    <h3>Acknowledge where he is → describe what he's missing → invite him specifically.</h3>
+    <p>Never lead with the price. Lead with the access. He's not paying for a tier — he's paying for a feeling and an experience. Describe that first. State the price clean after he's already imagining the thing he'd be getting.</p>
+    <div class="chat">
+      <div class="m bad"><span class="who">✕ Wrong — leading with price</span>hey! you should upgrade to VIP, it's only $X a month and you get access to way more content 😊</div>
+      <div class="m out"><span class="who">✓ Right — acknowledge, describe, invite</span>you know, the stuff i show on the VIP page is a completely different side of me from what you've seen here 👀 the guys over there get the real version. i think you'd fit in over there honestly — want to know more?</div>
+    </div>
+    <p class="lab goal">He's now curious about "the real version." The price question comes from him — and that's the right order.</p>
+  </div>
+
+  <div class="card">
+    <p class="k">Free to VIP — the first upgrade</p>
+    <h3>Frame it as access he's earned, not a product he's buying.</h3>
+    <div class="chat">
+      <div class="m out"><span class="who">Free → VIP invite · after several DM exchanges</span>i feel like you've been around long enough to see what's actually on my page 😏 the real stuff is over on VIP. the guys there have been with me a while. i think it's time you joined them — interested?</div>
+      <div class="m in"><span class="who">Fan</span>what does VIP include exactly</div>
+      <div class="m out"><span class="who">Describe one specific thing — not a list</span>honestly the thing i love most is that i can be more myself over there 🙈 there's a whole different energy to it. and you'll see a lot more of me. literally 😏</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <p class="k">VIP to SVIP — the mid-tier upgrade</p>
+    <h3>Use the gap between what he's seen and what exists above him.</h3>
+    <div class="chat">
+      <div class="m out"><span class="who">VIP → SVIP · after consistent engagement</span>can i tell you something? the stuff i put on SVIP is honestly the content i'm most proud of. it's the stuff i don't show everyone. you've been on VIP for a while — you've seen a lot. but there's a next level 👀 want to know what's up there?</div>
+    </div>
+    <p class="lab goal">The SVIP upgrade sell is always about the gap — not the price. What is he currently missing? Make that gap feel real and specific.</p>
+  </div>
+</section>
+
+<section>
+  <h2>What never to do when upselling</h2>
+  <div class="card"><ul class="rules">
+    <li><span class="n">✕</span><span><strong>Listing everything the tier includes.</strong> A list of features is a catalogue, not an invitation. Pick one specific thing that you genuinely think would appeal to this fan, and describe it in one or two vivid sentences.</span></li>
+    <li><span class="n">✕</span><span><strong>Making the pitch too early.</strong> An upgrade offer made before Rapport is established lands as a sales message. He needs to feel known and valued first — then the invite feels like an exclusive opportunity, not a push.</span></li>
+    <li><span class="n">✕</span><span><strong>Mentioning the upgrade price before you've described the value.</strong> Price before value creates resistance. Value before price creates desire. The order matters every time.</span></li>
+    <li><span class="n">✕</span><span><strong>Pushing after one no.</strong> If he declines an upgrade invite, acknowledge it warmly and move on. Note it, and try again in 2–3 weeks after more Rapport has been built.</span></li>
+  </ul></div>
+</section>
+
+<section>
+  <h2>Golden rules of tier upgrades</h2>
+  <div class="card"><ul class="rules">
+    <li><span class="n">★</span><span>Know the tier ladder cold. You cannot sell what you don't understand.</span></li>
+    <li><span class="n">★</span><span>Lead with access and feeling. Price comes after, clean, once, with no apology.</span></li>
+    <li><span class="n">★</span><span>The upgrade is earned — by him through engagement, by her through Rapport. Don't skip the work.</span></li>
+    <li><span class="n">★</span><span>Free page never explicitly invites to VIP. The invite lives in DMs only.</span></li>
+    <li><span class="n">★</span><span>One upgrade ask per conversation. If he declines, note it and come back in a few weeks.</span></li>
+  </ul></div>
+  <a class="cta" href="module-15-exam-chatter.html">Ready? Take the Module 15 exam →</a>
+</section>
+
+</div></main>
+<footer><div class="wrap"><p class="mm">LIVERICHMEDIA · THE CHATTER PLAYBOOK · MODULE 15 · UPSELLING & TIER UPGRADES</p><p>Study this page, then take the exam. Your manager gets your score automatically.</p></div></footer>

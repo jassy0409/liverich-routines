@@ -1,0 +1,168 @@
+<title>Playbook · Module 19 · Custom Content Requests & Pricing (Chatter Edition)</title>
+<meta name="color-scheme" content="dark"><script>document.documentElement.setAttribute('data-theme','dark');</script>
+<style>:root{--bg:#ECECF1;--card:#FFF;--card-2:#FBFBFD;--sep:rgba(60,60,67,.14);--ink:#1C1C1E;--ink-2:#3C3C43;--ink-soft:#6E6E73;--ink-faint:#8E8E93;--gold:#C99A3E;--gold-deep:#A97F27;--gold-soft:rgba(201,154,62,.14);--imsg:#1E8CFF;--imsg-2:#0A74E6;--grey:#E9E9EB;--green:#34C759;--red:#FF3B30;--shadow-sm:0 1px 2px rgba(0,0,0,.05);--r-md:18px;--r-sm:12px;--maxw:820px;--sans:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;}
+@media(prefers-color-scheme:dark){:root{--bg:#000;--card:#1C1C1E;--card-2:#2C2C2E;--sep:rgba(84,84,88,.36);--ink:#F5F5F7;--ink-2:#EBEBF0;--ink-soft:#AEAEB2;--ink-faint:#8E8E93;--gold:#E8C170;--gold-deep:#D9B26A;--gold-soft:rgba(232,193,112,.16);--grey:#3A3A3C;--green:#30D158;}}
+:root[data-theme="dark"]{--bg:#000;--card:#1C1C1E;--card-2:#2C2C2E;--sep:rgba(84,84,88,.36);--ink:#F5F5F7;--ink-2:#EBEBF0;--ink-soft:#AEAEB2;--ink-faint:#8E8E93;--gold:#E8C170;--gold-deep:#D9B26A;--gold-soft:rgba(232,193,112,.16);--grey:#3A3A3C;--green:#30D158;}
+:root[data-theme="light"]{--bg:#ECECF1;--card:#FFF;--card-2:#FBFBFD;--sep:rgba(60,60,67,.14);--ink:#1C1C1E;--ink-soft:#6E6E73;--ink-faint:#8E8E93;--gold:#C99A3E;--gold-deep:#A97F27;--gold-soft:rgba(201,154,62,.14);--grey:#E9E9EB;--green:#34C759;}
+*{box-sizing:border-box;}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px;}
+.topbar{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--bg) 72%,transparent);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--sep);}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:52px;}
+.topbar .brand{font-size:15px;font-weight:600;}.topbar .brand span{color:var(--gold);}
+.topbar .pill{font-size:12px;font-weight:600;color:var(--ink-soft);background:var(--card);border:1px solid var(--sep);padding:5px 11px;border-radius:999px;}
+header.hero{padding:64px 0 36px;text-align:center;}
+.eyebrow{font-size:13px;font-weight:600;text-transform:uppercase;color:var(--gold);margin:0 0 14px;}
+h1{font-weight:700;font-size:clamp(36px,7vw,58px);line-height:1.03;letter-spacing:-.03em;margin:0 auto 16px;max-width:15ch;text-wrap:balance;}
+h1 em{font-style:normal;background:linear-gradient(120deg,var(--gold),var(--gold-deep));-webkit-background-clip:text;background-clip:text;color:transparent;}
+.lede{font-size:20px;color:var(--ink-soft);max-width:52ch;margin:0 auto;line-height:1.45;}
+section{padding:34px 0;}h2{font-weight:700;font-size:clamp(24px,4vw,32px);letter-spacing:-.02em;margin:0 0 8px;}
+.sub{font-size:18px;color:var(--ink-soft);margin:0 0 20px;max-width:60ch;}
+.card{background:var(--card);border:1px solid var(--sep);border-radius:var(--r-md);padding:22px 24px;margin:16px 0;box-shadow:var(--shadow-sm);}
+.card .k{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);margin:0 0 8px;}
+.card h3{margin:0 0 10px;font-size:21px;font-weight:700;}
+.card p{margin:0 0 10px;color:var(--ink-2);font-size:15.5px;}
+.lab{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin:14px 0 6px;}
+.lab.goal{color:var(--gold-deep);}.lab.no{color:var(--red);}.lab.yes{color:var(--green);}
+.chat{display:grid;gap:6px;margin:8px 0 4px;}
+.m{max-width:82%;padding:9px 14px;border-radius:17px;font-size:15px;line-height:1.38;}
+.m.in{align-self:flex-start;background:var(--grey);color:var(--ink);border-bottom-left-radius:5px;}
+.m.out{align-self:flex-end;margin-left:auto;color:#fff;background:linear-gradient(160deg,var(--imsg),var(--imsg-2));border-bottom-right-radius:5px;}
+.m.bad{align-self:flex-end;margin-left:auto;color:#fff;background:linear-gradient(160deg,#FF6B61,#E5382C);border-bottom-right-radius:5px;}
+.who{display:block;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.72;margin-bottom:2px;}
+.callout{background:var(--card);border:1px solid var(--sep);border-radius:var(--r-md);padding:20px 24px;margin:22px 0;display:flex;gap:16px;align-items:flex-start;}
+.callout.red{border-color:var(--red);background:rgba(255,59,48,.05);}
+.callout .e{font-size:26px;line-height:1;}.callout .t{font-weight:700;margin:0 0 4px;}.callout p{margin:0;color:var(--ink-soft);font-size:15.5px;}
+table{border-collapse:collapse;width:100%;font-size:15px;min-width:430px;}
+.tblwrap{overflow-x:auto;background:var(--card);border:1px solid var(--sep);border-radius:var(--r-md);margin:16px 0;}
+th,td{text-align:left;padding:13px 18px;border-bottom:1px solid var(--sep);}
+th{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);background:var(--card-2);}
+tr:last-child td{border-bottom:none;}td b{font-weight:600;}
+ul.rules{list-style:none;margin:0;padding:0;}
+ul.rules li{display:flex;gap:13px;align-items:flex-start;padding:13px 0;border-bottom:1px solid var(--sep);font-size:16px;}
+ul.rules li:last-child{border-bottom:none;}
+ul.rules .n{width:24px;height:24px;border-radius:50%;background:var(--gold-soft);color:var(--gold-deep);font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;flex:0 0 auto;margin-top:2px;}
+.cta{display:block;text-align:center;background:linear-gradient(160deg,var(--gold),var(--gold-deep));color:#2a1e08;font-weight:600;font-size:17px;text-decoration:none;border-radius:14px;padding:16px 30px;margin:28px auto 0;max-width:420px;box-shadow:0 6px 18px var(--gold-soft);}
+footer{padding:36px 0 66px;color:var(--ink-faint);font-size:13px;text-align:center;}
+footer .mm{font-weight:600;color:var(--ink-soft);}
+.phasebar{display:flex;gap:6px;justify-content:center;margin:26px auto 0;flex-wrap:wrap;}
+.ph{font-size:12.5px;font-weight:600;padding:6px 13px;border-radius:999px;border:1px solid var(--sep);background:var(--card);color:var(--ink-faint);text-decoration:none;}
+.ph:hover{border-color:var(--gold);color:var(--ink);}
+.ph.on{background:linear-gradient(160deg,var(--gold),var(--gold-deep));color:#2a1e08;border-color:transparent;}
+</style>
+<div class="topbar"><div class="wrap"><div class="brand">LiveRich<span>Media</span> · Playbook</div><div class="pill">Module 19 · Chatter Edition</div></div></div>
+<header class="hero"><div class="wrap">
+  <p class="eyebrow">The Chatter Playbook · Module 19</p>
+  <h1>Custom Content <em>Requests</em></h1>
+  <p class="lede">A custom request is the highest-value individual transaction on the page. Handled correctly, it creates an Enslavement-level bond. Handled wrong, it creates a dispute, a disappointed fan, and a chargeback. This module covers every step.</p>
+  <div class="phasebar">
+    <a class="ph" href="module-11-domination-chatter.html">11 · Domination</a>
+    <a class="ph" href="module-12-fan-psychology-chatter.html">12 · Psychology</a>
+    <a class="ph" href="module-13-personality-types-chatter.html">13 · Personalities</a>
+    <a class="ph" href="module-14-difficult-fans-chatter.html">14 · Difficult Fans</a>
+    <a class="ph" href="module-15-tier-upgrades-chatter.html">15 · Tier Upgrades</a>
+    <a class="ph" href="module-16-shift-discipline-chatter.html">16 · Shift Discipline</a>
+    <a class="ph" href="module-17-mass-messages-chatter.html">17 · Mass Messages</a>
+    <a class="ph" href="module-18-reengagement-chatter.html">18 · Re-engagement</a>
+    <a class="ph on" href="module-19-custom-content-chatter.html">19 · Custom Content</a>
+  </div>
+</div></header>
+<main><div class="wrap">
+
+<section>
+  <div class="callout red"><span class="e">🚨</span><div>
+    <p class="t">You do not quote custom prices or confirm customs alone</p>
+    <p>Custom content pricing, timelines, and what the creator will or won't do are decisions made by the manager — not the chatter. Your job is to gather the request details, hold the fan warmly, and notify your manager immediately. Never quote a price. Never confirm a delivery timeline. Never agree to anything on the creator's behalf.</p>
+  </div></div>
+</section>
+
+<section>
+  <h2>What a custom request is — and why it matters</h2>
+  <div class="card">
+    <p class="k">Why customs are the highest-value transaction</p>
+    <h3>He's not buying a product. He's buying something made specifically for him.</h3>
+    <p>A custom request means the fan has moved past browsing — he wants something that only he will have. That level of investment is rare and valuable. Fans who receive a well-handled custom become among the most loyal on the page. They come back. They tip. They upgrade. They tell the model she understands them. Every step of the custom process should reinforce that feeling.</p>
+  </div>
+</section>
+
+<section>
+  <h2>The 5-step custom request process</h2>
+
+  <div class="card">
+    <p class="k">Step 1 · Receive and clarify the request</p>
+    <h3>Understand exactly what he's asking for before you pass it on.</h3>
+    <p>When a fan requests a custom, your first job is to gather the details your manager needs to make a decision. Ask enough to be clear — but don't interrogate him. Keep it warm and conversational.</p>
+    <div class="chat">
+      <div class="m in"><span class="who">Fan</span>i'd love a custom video from you</div>
+      <div class="m out"><span class="who">✓ Gather details warmly</span>i love that idea 😊 tell me a little about what you have in mind — what did you picture?</div>
+    </div>
+    <p>Capture: what type of content, approximate length, any specific details or scenarios he mentioned, and his budget if he volunteers it.</p>
+  </div>
+
+  <div class="card">
+    <p class="k">Step 2 · Hold him while you escalate</p>
+    <h3>Never leave him waiting in silence.</h3>
+    <p>After gathering the details, let him know you're taking it seriously — without making any commitments.</p>
+    <div class="chat">
+      <div class="m out"><span class="who">✓ Hold message — no commitment</span>i love this idea honestly 😊 let me make sure i get the details right for you. give me a moment and i'll come back to you with everything you need to know</div>
+    </div>
+    <p>Then: pass the full request details to your manager with the fan ID, the request summary, and his budget if shared.</p>
+  </div>
+
+  <div class="card">
+    <p class="k">Step 3 · Return with the answer from manager</p>
+    <h3>Deliver the price and timeline as if it's the model herself confirming it.</h3>
+    <p>Once your manager has given you the price and availability, return to the fan and deliver it confidently. No apology. No justification. Just warmth and clarity.</p>
+    <div class="chat">
+      <div class="m out"><span class="who">✓ Price delivery — warm, clean, no apology</span>okay so for what you described — something like [brief description] — it would be $[X] 😊 i'd need about [timeline from manager]. does that work for you?</div>
+    </div>
+    <p class="lab goal">Price stated once, clean, with the timeline. Ball in his court. No negotiation invited.</p>
+  </div>
+
+  <div class="card">
+    <p class="k">Step 4 · Handle the "can you do it cheaper?" response</p>
+    <h3>Frame Control from Module 11. Do not discount without manager approval.</h3>
+    <div class="chat">
+      <div class="m in"><span class="who">Fan</span>that's a bit much, can you do it for less?</div>
+      <div class="m out"><span class="who">✓ Frame held — no apology, offer an alternative</span>the price is based on what goes into making it specifically for you 😊 if that doesn't work, i can look at a shorter version — want me to check what that would be?</div>
+    </div>
+    <p class="lab goal">If he pushes for a discount, check with manager before offering one. Never reduce the price on your own authority.</p>
+  </div>
+
+  <div class="card">
+    <p class="k">Step 5 · After delivery — the follow-up</p>
+    <h3>The message after the custom is as important as the custom itself.</h3>
+    <p>Once the custom has been delivered, wait a reasonable time and follow up with a genuine question. This is one of the highest Rapport-building moments on the page. He spent significant money on something made for him. A sincere follow-up shows he mattered — not just his money.</p>
+    <div class="chat">
+      <div class="m out"><span class="who">✓ Follow-up after delivery</span>hey, just checking in — did you get a chance to watch it? i'm genuinely curious what you thought 😊</div>
+      <div class="m in"><span class="who">Fan</span>honestly it was even better than i imagined. thank you so much</div>
+      <div class="m out"><span class="who">Model · land the moment</span>that genuinely means a lot ❤️ i put a lot into it. let me know if you ever want something like this again — i already have an idea for a follow-up if you're interested 😏</div>
+    </div>
+    <p class="lab goal">The seed for the next custom was planted before he even had time to come down from this one. That's the sales cycle of a custom handled perfectly.</p>
+  </div>
+</section>
+
+<section>
+  <h2>What a chatter must never do in a custom conversation</h2>
+  <div class="card"><ul class="rules">
+    <li><span class="n">✕</span><span><strong>Quote a price without manager approval.</strong> You do not know what the creator is willing to make or what it's worth. The manager sets the price.</span></li>
+    <li><span class="n">✕</span><span><strong>Agree to a timeline without manager confirmation.</strong> "I'll have it by Friday" is a promise you can't keep on someone else's behalf. Never commit.</span></li>
+    <li><span class="n">✕</span><span><strong>Accept a request for content outside the creator's limits.</strong> If the request is for something outside what the creator does — at any tier — the Soft No applies immediately. Gather what you can, escalate if needed.</span></li>
+    <li><span class="n">✕</span><span><strong>Discount without approval.</strong> Custom pricing is set by the manager for a reason. Offering a discount without checking is giving away the creator's revenue and your manager's authority.</span></li>
+    <li><span class="n">✕</span><span><strong>Leave him hanging after delivery.</strong> The follow-up is part of the custom process. A fan who gets no response after a significant purchase feels transacted, not valued.</span></li>
+  </ul></div>
+</section>
+
+<section>
+  <h2>Golden rules of custom content</h2>
+  <div class="card"><ul class="rules">
+    <li><span class="n">★</span><span>Gather details, hold warmly, escalate immediately. In that order, every time.</span></li>
+    <li><span class="n">★</span><span>Never quote a price or a timeline without manager confirmation.</span></li>
+    <li><span class="n">★</span><span>Deliver the price once, clean, with no apology. Frame Control applies here.</span></li>
+    <li><span class="n">★</span><span>The follow-up after delivery is not optional. It builds more Rapport than any opener ever could.</span></li>
+    <li><span class="n">★</span><span>Seed the next custom in the follow-up. A fan who just had a great experience is the most receptive fan on the page.</span></li>
+  </ul></div>
+  <a class="cta" href="module-19-exam-chatter.html">Ready? Take the Module 19 exam →</a>
+</section>
+
+</div></main>
+<footer><div class="wrap"><p class="mm">LIVERICHMEDIA · THE CHATTER PLAYBOOK · MODULE 19 · CUSTOM CONTENT REQUESTS & PRICING</p><p>Study this page, then take the exam. Your manager gets your score automatically.</p></div></footer>

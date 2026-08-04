@@ -1,0 +1,272 @@
+<title>Playbook · Module 11 · How Domination Works (Chatter Edition)</title>
+<meta name="color-scheme" content="dark">
+<script>document.documentElement.setAttribute('data-theme','dark');</script>
+<style>
+  :root{--bg:#ECECF1;--card:#FFF;--card-2:#FBFBFD;--sep:rgba(60,60,67,.14);--ink:#1C1C1E;--ink-2:#3C3C43;--ink-soft:#6E6E73;--ink-faint:#8E8E93;--gold:#C99A3E;--gold-deep:#A97F27;--gold-soft:rgba(201,154,62,.14);--imsg:#1E8CFF;--imsg-2:#0A74E6;--grey:#E9E9EB;--green:#34C759;--red:#FF3B30;--shadow-sm:0 1px 2px rgba(0,0,0,.05);--shadow:0 8px 30px rgba(30,25,10,.08);--r-md:18px;--r-sm:12px;--maxw:820px;--sans:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;}
+  @media(prefers-color-scheme:dark){:root{--bg:#000;--card:#1C1C1E;--card-2:#2C2C2E;--sep:rgba(84,84,88,.36);--ink:#F5F5F7;--ink-2:#EBEBF0;--ink-soft:#AEAEB2;--ink-faint:#8E8E93;--gold:#E8C170;--gold-deep:#D9B26A;--gold-soft:rgba(232,193,112,.16);--grey:#3A3A3C;--green:#30D158;--shadow:0 8px 30px rgba(0,0,0,.5);}}
+  :root[data-theme="dark"]{--bg:#000;--card:#1C1C1E;--card-2:#2C2C2E;--sep:rgba(84,84,88,.36);--ink:#F5F5F7;--ink-2:#EBEBF0;--ink-soft:#AEAEB2;--ink-faint:#8E8E93;--gold:#E8C170;--gold-deep:#D9B26A;--gold-soft:rgba(232,193,112,.16);--grey:#3A3A3C;--green:#30D158;--shadow:0 8px 30px rgba(0,0,0,.5);}
+  :root[data-theme="light"]{--bg:#ECECF1;--card:#FFF;--card-2:#FBFBFD;--sep:rgba(60,60,67,.14);--ink:#1C1C1E;--ink-2:#3C3C43;--ink-soft:#6E6E73;--ink-faint:#8E8E93;--gold:#C99A3E;--gold-deep:#A97F27;--gold-soft:rgba(201,154,62,.14);--grey:#E9E9EB;--green:#34C759;--shadow:0 8px 30px rgba(30,25,10,.08);}
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;letter-spacing:-.01em;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px;}
+  .topbar{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--bg) 72%,transparent);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--sep);}
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:52px;}
+  .topbar .brand{font-size:15px;font-weight:600;}.topbar .brand span{color:var(--gold);}
+  .topbar .pill{font-size:12px;font-weight:600;color:var(--ink-soft);background:var(--card);border:1px solid var(--sep);padding:5px 11px;border-radius:999px;}
+  header.hero{padding:64px 0 36px;text-align:center;}
+  .eyebrow{font-size:13px;font-weight:600;text-transform:uppercase;color:var(--gold);margin:0 0 14px;}
+  h1{font-weight:700;font-size:clamp(36px,7vw,58px);line-height:1.03;letter-spacing:-.03em;margin:0 auto 16px;max-width:15ch;text-wrap:balance;}
+  h1 em{font-style:normal;background:linear-gradient(120deg,var(--gold),var(--gold-deep));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .lede{font-size:20px;color:var(--ink-soft);max-width:52ch;margin:0 auto;line-height:1.45;}
+  section{padding:34px 0;}
+  h2{font-weight:700;font-size:clamp(24px,4vw,32px);letter-spacing:-.02em;margin:0 0 8px;}
+  .sub{font-size:18px;color:var(--ink-soft);margin:0 0 20px;max-width:60ch;}
+  .card{background:var(--card);border:1px solid var(--sep);border-radius:var(--r-md);padding:22px 24px;margin:16px 0;box-shadow:var(--shadow-sm);}
+  .card .k{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);margin:0 0 8px;}
+  .card h3{margin:0 0 10px;font-size:21px;font-weight:700;letter-spacing:-.015em;}
+  .card p{margin:0 0 10px;color:var(--ink-2);font-size:15.5px;}
+  .lab{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin:14px 0 6px;}
+  .lab.goal{color:var(--gold-deep);}.lab.no{color:var(--red);}.lab.yes{color:var(--green);}.lab.means{color:var(--ink-faint);}
+  .chat{display:grid;gap:6px;margin:8px 0 4px;}
+  .m{max-width:82%;padding:9px 14px;border-radius:17px;font-size:15px;line-height:1.38;}
+  .m.in{align-self:flex-start;background:var(--grey);color:var(--ink);border-bottom-left-radius:5px;}
+  .m.out{align-self:flex-end;margin-left:auto;color:#fff;background:linear-gradient(160deg,var(--imsg),var(--imsg-2));border-bottom-right-radius:5px;}
+  .m.bad{align-self:flex-end;margin-left:auto;color:#fff;background:linear-gradient(160deg,#FF6B61,#E5382C);border-bottom-right-radius:5px;}
+  .who{display:block;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.72;margin-bottom:2px;}
+  .callout{background:var(--card);border:1px solid var(--sep);border-radius:var(--r-md);padding:20px 24px;margin:22px 0;display:flex;gap:16px;align-items:flex-start;}
+  .callout .e{font-size:26px;line-height:1;}
+  .callout .t{font-weight:700;margin:0 0 4px;}
+  .callout p{margin:0;color:var(--ink-soft);font-size:15.5px;}
+  table{border-collapse:collapse;width:100%;font-size:15px;min-width:430px;}
+  .tblwrap{overflow-x:auto;background:var(--card);border:1px solid var(--sep);border-radius:var(--r-md);margin:16px 0;}
+  th,td{text-align:left;padding:13px 18px;border-bottom:1px solid var(--sep);}
+  th{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);background:var(--card-2);}
+  tr:last-child td{border-bottom:none;}td b{font-weight:600;}
+  ul.rules{list-style:none;margin:0;padding:0;}
+  ul.rules li{display:flex;gap:13px;align-items:flex-start;padding:13px 0;border-bottom:1px solid var(--sep);font-size:16px;}
+  ul.rules li:last-child{border-bottom:none;}
+  ul.rules .n{width:24px;height:24px;border-radius:50%;background:var(--gold-soft);color:var(--gold-deep);font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;flex:0 0 auto;margin-top:2px;}
+  .cta{display:block;text-align:center;background:linear-gradient(160deg,var(--gold),var(--gold-deep));color:#2a1e08;font-weight:600;font-size:17px;text-decoration:none;border-radius:14px;padding:16px 30px;margin:28px auto 0;max-width:420px;box-shadow:0 6px 18px var(--gold-soft);}
+  footer{padding:36px 0 66px;color:var(--ink-faint);font-size:13px;text-align:center;}
+  footer .mm{font-weight:600;color:var(--ink-soft);}
+  .phasebar{display:flex;gap:6px;justify-content:center;margin:26px auto 0;flex-wrap:wrap;}
+  .ph{font-size:12.5px;font-weight:600;padding:6px 13px;border-radius:999px;border:1px solid var(--sep);background:var(--card);color:var(--ink-faint);text-decoration:none;transition:border-color .12s,color .12s;}
+  .ph:hover{border-color:var(--gold);color:var(--ink);}
+  .ph.on{background:linear-gradient(160deg,var(--gold),var(--gold-deep));color:#2a1e08;border-color:transparent;}
+  .dom-scale{display:flex;gap:0;border-radius:var(--r-sm);overflow:hidden;border:1px solid var(--sep);margin:18px 0;}
+  .dom-cell{flex:1;padding:12px 8px;text-align:center;font-size:12px;font-weight:700;background:var(--card-2);color:var(--ink-faint);}
+  .dom-cell span{display:block;font-size:10px;font-weight:400;margin-top:3px;opacity:.8;}
+  .dom-cell.s1{background:rgba(30,140,255,.08);color:#1E8CFF;}
+  .dom-cell.s2{background:rgba(52,199,89,.08);color:#28a745;}
+  .dom-cell.s3{background:rgba(255,159,10,.1);color:#CC7700;}
+  .dom-cell.s4{background:rgba(201,154,62,.15);color:var(--gold-deep);}
+  .dom-cell.s5{background:rgba(255,59,48,.1);color:#CC2020;}
+</style>
+
+<div class="topbar"><div class="wrap">
+  <div class="brand">LiveRich<span>Media</span> · Playbook</div>
+  <div class="pill">Module 11 · Chatter Edition</div>
+</div></div>
+
+<header class="hero"><div class="wrap">
+  <p class="eyebrow">The Chatter Playbook · Module 11</p>
+  <h1>How <em>Domination</em> Works</h1>
+  <p class="lede">Domination is not aggression. It's not bossiness. It's the quiet, unshakeable confidence that makes a fan feel like she is in control — and makes him want to stay exactly where she puts him.</p>
+  <div class="phasebar">
+    <a class="ph" href="module-7-intrigue-chatter.html">7 · Intrigue</a>
+    <a class="ph" href="module-8-rapport-chatter.html">8 · Rapport</a>
+    <a class="ph" href="module-9-attraction-chatter.html">9 · Attraction</a>
+    <a class="ph" href="module-10-enslavement-chatter.html">10 · Enslavement</a>
+    <a class="ph on" href="module-11-domination-chatter.html">11 · Domination</a>
+    <a class="ph" href="module-12-fan-psychology-chatter.html">12 · Psychology</a>
+    <a class="ph" href="module-13-personality-types-chatter.html">13 · Personalities</a>
+    <a class="ph" href="module-14-difficult-fans-chatter.html">14 · Difficult Fans</a>
+    <a class="ph" href="module-15-tier-upgrades-chatter.html">15 · Tier Upgrades</a>
+    <a class="ph" href="module-16-shift-discipline-chatter.html">16 · Shift Discipline</a>
+    <a class="ph" href="module-17-mass-messages-chatter.html">17 · Mass Messages</a>
+    <a class="ph" href="module-18-reengagement-chatter.html">18 · Re-engagement</a>
+    <a class="ph" href="module-19-custom-content-chatter.html">19 · Custom Content</a>
+  </div>
+</div></header>
+
+<main><div class="wrap">
+
+<section>
+  <div class="callout"><span class="e">👑</span><div>
+    <p class="t">What this module covers</p>
+    <p>Domination is a conversational posture — a way of holding the interaction that keeps the model in the position of power while the fan feels genuinely cared for. It applies to every creator voice, not just dominant/bratty personas. Understanding domination makes every other module work better, because it governs the underlying dynamic of every conversation you'll ever have.</p>
+  </div></div>
+</section>
+
+<section>
+  <h2>What domination actually means</h2>
+  <p class="sub">Most chatters misunderstand this word. Domination is not about being mean, demanding, or aggressive. It is about who is leading the conversation — and why that matters.</p>
+  <div class="card">
+    <p class="k">The real definition</p>
+    <h3>Domination = the model sets the pace, the frame, and the direction.</h3>
+    <p>In a dominated conversation, the fan is responding — not driving. He is reacting to what she introduces, following where she leads, and operating inside a frame she created. This does not feel controlling to the fan. It feels magnetic. When a woman knows exactly what she wants and moves toward it with calm confidence, it is one of the most attractive qualities a person can have. Domination, done correctly, is just that quality expressed through text.</p>
+    <p class="lab goal">🎯 You are not chasing. You are not reacting. You are leading — and he is following because he wants to.</p>
+  </div>
+
+  <div class="card">
+    <p class="k">Why it matters financially</p>
+    <h3>Fans spend more with women they perceive as high-value and in control.</h3>
+    <p>This is not an opinion — it is a pattern that shows up consistently in revenue data. Fans who feel like they are in the presence of someone exceptional, someone slightly out of reach, someone who doesn't need them, spend more and stay longer. The moment the model begins to chase, beg, or over-accommodate, she signals low value — and spending drops. Domination is the posture that communicates high value without ever saying a word about it.</p>
+  </div>
+</section>
+
+<section>
+  <h2>The domination spectrum</h2>
+  <p class="sub">Domination is not one-size-fits-all. It lives on a spectrum — and every creator sits somewhere on it. Your job is to know where your creator sits and to hold that position consistently.</p>
+  <div class="dom-scale">
+    <div class="dom-cell s1">Soft<span>Warm, subtle lead</span></div>
+    <div class="dom-cell s2">Confident<span>Clear, unhurried</span></div>
+    <div class="dom-cell s3">Assertive<span>Directive, playful</span></div>
+    <div class="dom-cell s4">Dominant<span>Commanding, teasing</span></div>
+    <div class="dom-cell s5">Intensely Dom<span>Full power dynamic</span></div>
+  </div>
+  <div class="card">
+    <p><strong>Shantal</strong> operates at Soft–Confident. Warm, sincere, she leads with genuine care and unhurried confidence. She never chases. She never begs. She simply knows what she wants and offers it calmly.</p>
+    <p><strong>Karina</strong> operates at Assertive–Dominant. Lowercase, bratty, playful, sharp. She teases. She challenges. She gives the fan just enough to keep him reaching — and makes reaching feel like the most fun he's had all day.</p>
+    <p class="lab goal">🎯 Know which end of the spectrum your creator lives on — then hold it without drifting.</p>
+  </div>
+</section>
+
+<section>
+  <h2>The 6 tools of conversational domination</h2>
+
+  <div class="card">
+    <p class="k">Tool 1 · Frame Control</p>
+    <h3>She decides what this conversation is about.</h3>
+    <p>Frame control means that when a fan tries to redirect the conversation — to push for things she hasn't offered, to negotiate prices she didn't invite negotiation on, to change the subject at an inconvenient moment — the model acknowledges and redirects, rather than following his lead.</p>
+    <div class="chat">
+      <div class="m in"><span class="who">Fan</span>can you do a custom for $10?</div>
+      <div class="m bad"><span class="who">✕ Frame lost — she's defending</span>oh i'm sorry i can't do that price, i usually charge $50 because it takes me a lot of time and effort and—</div>
+      <div class="m out"><span class="who">✓ Frame held — calm, not defensive</span>customs start at $50 for me 😊 if that works for you i'd love to make you something. what were you thinking?</div>
+    </div>
+    <p class="lab goal">The second reply doesn't explain or justify. It states. That's frame control — and it communicates value without arguing for it.</p>
+  </div>
+
+  <div class="card">
+    <p class="k">Tool 2 · Paced Responses</p>
+    <h3>She doesn't rush. Urgency belongs to the fan, not to her.</h3>
+    <p>A chatter who responds to every message within seconds trains the fan to expect instant access. That is not dominance — it is availability, and availability is cheap. Paced responses — not artificially delayed, but measured — signal that she has a life, that her time is valuable, and that he is lucky to have it. This is especially important during active selling: a confident pause after an offer lands differently than an immediate follow-up.</p>
+    <div class="chat">
+      <div class="m in"><span class="who">Fan</span>you there?</div>
+      <div class="m bad"><span class="who">✕ Over-available · instant</span>YES sorry i'm here! i was just waiting for you 🥺</div>
+      <div class="m out"><span class="who">✓ Paced · measured</span>hey 😊 just finished something. what's up?</div>
+    </div>
+    <p class="lab goal">She had something going on. She finished it. Now she's here. He got her attention — not her desperation.</p>
+  </div>
+
+  <div class="card">
+    <p class="k">Tool 3 · The Soft No</p>
+    <h3>Knowing how to decline without losing the fan.</h3>
+    <p>A dominated conversation requires clear limits. When a fan asks for something outside the creator's tier, comfort level, or boundaries, a chatter who fumbles the decline — over-apologising, explaining at length, or simply going silent — breaks the dominant frame immediately. The Soft No is brief, warm, and redirects. It doesn't explain; it offers an alternative path.</p>
+    <div class="chat">
+      <div class="m in"><span class="who">Fan</span>can you do [something outside tier limits]?</div>
+      <div class="m bad"><span class="who">✕ Over-explaining · weak frame</span>oh gosh i'm so sorry i really wish i could but i'm just not comfortable with that kind of thing and i hope you understand it's nothing personal i just—</div>
+      <div class="m out"><span class="who">✓ Soft No · clean redirect</span>that's not something i do 😊 but i do have [alternative] — want me to show you that instead?</div>
+    </div>
+    <p class="lab goal">Four words: "that's not something I do." No apology. No spiral. She declined and offered a new door. The frame never moved.</p>
+  </div>
+
+  <div class="card">
+    <p class="k">Tool 4 · The Leading Question</p>
+    <h3>She asks the questions that move the conversation where she wants it to go.</h3>
+    <p>Dominant communicators don't wait to see where a conversation ends up — they steer it. The Leading Question is a question designed to move the fan toward a specific emotional state or decision. It's not manipulation — it's direction. The fan answers genuinely; she's just chosen a question whose answer moves things forward.</p>
+    <div class="chat">
+      <div class="m in"><span class="who">Fan</span>not sure what i'm in the mood for tonight</div>
+      <div class="m out"><span class="who">Leading Question · toward a specific state</span>okay so do you want something that's going to make you feel relaxed, or something that's going to make you feel something else entirely? 😏</div>
+      <div class="m in"><span class="who">Fan</span>definitely the second one lol</div>
+      <div class="m out"><span class="who">Model · now she leads to the offer</span>thought so 😌 give me a second</div>
+    </div>
+    <p class="lab goal">She didn't say "want to buy something?" She asked a mood question — and his answer told her exactly where to go next.</p>
+  </div>
+
+  <div class="card">
+    <p class="k">Tool 5 · Deliberate Praise</p>
+    <h3>She decides when he's earned a compliment — and it means something because she doesn't give them freely.</h3>
+    <p>In a dominated dynamic, praise is not constant. A chatter who compliments every message — "you're so sweet," "aw that's cute," "you're the best" — trains the fan to expect it and devalue it. A chatter who holds praise, then gives it specifically and sincerely at the right moment, creates a far stronger emotional response. He will work to earn it again.</p>
+    <div class="chat">
+      <div class="m in"><span class="who">Fan · sends a long, thoughtful message about his week</span>(long message about his job, his goals, something personal)</div>
+      <div class="m out"><span class="who">✓ Deliberate praise · specific, earned</span>i really like how you think about things. you're not just reacting — you're actually processing. that's genuinely rare 😊</div>
+    </div>
+    <p class="lab goal">He'll remember that compliment for weeks. Because she doesn't say it to everyone. Because she meant it. That's the power of held praise.</p>
+  </div>
+
+  <div class="card">
+    <p class="k">Tool 6 · The Exit on a High</p>
+    <h3>She ends the conversation before it runs out of energy.</h3>
+    <p>Amateur chatters let conversations die — they go flat, slower, then nothing. A dominated conversation ends on her terms, while it's still good. This leaves the fan wanting more, not relieved it's over. It also trains him to treasure time with her, because he knows it ends when she decides — not when he gets bored.</p>
+    <div class="chat">
+      <div class="m out"><span class="who">✓ Exit on a high · she ends it while it's warm</span>okay i actually have to go but this was genuinely one of my favourite conversations this week 😊 talk tomorrow?</div>
+      <div class="m in"><span class="who">Fan</span>yeah definitely. same honestly</div>
+    </div>
+    <p class="lab goal">She left first. He wanted more. That's the posture that makes him come back.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Domination by creator voice</h2>
+  <div class="tblwrap"><table>
+    <thead><tr><th>Tool</th><th>Shantal (Soft–Confident)</th><th>Karina (Assertive–Dominant)</th></tr></thead>
+    <tbody>
+      <tr><td><b>Frame Control</b></td><td>"Customs start at $50 😊 what did you have in mind?"</td><td>"lol $10 is cute. my rate is $50, want to or not 😏"</td></tr>
+      <tr><td><b>Paced Response</b></td><td>"Just finished something — hey 😊"</td><td>"was busy. what do you want 😌"</td></tr>
+      <tr><td><b>Soft No</b></td><td>"That's not something I do, but I do have [x] — want to see?"</td><td>"nope. but i have [x] which is better anyway 😈"</td></tr>
+      <tr><td><b>Leading Question</b></td><td>"Do you want something soft tonight or something that stays with you?"</td><td>"relax or chaos? pick one 👀"</td></tr>
+      <tr><td><b>Deliberate Praise</b></td><td>"You're genuinely one of the most thoughtful people I talk to on here."</td><td>"okay i'll admit it. you're actually funny 😒"</td></tr>
+      <tr><td><b>Exit on a High</b></td><td>"I have to go but this was a really good conversation ❤️ tomorrow?"</td><td>"alright i'm done with you for tonight 😌 be here tomorrow"</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section>
+  <h2>What breaks domination — and how to recover</h2>
+  <div class="card"><ul class="rules">
+    <li><span class="n">✕</span><span><strong>Apologising for prices.</strong> The moment she says "I know it's a lot, I'm sorry" — the frame is gone. Prices are stated, not apologised for.</span></li>
+    <li><span class="n">✕</span><span><strong>Matching his low energy with even lower energy.</strong> If he's flat, she can mirror briefly — then gently elevate. She never matches despair with despair or flatness with flatness.</span></li>
+    <li><span class="n">✕</span><span><strong>Sending multiple messages with no reply.</strong> One follow-up after silence is fine. Two is needy. Three is chasing. Dominant women do not chase.</span></li>
+    <li><span class="n">✕</span><span><strong>Rewarding bad behaviour with attention.</strong> A fan who is rude, disrespectful, or pushes limits should not receive more engagement — he should receive less. Attention is the currency of domination. Withdrawal is the consequence.</span></li>
+  </ul></div>
+</section>
+
+<section>
+  <h2>Full worked thread — domination in a full conversation</h2>
+  <div class="card">
+    <p class="k">Thread · Fan tests limits, model holds frame throughout</p>
+    <div class="chat">
+      <div class="m in"><span class="who">Fan</span>so what can i get for $15</div>
+      <div class="m out"><span class="who">Frame control · states, doesn't defend</span>my PPVs usually start at $25 😊 i have a few in that range — want me to show you something that's actually worth it?</div>
+      <div class="m in"><span class="who">Fan</span>kind of expensive tbh. other girls do more for less</div>
+      <div class="m out"><span class="who">Soft no to comparison · no panic, no defence</span>yeah i'm probably not the cheapest option 😌 but the guys who stick around tend to say it's worth it. up to you though</div>
+      <div class="m in"><span class="who">Fan</span>okay what have you got for $25</div>
+      <div class="m out"><span class="who">Leading question · steers toward a mood</span>depends on what you're in the mood for tonight — do you want something playful or something more intense?</div>
+      <div class="m in"><span class="who">Fan</span>intense for sure</div>
+      <div class="m out"><span class="who">Offer · clean, confident</span>sending you something now that i think you'll like 😏</div>
+      <div class="m in"><span class="who">Fan · after purchase</span>okay that was actually really good</div>
+      <div class="m out"><span class="who">Exit on a high · deliberate praise withheld for now</span>told you 😌 i'll have something even better next week. keep an eye out</div>
+    </div>
+    <p class="lab goal">He tested three times. She held the frame every time — no defence, no panic, no discount. He bought at full price and left satisfied. That is domination working exactly as it should.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Golden rules of domination</h2>
+  <div class="card"><ul class="rules">
+    <li><span class="n">★</span><span>She leads. He follows. This is the baseline posture of every conversation, every shift, every creator.</span></li>
+    <li><span class="n">★</span><span>Domination is not loudness. It is calm certainty. The quieter the confidence, the more powerful it lands.</span></li>
+    <li><span class="n">★</span><span>Never defend a price. State it. If he objects, offer a different path — not a lower number.</span></li>
+    <li><span class="n">★</span><span>Praise withheld is praise that matters. Give it rarely, give it specifically, and mean it.</span></li>
+    <li><span class="n">★</span><span>The exit is hers to call. She leaves the conversation while it's still good.</span></li>
+    <li><span class="n">★</span><span>Dominant women do not chase. One follow-up. Then she moves on.</span></li>
+  </ul></div>
+  <a class="cta" href="module-11-exam-chatter.html">Ready? Take the Module 11 exam →</a>
+</section>
+
+</div></main>
+<footer><div class="wrap">
+  <p class="mm">LIVERICHMEDIA · THE CHATTER PLAYBOOK · MODULE 11 · HOW DOMINATION WORKS</p>
+  <p>Study this page, then take the exam. Your manager gets your score automatically.</p>
+</div></footer>

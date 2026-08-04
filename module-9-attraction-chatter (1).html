@@ -1,0 +1,246 @@
+<title>Playbook · Module 9 · The Attraction Stage (Chatter Edition)</title>
+<meta name="color-scheme" content="dark">
+<script>document.documentElement.setAttribute('data-theme','dark');</script>
+
+<style>
+  :root{--bg:#ECECF1;--card:#FFF;--card-2:#FBFBFD;--sep:rgba(60,60,67,.14);--sep-strong:rgba(60,60,67,.24);
+    --ink:#1C1C1E;--ink-2:#3C3C43;--ink-soft:#6E6E73;--ink-faint:#8E8E93;
+    --gold:#C99A3E;--gold-deep:#A97F27;--gold-soft:rgba(201,154,62,.14);
+    --imsg:#1E8CFF;--imsg-2:#0A74E6;--grey:#E9E9EB;--green:#34C759;--amber:#FF9F0A;--red:#FF3B30;
+    --shadow-sm:0 1px 2px rgba(0,0,0,.05);--shadow:0 8px 30px rgba(30,25,10,.08);
+    --r-md:18px;--r-sm:12px;--maxw:820px;
+    --sans:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;}
+  @media (prefers-color-scheme:dark){:root{--bg:#000;--card:#1C1C1E;--card-2:#2C2C2E;--sep:rgba(84,84,88,.36);--sep-strong:rgba(120,120,128,.5);
+    --ink:#F5F5F7;--ink-2:#EBEBF0;--ink-soft:#AEAEB2;--ink-faint:#8E8E93;--gold:#E8C170;--gold-deep:#D9B26A;--gold-soft:rgba(232,193,112,.16);
+    --grey:#3A3A3C;--green:#30D158;--shadow:0 8px 30px rgba(0,0,0,.5);}}
+  :root[data-theme="light"]{--bg:#ECECF1;--card:#FFF;--card-2:#FBFBFD;--sep:rgba(60,60,67,.14);--sep-strong:rgba(60,60,67,.24);--ink:#1C1C1E;--ink-2:#3C3C43;--ink-soft:#6E6E73;--ink-faint:#8E8E93;--gold:#C99A3E;--gold-deep:#A97F27;--gold-soft:rgba(201,154,62,.14);--grey:#E9E9EB;--green:#34C759;--shadow:0 8px 30px rgba(30,25,10,.08);}
+  :root[data-theme="dark"]{--bg:#000;--card:#1C1C1E;--card-2:#2C2C2E;--sep:rgba(84,84,88,.36);--sep-strong:rgba(120,120,128,.5);--ink:#F5F5F7;--ink-2:#EBEBF0;--ink-soft:#AEAEB2;--ink-faint:#8E8E93;--gold:#E8C170;--gold-deep:#D9B26A;--gold-soft:rgba(232,193,112,.16);--grey:#3A3A3C;--green:#30D158;--shadow:0 8px 30px rgba(0,0,0,.5);}
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;letter-spacing:-.01em;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px;}
+  .topbar{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--bg) 72%,transparent);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--sep);}
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:52px;}
+  .topbar .brand{font-size:15px;font-weight:600;}.topbar .brand span{color:var(--gold);}
+  .topbar .pill{font-size:12px;font-weight:600;color:var(--ink-soft);background:var(--card);border:1px solid var(--sep);padding:5px 11px;border-radius:999px;}
+  header.hero{padding:64px 0 36px;text-align:center;}
+  .eyebrow{font-size:13px;font-weight:600;text-transform:uppercase;color:var(--gold);margin:0 0 14px;}
+  h1{font-weight:700;font-size:clamp(36px,7vw,58px);line-height:1.03;letter-spacing:-.03em;margin:0 auto 16px;max-width:15ch;text-wrap:balance;}
+  h1 em{font-style:normal;background:linear-gradient(120deg,var(--gold),var(--gold-deep));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .lede{font-size:20px;color:var(--ink-soft);max-width:52ch;margin:0 auto;line-height:1.45;}
+  section{padding:34px 0;}
+  h2{font-weight:700;font-size:clamp(24px,4vw,32px);letter-spacing:-.02em;margin:0 0 8px;}
+  .sub{font-size:18px;color:var(--ink-soft);margin:0 0 20px;max-width:60ch;}
+  .card{background:var(--card);border:1px solid var(--sep);border-radius:var(--r-md);padding:22px 24px;margin:16px 0;box-shadow:var(--shadow-sm);}
+  .card .k{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);margin:0 0 8px;}
+  .card h3{margin:0 0 10px;font-size:21px;font-weight:700;letter-spacing:-.015em;}
+  .card p{margin:0 0 10px;color:var(--ink-2);font-size:15.5px;}
+  .lab{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin:14px 0 6px;}
+  .lab.means{color:var(--ink-faint);} .lab.no{color:var(--red);} .lab.yes{color:var(--green);} .lab.goal{color:var(--gold-deep);}
+  .chat{display:grid;gap:6px;margin:8px 0 4px;}
+  .m{max-width:82%;padding:9px 14px;border-radius:17px;font-size:15px;line-height:1.38;}
+  .m.in{align-self:flex-start;background:var(--grey);color:var(--ink);border-bottom-left-radius:5px;}
+  .m.out{align-self:flex-end;margin-left:auto;color:#fff;background:linear-gradient(160deg,var(--imsg),var(--imsg-2));border-bottom-right-radius:5px;}
+  .m.bad{align-self:flex-end;margin-left:auto;color:#fff;background:linear-gradient(160deg,#FF6B61,#E5382C);border-bottom-right-radius:5px;}
+  .who{display:block;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.72;margin-bottom:2px;}
+  .callout{background:var(--card);border:1px solid var(--sep);border-radius:var(--r-md);padding:20px 24px;margin:22px 0;box-shadow:var(--shadow-sm);display:flex;gap:16px;align-items:flex-start;}
+  .callout .e{font-size:26px;line-height:1;}
+  .callout .t{font-weight:700;margin:0 0 4px;}
+  .callout p{margin:0;color:var(--ink-soft);font-size:15.5px;}
+  table{border-collapse:collapse;width:100%;font-size:15px;min-width:430px;}
+  .tblwrap{overflow-x:auto;background:var(--card);border:1px solid var(--sep);border-radius:var(--r-md);box-shadow:var(--shadow-sm);margin:16px 0;}
+  th,td{text-align:left;padding:13px 18px;border-bottom:1px solid var(--sep);}
+  th{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);background:var(--card-2);}
+  tr:last-child td{border-bottom:none;} td b{font-weight:600;}
+  ul.rules{list-style:none;margin:0;padding:0;}
+  ul.rules li{display:flex;gap:13px;align-items:flex-start;padding:13px 0;border-bottom:1px solid var(--sep);font-size:16px;}
+  ul.rules li:last-child{border-bottom:none;}
+  ul.rules .n{width:24px;height:24px;border-radius:50%;background:var(--gold-soft);color:var(--gold-deep);font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;flex:0 0 auto;margin-top:2px;}
+  .cta{display:block;text-align:center;background:linear-gradient(160deg,var(--gold),var(--gold-deep));color:#2a1e08;font-weight:600;font-size:17px;text-decoration:none;border-radius:14px;padding:16px 30px;margin:28px auto 0;max-width:420px;box-shadow:0 6px 18px var(--gold-soft);}
+  footer{padding:36px 0 66px;color:var(--ink-faint);font-size:13px;text-align:center;}
+  footer .mm{font-weight:600;color:var(--ink-soft);}
+  :focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:6px;}
+  .phasebar{display:flex;gap:6px;justify-content:center;margin:26px auto 0;flex-wrap:wrap;}
+  .ph{font-size:12.5px;font-weight:600;padding:6px 13px;border-radius:999px;border:1px solid var(--sep);background:var(--card);color:var(--ink-faint);text-decoration:none;transition:border-color .12s,color .12s;}
+  .ph:hover{border-color:var(--gold);color:var(--ink);}
+  .ph.on{background:linear-gradient(160deg,var(--gold),var(--gold-deep));color:#2a1e08;border-color:transparent;}
+  .irae-map{display:flex;gap:0;margin:24px 0;border-radius:var(--r-md);overflow:hidden;border:1px solid var(--sep);}
+  .irae-step{flex:1;padding:14px 12px;text-align:center;font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;background:var(--card-2);}
+  .irae-step.active{background:linear-gradient(160deg,var(--gold),var(--gold-deep));color:#2a1e08;}
+  .irae-step span{display:block;font-size:11px;font-weight:400;letter-spacing:0;text-transform:none;margin-top:3px;opacity:.8;}
+  .irae-step.active span{color:#2a1e08;}
+  .done{opacity:.45;}
+  .temp-bar{display:flex;gap:0;border-radius:var(--r-sm);overflow:hidden;margin:16px 0;border:1px solid var(--sep);}
+  .temp-cell{flex:1;padding:10px 8px;text-align:center;font-size:12px;font-weight:700;background:var(--card-2);color:var(--ink-faint);}
+  .temp-cell.cold{background:rgba(30,140,255,.1);color:#1E8CFF;}
+  .temp-cell.warm{background:rgba(255,159,10,.12);color:#CC7700;}
+  .temp-cell.hot{background:rgba(255,59,48,.1);color:#FF3B30;}
+  .temp-cell span{display:block;font-size:10px;font-weight:400;margin-top:2px;opacity:.8;}
+</style>
+
+<div class="topbar"><div class="wrap">
+  <div class="brand">LiveRich<span>Media</span> · Playbook</div>
+  <div class="pill">Module 9 · Chatter Edition</div>
+</div></div>
+
+<header class="hero"><div class="wrap">
+  <p class="eyebrow">The Chatter Playbook · Module 9 · IRAE Series</p>
+  <h1>The <em>Attraction</em> Stage</h1>
+  <p class="lede">He knows her. He trusts her. Now he wants her. Attraction is how you turn a friendly conversation into desire — and desire into a buying decision. This is where the temperature rises.</p>
+  <div class="phasebar">
+    <a class="ph" href="module-1-chatter-edition.html">1 · Comeback</a>
+    <a class="ph" href="module-2-discovery-chatter.html">2 · Discovery</a>
+    <a class="ph" href="module-3-escalation-chatter.html">3 · Escalation</a>
+    <a class="ph" href="module-4-sale-chatter.html">4 · Sale</a>
+    <a class="ph" href="module-5-negotiation-retention-chatter.html">5 · Negotiation</a>
+    <a class="ph" href="module-6-the-chase-chatter.html">6 · The Chase</a>
+    <a class="ph" href="module-7-intrigue-chatter.html">7 · Intrigue</a>
+    <a class="ph" href="module-8-rapport-chatter.html">8 · Rapport</a>
+    <a class="ph on" href="module-9-attraction-chatter.html">9 · Attraction</a>
+    <a class="ph" href="module-10-enslavement-chatter.html">10 · Enslavement</a>
+  </div>
+</div></header>
+
+<main><div class="wrap">
+
+<section>
+  <div class="irae-map">
+    <div class="irae-step done">I<span>Intrigue ✓</span></div>
+    <div class="irae-step done">R<span>Rapport ✓</span></div>
+    <div class="irae-step active">A<span>Attraction</span></div>
+    <div class="irae-step">E<span>Enslavement</span></div>
+  </div>
+
+  <div class="callout"><span class="e">🔥</span><div>
+    <p class="t">Before you start this module</p>
+    <p>Attraction only works if Rapport is already in place. A fan who doesn't feel known yet will experience your Attraction moves as desperate or scripted. If you're not sure whether Rapport is established, go back and build it first. A warm fan converts. A cold fan just gets uncomfortable.</p>
+  </div></div>
+</section>
+
+<section>
+  <h2>What is Attraction?</h2>
+  <p class="sub">Attraction is the shift from "I like talking to her" to "I want her." It happens through specific language patterns, pacing, and the slow increase of emotional and sensory temperature in the conversation.</p>
+
+  <div class="card">
+    <p class="k">The core principle</p>
+    <h3>Desire is created by distance — not by availability.</h3>
+    <p>This is the most important insight in this module. When a chatter chases, compliments constantly, or makes the model seem too available, it removes the gap that creates desire. Attraction is built by creating a slight pull-back — a sense that access to her is something worth working for. She is interested, but she is not chasing. She reveals, but she doesn't over-share. She flirts, but she doesn't beg for a reaction.</p>
+    <p class="lab goal">🎯 The goal of Attraction — make him feel like he's winning her, not the other way around.</p>
+  </div>
+</section>
+
+<section>
+  <h2>The temperature scale</h2>
+  <p class="sub">Every conversation sits somewhere on a temperature scale. Your job in the Attraction stage is to move him up the scale — one degree at a time, never jumping.</p>
+  <div class="temp-bar">
+    <div class="temp-cell cold">Cold<span>Polite but detached</span></div>
+    <div class="temp-cell cold" style="background:rgba(30,140,255,.06);color:#5BAEFF;">Friendly<span>Good conversation</span></div>
+    <div class="temp-cell warm" style="background:rgba(255,159,10,.08);color:#E89000;">Flirty<span>Light tension</span></div>
+    <div class="temp-cell warm">Charged<span>He's leaning in</span></div>
+    <div class="temp-cell hot">Desire<span>Ready to buy</span></div>
+  </div>
+  <div class="card">
+    <p>Most fans who message are already at Friendly or Flirty when they arrive, especially if Rapport has been established. Your job is to find where he is and move him one step forward — not three. Jumping from Friendly straight to Desire reads as desperate and breaks immersion. One degree at a time.</p>
+  </div>
+</section>
+
+<section>
+  <h2>The 4 Attraction moves</h2>
+
+  <div class="card">
+    <p class="k">Move 1 · The Selective Compliment</p>
+    <h3>Compliment something specific — not everything.</h3>
+    <p>Generic compliments ("you're so sweet!") are invisible. They cost nothing and mean nothing. A specific, unexpected compliment creates an emotional spike — because it proves she was paying attention. The more specific, the more powerful.</p>
+    <div class="chat">
+      <div class="m bad"><span class="who">✕ Generic — invisible</span>you're so sweet, i love talking to you 😊</div>
+      <div class="m out"><span class="who">✓ Specific — lands differently</span>you know what i like about you? you actually finish what you're saying before you ask a question. it's rare 😏</div>
+    </div>
+    <p class="lab goal">He's never been complimented on that before. He'll be thinking about it all day.</p>
+  </div>
+
+  <div class="card">
+    <p class="k">Move 2 · Push-Pull</p>
+    <h3>Tease him, then pull him back in.</h3>
+    <p>Push-pull is a flirtation rhythm: one message that slightly challenges him (push), followed by one that invites him in (pull). It creates a sense of earned access — and makes him work for her attention in a way that feels like a game, not a rejection.</p>
+    <div class="chat">
+      <div class="m in"><span class="who">Fan</span>okay i think i'm your favourite subscriber at this point</div>
+      <div class="m out"><span class="who">Push · slight challenge</span>top 5 for sure 😏 you'd have to try harder to get to number 1</div>
+      <div class="m in"><span class="who">Fan</span>lol okay what does number 1 look like</div>
+      <div class="m out"><span class="who">Pull · invite him in</span>honestly? just keep doing what you're doing. you're closer than you think 😌</div>
+    </div>
+    <p class="lab goal">He's now invested in a ranking that doesn't exist — and motivated to stay engaged. That's pull without manipulation.</p>
+  </div>
+
+  <div class="card">
+    <p class="k">Move 3 · The Sensory Message</p>
+    <h3>Make him feel something physical through words.</h3>
+    <p>Attraction lives in the body, not the brain. A message that describes a sensory experience — texture, warmth, sound, atmosphere — creates a physical response. This does not need to be explicit. The feeling of being close to someone, the anticipation of something about to happen, the quiet of a late-night message — these are sensory without being graphic.</p>
+    <div class="chat">
+      <div class="m out"><span class="who">✓ Sensory, not explicit</span>it's so quiet here tonight. i've got the window open, it's that cool before-rain air… i kind of love nights like this. you still up?</div>
+      <div class="m in"><span class="who">Fan</span>yeah i'm up. that sounds really nice honestly</div>
+    </div>
+    <p class="lab goal">He's now imagining being there. Proximity without presence. That's sensory language working correctly.</p>
+  </div>
+
+  <div class="card">
+    <p class="k">Move 4 · The Fantasy Bridge</p>
+    <h3>Plant a "what if" that he can finish in his head.</h3>
+    <p>The Fantasy Bridge is the most powerful pre-sale move in this stage. You open a scenario — slightly suggestive, clearly incomplete — and let him close it. His version is always exactly what he wants to see. Which means when you offer the content that delivers on it, the sale is already made in his mind.</p>
+    <div class="chat">
+      <div class="m out"><span class="who">Fantasy Bridge</span>i keep thinking about filming something different this weekend. nothing i've done before. the kind of thing you'd only send to someone you actually trust 👀</div>
+      <div class="m in"><span class="who">Fan</span>different how? i feel like i need to know</div>
+      <div class="m out"><span class="who">Let him pull it out of you</span>i'm still deciding honestly… depends on my mood. and maybe who's been paying attention lately 😏</div>
+    </div>
+    <p class="lab goal">The sale hasn't happened yet — but he's already bought it in his imagination. Your next PPV will feel like a delivery of something he's been waiting for.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Pacing — the rule of one degree</h2>
+  <div class="card"><ul class="rules">
+    <li><span class="n">1</span><span><strong>One degree per exchange.</strong> If he's at Friendly, move to light Flirty. Don't jump to Charged in the same message. Escalating too fast makes the model seem uncontrolled — not attractive.</span></li>
+    <li><span class="n">2</span><span><strong>Match before you lead.</strong> If he sends a flirty message, match it — then go slightly further. If you jump two levels above where he is, you've lost the rhythm of a real conversation.</span></li>
+    <li><span class="n">3</span><span><strong>Let him reach for it.</strong> Attraction is most powerful when he's asking for more. If you've done it right, he will ask. When he does, that's your signal to introduce the content offer.</span></li>
+    <li><span class="n">4</span><span><strong>A pull-back resets the temperature — use it strategically.</strong> If a conversation gets too hot too fast, a brief pull-back ("lol okay i should actually go do something productive 😅") resets the dynamic and makes him chase again.</span></li>
+  </ul></div>
+</section>
+
+<section>
+  <h2>Full worked thread — Attraction stage</h2>
+
+  <div class="card">
+    <p class="k">Thread · Fan already in Rapport, moving through Attraction to offer</p>
+    <div class="chat">
+      <div class="m in"><span class="who">Fan</span>hey you, how was your day</div>
+      <div class="m out"><span class="who">Model · mirror energy, warm</span>long one honestly, but the good kind — been in my head all day about something 🙈</div>
+      <div class="m in"><span class="who">Fan</span>uh oh. good something or bad something</div>
+      <div class="m out"><span class="who">Push · slight mystery</span>good something. the kind of idea that makes you a little nervous when you think about actually doing it 😏</div>
+      <div class="m in"><span class="who">Fan</span>okay now i'm curious. what is it</div>
+      <div class="m out"><span class="who">Selective compliment + pull</span>i feel like you'd get it more than most people would honestly. you have this way of… appreciating things. you know what i mean?</div>
+      <div class="m in"><span class="who">Fan</span>lol i think so? i hope that's a good thing</div>
+      <div class="m out"><span class="who">Sensory + Fantasy Bridge</span>very good thing. okay so i filmed something last night — late, quiet, different lighting than i usually use. it's the kind of thing i only send to people i actually like talking to 🙈</div>
+      <div class="m in"><span class="who">Fan</span>i want to see it</div>
+      <div class="m out"><span class="who">Bridge to offer — clean, confident</span>sending it now 😊 let me know what you think</div>
+    </div>
+    <p class="lab goal">Six exchanges. No pressure. No pitch. He asked for it. The Attraction stage did exactly what it was supposed to do — the offer was the natural conclusion of the conversation, not an interruption.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Golden rules of Attraction</h2>
+  <div class="card"><ul class="rules">
+    <li><span class="n">★</span><span>Desire is created by distance. Don't be too available, too eager, or too easy.</span></li>
+    <li><span class="n">★</span><span>One degree at a time. Never jump temperature levels.</span></li>
+    <li><span class="n">★</span><span>Specific compliments land. Generic ones don't.</span></li>
+    <li><span class="n">★</span><span>The Fantasy Bridge makes the sale before the offer does. Plant it well.</span></li>
+    <li><span class="n">★</span><span>Wait for him to reach. The moment he asks for it, that's the offer moment.</span></li>
+  </ul></div>
+
+  <a class="cta" href="module-9-exam-chatter.html">Ready? Take the Module 9 exam →</a>
+</section>
+
+</div></main>
+
+<footer><div class="wrap">
+  <p class="mm">LIVERICHMEDIA · THE CHATTER PLAYBOOK · MODULE 9 · IRAE SERIES · ATTRACTION</p>
+  <p>Study this page, then take the exam. Your manager gets your score automatically.</p>
+</div></footer>
