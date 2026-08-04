@@ -1,0 +1,253 @@
+<title>Playbook · Module 7 · The Intrigue Stage (Chatter Edition)</title>
+<meta name="color-scheme" content="dark">
+<script>document.documentElement.setAttribute('data-theme','dark');</script>
+
+<style>
+  :root{--bg:#ECECF1;--card:#FFF;--card-2:#FBFBFD;--sep:rgba(60,60,67,.14);--sep-strong:rgba(60,60,67,.24);
+    --ink:#1C1C1E;--ink-2:#3C3C43;--ink-soft:#6E6E73;--ink-faint:#8E8E93;
+    --gold:#C99A3E;--gold-deep:#A97F27;--gold-soft:rgba(201,154,62,.14);
+    --imsg:#1E8CFF;--imsg-2:#0A74E6;--grey:#E9E9EB;--green:#34C759;--amber:#FF9F0A;--red:#FF3B30;
+    --shadow-sm:0 1px 2px rgba(0,0,0,.05);--shadow:0 8px 30px rgba(30,25,10,.08);
+    --r-md:18px;--r-sm:12px;--maxw:820px;
+    --sans:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;}
+  @media (prefers-color-scheme:dark){:root{--bg:#000;--card:#1C1C1E;--card-2:#2C2C2E;--sep:rgba(84,84,88,.36);--sep-strong:rgba(120,120,128,.5);
+    --ink:#F5F5F7;--ink-2:#EBEBF0;--ink-soft:#AEAEB2;--ink-faint:#8E8E93;--gold:#E8C170;--gold-deep:#D9B26A;--gold-soft:rgba(232,193,112,.16);
+    --grey:#3A3A3C;--green:#30D158;--shadow:0 8px 30px rgba(0,0,0,.5);}}
+  :root[data-theme="light"]{--bg:#ECECF1;--card:#FFF;--card-2:#FBFBFD;--sep:rgba(60,60,67,.14);--sep-strong:rgba(60,60,67,.24);--ink:#1C1C1E;--ink-2:#3C3C43;--ink-soft:#6E6E73;--ink-faint:#8E8E93;--gold:#C99A3E;--gold-deep:#A97F27;--gold-soft:rgba(201,154,62,.14);--grey:#E9E9EB;--green:#34C759;--shadow:0 8px 30px rgba(30,25,10,.08);}
+  :root[data-theme="dark"]{--bg:#000;--card:#1C1C1E;--card-2:#2C2C2E;--sep:rgba(84,84,88,.36);--sep-strong:rgba(120,120,128,.5);--ink:#F5F5F7;--ink-2:#EBEBF0;--ink-soft:#AEAEB2;--ink-faint:#8E8E93;--gold:#E8C170;--gold-deep:#D9B26A;--gold-soft:rgba(232,193,112,.16);--grey:#3A3A3C;--green:#30D158;--shadow:0 8px 30px rgba(0,0,0,.5);}
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;letter-spacing:-.01em;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px;}
+  .topbar{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--bg) 72%,transparent);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--sep);}
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:52px;}
+  .topbar .brand{font-size:15px;font-weight:600;}.topbar .brand span{color:var(--gold);}
+  .topbar .pill{font-size:12px;font-weight:600;color:var(--ink-soft);background:var(--card);border:1px solid var(--sep);padding:5px 11px;border-radius:999px;}
+  header.hero{padding:64px 0 36px;text-align:center;}
+  .eyebrow{font-size:13px;font-weight:600;text-transform:uppercase;color:var(--gold);margin:0 0 14px;}
+  h1{font-weight:700;font-size:clamp(36px,7vw,58px);line-height:1.03;letter-spacing:-.03em;margin:0 auto 16px;max-width:15ch;text-wrap:balance;}
+  h1 em{font-style:normal;background:linear-gradient(120deg,var(--gold),var(--gold-deep));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .lede{font-size:20px;color:var(--ink-soft);max-width:52ch;margin:0 auto;line-height:1.45;}
+  section{padding:34px 0;}
+  h2{font-weight:700;font-size:clamp(24px,4vw,32px);letter-spacing:-.02em;margin:0 0 8px;}
+  .sub{font-size:18px;color:var(--ink-soft);margin:0 0 20px;max-width:60ch;}
+  .card{background:var(--card);border:1px solid var(--sep);border-radius:var(--r-md);padding:22px 24px;margin:16px 0;box-shadow:var(--shadow-sm);}
+  .card .k{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);margin:0 0 8px;}
+  .card h3{margin:0 0 10px;font-size:21px;font-weight:700;letter-spacing:-.015em;}
+  .card p{margin:0 0 10px;color:var(--ink-2);font-size:15.5px;}
+  .lab{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin:14px 0 6px;}
+  .lab.means{color:var(--ink-faint);} .lab.no{color:var(--red);} .lab.yes{color:var(--green);} .lab.goal{color:var(--gold-deep);}
+  .chat{display:grid;gap:6px;margin:8px 0 4px;}
+  .m{max-width:82%;padding:9px 14px;border-radius:17px;font-size:15px;line-height:1.38;}
+  .m.in{align-self:flex-start;background:var(--grey);color:var(--ink);border-bottom-left-radius:5px;}
+  .m.out{align-self:flex-end;margin-left:auto;color:#fff;background:linear-gradient(160deg,var(--imsg),var(--imsg-2));border-bottom-right-radius:5px;}
+  .m.bad{align-self:flex-end;margin-left:auto;color:#fff;background:linear-gradient(160deg,#FF6B61,#E5382C);border-bottom-right-radius:5px;}
+  .who{display:block;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.72;margin-bottom:2px;}
+  .callout{background:var(--card);border:1px solid var(--sep);border-radius:var(--r-md);padding:20px 24px;margin:22px 0;box-shadow:var(--shadow-sm);display:flex;gap:16px;align-items:flex-start;}
+  .callout .e{font-size:26px;line-height:1;}
+  .callout .t{font-weight:700;margin:0 0 4px;}
+  .callout p{margin:0;color:var(--ink-soft);font-size:15.5px;}
+  table{border-collapse:collapse;width:100%;font-size:15px;min-width:430px;}
+  .tblwrap{overflow-x:auto;background:var(--card);border:1px solid var(--sep);border-radius:var(--r-md);box-shadow:var(--shadow-sm);margin:16px 0;}
+  th,td{text-align:left;padding:13px 18px;border-bottom:1px solid var(--sep);}
+  th{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);background:var(--card-2);}
+  tr:last-child td{border-bottom:none;} td b{font-weight:600;}
+  ul.rules{list-style:none;margin:0;padding:0;}
+  ul.rules li{display:flex;gap:13px;align-items:flex-start;padding:13px 0;border-bottom:1px solid var(--sep);font-size:16px;}
+  ul.rules li:last-child{border-bottom:none;}
+  ul.rules .n{width:24px;height:24px;border-radius:50%;background:var(--gold-soft);color:var(--gold-deep);font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;flex:0 0 auto;margin-top:2px;}
+  .cta{display:block;text-align:center;background:linear-gradient(160deg,var(--gold),var(--gold-deep));color:#2a1e08;font-weight:600;font-size:17px;text-decoration:none;border-radius:14px;padding:16px 30px;margin:28px auto 0;max-width:420px;box-shadow:0 6px 18px var(--gold-soft);}
+  footer{padding:36px 0 66px;color:var(--ink-faint);font-size:13px;text-align:center;}
+  footer .mm{font-weight:600;color:var(--ink-soft);}
+  :focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:6px;}
+  .phasebar{display:flex;gap:6px;justify-content:center;margin:26px auto 0;flex-wrap:wrap;}
+  .ph{font-size:12.5px;font-weight:600;padding:6px 13px;border-radius:999px;border:1px solid var(--sep);background:var(--card);color:var(--ink-faint);text-decoration:none;transition:border-color .12s,color .12s;}
+  .ph:hover{border-color:var(--gold);color:var(--ink);}
+  .ph.on{background:linear-gradient(160deg,var(--gold),var(--gold-deep));color:#2a1e08;border-color:transparent;}
+  .irae-map{display:flex;gap:0;margin:24px 0;border-radius:var(--r-md);overflow:hidden;border:1px solid var(--sep);}
+  .irae-step{flex:1;padding:14px 12px;text-align:center;font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;background:var(--card-2);}
+  .irae-step.active{background:linear-gradient(160deg,var(--gold),var(--gold-deep));color:#2a1e08;}
+  .irae-step span{display:block;font-size:11px;font-weight:400;letter-spacing:0;text-transform:none;margin-top:3px;opacity:.8;}
+  .irae-step.active span{color:#2a1e08;}
+  .tip-row{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--sep);}
+  .tip-row:last-child{border-bottom:none;}
+  .tip-icon{font-size:20px;flex:0 0 auto;margin-top:2px;}
+  .tip-body strong{display:block;font-size:15px;margin-bottom:3px;}
+  .tip-body p{margin:0;font-size:14.5px;color:var(--ink-soft);}
+</style>
+
+<div class="topbar"><div class="wrap">
+  <div class="brand">LiveRich<span>Media</span> · Playbook</div>
+  <div class="pill">Module 7 · Chatter Edition</div>
+</div></div>
+
+<header class="hero"><div class="wrap">
+  <p class="eyebrow">The Chatter Playbook · Module 7 · IRAE Series</p>
+  <h1>The <em>Intrigue</em> Stage</h1>
+  <p class="lede">The fan hasn't decided yet. Your job in this stage is to make him curious enough to stay — without giving everything away. Intrigue is the art of the open door.</p>
+  <div class="phasebar">
+    <a class="ph" href="module-1-chatter-edition.html">1 · Comeback</a>
+    <a class="ph" href="module-2-discovery-chatter.html">2 · Discovery</a>
+    <a class="ph" href="module-3-escalation-chatter.html">3 · Escalation</a>
+    <a class="ph" href="module-4-sale-chatter.html">4 · Sale</a>
+    <a class="ph" href="module-5-negotiation-retention-chatter.html">5 · Negotiation</a>
+    <a class="ph" href="module-6-the-chase-chatter.html">6 · The Chase</a>
+    <a class="ph on" href="module-7-intrigue-chatter.html">7 · Intrigue</a>
+    <a class="ph" href="module-8-rapport-chatter.html">8 · Rapport</a>
+    <a class="ph" href="module-9-attraction-chatter.html">9 · Attraction</a>
+    <a class="ph" href="module-10-enslavement-chatter.html">10 · Enslavement</a>
+  </div>
+</div></header>
+
+<main><div class="wrap">
+
+<section>
+  <div class="irae-map">
+    <div class="irae-step active">I<span>Intrigue</span></div>
+    <div class="irae-step">R<span>Rapport</span></div>
+    <div class="irae-step">A<span>Attraction</span></div>
+    <div class="irae-step">E<span>Enslavement</span></div>
+  </div>
+
+  <div class="callout"><span class="e">🔍</span><div>
+    <p class="t">What is the IRAE framework?</p>
+    <p>IRAE is the emotional journey every fan goes through before he becomes a loyal, repeat buyer. Intrigue → Rapport → Attraction → Enslavement. Each stage has a different goal. You can't skip stages — trying to sell to a fan who's still in Intrigue is like proposing on a first date. Learn where he is, and work the right stage.</p>
+  </div></div>
+</section>
+
+<section>
+  <h2>What is Intrigue?</h2>
+  <p class="sub">The fan just arrived. He's a stranger. He doesn't know if she's worth his time or money yet. Intrigue is the stage where you create just enough mystery to make him want to find out more.</p>
+
+  <div class="card">
+    <p class="k">The core principle</p>
+    <h3>Don't explain — imply.</h3>
+    <p>Most chatters over-explain. They describe what the content looks like, what's in it, how long it is. That's a product listing, not a conversation. In the Intrigue stage, your job is to hint at something he hasn't seen yet — and let his imagination fill in the rest. His imagination will always do a better job than your description.</p>
+    <p class="lab goal">🎯 Rule — leave a gap. If you've said everything, there's no reason for him to stay.</p>
+  </div>
+
+  <div class="card">
+    <p class="k">Why Intrigue comes first</p>
+    <h3>Attention is earned before money is spent.</h3>
+    <p>A fan who is not intrigued will not engage in Discovery. A fan who skips Discovery never reaches the Sale. Every dollar you earn from a fan was preceded by a moment where he thought, <em>"I want to know more."</em> Intrigue creates that moment.</p>
+    <div class="chat">
+      <div class="m in"><span class="who">Fan · new subscriber</span>hey</div>
+      <div class="m bad"><span class="who">✕ Skipping Intrigue</span>hi! i just posted a new video, want to see it? it's $25</div>
+      <div class="m out"><span class="who">✓ Intrigue first</span>hey 👀 i was literally just about to film something i've never done before. your timing is either perfect or very dangerous lol</div>
+    </div>
+    <p class="lab goal">The second message creates a story. He wants to know what she's filming. Now you have his attention.</p>
+  </div>
+</section>
+
+<section>
+  <h2>The 4 Intrigue tools</h2>
+  <p class="sub">These are the four moves that reliably create curiosity. Learn each one so you can reach for the right one in any conversation.</p>
+
+  <div class="card">
+    <p class="k">Tool 1 · The Unfinished Story</p>
+    <h3>Start something. Don't finish it.</h3>
+    <p>A story that ends closes the loop — he's satisfied and has no reason to respond. A story that pauses mid-sentence forces him to ask what happens next. Use this to open conversations and to re-engage cold fans.</p>
+    <div class="chat">
+      <div class="m out"><span class="who">✓ Unfinished story opener</span>something unexpected happened on my shoot today and i honestly don't know whether to laugh or be embarrassed about it 😅</div>
+      <div class="m in"><span class="who">Fan</span>lol what happened?? 😂</div>
+    </div>
+    <p class="lab goal">🎯 He asked. You didn't push — you pulled. That's the difference between Intrigue and selling.</p>
+  </div>
+
+  <div class="card">
+    <p class="k">Tool 2 · The Tease Without a Reveal</p>
+    <h3>Mention the thing. Don't show the thing.</h3>
+    <p>Reference content, a look, a feeling, a situation — but don't fully describe it. Leave one detail out. The missing detail is what makes him curious.</p>
+    <div class="chat">
+      <div class="m out"><span class="who">✓ Tease without reveal</span>i filmed something last night that i'm honestly a little nervous to post… it's a different side of me than what you've seen 🙈</div>
+      <div class="m in"><span class="who">Fan</span>different how? now i need to know</div>
+    </div>
+    <p class="lab goal">🎯 "A different side" is the gap. He fills it with his best fantasy — and now he's invested.</p>
+  </div>
+
+  <div class="card">
+    <p class="k">Tool 3 · Selective Access</p>
+    <h3>Make him feel like he almost missed something.</h3>
+    <p>Exclusivity is a powerful intrigue trigger. When a fan feels like access to something is limited — by time, by who gets to see it, by what it takes to unlock it — his interest sharpens. This is not fake urgency. It's reflecting real scarcity that already exists on the page.</p>
+    <div class="chat">
+      <div class="m out"><span class="who">✓ Selective access</span>i only sent this to the guys who've been around a while because honestly it's a little too real for a mass send 🙈 you're on that list though</div>
+      <div class="m in"><span class="who">Fan</span>oh yeah? what is it</div>
+    </div>
+    <p class="lab goal">🎯 He feels chosen, not marketed to. That's a completely different emotional state.</p>
+  </div>
+
+  <div class="card">
+    <p class="k">Tool 4 · The Callback Question</p>
+    <h3>Reference something from his past and ask forward.</h3>
+    <p>Nothing creates intrigue in a returning fan like proof that she remembers him. A callback question — referencing something from a previous conversation, then asking a forward question — makes him feel seen. A fan who feels seen stays curious about what comes next.</p>
+    <div class="chat">
+      <div class="m out"><span class="who">✓ Callback question</span>hey, didn't you tell me your birthday was coming up? 👀 because i may or may not have something in mind</div>
+      <div class="m in"><span class="who">Fan</span>wait yeah it's next week lol what are you thinking 😏</div>
+    </div>
+    <p class="lab goal">🎯 He's leaning forward now. That's the posture you want before a sale.</p>
+  </div>
+</section>
+
+<section>
+  <h2>When Intrigue goes wrong</h2>
+  <p class="sub">Two mistakes that kill the stage before it can work.</p>
+
+  <div class="card"><ul class="rules">
+    <li><span class="n">✕</span><span><strong>Over-teasing.</strong> If you tease and never deliver, fans learn to ignore the hints. Intrigue has to eventually lead somewhere real. The rule: every tease earns the right to make one offer — after Rapport is established.</span></li>
+    <li><span class="n">✕</span><span><strong>Skipping to the sell.</strong> Sending a PPV link in the first or second message to a cold fan is the single most common chatter error. He doesn't know her yet. He has no emotional investment. Of course he says no. You haven't done the work.</span></li>
+    <li><span class="n">✕</span><span><strong>Generic openers.</strong> "Hey how are you 😊" opens no loop. It creates no story. There is nothing to be curious about. Every opener should have at least one piece of information that invites a follow-up question from him.</span></li>
+  </ul></div>
+</section>
+
+<section>
+  <h2>Full worked thread — Intrigue stage start to finish</h2>
+  <p class="sub">Watch how Intrigue naturally transitions into the early Discovery stage.</p>
+
+  <div class="card">
+    <p class="k">Thread · New fan, first conversation</p>
+    <div class="chat">
+      <div class="m in"><span class="who">Fan · just subscribed</span>hey</div>
+      <div class="m out"><span class="who">Model · Intrigue: unfinished story</span>hey! perfect timing — i just got back from something that may or may not have ended with me in a very compromising situation 😅 how's your day going?</div>
+      <div class="m in"><span class="who">Fan</span>lmao what?? what happened</div>
+      <div class="m out"><span class="who">Model · keep the gap, feed curiosity</span>okay so you know how i said i was trying something new on camera last week? let's just say it escalated faster than planned 😬 you'll see when i post it</div>
+      <div class="m in"><span class="who">Fan</span>haha now i'm curious. when are you posting it</div>
+      <div class="m out"><span class="who">Model · tease + selective access</span>honestly i was going to post it publicly but i'm thinking only the people i actually talk to get to see the full version 👀 you might be on that list</div>
+      <div class="m in"><span class="who">Fan</span>might be? 😂 what do i have to do lol</div>
+      <div class="m out"><span class="who">Model · transition to Discovery</span>nothing crazy — i just like knowing who i'm talking to first. so tell me about yourself, what do you do?</div>
+    </div>
+    <p class="lab goal">He's now in a Discovery conversation. He arrived. He asked questions. He's engaged. And she hasn't pitched a single thing.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Quick reference — Intrigue signals</h2>
+  <div class="tblwrap"><table>
+    <thead><tr><th>Fan behaviour</th><th>What it means</th><th>Your move</th></tr></thead>
+    <tbody>
+      <tr><td>"Hey" / one-word opener</td><td><b>Cold, no investment yet</b></td><td>Unfinished story opener — create a loop immediately</td></tr>
+      <tr><td>He asks a question back</td><td><b>Intrigue is working</b></td><td>Answer briefly, add another gap, keep him pulling</td></tr>
+      <tr><td>He ignores the tease, asks about prices</td><td><b>Buyer energy — fast mover</b></td><td>Skip ahead to Attraction, he's self-intrigued</td></tr>
+      <tr><td>He doesn't reply to the opener</td><td><b>Not engaged yet</b></td><td>Wait 24h, try a different Intrigue tool</td></tr>
+      <tr><td>He asks "what kind of content do you post"</td><td><b>Researching — early Intrigue</b></td><td>Don't list everything. Pick one thing and tease it</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section>
+  <h2>Golden rules of Intrigue</h2>
+  <div class="card"><ul class="rules">
+    <li><span class="n">★</span><span>Your job is to make him curious — not to make the sale. The sale comes later.</span></li>
+    <li><span class="n">★</span><span>Every message should open a loop or close one that was already open.</span></li>
+    <li><span class="n">★</span><span>His imagination is your best tool. Give it something to work with, then step back.</span></li>
+    <li><span class="n">★</span><span>Never send a PPV to a fan who hasn't shown curiosity or engagement first.</span></li>
+    <li><span class="n">★</span><span>Intrigue is over when he starts asking questions. That's when Rapport begins.</span></li>
+  </ul></div>
+
+  <a class="cta" href="module-7-exam-chatter.html">Ready? Take the Module 7 exam →</a>
+</section>
+
+</div></main>
+
+<footer><div class="wrap">
+  <p class="mm">LIVERICHMEDIA · THE CHATTER PLAYBOOK · MODULE 7 · IRAE SERIES · INTRIGUE</p>
+  <p>Study this page, then take the exam. Your manager gets your score automatically.</p>
+</div></footer>
