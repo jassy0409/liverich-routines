@@ -1,0 +1,281 @@
+<title>Playbook · Module 10 · The Enslavement Stage (Chatter Edition)</title>
+<meta name="color-scheme" content="dark">
+<script>document.documentElement.setAttribute('data-theme','dark');</script>
+
+<style>
+  :root{--bg:#ECECF1;--card:#FFF;--card-2:#FBFBFD;--sep:rgba(60,60,67,.14);--sep-strong:rgba(60,60,67,.24);
+    --ink:#1C1C1E;--ink-2:#3C3C43;--ink-soft:#6E6E73;--ink-faint:#8E8E93;
+    --gold:#C99A3E;--gold-deep:#A97F27;--gold-soft:rgba(201,154,62,.14);
+    --imsg:#1E8CFF;--imsg-2:#0A74E6;--grey:#E9E9EB;--green:#34C759;--amber:#FF9F0A;--red:#FF3B30;
+    --shadow-sm:0 1px 2px rgba(0,0,0,.05);--shadow:0 8px 30px rgba(30,25,10,.08);
+    --r-md:18px;--r-sm:12px;--maxw:820px;
+    --sans:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;}
+  @media (prefers-color-scheme:dark){:root{--bg:#000;--card:#1C1C1E;--card-2:#2C2C2E;--sep:rgba(84,84,88,.36);--sep-strong:rgba(120,120,128,.5);
+    --ink:#F5F5F7;--ink-2:#EBEBF0;--ink-soft:#AEAEB2;--ink-faint:#8E8E93;--gold:#E8C170;--gold-deep:#D9B26A;--gold-soft:rgba(232,193,112,.16);
+    --grey:#3A3A3C;--green:#30D158;--shadow:0 8px 30px rgba(0,0,0,.5);}}
+  :root[data-theme="light"]{--bg:#ECECF1;--card:#FFF;--card-2:#FBFBFD;--sep:rgba(60,60,67,.14);--sep-strong:rgba(60,60,67,.24);--ink:#1C1C1E;--ink-2:#3C3C43;--ink-soft:#6E6E73;--ink-faint:#8E8E93;--gold:#C99A3E;--gold-deep:#A97F27;--gold-soft:rgba(201,154,62,.14);--grey:#E9E9EB;--green:#34C759;--shadow:0 8px 30px rgba(30,25,10,.08);}
+  :root[data-theme="dark"]{--bg:#000;--card:#1C1C1E;--card-2:#2C2C2E;--sep:rgba(84,84,88,.36);--sep-strong:rgba(120,120,128,.5);--ink:#F5F5F7;--ink-2:#EBEBF0;--ink-soft:#AEAEB2;--ink-faint:#8E8E93;--gold:#E8C170;--gold-deep:#D9B26A;--gold-soft:rgba(232,193,112,.16);--grey:#3A3A3C;--green:#30D158;--shadow:0 8px 30px rgba(0,0,0,.5);}
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;letter-spacing:-.01em;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px;}
+  .topbar{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--bg) 72%,transparent);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--sep);}
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:52px;}
+  .topbar .brand{font-size:15px;font-weight:600;}.topbar .brand span{color:var(--gold);}
+  .topbar .pill{font-size:12px;font-weight:600;color:var(--ink-soft);background:var(--card);border:1px solid var(--sep);padding:5px 11px;border-radius:999px;}
+  header.hero{padding:64px 0 36px;text-align:center;}
+  .eyebrow{font-size:13px;font-weight:600;text-transform:uppercase;color:var(--gold);margin:0 0 14px;}
+  h1{font-weight:700;font-size:clamp(36px,7vw,58px);line-height:1.03;letter-spacing:-.03em;margin:0 auto 16px;max-width:15ch;text-wrap:balance;}
+  h1 em{font-style:normal;background:linear-gradient(120deg,var(--gold),var(--gold-deep));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .lede{font-size:20px;color:var(--ink-soft);max-width:52ch;margin:0 auto;line-height:1.45;}
+  section{padding:34px 0;}
+  h2{font-weight:700;font-size:clamp(24px,4vw,32px);letter-spacing:-.02em;margin:0 0 8px;}
+  .sub{font-size:18px;color:var(--ink-soft);margin:0 0 20px;max-width:60ch;}
+  .card{background:var(--card);border:1px solid var(--sep);border-radius:var(--r-md);padding:22px 24px;margin:16px 0;box-shadow:var(--shadow-sm);}
+  .card .k{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);margin:0 0 8px;}
+  .card h3{margin:0 0 10px;font-size:21px;font-weight:700;letter-spacing:-.015em;}
+  .card p{margin:0 0 10px;color:var(--ink-2);font-size:15.5px;}
+  .lab{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin:14px 0 6px;}
+  .lab.means{color:var(--ink-faint);} .lab.no{color:var(--red);} .lab.yes{color:var(--green);} .lab.goal{color:var(--gold-deep);}
+  .chat{display:grid;gap:6px;margin:8px 0 4px;}
+  .m{max-width:82%;padding:9px 14px;border-radius:17px;font-size:15px;line-height:1.38;}
+  .m.in{align-self:flex-start;background:var(--grey);color:var(--ink);border-bottom-left-radius:5px;}
+  .m.out{align-self:flex-end;margin-left:auto;color:#fff;background:linear-gradient(160deg,var(--imsg),var(--imsg-2));border-bottom-right-radius:5px;}
+  .m.bad{align-self:flex-end;margin-left:auto;color:#fff;background:linear-gradient(160deg,#FF6B61,#E5382C);border-bottom-right-radius:5px;}
+  .who{display:block;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.72;margin-bottom:2px;}
+  .callout{background:var(--card);border:1px solid var(--sep);border-radius:var(--r-md);padding:20px 24px;margin:22px 0;box-shadow:var(--shadow-sm);display:flex;gap:16px;align-items:flex-start;}
+  .callout .e{font-size:26px;line-height:1;}
+  .callout .t{font-weight:700;margin:0 0 4px;}
+  .callout p{margin:0;color:var(--ink-soft);font-size:15.5px;}
+  table{border-collapse:collapse;width:100%;font-size:15px;min-width:430px;}
+  .tblwrap{overflow-x:auto;background:var(--card);border:1px solid var(--sep);border-radius:var(--r-md);box-shadow:var(--shadow-sm);margin:16px 0;}
+  th,td{text-align:left;padding:13px 18px;border-bottom:1px solid var(--sep);}
+  th{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);background:var(--card-2);}
+  tr:last-child td{border-bottom:none;} td b{font-weight:600;}
+  ul.rules{list-style:none;margin:0;padding:0;}
+  ul.rules li{display:flex;gap:13px;align-items:flex-start;padding:13px 0;border-bottom:1px solid var(--sep);font-size:16px;}
+  ul.rules li:last-child{border-bottom:none;}
+  ul.rules .n{width:24px;height:24px;border-radius:50%;background:var(--gold-soft);color:var(--gold-deep);font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;flex:0 0 auto;margin-top:2px;}
+  .cta{display:block;text-align:center;background:linear-gradient(160deg,var(--gold),var(--gold-deep));color:#2a1e08;font-weight:600;font-size:17px;text-decoration:none;border-radius:14px;padding:16px 30px;margin:28px auto 0;max-width:420px;box-shadow:0 6px 18px var(--gold-soft);}
+  footer{padding:36px 0 66px;color:var(--ink-faint);font-size:13px;text-align:center;}
+  footer .mm{font-weight:600;color:var(--ink-soft);}
+  :focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:6px;}
+  .phasebar{display:flex;gap:6px;justify-content:center;margin:26px auto 0;flex-wrap:wrap;}
+  .ph{font-size:12.5px;font-weight:600;padding:6px 13px;border-radius:999px;border:1px solid var(--sep);background:var(--card);color:var(--ink-faint);text-decoration:none;transition:border-color .12s,color .12s;}
+  .ph:hover{border-color:var(--gold);color:var(--ink);}
+  .ph.on{background:linear-gradient(160deg,var(--gold),var(--gold-deep));color:#2a1e08;border-color:transparent;}
+  .irae-map{display:flex;gap:0;margin:24px 0;border-radius:var(--r-md);overflow:hidden;border:1px solid var(--sep);}
+  .irae-step{flex:1;padding:14px 12px;text-align:center;font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;background:var(--card-2);}
+  .irae-step.active{background:linear-gradient(160deg,var(--gold),var(--gold-deep));color:#2a1e08;}
+  .irae-step span{display:block;font-size:11px;font-weight:400;letter-spacing:0;text-transform:none;margin-top:3px;opacity:.8;}
+  .irae-step.active span{color:#2a1e08;}
+  .done{opacity:.45;}
+  .tier-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0;}
+  @media(max-width:600px){.tier-grid{grid-template-columns:1fr;}}
+  .tier-card{background:var(--card);border:1px solid var(--sep);border-radius:var(--r-sm);padding:16px 18px;}
+  .tier-card .tier-name{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);margin:0 0 6px;}
+  .tier-card h4{margin:0 0 8px;font-size:16px;font-weight:700;}
+  .tier-card p{margin:0;font-size:14px;color:var(--ink-soft);}
+</style>
+
+<div class="topbar"><div class="wrap">
+  <div class="brand">LiveRich<span>Media</span> · Playbook</div>
+  <div class="pill">Module 10 · Chatter Edition</div>
+</div></div>
+
+<header class="hero"><div class="wrap">
+  <p class="eyebrow">The Chatter Playbook · Module 10 · IRAE Series</p>
+  <h1>The <em>Enslavement</em> Stage</h1>
+  <p class="lede">He's not just a fan anymore. He's invested — emotionally, financially, habitually. The Enslavement stage is how you protect that investment and deepen it until leaving feels unthinkable.</p>
+  <div class="phasebar">
+    <a class="ph" href="module-1-chatter-edition.html">1 · Comeback</a>
+    <a class="ph" href="module-2-discovery-chatter.html">2 · Discovery</a>
+    <a class="ph" href="module-3-escalation-chatter.html">3 · Escalation</a>
+    <a class="ph" href="module-4-sale-chatter.html">4 · Sale</a>
+    <a class="ph" href="module-5-negotiation-retention-chatter.html">5 · Negotiation</a>
+    <a class="ph" href="module-6-the-chase-chatter.html">6 · The Chase</a>
+    <a class="ph" href="module-7-intrigue-chatter.html">7 · Intrigue</a>
+    <a class="ph" href="module-8-rapport-chatter.html">8 · Rapport</a>
+    <a class="ph" href="module-9-attraction-chatter.html">9 · Attraction</a>
+    <a class="ph on" href="module-10-enslavement-chatter.html">10 · Enslavement</a>
+  </div>
+</div></header>
+
+<main><div class="wrap">
+
+<section>
+  <div class="irae-map">
+    <div class="irae-step done">I<span>Intrigue ✓</span></div>
+    <div class="irae-step done">R<span>Rapport ✓</span></div>
+    <div class="irae-step done">A<span>Attraction ✓</span></div>
+    <div class="irae-step active">E<span>Enslavement</span></div>
+  </div>
+
+  <div class="callout"><span class="e">⚠️</span><div>
+    <p class="t">The word "Enslavement" is a strategy term — not a manipulation instruction</p>
+    <p>In this framework, "Enslavement" means the fan has developed a habit, an identity, and an emotional attachment to the model. He stays because he wants to. Your job is to be worth staying for — and to consistently give him reasons to keep choosing her. Nothing in this module involves deception. It's about being irreplaceable.</p>
+  </div></div>
+</section>
+
+<section>
+  <h2>What is Enslavement?</h2>
+  <p class="sub">A fan reaches the Enslavement stage when leaving feels like a loss — not just of content, but of a relationship, an identity, and a routine he's built around the model. This is the most valuable stage. These fans don't churn. They don't compare prices. They renew automatically and they tip.</p>
+
+  <div class="card">
+    <p class="k">The core principle</p>
+    <h3>You cannot maintain what you didn't properly build.</h3>
+    <p>Chatters who skipped Intrigue and Rapport will always struggle with retention. An Enslaved fan is not created by one great conversation — he's created by dozens of consistent ones. The Enslavement stage is where that consistency pays off. Your job here is not to start something new — it's to protect and deepen what already exists.</p>
+  </div>
+</section>
+
+<section>
+  <h2>The 4 signs a fan is in the Enslavement stage</h2>
+  <div class="tier-grid">
+    <div class="tier-card">
+      <p class="tier-name">Sign 1</p>
+      <h4>He messages without being prompted</h4>
+      <p>He doesn't wait for a mass message or a PPV. He just shows up because he wanted to talk. That's a habit — and habits are the strongest form of retention.</p>
+    </div>
+    <div class="tier-card">
+      <p class="tier-name">Sign 2</p>
+      <h4>He talks about her in his real life</h4>
+      <p>"You're the only person I've told this to." "I keep thinking about what you said." When her words travel into his offline life, he is Enslaved.</p>
+    </div>
+    <div class="tier-card">
+      <p class="tier-name">Sign 3</p>
+      <h4>He tips or gifts without being asked</h4>
+      <p>Unprompted financial generosity is a declaration of value. He's not buying content — he's expressing a feeling. Receive it warmly and make him feel that it mattered.</p>
+    </div>
+    <div class="tier-card">
+      <p class="tier-name">Sign 4</p>
+      <h4>He defends his spending to himself</h4>
+      <p>"I know it's a lot but she's worth it." When he's explaining himself to himself, he's fully invested. Never give him a reason to question that explanation.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>The 5 Enslavement maintenance moves</h2>
+
+  <div class="card">
+    <p class="k">Move 1 · The Identity Anchor</p>
+    <h3>Give him a role in her story.</h3>
+    <p>Fans who feel like they are part of the model's journey — not just an audience for it — are almost impossible to lose. The Identity Anchor is a phrase or frame that assigns him a specific place in her world. It makes him feel irreplaceable.</p>
+    <div class="chat">
+      <div class="m out"><span class="who">✓ Identity anchor</span>honestly you're one of the few people i actually talk to on here. not just like… subscriber talk. actual conversation. you know that right?</div>
+      <div class="m in"><span class="who">Fan</span>yeah i feel that. this doesn't feel like the other stuff i've seen on here</div>
+    </div>
+    <p class="lab goal">He now has an identity on her page — "the guy she actually talks to." Losing that identity costs more than a subscription price.</p>
+  </div>
+
+  <div class="card">
+    <p class="k">Move 2 · The Ritual</p>
+    <h3>Create a recurring pattern that belongs to just the two of them.</h3>
+    <p>Rituals are the most powerful retention tool that almost no chatter uses. A ritual is any recurring exchange — a Monday check-in, an inside joke she always references, a question she always asks. It creates an expectation. He starts to look forward to it. When it doesn't happen, he notices. When it does, it reinforces belonging.</p>
+    <div class="chat">
+      <div class="m out"><span class="who">Ritual check-in · Monday</span>okay weekly check-in: how's the manager situation this week? i need a status update 😏</div>
+      <div class="m in"><span class="who">Fan</span>haha honestly much better this week. this is becoming a thing</div>
+      <div class="m out"><span class="who">Model · reinforce the ritual</span>it is a thing. monday updates are mandatory now, i decided 😌</div>
+    </div>
+    <p class="lab goal">He's laughing. He's agreed. He now has a standing appointment in his week that involves her. That's a ritual.</p>
+  </div>
+
+  <div class="card">
+    <p class="k">Move 3 · The Earned Reveal</p>
+    <h3>Give him something no one else gets — and make sure he knows it.</h3>
+    <p>Exclusivity deepens Enslavement more than volume. It's not about how much content he receives — it's about whether he believes any of it is truly for him. An Earned Reveal is a moment where the model shares something personal, vulnerable, or behind-the-scenes that feels like it's not for everyone. Keep these rare. Rare things are precious.</p>
+    <div class="chat">
+      <div class="m out"><span class="who">✓ Earned reveal</span>i don't usually say this but i was actually nervous to post that last video. like genuinely. i only told like two people. you're one of them 🙈</div>
+      <div class="m in"><span class="who">Fan</span>wait really? it didn't seem like it at all. why were you nervous?</div>
+    </div>
+    <p class="lab goal">She let him in. He responded with genuine curiosity. That exchange just created a memory — and memories are anchors.</p>
+  </div>
+
+  <div class="card">
+    <p class="k">Move 4 · The Graceful Re-Engagement</p>
+    <h3>When a long-term fan goes quiet, bring him back without making it weird.</h3>
+    <p>Even Enslaved fans go quiet sometimes — life happens, money gets tight, they feel awkward about a long gap. A chatter who handles this gracefully gets the fan back. A chatter who makes it transactional ("hey long time! new content available 😊") loses him to the awkwardness.</p>
+    <div class="chat">
+      <div class="m out"><span class="who">✓ Graceful re-engagement · no mention of the gap</span>hey, i've been thinking about that thing you said a while back about your job — did that situation ever resolve itself?</div>
+      <div class="m in"><span class="who">Fan</span>oh wow you remembered that lol. yeah actually it did, thanks for asking</div>
+      <div class="m out"><span class="who">Model</span>of course i did 😊 good to hear. i've missed our chats honestly</div>
+    </div>
+    <p class="lab goal">No guilt trip. No awkward "where have you been." She picked up a thread from before — and he felt like nothing was lost.</p>
+  </div>
+
+  <div class="card">
+    <p class="k">Move 5 · The Value Reminder</p>
+    <h3>Help him remember why he's here — without selling.</h3>
+    <p>Long-term fans occasionally have moments of "what am I doing." They question the subscription, the spending, the whole thing. A Value Reminder is a message that arrives just before that moment becomes a decision. It's not a pitch — it's a moment of genuine connection that reminds him, organically, exactly why he's still here.</p>
+    <div class="chat">
+      <div class="m out"><span class="who">✓ Value reminder — no pitch</span>i just wanted to say — i really appreciate that you actually talk to me. not everybody does. it makes the whole thing different for me 💛</div>
+      <div class="m in"><span class="who">Fan</span>honestly same. this is the one thing i don't regret spending money on lol</div>
+    </div>
+    <p class="lab goal">He said it himself. He doesn't regret it. That's retention insurance — and it came from a moment of warmth, not a discount offer.</p>
+  </div>
+</section>
+
+<section>
+  <h2>What breaks Enslavement — and how to avoid it</h2>
+  <div class="card"><ul class="rules">
+    <li><span class="n">✕</span><span><strong>Transactional check-ins.</strong> "Hey! Just checking in 😊 have you seen my latest post?" — this is not a check-in. It's a sales message disguised as care. He knows the difference. Always lead with relationship, not content.</span></li>
+    <li><span class="n">✕</span><span><strong>Inconsistent memory.</strong> An Enslaved fan has told the model things. If a chatter references the wrong thing, or asks a question he already answered, it shatters the illusion and reminds him this is a service, not a relationship. Fan notes must be accurate.</span></li>
+    <li><span class="n">✕</span><span><strong>Making him feel like a number.</strong> Mass message energy in a DM. Generic replies. Low-effort responses to long messages. An Enslaved fan notices every one of these. Each one is a small withdrawal from the trust account.</span></li>
+    <li><span class="n">✕</span><span><strong>Taking the fan for granted.</strong> Long-term fans who feel ignored — even while still subscribed — are building resentment quietly. A fan who churns after 6 months of silence didn't just decide to leave. He decided over many weeks that he wasn't being seen. The exit was announced months before he clicked cancel.</span></li>
+  </ul></div>
+</section>
+
+<section>
+  <h2>Full worked thread — Enslavement in practice</h2>
+  <div class="card">
+    <p class="k">Thread · 4-month fan, ritual + value reminder</p>
+    <div class="chat">
+      <div class="m out"><span class="who">Monday ritual check-in</span>monday update time — what's the damage this week? work, life, all of it 😄</div>
+      <div class="m in"><span class="who">Fan</span>haha it's become my favourite message of the week ngl. work's okay actually. had a good weekend</div>
+      <div class="m out"><span class="who">Model · genuine curiosity</span>a good weekend?? okay you have to tell me — this is a rare occurrence based on your track record 😂</div>
+      <div class="m in"><span class="who">Fan</span>lol you're not wrong. went on a hike, saw some friends i haven't seen in a while. just felt like a normal good day</div>
+      <div class="m out"><span class="who">Model · warm, no pivot to content</span>those normal good days hit different after a rough stretch. i'm really glad you got one of those ❤️ you deserved it</div>
+      <div class="m in"><span class="who">Fan</span>thanks. honestly this monday thing has become a weird anchor in my week lol. is that weird</div>
+      <div class="m out"><span class="who">Value reminder — no pitch, no ask</span>not weird at all. it's the same for me honestly. i like knowing you're out there having weeks worth talking about 💛</div>
+    </div>
+    <p class="lab goal">No content mentioned. No PPV. No ask. Just a ritual conversation that deepened a 4-month relationship by one more notch. The purchase will come — and when it does, it will feel easy, because the trust was never spent on something cheap.</p>
+  </div>
+</section>
+
+<section>
+  <h2>The IRAE loop — it doesn't end at Enslavement</h2>
+  <div class="callout"><span class="e">🔄</span><div>
+    <p class="t">IRAE is a cycle, not a line</p>
+    <p>After Enslavement, a fan will periodically need re-intriguing. A long-term fan who's in a routine can go flat — he's still subscribed, but he's not actively engaged. The answer is to re-enter the IRAE cycle at Intrigue: plant a new mystery, create a new curiosity loop, offer a new side of the model he hasn't seen yet. Then Rapport deepens naturally, Attraction reactivates, and Enslavement strengthens. The cycle repeats — and each loop builds on the one before it.</p>
+  </div></div>
+
+  <div class="tblwrap"><table>
+    <thead><tr><th>Stage</th><th>Fan's emotional state</th><th>Your primary goal</th><th>Mistake to avoid</th></tr></thead>
+    <tbody>
+      <tr><td><b>Intrigue</b></td><td>Curious, not invested</td><td>Create a loop he wants to close</td><td>Selling before curiosity is built</td></tr>
+      <tr><td><b>Rapport</b></td><td>Engaged, starting to trust</td><td>Make him feel known</td><td>Skipping to flirtation too fast</td></tr>
+      <tr><td><b>Attraction</b></td><td>Wants her, leaning in</td><td>Create desire through distance</td><td>Being too available, too eager</td></tr>
+      <tr><td><b>Enslavement</b></td><td>Invested, habitual</td><td>Protect and deepen the attachment</td><td>Transactional check-ins, inconsistent memory</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section>
+  <h2>Golden rules of Enslavement</h2>
+  <div class="card"><ul class="rules">
+    <li><span class="n">★</span><span>You can't retain a fan you didn't properly build. Every stage matters.</span></li>
+    <li><span class="n">★</span><span>Rituals are the strongest retention tool available. Create them deliberately.</span></li>
+    <li><span class="n">★</span><span>An Enslaved fan doesn't buy because of the content. He buys because of the relationship. Protect it above everything.</span></li>
+    <li><span class="n">★</span><span>Value reminders — warm, unannounced, no ask — are worth more than any promo discount.</span></li>
+    <li><span class="n">★</span><span>When a fan goes quiet, bring him back with a callback — never with a sales message.</span></li>
+    <li><span class="n">★</span><span>IRAE is a cycle. Long-term fans need re-intriguing. Start the loop again when you feel engagement flatten.</span></li>
+  </ul></div>
+
+  <a class="cta" href="module-10-exam-chatter.html">Ready? Take the Module 10 exam →</a>
+</section>
+
+</div></main>
+
+<footer><div class="wrap">
+  <p class="mm">LIVERICHMEDIA · THE CHATTER PLAYBOOK · MODULE 10 · IRAE SERIES · ENSLAVEMENT</p>
+  <p>Study this page, then take the exam. Your manager gets your score automatically.</p>
+</div></footer>

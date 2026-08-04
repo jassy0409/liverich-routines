@@ -1,0 +1,248 @@
+<title>Playbook · Module 8 · The Rapport Stage (Chatter Edition)</title>
+<meta name="color-scheme" content="dark">
+<script>document.documentElement.setAttribute('data-theme','dark');</script>
+
+<style>
+  :root{--bg:#ECECF1;--card:#FFF;--card-2:#FBFBFD;--sep:rgba(60,60,67,.14);--sep-strong:rgba(60,60,67,.24);
+    --ink:#1C1C1E;--ink-2:#3C3C43;--ink-soft:#6E6E73;--ink-faint:#8E8E93;
+    --gold:#C99A3E;--gold-deep:#A97F27;--gold-soft:rgba(201,154,62,.14);
+    --imsg:#1E8CFF;--imsg-2:#0A74E6;--grey:#E9E9EB;--green:#34C759;--amber:#FF9F0A;--red:#FF3B30;
+    --shadow-sm:0 1px 2px rgba(0,0,0,.05);--shadow:0 8px 30px rgba(30,25,10,.08);
+    --r-md:18px;--r-sm:12px;--maxw:820px;
+    --sans:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;}
+  @media (prefers-color-scheme:dark){:root{--bg:#000;--card:#1C1C1E;--card-2:#2C2C2E;--sep:rgba(84,84,88,.36);--sep-strong:rgba(120,120,128,.5);
+    --ink:#F5F5F7;--ink-2:#EBEBF0;--ink-soft:#AEAEB2;--ink-faint:#8E8E93;--gold:#E8C170;--gold-deep:#D9B26A;--gold-soft:rgba(232,193,112,.16);
+    --grey:#3A3A3C;--green:#30D158;--shadow:0 8px 30px rgba(0,0,0,.5);}}
+  :root[data-theme="light"]{--bg:#ECECF1;--card:#FFF;--card-2:#FBFBFD;--sep:rgba(60,60,67,.14);--sep-strong:rgba(60,60,67,.24);--ink:#1C1C1E;--ink-2:#3C3C43;--ink-soft:#6E6E73;--ink-faint:#8E8E93;--gold:#C99A3E;--gold-deep:#A97F27;--gold-soft:rgba(201,154,62,.14);--grey:#E9E9EB;--green:#34C759;--shadow:0 8px 30px rgba(30,25,10,.08);}
+  :root[data-theme="dark"]{--bg:#000;--card:#1C1C1E;--card-2:#2C2C2E;--sep:rgba(84,84,88,.36);--sep-strong:rgba(120,120,128,.5);--ink:#F5F5F7;--ink-2:#EBEBF0;--ink-soft:#AEAEB2;--ink-faint:#8E8E93;--gold:#E8C170;--gold-deep:#D9B26A;--gold-soft:rgba(232,193,112,.16);--grey:#3A3A3C;--green:#30D158;--shadow:0 8px 30px rgba(0,0,0,.5);}
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;letter-spacing:-.01em;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px;}
+  .topbar{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--bg) 72%,transparent);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--sep);}
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:52px;}
+  .topbar .brand{font-size:15px;font-weight:600;}.topbar .brand span{color:var(--gold);}
+  .topbar .pill{font-size:12px;font-weight:600;color:var(--ink-soft);background:var(--card);border:1px solid var(--sep);padding:5px 11px;border-radius:999px;}
+  header.hero{padding:64px 0 36px;text-align:center;}
+  .eyebrow{font-size:13px;font-weight:600;text-transform:uppercase;color:var(--gold);margin:0 0 14px;}
+  h1{font-weight:700;font-size:clamp(36px,7vw,58px);line-height:1.03;letter-spacing:-.03em;margin:0 auto 16px;max-width:15ch;text-wrap:balance;}
+  h1 em{font-style:normal;background:linear-gradient(120deg,var(--gold),var(--gold-deep));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .lede{font-size:20px;color:var(--ink-soft);max-width:52ch;margin:0 auto;line-height:1.45;}
+  section{padding:34px 0;}
+  h2{font-weight:700;font-size:clamp(24px,4vw,32px);letter-spacing:-.02em;margin:0 0 8px;}
+  .sub{font-size:18px;color:var(--ink-soft);margin:0 0 20px;max-width:60ch;}
+  .card{background:var(--card);border:1px solid var(--sep);border-radius:var(--r-md);padding:22px 24px;margin:16px 0;box-shadow:var(--shadow-sm);}
+  .card .k{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);margin:0 0 8px;}
+  .card h3{margin:0 0 10px;font-size:21px;font-weight:700;letter-spacing:-.015em;}
+  .card p{margin:0 0 10px;color:var(--ink-2);font-size:15.5px;}
+  .lab{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin:14px 0 6px;}
+  .lab.means{color:var(--ink-faint);} .lab.no{color:var(--red);} .lab.yes{color:var(--green);} .lab.goal{color:var(--gold-deep);}
+  .chat{display:grid;gap:6px;margin:8px 0 4px;}
+  .m{max-width:82%;padding:9px 14px;border-radius:17px;font-size:15px;line-height:1.38;}
+  .m.in{align-self:flex-start;background:var(--grey);color:var(--ink);border-bottom-left-radius:5px;}
+  .m.out{align-self:flex-end;margin-left:auto;color:#fff;background:linear-gradient(160deg,var(--imsg),var(--imsg-2));border-bottom-right-radius:5px;}
+  .m.bad{align-self:flex-end;margin-left:auto;color:#fff;background:linear-gradient(160deg,#FF6B61,#E5382C);border-bottom-right-radius:5px;}
+  .who{display:block;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.72;margin-bottom:2px;}
+  .callout{background:var(--card);border:1px solid var(--sep);border-radius:var(--r-md);padding:20px 24px;margin:22px 0;box-shadow:var(--shadow-sm);display:flex;gap:16px;align-items:flex-start;}
+  .callout .e{font-size:26px;line-height:1;}
+  .callout .t{font-weight:700;margin:0 0 4px;}
+  .callout p{margin:0;color:var(--ink-soft);font-size:15.5px;}
+  table{border-collapse:collapse;width:100%;font-size:15px;min-width:430px;}
+  .tblwrap{overflow-x:auto;background:var(--card);border:1px solid var(--sep);border-radius:var(--r-md);box-shadow:var(--shadow-sm);margin:16px 0;}
+  th,td{text-align:left;padding:13px 18px;border-bottom:1px solid var(--sep);}
+  th{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);background:var(--card-2);}
+  tr:last-child td{border-bottom:none;} td b{font-weight:600;}
+  ul.rules{list-style:none;margin:0;padding:0;}
+  ul.rules li{display:flex;gap:13px;align-items:flex-start;padding:13px 0;border-bottom:1px solid var(--sep);font-size:16px;}
+  ul.rules li:last-child{border-bottom:none;}
+  ul.rules .n{width:24px;height:24px;border-radius:50%;background:var(--gold-soft);color:var(--gold-deep);font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;flex:0 0 auto;margin-top:2px;}
+  .cta{display:block;text-align:center;background:linear-gradient(160deg,var(--gold),var(--gold-deep));color:#2a1e08;font-weight:600;font-size:17px;text-decoration:none;border-radius:14px;padding:16px 30px;margin:28px auto 0;max-width:420px;box-shadow:0 6px 18px var(--gold-soft);}
+  footer{padding:36px 0 66px;color:var(--ink-faint);font-size:13px;text-align:center;}
+  footer .mm{font-weight:600;color:var(--ink-soft);}
+  :focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:6px;}
+  .phasebar{display:flex;gap:6px;justify-content:center;margin:26px auto 0;flex-wrap:wrap;}
+  .ph{font-size:12.5px;font-weight:600;padding:6px 13px;border-radius:999px;border:1px solid var(--sep);background:var(--card);color:var(--ink-faint);text-decoration:none;transition:border-color .12s,color .12s;}
+  .ph:hover{border-color:var(--gold);color:var(--ink);}
+  .ph.on{background:linear-gradient(160deg,var(--gold),var(--gold-deep));color:#2a1e08;border-color:transparent;}
+  .irae-map{display:flex;gap:0;margin:24px 0;border-radius:var(--r-md);overflow:hidden;border:1px solid var(--sep);}
+  .irae-step{flex:1;padding:14px 12px;text-align:center;font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;background:var(--card-2);}
+  .irae-step.active{background:linear-gradient(160deg,var(--gold),var(--gold-deep));color:#2a1e08;}
+  .irae-step span{display:block;font-size:11px;font-weight:400;letter-spacing:0;text-transform:none;margin-top:3px;opacity:.8;}
+  .irae-step.active span{color:#2a1e08;}
+  .done{opacity:.45;}
+</style>
+
+<div class="topbar"><div class="wrap">
+  <div class="brand">LiveRich<span>Media</span> · Playbook</div>
+  <div class="pill">Module 8 · Chatter Edition</div>
+</div></div>
+
+<header class="hero"><div class="wrap">
+  <p class="eyebrow">The Chatter Playbook · Module 8 · IRAE Series</p>
+  <h1>The <em>Rapport</em> Stage</h1>
+  <p class="lede">He's curious. Now you make him feel known. Rapport is what turns a fan who opens messages into a fan who can't stop replying. It's the foundation everything else is built on.</p>
+  <div class="phasebar">
+    <a class="ph" href="module-1-chatter-edition.html">1 · Comeback</a>
+    <a class="ph" href="module-2-discovery-chatter.html">2 · Discovery</a>
+    <a class="ph" href="module-3-escalation-chatter.html">3 · Escalation</a>
+    <a class="ph" href="module-4-sale-chatter.html">4 · Sale</a>
+    <a class="ph" href="module-5-negotiation-retention-chatter.html">5 · Negotiation</a>
+    <a class="ph" href="module-6-the-chase-chatter.html">6 · The Chase</a>
+    <a class="ph" href="module-7-intrigue-chatter.html">7 · Intrigue</a>
+    <a class="ph on" href="module-8-rapport-chatter.html">8 · Rapport</a>
+    <a class="ph" href="module-9-attraction-chatter.html">9 · Attraction</a>
+    <a class="ph" href="module-10-enslavement-chatter.html">10 · Enslavement</a>
+  </div>
+</div></header>
+
+<main><div class="wrap">
+
+<section>
+  <div class="irae-map">
+    <div class="irae-step done">I<span>Intrigue ✓</span></div>
+    <div class="irae-step active">R<span>Rapport</span></div>
+    <div class="irae-step">A<span>Attraction</span></div>
+    <div class="irae-step">E<span>Enslavement</span></div>
+  </div>
+</section>
+
+<section>
+  <h2>What is Rapport?</h2>
+  <p class="sub">Rapport is the feeling a fan gets when he believes the model actually knows him — not as a subscriber number, but as a person. It's the moment he thinks, "she actually gets me."</p>
+
+  <div class="callout"><span class="e">💡</span><div>
+    <p class="t">Why Rapport makes money</p>
+    <p>A fan who feels known will spend more, churn less, and forgive more. He doesn't comparison-shop. He doesn't cancel when cash is tight. He doesn't disappear after one PPV. Rapport is the most financially important stage in the IRAE framework — it determines lifetime value, not just this month's revenue.</p>
+  </div></div>
+
+  <div class="card">
+    <p class="k">The core principle</p>
+    <h3>Make him feel seen before you make him feel desired.</h3>
+    <p>Most chatters jump straight to flirtation. That's Attraction — it belongs to the next stage. A fan who hasn't felt seen yet treats flirtation as performance. He knows it's scripted. But a fan who already feels known experiences the exact same flirtatious message as genuine. The order matters.</p>
+    <p class="lab goal">🎯 Rapport first. Attraction second. Never in reverse.</p>
+  </div>
+</section>
+
+<section>
+  <h2>The 5 pillars of Rapport</h2>
+
+  <div class="card">
+    <p class="k">Pillar 1 · Active Listening</p>
+    <h3>Respond to what he actually said — not just the last word.</h3>
+    <p>Most chatters respond to the surface of a message. He says "I'm exhausted from work" and they say "aww poor thing 😢." An active listener responds to the meaning: "what's been going on — has it been like this all week or just today?" That question tells him she was paying attention.</p>
+    <div class="chat">
+      <div class="m in"><span class="who">Fan</span>ugh another late night at the office. this project is killing me</div>
+      <div class="m bad"><span class="who">✕ Surface reply</span>aww no! get some rest babe 😢</div>
+      <div class="m out"><span class="who">✓ Active listening</span>another one? how long has this project been dragging on — you mentioned it last week too. is there a deadline or does it just keep moving?</div>
+    </div>
+    <p class="lab goal">The second reply proves she remembered. That's rare. That builds Rapport faster than any compliment.</p>
+  </div>
+
+  <div class="card">
+    <p class="k">Pillar 2 · Memory & Callbacks</p>
+    <h3>Bring back what he told you in a previous conversation.</h3>
+    <p>Fan notes exist for this reason. Every time a fan tells you something personal — his job, his city, his kids, a problem he's dealing with — write it down and use it in the next conversation. The callback is proof that the model is different from everyone else in his life who half-listens.</p>
+    <div class="chat">
+      <div class="m out"><span class="who">✓ Callback from fan notes</span>hey, didn't you have that big client meeting today? how did it go?</div>
+      <div class="m in"><span class="who">Fan</span>wait you remembered that?? it went really well actually</div>
+      <div class="m out"><span class="who">Model</span>of course i remembered 😊 you sounded stressed about it. i'm glad it went well — what happened?</div>
+    </div>
+    <p class="lab goal">The words "you remembered that??" are the sound of Rapport being built in real time.</p>
+  </div>
+
+  <div class="card">
+    <p class="k">Pillar 3 · Mirroring His Energy</p>
+    <h3>Match his tone before you try to shift it.</h3>
+    <p>A fan who messages at 11pm tired and flat is not in the same headspace as a fan who messages Sunday afternoon hyped. Chatters who blast the same bright, bubbly energy at both fans lose both. Mirror his tone first — then gently shift it. A tired fan needs warmth before playfulness. A hyped fan can take teasing immediately.</p>
+    <div class="chat">
+      <div class="m in"><span class="who">Fan · late night, flat</span>hey. can't sleep. you still up</div>
+      <div class="m bad"><span class="who">✕ Wrong energy</span>OMG hey!! i'm so bored tonight you have no idea 😂😂</div>
+      <div class="m out"><span class="who">✓ Mirror first</span>yeah i'm here 🙂 rough night?</div>
+    </div>
+    <p class="lab goal">One quiet question at the right energy level does more Rapport-work than ten exclamation points.</p>
+  </div>
+
+  <div class="card">
+    <p class="k">Pillar 4 · Genuine Curiosity</p>
+    <h3>Ask the second question, not just the first.</h3>
+    <p>Everyone asks "how was your weekend?" Almost nobody asks the follow-up. The follow-up is where the real information lives — and where the fan starts to feel like this is an actual conversation, not a script.</p>
+    <div class="chat">
+      <div class="m out"><span class="who">First question</span>how was your weekend?</div>
+      <div class="m in"><span class="who">Fan</span>pretty good, went hiking</div>
+      <div class="m bad"><span class="who">✕ Drops it</span>nice! so have you checked out my new post? 😊</div>
+      <div class="m out"><span class="who">✓ Second question</span>oh yeah? where did you go — are you doing trails regularly or was this more of a one-off thing?</div>
+      <div class="m in"><span class="who">Fan</span>i've been trying to get out every weekend honestly. trying to clear my head after the divorce stuff</div>
+    </div>
+    <p class="lab goal">The second question unlocked the real story. You now have everything you need to build Rapport — and fan notes that will pay dividends for months.</p>
+  </div>
+
+  <div class="card">
+    <p class="k">Pillar 5 · Sharing Back</p>
+    <h3>Let the model be a person too — in controlled doses.</h3>
+    <p>Rapport is a two-way bridge. If the chatter only asks questions and never shares anything about the model's life, it starts to feel like an interview. A small, carefully chosen detail about the model — her day, a feeling, something she noticed — makes the conversation feel mutual. Keep it real, keep it brief, and always pass the conversation back to him.</p>
+    <div class="chat">
+      <div class="m in"><span class="who">Fan</span>just got home from the gym, i'm dead</div>
+      <div class="m out"><span class="who">✓ Share back, pass forward</span>i feel that — i tried to work out this morning and lasted exactly 20 minutes before i gave up 😅 what did you do today, leg day?</div>
+    </div>
+    <p class="lab goal">She shared a real moment. It's relatable and brief. Then she passed the topic back to him. That's the rhythm.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Fan notes — what to capture</h2>
+  <p class="sub">Rapport is impossible without a memory system. Every chatter must use fan notes. These are the categories that matter most.</p>
+  <div class="tblwrap"><table>
+    <thead><tr><th>Category</th><th>What to note</th><th>Why it matters</th></tr></thead>
+    <tbody>
+      <tr><td><b>Work</b></td><td>Job type, industry, how he feels about it, big events coming up</td><td>Opens future callback conversations; affects budget signals</td></tr>
+      <tr><td><b>Life events</b></td><td>Birthdays, moves, breakups, divorces, kids, travel</td><td>Callback moments and content gift opportunities</td></tr>
+      <tr><td><b>Payday / money signals</b></td><td>When he mentions payday, spending limits, tight weeks</td><td>Time offers correctly; reduces objections</td></tr>
+      <tr><td><b>Content preferences</b></td><td>What he's responded to, what he buys, what he asks for</td><td>Personalise PPV sends; skip what he doesn't want</td></tr>
+      <tr><td><b>Communication style</b></td><td>Short vs long messages, emoji use, casual vs direct</td><td>Mirror his style; don't write novels to a one-liner fan</td></tr>
+      <tr><td><b>Mood patterns</b></td><td>What time he usually messages, when he's tired vs playful</td><td>Match energy; don't push sales on flat-energy nights</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section>
+  <h2>Full worked thread — Rapport stage</h2>
+
+  <div class="card">
+    <p class="k">Thread · Building Rapport across two conversations</p>
+    <div class="chat">
+      <div class="m in"><span class="who">Fan · Conversation 1</span>had a rough day honestly</div>
+      <div class="m out"><span class="who">Model · mirror + second question</span>yeah? what happened — work thing or something else?</div>
+      <div class="m in"><span class="who">Fan</span>yeah work. my manager is a nightmare lately. micromanages everything</div>
+      <div class="m out"><span class="who">Model · listen + share briefly</span>ugh that's draining, especially when you're doing your job fine and someone's still hovering. how long has it been like this?</div>
+      <div class="m in"><span class="who">Fan</span>like 3 months. ever since he got promoted. different person now</div>
+      <div class="m out"><span class="who">Model · validate + note for next time</span>that's such a specific kind of frustration — watching someone change when they get power. i hope it gets better. you around this week or is it all heads-down?</div>
+    </div>
+    <div class="chat" style="margin-top:16px;">
+      <div class="m out"><span class="who">Model · Conversation 2, two days later · CALLBACK</span>hey — how did it go this week with the manager situation? you seemed pretty done with it on Tuesday</div>
+      <div class="m in"><span class="who">Fan</span>bro. you actually remembered that?</div>
+      <div class="m out"><span class="who">Model</span>of course i did 😊 so? better or still a nightmare?</div>
+      <div class="m in"><span class="who">Fan</span>honestly a little better. he backed off a bit. thanks for asking</div>
+      <div class="m out"><span class="who">Model · warm, then bridge to content</span>glad to hear it ❤️ you deserve a good week. i actually filmed something this week that kind of matched my mood — do you want to see?</div>
+    </div>
+    <p class="lab goal">The content offer lands differently now. He's not being sold to — he's being offered something by someone who knows him. That's the Rapport dividend.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Golden rules of Rapport</h2>
+  <div class="card"><ul class="rules">
+    <li><span class="n">★</span><span>Fan notes are not optional. If you don't write it down, it didn't happen.</span></li>
+    <li><span class="n">★</span><span>The second question is always more valuable than the first.</span></li>
+    <li><span class="n">★</span><span>Mirror his energy first. Shift it second. Never ignore it.</span></li>
+    <li><span class="n">★</span><span>A callback is worth more than any compliment you can write.</span></li>
+    <li><span class="n">★</span><span>Rapport is not built in one conversation — it compounds over time. Every conversation either adds to it or withdraws from it.</span></li>
+  </ul></div>
+
+  <a class="cta" href="module-8-exam-chatter.html">Ready? Take the Module 8 exam →</a>
+</section>
+
+</div></main>
+
+<footer><div class="wrap">
+  <p class="mm">LIVERICHMEDIA · THE CHATTER PLAYBOOK · MODULE 8 · IRAE SERIES · RAPPORT</p>
+  <p>Study this page, then take the exam. Your manager gets your score automatically.</p>
+</div></footer>
