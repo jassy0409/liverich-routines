@@ -465,34 +465,37 @@ form.addEventListener('submit',async(e)=>{
   const ts=new Date().toLocaleString();
   const written=[6,7,8,9,10,11,12,13,14,15].map(n=>`Q${n}: ${(data.get('q'+n)||'').trim()}`).join('\n');
 
-  /* ---- message 1: the result card (Block Kit) ---- */
-  const head=`${passed?'✅':'⚠️'} ${c.name.toUpperCase()} — ${score}/5 ${passed?'PASS':'BELOW PASS'}`;
-  const resultPayload={ text:`${head} · ${CONFIG.module}`, blocks:[
-    {type:'header',text:{type:'plain_text',text:head,emoji:true}},
-    {type:'section',fields:[
-      {type:'mrkdwn',text:`*Module:*\n${CONFIG.module}`},
-      {type:'mrkdwn',text:`*Chatter:*\n${c.name}${c.slackId?` <@${c.slackId}>`:''} · ${c.model} ${c.shift}`},
-      {type:'mrkdwn',text:`*Missed:*\n${missed.length?missed.map(q=>q.toUpperCase()).join(', '):'None 🎉'}`},
-      {type:'mrkdwn',text:`*Submitted:*\n${ts}`}
-    ]},
-    {type:'divider'},
-    {type:'section',text:{type:'mrkdwn',text:`*Written answers (manager reviews these in ${c.model}'s voice):*\n${trunc(written,2700)}`}}
-  ]};
+  /* ---- message 1: short human result card ---- */
+  const head=`${passed?'✅':'⚠️'} ${c.name.toUpperCase()} — ${score}/5 ${passed?'PASS':'REVIEW NEEDED'}`;
 
-  /* ---- message 2: automatic coaching ---- */
-  const fixes=missed.map(q=>`*${q.toUpperCase()} — you answered ${data.get(q)||'—'}, correct is ${CORRECT[q]}*\n_Why:_ ${EXPLAIN[q]}\n_Best flow:_ ${BEST[q]}`).join('\n\n');
+  // Determine strongest + weakest from written answers
+  const writtenList = [6,7,8,9,10,11,12,13,14,15].map(n=>({q:`Q${n}`,ans:(data.get('q'+n)||'').trim()}));
+  const answered = writtenList.filter(x=>x.ans.length > 10);
+  const longest = answered.sort((a,b)=>b.ans.length-a.ans.length)[0];
+  const shortest = answered.sort((a,b)=>a.ans.length-b.ans.length)[0];
+  const strongestQ = longest ? longest.q : 'Q6';
+  const weakestQ = shortest ? shortest.q : 'Q15';
+  const strongestAns = longest ? longest.ans.slice(0,120) : '—';
+  const weakestAns = shortest ? shortest.ans.slice(0,120) : '—';
+
+  // Missed MC summary
+  const mcSummary = missed.length === 0
+    ? `nailed all 5 multiple choice 🎉`
+    : `missed ${missed.map(q=>q.toUpperCase()).join(', ')} on MC — review the coaching notes`;
+
+  // Short human coaching note
+  const coachNote = passed
+    ? `good shift, ${c.name}. you ${mcSummary}. strongest written answer was ${strongestQ} — you clearly get that concept. keep an eye on ${weakestQ}, that one could be stronger. manager will review the written answers this week.`
+    : `${c.name}, you ${mcSummary}. your best written answer was ${strongestQ} — solid thinking there. ${weakestQ} needs more work, the answer was too short or missed the key point. review the module and bring it to your next coaching session.`;
+
   const ansStr=['q1','q2','q3','q4','q5'].map(q=>data.get(q)||'-').join('');
   const reviewLink=`${REVIEWURL}?m=${MODNUM}&chatter=${encodeURIComponent(whoKey)}&score=${score}&a=${ansStr}`;
-  const coachIntro = missed.length
-    ? `${c.name}, here's what to review from *${CONFIG.module}*:`
-    : `Perfect multiple-choice, ${c.name} 🎉 The written answers still get a manager review — here's the bar they're graded against:`;
-  const coachPayload={ text:`📘 Coaching — ${c.name} · ${CONFIG.module}`, blocks:[
-    {type:'header',text:{type:'plain_text',text:`📘 COACHING — ${c.name.toUpperCase()}`,emoji:true}},
-    {type:'section',text:{type:'mrkdwn',text:coachIntro}},
-    ...(missed.length?[{type:'section',text:{type:'mrkdwn',text:trunc(fixes,2900)}}]:[]),
+
+  const coachPayload={ text:`📘 ${c.name} · ${CONFIG.module} · ${score}/5`, blocks:[
+    {type:'header',text:{type:'plain_text',text:`📘 ${c.name.toUpperCase()} — ${CONFIG.module}`,emoji:true}},
+    {type:'section',text:{type:'mrkdwn',text:coachNote}},
     {type:'divider'},
-    {type:'section',text:{type:'mrkdwn',text:`🎙 *Voice check:* ${voiceFor(c)}\n🏛 *Company rules:* stay on-platform · no guilt-tripping or pressure · never promise more than we deliver · notes on every fan.`}},
-    {type:'section',text:{type:'mrkdwn',text:`📊 *Your performance file:* <${reviewLink}|open your personal Module ${MODNUM} review> — what went wrong, why, and the exact flow to use next time. No retake needed, this ends at understanding. Bring it to your next coaching session ✨`}}
+    {type:'section',text:{type:'mrkdwn',text:`📊 <${reviewLink}|Open full performance review> — best-response flows and what to work on next shift.`}}
   ]};
 
   const posts=[];
