@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Karina Response Generator · LRM</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+body{min-height:100vh;background:#0a0a14;color:#ececf0;font-family:'Inter',-apple-system,sans-serif;padding:20px}
+.wrap{max-width:640px;margin:0 auto}
+.head{border-bottom:2px solid #7850ff;padding-bottom:16px;margin-bottom:24px;display:flex;align-items:center;gap:12px}
+.crest{width:44px;height:44px;border-radius:50%;border:2px solid #7850ff;display:flex;align-items:center;justify-content:center;color:#7850ff;font-weight:800;font-size:13px}
+.title{font-size:20px;font-weight:800}.title span{color:#7850ff}
+.sub{font-size:11px;color:#8a8a92}
+label{font-size:12px;color:#7850ff;font-weight:700;letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:6px}
+textarea,input[type=text],input[type=password]{width:100%;padding:12px;border-radius:10px;background:#12121e;border:1px solid #2a2a40;color:#e0e0f0;font-size:14px;font-family:inherit;outline:none}
+textarea:focus,input:focus{border-color:#7850ff}
+textarea{resize:vertical;min-height:80px}
+.scenarios{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.scenarios button{padding:6px 12px;border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;border:1px solid #2a2a40;background:#12121e;color:#6a6a82;transition:all .15s}
+.scenarios button.active{border-color:#7850ff;background:#1a1a30;color:#a88bfa}
+.gen-btn{width:100%;padding:14px;border-radius:10px;margin-top:20px;background:#7850ff;color:#fff;font-size:15px;font-weight:700;border:none;cursor:pointer;letter-spacing:.06em}
+.gen-btn:disabled{opacity:.4;cursor:not-allowed}
+.gen-btn.loading{background:#2a2a40;cursor:wait}
+.error{margin-top:12px;padding:10px;border-radius:8px;background:#0a0a1a;border:1px solid #1a1a4a;color:#ef8a8a;font-size:13px;display:none}
+.results{margin-top:24px;display:none}
+.results-label{font-size:12px;color:#7850ff;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px}
+.block{background:#12121e;border:1px solid #2a2a40;border-radius:12px;padding:14px;margin-bottom:10px;position:relative;white-space:pre-wrap;word-break:break-word;font-size:13.5px;line-height:1.5;color:#e0d0f8}
+.cbtn{position:absolute;top:10px;right:10px;padding:4px 10px;border-radius:6px;font-size:11px;font-weight:600;background:#1a1a30;border:1px solid #3a3a50;color:#7850ff;cursor:pointer}
+.cbtn.ok{background:#1a2e20;border-color:#5fd39a;color:#5fd39a}
+.foot{margin-top:30px;padding-top:16px;border-top:1px solid #1a1a30;text-align:center;font-size:10px;color:#3a3a50;letter-spacing:.2em;text-transform:uppercase}
+.mt{margin-top:16px}
+.back{display:inline-block;margin-bottom:14px;color:#6a6a82;font-size:12px;text-decoration:none}.back:hover{color:#7850ff}
+.hint{font-size:10px;color:#6f6f6f;margin-top:4px}
+.key-ok{font-size:11px;color:#5fd39a;margin-top:4px;display:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+<a class="back" href="index.html">← back</a>
+<div class="head">
+<div class="crest">LRM</div>
+<div><div class="title">Karina <span>Response Generator</span></div><div class="sub">Paste fan's message → AI generates responses in Karina's voice</div></div>
+</div>
+
+<div id="keySection">
+<label>API Key</label>
+<input type="password" id="apiKey" placeholder="sk-ant-..." value="">
+<div class="hint">Manager enters this once. Stays in browser memory only.</div>
+<div class="key-ok" id="keyOk">✓ Key saved for this session</div>
+</div>
+
+<label class="mt">Fan's Message</label>
+<textarea id="fanMsg" placeholder="paste what the fan said here..."></textarea>
+
+<label class="mt">Scenario</label>
+<div class="scenarios" id="scenarios"></div>
+
+<label class="mt">Extra Context (optional)</label>
+<input type="text" id="context" placeholder="e.g. he just bought, he's a VIP, he's new...">
+
+<button class="gen-btn" id="genBtn" disabled>generate responses</button>
+<div class="error" id="error"></div>
+<div class="results" id="results"><div class="results-label">Response Options</div><div id="blocks"></div></div>
+
+<div class="foot">liverichmedia · karina response generator · adjust to fit the convo</div>
+</div>
+
+<script>
+const SYSTEM=`You write DM responses for Karina Petrova's OnlyFans. Chatters copy-paste these into real fan conversations.
+
+You follow the IRAE method:
+I = Intrigue. Open with something that makes him curious. Never open with "thank you."
+R = Relate. Mirror what he said. Make him feel heard.
+A = Amplify. Build the energy. Tease, escalate, create tension.
+E = Extract. Slide the offer in naturally.
+
+REAL EXAMPLES OF HOW KARINA TEXTS (ALL LOWERCASE):
+Fan: "good morning beautiful" → "mm good morning 😏 what are u getting into today?"
+Fan: "damn you look amazing" → "you think so? haha wait till you see what i filmed 😏"
+Fan: "how are you" → "better now that you're here. what took u so long? 😉"
+Fan: "I bought it" → "okay tell me which part wrecked you first 😏"
+Fan: "maybe later" → "your loss 😏 you know where to find me"
+Fan: "that was so hot" → "that was just the beginning... there's more if you can handle it 🥵"
+Fan: "nah too expensive" → "i get it. but you haven't even seen what's in it yet 😏"
+Fan: "I've been thinking about you" → "oh yeah? tell me more. what exactly were u thinking about..."
+Fan: "you're the best" → "i know 😏 but fr i have something you'd really like. wanna see?"
+
+Her slang: "hahaha" "lol" "omg" "fr" "ngl" "tbh" "idk" "lmk" "u" "r" "rn" "bc"
+Pet names: "babe" "bb" ONLY for VIPs actively spending. Real names for everyone else.
+Tics: "you're bad 😏" "stoppp 😭" "that's crazyyy"
+
+NEVER sounds like: "I appreciate your support!" "Would you like exclusive content?" "Thank you for purchasing!" — robotic, formal, salesperson energy. She says "i filmed something" not "i have exclusive content."
+
+SELLING (Reading the Room playbook):
+- Chatting and selling are ONE motion. Warmth = setup. Ask = the point.
+- Read STATE not words. "home alone" = steer. "wallet conscious" = take wall down. "playful" = pitch now.
+- YOU lead. Fan feels pulled not interviewed.
+- NEVER yes/no exits. "wanna see?" invites no. Instead: "it's already in your messages. open it 😏"
+- Punch at PEAK WANT. Price objection = drop with reason or pivot smaller.
+- After buy: reward → 15-20 min → next. Never stack.
+
+CONTENT: Has BG (sextapes with ex Koza, SVIP/Diamond only). Has solo play (SVIP/Diamond). NON-VIP = no nipples. VIP = topless. SVIP ($2k+) = everything. Diamond ($5k+) = all access. $2-3k nudes gate. If asked about Koza: "koza is my ex, just dating" nothing more.
+
+ALL LOWERCASE ALWAYS. Modern casual english with slang. Emojis end only. Max 1.
+
+OUTPUT: 2-3 options. Each = 1-3 short texts. Label [bratty tease] [warm redirect] [soft pitch]. Plain text. Sound like a real girl texting not AI.`
+
+const SCENARIOS=[
+{id:"flirty",l:"Flirty / interested"},{id:"short",l:"Short / casual"},{id:"bought",l:"Just bought"},{id:"tipped",l:"Just tipped"},
+{id:"decline",l:"Declined / not now"},{id:"quiet",l:"Opened but quiet"},{id:"compliment",l:"Compliment"},{id:"returning",l:"Returning"},
+{id:"negotiating",l:"Negotiating price"},{id:"new_sub",l:"New subscriber"},{id:"home_alone",l:"Home alone / bored"},
+{id:"trust",l:"Is this really you?"},{id:"fantasy",l:"Fantasy / personal Q"},{id:"tired",l:"Tired / venting"},{id:"custom",l:"Other"}];
+
+let selScenario="flirty";
+const scDiv=document.getElementById("scenarios");
+SCENARIOS.forEach(s=>{const b=document.createElement("button");b.textContent=s.l;b.className=s.id===selScenario?"active":"";
+b.onclick=()=>{selScenario=s.id;scDiv.querySelectorAll("button").forEach(x=>x.className="");b.className="active"};scDiv.appendChild(b)});
+
+const apiKey=document.getElementById("apiKey"),keyOk=document.getElementById("keyOk"),fanMsg=document.getElementById("fanMsg"),
+ctx=document.getElementById("context"),genBtn=document.getElementById("genBtn"),errDiv=document.getElementById("error"),
+resultsDiv=document.getElementById("results"),blocks=document.getElementById("blocks");
+
+window.onload=()=>{const k=sessionStorage.getItem("lrm_key");if(k){apiKey.value=k;keyOk.style.display="block"}checkReady()};
+apiKey.addEventListener("input",()=>{const k=apiKey.value.trim();if(k.startsWith("sk-ant-")&&k.length>20){sessionStorage.setItem("lrm_key",k);keyOk.style.display="block"}else{keyOk.style.display="none"}checkReady()});
+fanMsg.addEventListener("input",checkReady);
+function checkReady(){genBtn.disabled=!(fanMsg.value.trim()&&sessionStorage.getItem("lrm_key"))}
+
+genBtn.addEventListener("click",async()=>{
+const key=sessionStorage.getItem("lrm_key");if(!key||!fanMsg.value.trim())return;
+genBtn.disabled=true;genBtn.textContent="generating...";genBtn.classList.add("loading");
+errDiv.style.display="none";resultsDiv.style.display="none";blocks.innerHTML="";
+const sl=SCENARIOS.find(s=>s.id===selScenario)?.l||"Other";
+const prompt=`Fan's message: "${fanMsg.value.trim()}"
+Scenario: ${sl}
+${ctx.value?`Extra context: ${ctx.value}`:""}
+Generate 2-3 response options Karina can copy-paste. Plain text only.`;
+try{
+const res=await fetch("https://api.anthropic.com/v1/messages",{method:"POST",headers:{"Content-Type":"application/json","x-api-key":key,"anthropic-version":"2023-06-01"},
+body:JSON.stringify({model:"claude-sonnet-4-6",max_tokens:1000,system:SYSTEM,messages:[{role:"user",content:prompt}]})});
+const data=await res.json();
+if(data.error){errDiv.textContent=data.error.message||"API error";errDiv.style.display="block";genBtn.disabled=false;genBtn.textContent="generate responses";genBtn.classList.remove("loading");return}
+const text=data.content?.filter(b=>b.type==="text").map(b=>b.text).join("\n")||"No response";
+text.split(/\n(?=Option \d|---|\d\.\s|\[)/).filter(Boolean).forEach((block,i)=>{
+const d=document.createElement("div");d.className="block";d.textContent=block.trim();
+const cb=document.createElement("button");cb.className="cbtn";cb.textContent="copy";
+cb.onclick=()=>{navigator.clipboard.writeText(block.trim());cb.textContent="copied!";cb.classList.add("ok");setTimeout(()=>{cb.textContent="copy";cb.classList.remove("ok")},2000)};
+d.appendChild(cb);blocks.appendChild(d)});
+resultsDiv.style.display="block";
+}catch(e){errDiv.textContent="Failed to connect. Check the API key.";errDiv.style.display="block"}
+genBtn.disabled=false;genBtn.textContent="generate responses";genBtn.classList.remove("loading")});
+</script>
+</body>
+</html>
