@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LRM Response Queue</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+body{min-height:100vh;background:#141416;color:#ececf0;font-family:'Inter',-apple-system,sans-serif;display:flex;align-items:center;justify-content:center}
+.wrap{text-align:center;padding:40px;max-width:500px}
+.crest{width:60px;height:60px;border-radius:50%;border:2px solid #e7b94f;display:flex;align-items:center;justify-content:center;color:#e7b94f;font-weight:800;font-size:18px;margin:0 auto 20px}
+h1{font-size:28px;font-weight:800;margin-bottom:8px}h1 span{color:#e7b94f}
+.sub{color:#8a8a92;font-size:13px;margin-bottom:30px}
+.key-box{margin-bottom:30px;text-align:left}
+.key-box label{font-size:11px;color:#e7b94f;font-weight:700;letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:6px}
+.key-box input{width:100%;padding:10px;border-radius:8px;background:#1c1c1f;border:1px solid #3a3a42;color:#ececf0;font-size:13px;font-family:inherit;outline:none}
+.key-box input:focus{border-color:#e7b94f}
+.key-box .hint{font-size:10px;color:#6f6f6f;margin-top:4px}
+.status{font-size:12px;margin-top:8px;padding:6px 10px;border-radius:6px;display:none}
+.status.ok{display:block;background:#1a2e20;border:1px solid #2a4a30;color:#5fd39a}
+.status.err{display:block;background:#2a1a1a;border:1px solid #4a2a2a;color:#ef8a8a}
+.cards{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-top:20px}
+.card{width:240px;padding:24px;border-radius:16px;text-align:center;cursor:pointer;transition:transform .2s;text-decoration:none;opacity:.4;pointer-events:none}
+.card.active{opacity:1;pointer-events:auto}
+.card:hover{transform:translateY(-4px)}
+.card-s{background:#1a0a10;border:1px solid #3a1a25}
+.card-s h2{color:#b4284f;font-size:18px;margin-bottom:6px}
+.card-s p{color:#8a6a72;font-size:12px}
+.card-k{background:#12121e;border:1px solid #2a2a40}
+.card-k h2{color:#7850ff;font-size:18px;margin-bottom:6px}
+.card-k p{color:#6a6a82;font-size:12px}
+.foot{margin-top:30px;font-size:10px;color:#4a4a4a;letter-spacing:.2em;text-transform:uppercase}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crest">LRM</div>
+<h1>LiveRich<span>Media</span></h1>
+<div class="sub">Smart Response Queue</div>
+
+<div class="key-box">
+<label>API Key (manager enters once per session)</label>
+<input type="password" id="apiKey" placeholder="sk-ant-..." oninput="checkKey()">
+<div class="hint">Ask Jassy for the key. It stays in your browser only, never saved.</div>
+<div class="status" id="status"></div>
+</div>
+
+<div class="cards">
+<a class="card card-s" id="cardS" href="#" onclick="go('shantal')"><h2>Shantal</h2><p>Warm · Sentence case · Personal</p></a>
+<a class="card card-k" id="cardK" href="#" onclick="go('karina')"><h2>Karina</h2><p>Bratty · Lowercase · Playful</p></a>
+</div>
+<div class="foot">Paste fan message → AI generates responses → Copy → Adjust to fit</div>
+</div>
+<script>
+function checkKey(){
+  const k=document.getElementById("apiKey").value.trim();
+  const s=document.getElementById("status");
+  const cs=document.getElementById("cardS");
+  const ck=document.getElementById("cardK");
+  if(k.startsWith("sk-ant-")&&k.length>20){
+    sessionStorage.setItem("lrm_key",k);
+    s.className="status ok";s.textContent="Key saved for this session";
+    cs.classList.add("active");ck.classList.add("active");
+  } else {
+    s.className="status err";s.textContent="Key should start with sk-ant-...";
+    cs.classList.remove("active");ck.classList.remove("active");
+  }
+}
+function go(model){
+  if(!sessionStorage.getItem("lrm_key"))return;
+  window.location=model+".html";
+}
+window.onload=()=>{
+  const k=sessionStorage.getItem("lrm_key");
+  if(k){document.getElementById("apiKey").value=k;checkKey()}
+}
+</script>
+</body>
+</html>
