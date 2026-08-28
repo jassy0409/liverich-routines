@@ -1,0 +1,6 @@
+{
+  "name": "lrm-response-generator",
+  "version": "1.0.0",
+  "private": true,
+  "description": "LiveRich Media response generator - Vercel backend + browser front end"
+}
