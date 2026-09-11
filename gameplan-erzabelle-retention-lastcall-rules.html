@@ -1,0 +1,171 @@
+<title>Erzabelle Rules &amp; Flow Scripts — Retention &amp; Last Call</title>
+<style>
+  :root{
+    --bg:#171717; --panel:#202022; --panel2:#1a1a1c; --line:#2e2e30;
+    --accent:#f2778a; --accent-dim:#3a1a20;
+    --gold:#efb23b; --gold-bg:#3a2a08;
+    --txt:#f2f2f2; --muted:#a9a9ad; --dim:#7d7d82;
+    --red:#f2778a; --red-bg:#38171d; --red-dim:#f4b3bd;
+    --green:#4fc17a; --green-bg:#0c3320;
+    --blue:#7db4f4; --blue-bg:#0e2947;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg); color:var(--txt);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    display:flex; min-height:100vh; line-height:1.5;
+  }
+  .sidebar{
+    width:250px; flex-shrink:0; background:var(--panel2);
+    border-right:1px solid var(--line);
+    height:100vh; position:sticky; top:0; overflow-y:auto; padding:20px 0;
+  }
+  .sidebar::-webkit-scrollbar{width:7px}
+  .sidebar::-webkit-scrollbar-thumb{background:#333;border-radius:4px}
+  .brand{display:flex;align-items:center;gap:10px;padding:0 20px 18px;border-bottom:1px solid var(--line);margin-bottom:12px}
+  .brand-badge{width:34px;height:34px;border-radius:9px;background:var(--accent-dim);display:flex;align-items:center;justify-content:center;font-size:17px}
+  .brand-title{font-size:15px;font-weight:700;letter-spacing:.2px}
+  .brand-sub{font-size:11px;color:var(--dim)}
+  .nav-label{font-size:10px;letter-spacing:.12em;color:var(--dim);padding:14px 20px 6px;text-transform:uppercase}
+  .nav-item{
+    display:flex;align-items:center;gap:11px;padding:9px 20px;cursor:pointer;
+    font-size:13.5px;color:var(--muted);border-left:3px solid transparent;transition:.15s;
+  }
+  .nav-item .ic{width:20px;text-align:center;font-size:15px}
+  .nav-item:hover{background:#232325;color:var(--txt)}
+  .nav-item.active{color:var(--accent);border-left-color:var(--accent);background:#232325}
+  .main{flex:1;overflow-y:auto;height:100vh;padding:34px 44px 80px}
+  .main::-webkit-scrollbar{width:9px}
+  .main::-webkit-scrollbar-thumb{background:#2c2c2e;border-radius:5px}
+  .page-head{margin-bottom:26px}
+  .page-head h1{font-size:27px;font-weight:800;letter-spacing:.2px;line-height:1.2}
+  .page-head .sub{color:var(--muted);font-size:13.5px;margin-top:7px}
+  .pills{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+  .pill{font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;letter-spacing:.03em}
+  .pill.red{background:var(--red-bg);color:var(--red-dim)}
+  .pill.green{background:var(--green-bg);color:var(--green)}
+  .pill.gold{background:var(--gold-bg);color:var(--gold)}
+  .pill.blue{background:var(--blue-bg);color:var(--blue)}
+  .section{display:none;animation:fade .45s ease both}
+  .section.show{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-bottom:26px}
+  .stat{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:17px 18px;position:relative;overflow:hidden}
+  .stat .lbl{font-size:10.5px;letter-spacing:.1em;color:var(--dim);text-transform:uppercase}
+  .stat .num{font-size:30px;font-weight:800;margin-top:8px;line-height:1;font-variant-numeric:tabular-nums}
+  .stat .num.gold{color:var(--gold)} .stat .num.red{color:var(--accent)} .stat .num.blue{color:var(--blue)} .stat .num.green{color:var(--green)}
+  .stat .foot{font-size:11.5px;color:var(--muted);margin-top:9px}
+  .stat .ic{position:absolute;top:15px;right:16px;font-size:17px;opacity:.85}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:20px 22px;margin-bottom:16px}
+  .card-h{display:flex;align-items:center;gap:11px;margin-bottom:15px;flex-wrap:wrap}
+  .card-h .ci{width:30px;height:30px;border-radius:8px;background:var(--accent-dim);display:flex;align-items:center;justify-content:center;font-size:15px}
+  .card-h h3{font-size:16.5px;font-weight:700}
+  .card-h .tag{margin-left:auto;font-size:10px;font-weight:700;letter-spacing:.05em;padding:3px 9px;border-radius:6px;background:var(--red-bg);color:var(--red-dim)}
+  .card-h .tag.g{background:var(--green-bg);color:var(--green)}
+  .card-h .tag.b{background:var(--blue-bg);color:var(--blue)}
+  .card-h .tag.gd{background:var(--gold-bg);color:var(--gold)}
+  .tmpl{background:#241318;border:1px dashed var(--accent);border-radius:10px;padding:15px 18px;font-style:italic;color:#f4c3ca;font-size:14px;margin:12px 0}
+  .tmpl .when{display:block;font-style:normal;font-weight:800;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:7px}
+  .ptable{width:100%;border-collapse:separate;border-spacing:0;background:var(--panel2);border:1px solid var(--line);border-radius:11px;overflow:hidden;margin-bottom:12px}
+  .ptable th,.ptable td{padding:11px 14px;font-size:13.5px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+  .ptable tr:last-child td{border-bottom:none}
+  .ptable th{font-size:10.5px;color:var(--dim);text-transform:uppercase;letter-spacing:.08em}
+  .ptable .p{color:var(--gold);font-weight:800;white-space:nowrap;font-variant-numeric:tabular-nums}
+  .ptable .t{color:var(--muted)}
+  .twrap{overflow-x:auto}
+  .timeline{position:relative;margin:6px 0 4px;padding-left:26px}
+  .timeline::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:2px;background:var(--line)}
+  .t-item{position:relative;padding:0 0 18px}
+  .t-item::before{content:"";position:absolute;left:-24px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--panel);border:3px solid var(--accent)}
+  .t-item.money::before{border-color:var(--gold)}
+  .t-item.post::before{border-color:var(--blue)}
+  .t-time{font-size:12px;font-weight:800;letter-spacing:.06em;color:var(--accent);text-transform:uppercase}
+  .t-time .sub{color:var(--dim);font-weight:600;letter-spacing:normal;text-transform:none}
+  .t-item.money .t-time{color:var(--gold)}
+  .t-item.post .t-time{color:var(--blue)}
+  .t-title{font-size:14.5px;font-weight:700;margin-top:2px}
+  .t-body{font-size:13px;color:var(--muted);margin-top:3px}
+  .note{background:var(--red-bg);border-radius:9px;padding:13px 16px;margin-top:12px;font-size:13px;color:var(--red-dim)}
+  .note b{color:#fff}
+  .why{background:var(--panel2);border-left:3px solid var(--accent);border-radius:0 9px 9px 0;padding:13px 16px;margin-top:6px;font-size:13px;color:var(--muted)}
+  .why b{color:var(--accent);font-weight:700}
+  .foot-note{text-align:center;color:var(--dim);font-size:11px;letter-spacing:.08em;border-top:1px solid var(--line);margin-top:30px;padding-top:18px}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important}}
+  @media(max-width:680px){.sidebar{position:fixed;left:-260px;z-index:40}.main{padding:24px 18px 80px}}
+</style>
+<nav class="sidebar">
+  <div class="brand">
+    <div class="brand-badge">📖</div>
+    <div><div class="brand-title">Rules &amp; Scripting</div><div class="brand-sub">Erzabelle · Retention &amp; Last Call</div></div>
+  </div>
+  <div class="nav-label">Playbook</div>
+  <div class="nav-item active" data-s="rules"><span class="ic">⚖️</span>Ground Rules</div>
+  <div class="nav-item" data-s="voice"><span class="ic">🗣️</span>Bella's Voice</div>
+  <div class="nav-item" data-s="flow"><span class="ic">💬</span>Flow Scripts</div>
+</nav>
+<main class="main">
+
+<section class="section show" id="rules">
+  <div class="page-head">
+    <h1>Ground Rules</h1>
+    <div class="sub">Connection day with one selling moment: the last call. Everything else opens doors for the DMs.</div>
+    <div class="pills"><span class="pill red">NO NEW PAID MASS</span><span class="pill gold">SFW PICS ONLY IN MASSES</span></div>
+  </div>
+  <div class="card">
+    <div class="card-h"><div class="ci">⚖️</div><h3>Non-negotiables</h3></div>
+    <div class="row"><span class="mk x">✕</span><div><b>No new paid mass today.</b> <span class="t">The last-call reminder pushes what's already in their DMs. That's the only sales moment in the masses.</span></div></div>
+    <div class="row"><span class="mk x">✕</span><div><b>Nothing explicit in free masses.</b> <span class="t">The bed pics are SFW on purpose. Escalation happens 1:1, at the fan's pace.</span></div></div>
+    <div class="row"><span class="mk x">✕</span><div><b>High spenders are never massed.</b> <span class="t">Both spender tiers are excluded — they get personal messages only.</span></div></div>
+    <div class="row"><span class="mk ok">✓</span><div><b>Answer every reply.</b> <span class="t">A fan who talks tonight is a fan who buys this week.</span></div></div>
+    <div class="row"><span class="mk ok">✓</span><div><b>After the last call converts,</b> <span class="t">celebrate the unlock, then chain the next offer while they're warm.</span></div></div>
+  </div>
+</section>
+
+<section class="section" id="voice">
+  <div class="page-head">
+    <h1>Bella's Voice</h1>
+    <div class="sub">lowercase, needy but playful. she chases cutely — 🥺 first, 😈 second, never desperate.</div>
+  </div>
+  <div class="card">
+    <div class="card-h"><div class="ci">🗣️</div><h3>Always / Never</h3></div>
+    <div class="row"><span class="mk ok">✓</span><div><b>lowercase, soft punctuation, her emojis.</b> <span class="t">🥺 🥵 😈 👀 — in that emotional order: sweet, heated, wicked.</span></div></div>
+    <div class="row"><span class="mk ok">✓</span><div><b>fomo through feelings, not countdowns.</b> <span class="t">"don't make me remember you as the one who didn't" beats any timer.</span></div></div>
+    <div class="row"><span class="mk x">✕</span><div><b>never beg twice in a row.</b> <span class="t">one needy line, then confidence. she recovers fast.</span></div></div>
+    <div class="row"><span class="mk x">✕</span><div><b>no menus, no price lists.</b> <span class="t">one offer at a time, priced to the fan in the chat.</span></div></div>
+  </div>
+</section>
+
+<section class="section" id="flow">
+  <div class="page-head">
+    <h1>Flow Scripts</h1>
+    <div class="sub">The masses open the door — these walk through it.</div>
+  </div>
+  <div class="card">
+    <div class="card-h"><div class="ci">💬</div><h3>Check-in replies (1:30am)</h3></div>
+    <div class="tmpl"><span class="when">Fan shares their day</span>"okay i'm actually smiling at my phone rn 🥺 you always make my night better… stay with me a bit? i'm not ready to sleep yet"</div>
+    <div class="tmpl"><span class="when">Fan asks for her secret</span>"mmm i said i'd trade 😏 yours first. then i'll tell you what i've been thinking about all night 👀"</div>
+  </div>
+  <div class="card">
+    <div class="card-h"><div class="ci">💬</div><h3>Last-call conversion (3:30am)</h3></div>
+    <div class="tmpl"><span class="when">Fan asks about the paid mass</span>"it's still in your DMs babe 🥺 scroll up a little… it's the neediest i've ever been on camera and after tonight it's gone. i want YOU to have it"</div>
+    <div class="tmpl"><span class="when">Fan opens it → celebrate + chain</span>"omg you actually opened it 🥵 okay now i'm shy… tell me your favorite part and maybe i'll show you what almost made the cut 😈"</div>
+    <div class="tmpl"><span class="when">Fan hesitates</span>"no pressure babe 🥺 but i archive it when i wake up and i really don't want you to be the one who missed it… it's the last time i'll ask 😈"</div>
+  </div>
+  <div class="card">
+    <div class="card-h"><div class="ci">💬</div><h3>Tease &amp; turn-on replies (bed pics)</h3></div>
+    <div class="tmpl"><span class="when">Fan reacts to the bed pics</span>"that's just the comfy version 🥺 the ones i took after that… those don't leave my phone unless someone asks really nicely 👀"</div>
+    <div class="tmpl"><span class="when">Fan asks nicely</span>"good boy 😈 okay… tell me exactly what you want to see and i'll tell you what it takes"</div>
+    <div class="tmpl"><span class="when">Fan buys → keep it warm</span>"you're actually my favorite tonight 🥵 don't disappear on me after this… i still have one more thing i've never sent anyone 👀"</div>
+  </div>
+  <div class="card">
+    <div class="card-h"><div class="ci">🧭</div><h3>Read the room</h3></div>
+    <div class="why"><b>Chatty, not buying?</b> Retention day — a warm chat tonight is next week's whale. No guilt-trip re-pokes.</div>
+    <div class="why"><b>Buyer satisfied?</b> Warmth, not another pitch. Leave them wanting the next drop.</div>
+  </div>
+  <div class="foot-note">LIVERICHMEDIA · ERZABELLE · RULES &amp; FLOW SCRIPTS</div>
+</section>
+</main>
+<script>
+document.querySelectorAll('.nav-item').forEach(n=>{n.addEventListener('click',()=>{document.querySelectorAll('.nav-item').forEach(x=>x.classList.remove('active'));n.classList.add('active');document.querySelectorAll('.section').forEach(s=>s.classList.remove('show'));document.getElementById(n.dataset.s).classList.add('show');document.querySelector('.main').scrollTop=0;});});
+</script>

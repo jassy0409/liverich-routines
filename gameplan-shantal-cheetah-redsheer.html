@@ -1,0 +1,326 @@
+<title>Shantal Gameplan — Sunday Cheetah &amp; Red Sheer Play</title>
+<style>
+  :root{
+    --bg:#171717; --panel:#202022; --panel2:#1a1a1c; --line:#2e2e30;
+    --accent:#e2544b; --accent-dim:#3a1417;
+    --gold:#efb23b; --gold-bg:#3a2a08;
+    --txt:#f2f2f2; --muted:#a9a9ad; --dim:#7d7d82;
+    --red:#e2544b; --red-bg:#3a1512; --red-dim:#f0997b;
+    --green:#4fc17a; --green-bg:#0c3320;
+    --blue:#7db4f4; --blue-bg:#0e2947;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg); color:var(--txt);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    display:flex; min-height:100vh; line-height:1.5;
+  }
+  .sidebar{
+    width:250px; flex-shrink:0; background:var(--panel2);
+    border-right:1px solid var(--line);
+    height:100vh; position:sticky; top:0; overflow-y:auto; padding:20px 0;
+  }
+  .sidebar::-webkit-scrollbar{width:7px}
+  .sidebar::-webkit-scrollbar-thumb{background:#333;border-radius:4px}
+  .brand{display:flex;align-items:center;gap:10px;padding:0 20px 18px;border-bottom:1px solid var(--line);margin-bottom:12px}
+  .brand-badge{width:34px;height:34px;border-radius:9px;background:var(--accent-dim);display:flex;align-items:center;justify-content:center;font-size:17px}
+  .brand-title{font-size:15px;font-weight:700;letter-spacing:.2px}
+  .brand-sub{font-size:11px;color:var(--dim)}
+  .nav-label{font-size:10px;letter-spacing:.12em;color:var(--dim);padding:14px 20px 6px;text-transform:uppercase}
+  .nav-item{
+    display:flex;align-items:center;gap:11px;padding:9px 20px;cursor:pointer;
+    font-size:13.5px;color:var(--muted);border-left:3px solid transparent;transition:.15s;
+  }
+  .nav-item .ic{width:20px;text-align:center;font-size:15px}
+  .nav-item:hover{background:#232325;color:var(--txt)}
+  .nav-item.active{color:var(--accent);border-left-color:var(--accent);background:#232325}
+  .main{flex:1;overflow-y:auto;height:100vh;padding:34px 44px 80px}
+  .main::-webkit-scrollbar{width:9px}
+  .main::-webkit-scrollbar-thumb{background:#2c2c2e;border-radius:5px}
+  .page-head{margin-bottom:26px}
+  .page-head h1{font-size:27px;font-weight:800;letter-spacing:.2px;line-height:1.2}
+  .page-head .sub{color:var(--muted);font-size:13.5px;margin-top:7px}
+  .pills{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+  .pill{font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;letter-spacing:.03em}
+  .pill.red{background:var(--red-bg);color:var(--red-dim)}
+  .pill.green{background:var(--green-bg);color:var(--green)}
+  .pill.gold{background:var(--gold-bg);color:var(--gold)}
+  .pill.blue{background:var(--blue-bg);color:var(--blue)}
+  .section{display:none;animation:fade .45s ease both}
+  .section.show{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-bottom:26px}
+  .stat{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:17px 18px;position:relative;overflow:hidden}
+  .stat .lbl{font-size:10.5px;letter-spacing:.1em;color:var(--dim);text-transform:uppercase}
+  .stat .num{font-size:30px;font-weight:800;margin-top:8px;line-height:1;font-variant-numeric:tabular-nums}
+  .stat .num.gold{color:var(--gold)} .stat .num.red{color:var(--accent)} .stat .num.blue{color:var(--blue)} .stat .num.green{color:var(--green)}
+  .stat .foot{font-size:11.5px;color:var(--muted);margin-top:9px}
+  .stat .ic{position:absolute;top:15px;right:16px;font-size:17px;opacity:.85}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:20px 22px;margin-bottom:16px}
+  .card-h{display:flex;align-items:center;gap:11px;margin-bottom:15px;flex-wrap:wrap}
+  .card-h .ci{width:30px;height:30px;border-radius:8px;background:var(--accent-dim);display:flex;align-items:center;justify-content:center;font-size:15px}
+  .card-h h3{font-size:16.5px;font-weight:700}
+  .card-h .tag{margin-left:auto;font-size:10px;font-weight:700;letter-spacing:.05em;padding:3px 9px;border-radius:6px;background:var(--red-bg);color:var(--red-dim)}
+  .card-h .tag.g{background:var(--green-bg);color:var(--green)}
+  .card-h .tag.b{background:var(--blue-bg);color:var(--blue)}
+  .card-h .tag.gd{background:var(--gold-bg);color:var(--gold)}
+  .tmpl{background:#1c1214;border:1px dashed var(--accent);border-radius:10px;padding:15px 18px;font-style:italic;color:#f6b8ba;font-size:14px;margin:12px 0}
+  .tmpl .when{display:block;font-style:normal;font-weight:800;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:7px}
+  .ptable{width:100%;border-collapse:separate;border-spacing:0;background:var(--panel2);border:1px solid var(--line);border-radius:11px;overflow:hidden;margin-bottom:12px}
+  .ptable th,.ptable td{padding:11px 14px;font-size:13.5px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+  .ptable tr:last-child td{border-bottom:none}
+  .ptable th{font-size:10.5px;color:var(--dim);text-transform:uppercase;letter-spacing:.08em}
+  .ptable .p{color:var(--gold);font-weight:800;white-space:nowrap;font-variant-numeric:tabular-nums}
+  .ptable .t{color:var(--muted)}
+  .twrap{overflow-x:auto}
+  .timeline{position:relative;margin:6px 0 4px;padding-left:26px}
+  .timeline::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:2px;background:var(--line)}
+  .t-item{position:relative;padding:0 0 18px}
+  .t-item::before{content:"";position:absolute;left:-24px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--panel);border:3px solid var(--accent)}
+  .t-item.money::before{border-color:var(--gold)}
+  .t-item.post::before{border-color:var(--blue)}
+  .t-time{font-size:12px;font-weight:800;letter-spacing:.06em;color:var(--accent);text-transform:uppercase}
+  .t-time .sub{color:var(--dim);font-weight:600;letter-spacing:normal;text-transform:none}
+  .t-item.money .t-time{color:var(--gold)}
+  .t-item.post .t-time{color:var(--blue)}
+  .t-title{font-size:14.5px;font-weight:700;margin-top:2px}
+  .t-body{font-size:13px;color:var(--muted);margin-top:3px}
+  .note{background:var(--red-bg);border-radius:9px;padding:13px 16px;margin-top:12px;font-size:13px;color:var(--red-dim)}
+  .note b{color:#fff}
+  .why{background:var(--panel2);border-left:3px solid var(--accent);border-radius:0 9px 9px 0;padding:13px 16px;margin-top:6px;font-size:13px;color:var(--muted)}
+  .why b{color:var(--accent);font-weight:700}
+  .foot-note{text-align:center;color:var(--dim);font-size:11px;letter-spacing:.08em;border-top:1px solid var(--line);margin-top:30px;padding-top:18px}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important}}
+  @media(max-width:680px){.sidebar{position:fixed;left:-260px;z-index:40}.main{padding:24px 18px 80px}}
+</style>
+
+<nav class="sidebar">
+  <div class="brand">
+    <div class="brand-badge">🐆</div>
+    <div><div class="brand-title">Sunday Two-Set Play</div><div class="brand-sub">Shantal Monique · Cheetah &amp; Red Sheer</div></div>
+  </div>
+  <div class="nav-label">Gameplan</div>
+  <div class="nav-item active" data-s="overview"><span class="ic">📋</span>Overview</div>
+  <div class="nav-item" data-s="graveyard"><span class="ic">🌙</span>Graveyard · Aaliyah</div>
+  <div class="nav-item" data-s="afternoon"><span class="ic">🌆</span>Afternoon · Trisha</div>
+  <div class="nav-item" data-s="latenight"><span class="ic">🌃</span>Late Night · Jeffrey</div>
+  <div class="nav-label">Reference</div>
+  <div class="nav-item" data-s="parts"><span class="ic">🪜</span>Part Ladders</div>
+  <div class="nav-item" data-s="lists"><span class="ic">🗂️</span>Lists &amp; Exclusions</div>
+  <div class="nav-item" data-s="scheduled"><span class="ic">✅</span>Scheduled Masses</div>
+</nav>
+
+<main class="main">
+
+<section class="section show" id="overview">
+  <div class="page-head">
+    <h1>SHANTAL — SUNDAY CHEETAH &amp; RED SHEER PLAY</h1>
+    <div class="sub">Two sets, three shifts. Aaliyah opens with the $7 Cheetah, Trisha lands the $29.99 Red Sheer, Jeffrey runs tease and turn-on with Red Sheer Promo. Wall posts are standalone vibes, never tied to the sets.</div>
+    <div class="pills">
+      <span class="pill gold">CHEETAH $7</span>
+      <span class="pill red">RED SHEER $29.99</span>
+      <span class="pill blue">8 MASSES SCHEDULED</span>
+      <span class="pill green">3 WALL POSTS</span>
+    </div>
+  </div>
+  <div class="stat-grid">
+    <div class="stat"><div class="lbl">Cheetah Opener</div><div class="num gold">$7</div><div class="foot">7 media · 1:05am PST · Aaliyah</div><div class="ic">🐆</div></div>
+    <div class="stat"><div class="lbl">Red Sheer Drop</div><div class="num red">$29.99</div><div class="foot">5 media · 6:30pm PST · Trisha</div><div class="ic">❤️‍🔥</div></div>
+    <div class="stat"><div class="lbl">Masses Scheduled</div><div class="num blue">8</div><div class="foot">check-ins · paid · reminders · tease</div><div class="ic">📨</div></div>
+    <div class="stat"><div class="lbl">Reminder Delay</div><div class="num green">3h</div><div class="foot">engagement follows every paid mass</div><div class="ic">⏱️</div></div>
+  </div>
+  <div class="card">
+    <div class="card-h"><div class="ci">🧭</div><h3>How the day flows</h3></div>
+    <div class="why"><b>Structure per shift:</b> sincere check-in first (feels personal, boosts open rate), paid mass right behind it, engagement reminder 3 hours later sent only to that mass's buyers. Jeffrey's late-night block is pure tease and turn-on with Red Sheer Promo pics to prime tomorrow's upsells.</div>
+    <div class="why"><b>Wall posts</b> at 12am, 4am and 8am PST are standalone — witty, her voice, nothing sold directly. Posted manually, not scheduled through the mass queue.</div>
+    <div class="note"><b>Keep it conversational, not salesy.</b> Buyers get tagged into the 7/19 buyer lists the moment they open — the reminder masses only reach those lists.</div>
+  </div>
+</section>
+
+<section class="section" id="graveyard">
+  <div class="page-head">
+    <h1>Graveyard Shift — Aaliyah</h1>
+    <div class="sub">11pm–7am PST · Cheetah Top &amp; Jeans $7 opener</div>
+    <div class="pills"><span class="pill gold">$7 PAID MASS</span><span class="pill blue">1 WALL POST</span></div>
+  </div>
+  <div class="card">
+    <div class="card-h"><div class="ci">🌙</div><h3>Timeline</h3><span class="tag gd">CHEETAH</span></div>
+    <div class="timeline">
+      <div class="t-item post">
+        <div class="t-time">12:00 AM PST <span class="sub">· wall post (manual)</span></div>
+        <div class="t-title">Standalone vibe post</div>
+        <div class="t-body">Image: early 2024 selfie. Caption: "Sunday mornings hit different when you're thinking about me."</div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">1:00 AM PST <span class="sub">· mass 43663235410</span></div>
+        <div class="t-title">Sincere check-in (before paid)</div>
+        <div class="t-body">"How are you doing right now? Really." — All Fans, excludes NO MM + SHANTAL ONLY.</div>
+      </div>
+      <div class="t-item money">
+        <div class="t-time">1:05 AM PST <span class="sub">· mass 43663263484 · $7</span></div>
+        <div class="t-title">Cheetah $7 paid mass — 7 media (5 photos, 2 videos)</div>
+        <div class="t-body">"It's a little naughty morning, so I made you a little something to keep me company. $7 and it is yours, no strings. Consider it my way of saying I was thinking about you this morning." Excludes all Cheetah past buyers (4 part lists) + NO MM + SHANTAL ONLY + HIGH SPENDERS + FREELOADERS.</div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">4:00 AM PST <span class="sub">· mass 43663282210</span></div>
+        <div class="t-title">Engagement reminder (3h after paid)</div>
+        <div class="t-body">"Tell me you opened it. What do you think?" — sent to 7/19 $7 CHEETAH BUYERS list only. Tag buyers into that list as they open.</div>
+      </div>
+    </div>
+    <div class="note"><b>Aaliyah:</b> every buyer of the $7 mass gets tagged to the 7/19 $7 CHEETAH BUYERS list immediately — the 4am reminder only reaches that list.</div>
+  </div>
+</section>
+
+<section class="section" id="afternoon">
+  <div class="page-head">
+    <h1>Afternoon / Early Night — Trisha</h1>
+    <div class="sub">3pm–11pm PST · Red Sheer $29.99 drop</div>
+    <div class="pills"><span class="pill red">$29.99 PAID MASS</span><span class="pill blue">1 WALL POST</span></div>
+  </div>
+  <div class="card">
+    <div class="card-h"><div class="ci">🌆</div><h3>Timeline</h3><span class="tag">RED SHEER</span></div>
+    <div class="timeline">
+      <div class="t-item post">
+        <div class="t-time">4:00 AM PST <span class="sub">· wall post (manual)</span></div>
+        <div class="t-title">Standalone vibe post</div>
+        <div class="t-body">Caption: "I'm in a mood today. Are you?"</div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">6:00 PM PST <span class="sub">· mass 43663304303</span></div>
+        <div class="t-title">Sincere check-in (before paid)</div>
+        <div class="t-body">"You thinking about me yet?" — All Fans, excludes NO MM + SHANTAL ONLY.</div>
+      </div>
+      <div class="t-item money">
+        <div class="t-time">6:30 PM PST <span class="sub">· mass 43663331801 · $29.99</span></div>
+        <div class="t-title">Red Sheer $29.99 paid mass — 5 media (4 photos, 1 video)</div>
+        <div class="t-body">"Fuck. Ohmy, I don't even know why I'm sending this out. Will you undress me? I'm waiting…" Excludes all Red Sheer past buyers (4 part lists) + NO MM + SHANTAL ONLY + HIGH SPENDERS + FREELOADERS.</div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">9:30 PM PST <span class="sub">· mass 43663388339</span></div>
+        <div class="t-title">Engagement reminder (3h after paid)</div>
+        <div class="t-body">"Have you checked it? Tell me what you think." — sent to 7/19 $29.99 RED SHEER BUYERS list only. Tag buyers into that list as they open.</div>
+      </div>
+    </div>
+    <div class="note"><b>Trisha:</b> tag every $29.99 buyer to the 7/19 $29.99 RED SHEER BUYERS list right away — the 9:30pm reminder only reaches that list.</div>
+  </div>
+</section>
+
+<section class="section" id="latenight">
+  <div class="page-head">
+    <h1>Late Night — Jeffrey</h1>
+    <div class="sub">11pm–7am PST · Tease and turn-on with Red Sheer Promo</div>
+    <div class="pills"><span class="pill blue">FREE TEASE ×2</span><span class="pill blue">1 WALL POST</span></div>
+  </div>
+  <div class="card">
+    <div class="card-h"><div class="ci">🌃</div><h3>Timeline</h3><span class="tag b">PROMO PICS</span></div>
+    <div class="timeline">
+      <div class="t-item post">
+        <div class="t-time">8:00 AM PST <span class="sub">· wall post (manual)</span></div>
+        <div class="t-title">Standalone vibe post</div>
+        <div class="t-body">Caption: "The real question is what are you going to do about it?"</div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">12:00 AM PST <span class="sub">· mass 43663422205</span></div>
+        <div class="t-title">Tease &amp; turn-on — 2 selfie-style pics from Red Sheer Promo</div>
+        <div class="t-body">"Red sheer hits different at midnight. You thinking what I'm thinking?" — All Fans, excludes NO MM + SHANTAL ONLY + HIGH SPENDERS + FREELOADERS.</div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">3:00 AM PST <span class="sub">· mass 43663511561</span></div>
+        <div class="t-title">Turn-on reminder — 1 closeup from Red Sheer Promo</div>
+        <div class="t-body">"Tell me you want more. Say it." — All Fans, same exclusions as the midnight tease.</div>
+      </div>
+    </div>
+    <div class="note"><b>Jeffrey:</b> anyone who bites on the tease gets walked into Red Sheer Part 1 in the DMs — use the part ladder, price to the fan.</div>
+  </div>
+</section>
+
+<section class="section" id="parts">
+  <div class="page-head">
+    <h1>Part Ladders</h1>
+    <div class="sub">Where every buyer goes next. Start where the fan is, never skip more than one rung.</div>
+  </div>
+  <div class="card">
+    <div class="card-h"><div class="ci">🐆</div><h3>Cheetah Top &amp; Jeans</h3><span class="tag gd">5-6-25 SERIES</span></div>
+    <div class="twrap"><table class="ptable">
+      <tr><th>Part</th><th>Price</th><th>Contents</th><th>Vibe</th></tr>
+      <tr><td><b>Part 1</b></td><td class="p">$20–$25</td><td class="t">3 videos + 5 pics</td><td class="t">warm-up vibe</td></tr>
+      <tr><td><b>Part 2</b></td><td class="p">$45–$50</td><td class="t">3 videos + 12 pics</td><td class="t">escalation</td></tr>
+      <tr><td><b>Spicy</b></td><td class="p">$150</td><td class="t">2 videos + 18 pics</td><td class="t">topless intense</td></tr>
+      <tr><td><b>Extra Spicy</b></td><td class="p">$400</td><td class="t">1 video + 27 pics</td><td class="t">full access</td></tr>
+    </table></div>
+  </div>
+  <div class="card">
+    <div class="card-h"><div class="ci">❤️‍🔥</div><h3>Red Sheer</h3><span class="tag">5-20-26 SERIES</span></div>
+    <div class="twrap"><table class="ptable">
+      <tr><th>Part</th><th>Price</th><th>Contents</th><th>Vibe</th></tr>
+      <tr><td><b>Part 1</b></td><td class="p">$25–$30</td><td class="t">1 video + 4 pics</td><td class="t">warmup</td></tr>
+      <tr><td><b>Part 2</b></td><td class="p">$60–$70</td><td class="t">1 video + 4 pics</td><td class="t">escalation</td></tr>
+      <tr><td><b>Spicy</b></td><td class="p">$300–$400</td><td class="t">1 video + 3 pics</td><td class="t">topless intense</td></tr>
+      <tr><td><b>Extra Spicy</b></td><td class="p">$600–$800</td><td class="t">1 video + 3 pics</td><td class="t">full access</td></tr>
+    </table></div>
+  </div>
+</section>
+
+<section class="section" id="lists">
+  <div class="page-head">
+    <h1>Lists &amp; Exclusions</h1>
+    <div class="sub">Every list wired into today's masses, with IDs. These are live on the account — verified today.</div>
+  </div>
+  <div class="card">
+    <div class="card-h"><div class="ci">🚫</div><h3>Exclusion lists</h3></div>
+    <div class="twrap"><table class="ptable">
+      <tr><th>List</th><th>ID</th><th>Applied to</th></tr>
+      <tr><td><b>No MM</b></td><td class="t">1206433451</td><td class="t">every mass today</td></tr>
+      <tr><td><b>🚨 SHANTAL ONLY DO NOT OPEN</b></td><td class="t">1248575538</td><td class="t">every mass today</td></tr>
+      <tr><td><b>VIP High Spenders 🏆</b></td><td class="t">104020308</td><td class="t">paid masses + Jeffrey tease/turn-on</td></tr>
+      <tr><td><b>FREELOADERS/TIMEWASTERS</b></td><td class="t">1299850298</td><td class="t">paid masses + Jeffrey tease/turn-on</td></tr>
+      <tr><td><b>Cheetah past buyers (all 4 parts)</b></td><td class="t">1281870400 · 1281870499 · 1281870572 · 1281870645</td><td class="t">$7 Cheetah mass</td></tr>
+      <tr><td><b>Red Sheer past buyers (all 4 parts)</b></td><td class="t">1285011144 · 1285010902 · 1285010838 · 1285010612</td><td class="t">$29.99 Red Sheer mass</td></tr>
+    </table></div>
+  </div>
+  <div class="card">
+    <div class="card-h"><div class="ci">🏷️</div><h3>Buyer tagging lists (created today)</h3><span class="tag g">TAG AS THEY BUY</span></div>
+    <div class="twrap"><table class="ptable">
+      <tr><th>List</th><th>ID</th><th>Fed by</th><th>Feeds</th></tr>
+      <tr><td><b>7/19 $7 CHEETAH BUYERS</b></td><td class="t">1300182102</td><td class="t">$7 Cheetah buyers</td><td class="t">4am reminder audience</td></tr>
+      <tr><td><b>7/19 $29.99 RED SHEER BUYERS</b></td><td class="t">1300182104</td><td class="t">$29.99 Red Sheer buyers</td><td class="t">9:30pm reminder audience</td></tr>
+    </table></div>
+    <div class="note"><b>This is the one manual step that makes the reminders work.</b> If buyers are not tagged, the reminder masses go out to empty lists.</div>
+  </div>
+</section>
+
+<section class="section" id="scheduled">
+  <div class="page-head">
+    <h1>Scheduled Masses</h1>
+    <div class="sub">All 8 confirmed in the OnlyFans queue. Times shown fan-facing PST with UTC schedule time.</div>
+  </div>
+  <div class="card">
+    <div class="card-h"><div class="ci">✅</div><h3>Queue</h3><span class="tag g">LIVE</span></div>
+    <div class="twrap"><table class="ptable">
+      <tr><th>Shift</th><th>PST</th><th>UTC</th><th>Mass</th><th>ID</th></tr>
+      <tr><td class="t">Aaliyah</td><td><b>1:00 AM</b></td><td class="t">Jul 20 09:00</td><td class="t">Check-in</td><td class="t">43663235410</td></tr>
+      <tr><td class="t">Aaliyah</td><td><b>1:05 AM</b></td><td class="t">Jul 20 09:05</td><td class="p">$7 Cheetah · 7 media</td><td class="t">43663263484</td></tr>
+      <tr><td class="t">Aaliyah</td><td><b>4:00 AM</b></td><td class="t">Jul 20 12:00</td><td class="t">Reminder → Cheetah buyers</td><td class="t">43663282210</td></tr>
+      <tr><td class="t">Trisha</td><td><b>6:00 PM</b></td><td class="t">Jul 20 02:00</td><td class="t">Check-in</td><td class="t">43663304303</td></tr>
+      <tr><td class="t">Trisha</td><td><b>6:30 PM</b></td><td class="t">Jul 20 02:30</td><td class="p">$29.99 Red Sheer · 5 media</td><td class="t">43663331801</td></tr>
+      <tr><td class="t">Trisha</td><td><b>9:30 PM</b></td><td class="t">Jul 20 05:30</td><td class="t">Reminder → Red Sheer buyers</td><td class="t">43663388339</td></tr>
+      <tr><td class="t">Jeffrey</td><td><b>12:00 AM</b></td><td class="t">Jul 20 08:00</td><td class="t">Tease · 2 promo pics</td><td class="t">43663422205</td></tr>
+      <tr><td class="t">Jeffrey</td><td><b>3:00 AM</b></td><td class="t">Jul 20 11:00</td><td class="t">Turn-on · 1 promo closeup</td><td class="t">43663511561</td></tr>
+    </table></div>
+  </div>
+  <div class="foot-note">LIVERICHMEDIA · SHANTAL MONIQUE · SUNDAY CHEETAH &amp; RED SHEER PLAY</div>
+</section>
+
+</main>
+<script>
+document.querySelectorAll('.nav-item').forEach(n=>{
+  n.addEventListener('click',()=>{
+    document.querySelectorAll('.nav-item').forEach(x=>x.classList.remove('active'));
+    n.classList.add('active');
+    document.querySelectorAll('.section').forEach(s=>s.classList.remove('show'));
+    document.getElementById(n.dataset.s).classList.add('show');
+    document.querySelector('.main').scrollTop=0;
+  });
+});
+</script>

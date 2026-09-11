@@ -1,0 +1,212 @@
+<title>Erzabelle Gameplan — Retention &amp; Last Call Day</title>
+<style>
+  :root{
+    --bg:#171717; --panel:#202022; --panel2:#1a1a1c; --line:#2e2e30;
+    --accent:#f2778a; --accent-dim:#3a1a20;
+    --gold:#efb23b; --gold-bg:#3a2a08;
+    --txt:#f2f2f2; --muted:#a9a9ad; --dim:#7d7d82;
+    --red:#f2778a; --red-bg:#38171d; --red-dim:#f4b3bd;
+    --green:#4fc17a; --green-bg:#0c3320;
+    --blue:#7db4f4; --blue-bg:#0e2947;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg); color:var(--txt);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    display:flex; min-height:100vh; line-height:1.5;
+  }
+  .sidebar{
+    width:250px; flex-shrink:0; background:var(--panel2);
+    border-right:1px solid var(--line);
+    height:100vh; position:sticky; top:0; overflow-y:auto; padding:20px 0;
+  }
+  .sidebar::-webkit-scrollbar{width:7px}
+  .sidebar::-webkit-scrollbar-thumb{background:#333;border-radius:4px}
+  .brand{display:flex;align-items:center;gap:10px;padding:0 20px 18px;border-bottom:1px solid var(--line);margin-bottom:12px}
+  .brand-badge{width:34px;height:34px;border-radius:9px;background:var(--accent-dim);display:flex;align-items:center;justify-content:center;font-size:17px}
+  .brand-title{font-size:15px;font-weight:700;letter-spacing:.2px}
+  .brand-sub{font-size:11px;color:var(--dim)}
+  .nav-label{font-size:10px;letter-spacing:.12em;color:var(--dim);padding:14px 20px 6px;text-transform:uppercase}
+  .nav-item{
+    display:flex;align-items:center;gap:11px;padding:9px 20px;cursor:pointer;
+    font-size:13.5px;color:var(--muted);border-left:3px solid transparent;transition:.15s;
+  }
+  .nav-item .ic{width:20px;text-align:center;font-size:15px}
+  .nav-item:hover{background:#232325;color:var(--txt)}
+  .nav-item.active{color:var(--accent);border-left-color:var(--accent);background:#232325}
+  .main{flex:1;overflow-y:auto;height:100vh;padding:34px 44px 80px}
+  .main::-webkit-scrollbar{width:9px}
+  .main::-webkit-scrollbar-thumb{background:#2c2c2e;border-radius:5px}
+  .page-head{margin-bottom:26px}
+  .page-head h1{font-size:27px;font-weight:800;letter-spacing:.2px;line-height:1.2}
+  .page-head .sub{color:var(--muted);font-size:13.5px;margin-top:7px}
+  .pills{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+  .pill{font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;letter-spacing:.03em}
+  .pill.red{background:var(--red-bg);color:var(--red-dim)}
+  .pill.green{background:var(--green-bg);color:var(--green)}
+  .pill.gold{background:var(--gold-bg);color:var(--gold)}
+  .pill.blue{background:var(--blue-bg);color:var(--blue)}
+  .section{display:none;animation:fade .45s ease both}
+  .section.show{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-bottom:26px}
+  .stat{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:17px 18px;position:relative;overflow:hidden}
+  .stat .lbl{font-size:10.5px;letter-spacing:.1em;color:var(--dim);text-transform:uppercase}
+  .stat .num{font-size:30px;font-weight:800;margin-top:8px;line-height:1;font-variant-numeric:tabular-nums}
+  .stat .num.gold{color:var(--gold)} .stat .num.red{color:var(--accent)} .stat .num.blue{color:var(--blue)} .stat .num.green{color:var(--green)}
+  .stat .foot{font-size:11.5px;color:var(--muted);margin-top:9px}
+  .stat .ic{position:absolute;top:15px;right:16px;font-size:17px;opacity:.85}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:20px 22px;margin-bottom:16px}
+  .card-h{display:flex;align-items:center;gap:11px;margin-bottom:15px;flex-wrap:wrap}
+  .card-h .ci{width:30px;height:30px;border-radius:8px;background:var(--accent-dim);display:flex;align-items:center;justify-content:center;font-size:15px}
+  .card-h h3{font-size:16.5px;font-weight:700}
+  .card-h .tag{margin-left:auto;font-size:10px;font-weight:700;letter-spacing:.05em;padding:3px 9px;border-radius:6px;background:var(--red-bg);color:var(--red-dim)}
+  .card-h .tag.g{background:var(--green-bg);color:var(--green)}
+  .card-h .tag.b{background:var(--blue-bg);color:var(--blue)}
+  .card-h .tag.gd{background:var(--gold-bg);color:var(--gold)}
+  .tmpl{background:#241318;border:1px dashed var(--accent);border-radius:10px;padding:15px 18px;font-style:italic;color:#f4c3ca;font-size:14px;margin:12px 0}
+  .tmpl .when{display:block;font-style:normal;font-weight:800;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:7px}
+  .ptable{width:100%;border-collapse:separate;border-spacing:0;background:var(--panel2);border:1px solid var(--line);border-radius:11px;overflow:hidden;margin-bottom:12px}
+  .ptable th,.ptable td{padding:11px 14px;font-size:13.5px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+  .ptable tr:last-child td{border-bottom:none}
+  .ptable th{font-size:10.5px;color:var(--dim);text-transform:uppercase;letter-spacing:.08em}
+  .ptable .p{color:var(--gold);font-weight:800;white-space:nowrap;font-variant-numeric:tabular-nums}
+  .ptable .t{color:var(--muted)}
+  .twrap{overflow-x:auto}
+  .timeline{position:relative;margin:6px 0 4px;padding-left:26px}
+  .timeline::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:2px;background:var(--line)}
+  .t-item{position:relative;padding:0 0 18px}
+  .t-item::before{content:"";position:absolute;left:-24px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--panel);border:3px solid var(--accent)}
+  .t-item.money::before{border-color:var(--gold)}
+  .t-item.post::before{border-color:var(--blue)}
+  .t-time{font-size:12px;font-weight:800;letter-spacing:.06em;color:var(--accent);text-transform:uppercase}
+  .t-time .sub{color:var(--dim);font-weight:600;letter-spacing:normal;text-transform:none}
+  .t-item.money .t-time{color:var(--gold)}
+  .t-item.post .t-time{color:var(--blue)}
+  .t-title{font-size:14.5px;font-weight:700;margin-top:2px}
+  .t-body{font-size:13px;color:var(--muted);margin-top:3px}
+  .note{background:var(--red-bg);border-radius:9px;padding:13px 16px;margin-top:12px;font-size:13px;color:var(--red-dim)}
+  .note b{color:#fff}
+  .why{background:var(--panel2);border-left:3px solid var(--accent);border-radius:0 9px 9px 0;padding:13px 16px;margin-top:6px;font-size:13px;color:var(--muted)}
+  .why b{color:var(--accent);font-weight:700}
+  .foot-note{text-align:center;color:var(--dim);font-size:11px;letter-spacing:.08em;border-top:1px solid var(--line);margin-top:30px;padding-top:18px}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important}}
+  @media(max-width:680px){.sidebar{position:fixed;left:-260px;z-index:40}.main{padding:24px 18px 80px}}
+</style>
+<nav class="sidebar">
+  <div class="brand">
+    <div class="brand-badge">🛏️</div>
+    <div><div class="brand-title">Retention &amp; Last Call</div><div class="brand-sub">Erzabelle · Both Pages</div></div>
+  </div>
+  <div class="nav-label">Gameplan</div>
+  <div class="nav-item active" data-s="overview"><span class="ic">📋</span>Overview</div>
+  <div class="nav-item" data-s="morning"><span class="ic">🌅</span>Morning Shift</div>
+  <div class="nav-item" data-s="afternoon"><span class="ic">🌃</span>Afternoon Shift</div>
+  <div class="nav-item" data-s="lists"><span class="ic">🗂️</span>Lists &amp; Exclusions</div>
+</nav>
+<main class="main">
+
+<section class="section show" id="overview">
+  <div class="page-head">
+    <h1>ERZABELLE — RETENTION &amp; LAST CALL DAY</h1>
+    <div class="sub">Same energy as Karina's retention day: connect first, sell in DMs. Morning shift runs check-in → last call on the paid masses → tease → turn-on. Afternoon shift runs a late-night-vibes tease and turn-on. All pics are her just in bed, SFW — the spice lives in the captions and the DMs.</div>
+    <div class="pills">
+      <span class="pill red">NO NEW PAID MASS</span>
+      <span class="pill gold">LAST CALL ON EXISTING PAID</span>
+      <span class="pill blue">6 MASSES / PAGE</span>
+      <span class="pill green">ICE CREAM DAY WALL POST ✓</span>
+    </div>
+  </div>
+  <div class="stat-grid">
+    <div class="stat"><div class="lbl">Masses Today</div><div class="num blue">12</div><div class="foot">6 per page, both pages</div><div class="ic">📨</div></div>
+    <div class="stat"><div class="lbl">Last Call Targets</div><div class="num gold">2</div><div class="foot">paid page bundle · free page $4 collector's set</div><div class="ic">⏳</div></div>
+    <div class="stat"><div class="lbl">Tease Media</div><div class="num red">SFW</div><div class="foot">in-bed photos only, both pages</div><div class="ic">🛏️</div></div>
+    <div class="stat"><div class="lbl">Wall Posts</div><div class="num green">2</div><div class="foot">ice cream day, 1 per page, 1pm EST</div><div class="ic">🍦</div></div>
+  </div>
+  <div class="card">
+    <div class="card-h"><div class="ci">🧭</div><h3>How today flows</h3></div>
+    <div class="why"><b>Last call does the selling.</b> The reminder pushes the paid masses already sitting in DMs — after that, every send is free connection that opens a chat for chatters to work.</div>
+    <div class="why"><b>In-bed pics, SFW on purpose.</b> The photo starts the conversation, the chatter escalates it. Nothing explicit ever goes out in a free mass.</div>
+  </div>
+</section>
+
+<section class="section" id="morning">
+  <div class="page-head">
+    <h1>Morning Shift</h1>
+    <div class="sub">Four sends, 2 hours apart, sent on PHT shift schedule. Times shown in her EST (fan-facing). Same flow, different captions per page.</div>
+  </div>
+  <div class="card">
+    <div class="card-h"><div class="ci">🌅</div><h3>Timeline</h3><span class="tag g">SCHEDULED ✓</span></div>
+    <div class="timeline">
+      <div class="t-item">
+        <div class="t-time">7:30 PM EST <span class="sub">· check-in</span></div>
+        <div class="t-title">Engagement — no media</div>
+        <div class="t-body">Paid: "hii you 🥺 tell me something good that happened to you today… i'll trade you a secret 😏" · Free: "hii you 🥺 how's your day going? i might make it better 😏"</div>
+      </div>
+      <div class="t-item money">
+        <div class="t-time">9:30 PM EST <span class="sub">· last call reminder</span></div>
+        <div class="t-title">Push the paid mass — no media</div>
+        <div class="t-body">Paid page: "okay last time i'm bringing it up 🥺 that little bundle in your DMs is still waiting… once i pull it down it's gone forever 😈" · Free page: "babe this is really your last call 🥺 the $4 collector's set comes down soon and it's never getting resent…"</div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">11:30 PM EST <span class="sub">· tease · 2 bed pics</span></div>
+        <div class="t-title">In-bed tease</div>
+        <div class="t-body">Paid: "just me and my bed rn 🥺 it's so much comfier when someone's telling me what to do… come say hi 👀" · Free: "i made my bed all cozy and now there's nobody in it to be needy with 🥺 be brave and come join me 😈"</div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">1:30 AM EST <span class="sub">· turn-on · 1 bed pic</span></div>
+        <div class="t-title">In-bed turn-on</div>
+        <div class="t-body">Paid: "i can't stop rolling around in these sheets 🥵 someone give me a reason to stay in bed… or a reason not to 😈" · Free: "me on top or bottom? 😈 wrong answers only… actually no, be honest 🥵"</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="afternoon">
+  <div class="page-head">
+    <h1>Afternoon Shift</h1>
+    <div class="sub">Tease and turn-on, 4 hours apart on the PHT afternoon shift — lands pre-dawn and morning EST. Different bed pics from the morning, different captions per page.</div>
+  </div>
+  <div class="card">
+    <div class="card-h"><div class="ci">🌃</div><h3>Timeline</h3><span class="tag g">SCHEDULED ✓</span></div>
+    <div class="timeline">
+      <div class="t-item">
+        <div class="t-time">4:30 AM EST <span class="sub">· tease · 2 bed pics</span></div>
+        <div class="t-title">Almost-sunrise tease</div>
+        <div class="t-body">Paid: "it's almost sunrise and i'm somehow still in bed wide awake 🥵 if you're up this late too, that's fate… come keep me company 👀" · Free: "the sun's almost up and i still haven't slept 🥵 you'd keep me up even later, wouldn't you? 👀"</div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">8:30 AM EST <span class="sub">· turn-on · 1 bed pic</span></div>
+        <div class="t-title">Good-morning turn-on</div>
+        <div class="t-body">Paid: "good morning 🥺 i just woke up and i'm already thinking about things i shouldn't say out loud 🥵 open your DMs and maybe i will 😈" · Free: "woke up feeling a little too soft and a little too bad at the same time 🥵 come see which side wins 😈"</div>
+      </div>
+      <div class="t-item money">
+        <div class="t-time">1:00 PM EST <span class="sub">· wall post · both pages</span></div>
+        <div class="t-title">Ice cream day post (professional shoot pic)</div>
+        <div class="t-body">Paid: "it's national ice cream day 🍦 fitting, because i'm the flavor they don't sell in stores 😈" · Free: "would you share your cone with me or make me work for it? 😏"</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="lists">
+  <div class="page-head">
+    <h1>Lists &amp; Exclusions</h1>
+    <div class="sub">Same exclusions as her earlier masses today — verified working sends.</div>
+  </div>
+  <div class="card">
+    <div class="card-h"><div class="ci">🚫</div><h3>Every send excludes</h3></div>
+    <div class="twrap"><table class="ptable">
+      <tr><th>Page</th><th>Lists</th><th>IDs</th></tr>
+      <tr><td><b>Paid @erzabelx</b></td><td class="t">top spender tiers + ❌PERM EXCLUDE MM</td><td class="t">1285513083 · 1285513082 · 1261160735</td></tr>
+      <tr><td><b>Free @erzabel</b></td><td class="t">$2500+ Spent · $500–$2500 Spent · ❌PERM EXCLUDE MM</td><td class="t">1285513001 · 1285513000 · 1261160649</td></tr>
+    </table></div>
+    <div class="note"><b>High spenders never get these masses</b> — they get personal messages only, same as always.</div>
+  </div>
+  <div class="foot-note">LIVERICHMEDIA · ERZABELLE · RETENTION &amp; LAST CALL DAY</div>
+</section>
+</main>
+<script>
+document.querySelectorAll('.nav-item').forEach(n=>{n.addEventListener('click',()=>{document.querySelectorAll('.nav-item').forEach(x=>x.classList.remove('active'));n.classList.add('active');document.querySelectorAll('.section').forEach(s=>s.classList.remove('show'));document.getElementById(n.dataset.s).classList.add('show');document.querySelector('.main').scrollTop=0;});});
+</script>

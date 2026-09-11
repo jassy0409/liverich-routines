@@ -1,5 +1,27 @@
 # Project instructions
 
+## Gameplan dashboards — publishing rules (MANDATORY)
+
+Every gameplan / dashboard / team board built for a model MUST be published
+as a public GitHub Pages file, never as a claude.ai artifact link (org
+settings block "anyone with link" sharing on artifacts, so those links
+require access and the chatters can't open them).
+
+How to publish:
+1. Build the dashboard as a self-contained HTML file (dark ops-hub style,
+   sidebar sections — match the existing gameplan-*.html files).
+2. Commit it to the branch `claude/onlyfans-chat-guide-070tsw` named
+   `gameplan-<model>-<topic>.html` (this branch auto-deploys to GitHub
+   Pages via .github/workflows/pages.yml).
+3. Share the public URL:
+   `https://jassy0409.github.io/liverich-routines/gameplan-<model>-<topic>.html`
+   — this link opens for anyone, no login.
+4. Also send the HTML file to Jassy as a downloadable attachment.
+
+⚠️ WARNING: pages.yml also triggers on pushes to `main` and deploys the
+entire checkout — pushing to `main` (which has no HTML files) would WIPE
+the live Pages site. Never push to `main` while that trigger exists.
+
 ## Design system — JASSY'S DESIGN
 
 All UI, web pages, and visual work in this project must follow Jassy's

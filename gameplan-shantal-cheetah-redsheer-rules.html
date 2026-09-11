@@ -1,0 +1,188 @@
+<title>Shantal Rules &amp; Scripts — Sunday Cheetah &amp; Red Sheer</title>
+<style>
+  :root{
+    --bg:#171717; --panel:#202022; --panel2:#1a1a1c; --line:#2e2e30;
+    --accent:#e2544b; --accent-dim:#3a1417;
+    --gold:#efb23b; --gold-bg:#3a2a08;
+    --txt:#f2f2f2; --muted:#a9a9ad; --dim:#7d7d82;
+    --red:#e2544b; --red-bg:#3a1512; --red-dim:#f0997b;
+    --green:#4fc17a; --green-bg:#0c3320;
+    --blue:#7db4f4; --blue-bg:#0e2947;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg); color:var(--txt);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    display:flex; min-height:100vh; line-height:1.5;
+  }
+  .sidebar{
+    width:250px; flex-shrink:0; background:var(--panel2);
+    border-right:1px solid var(--line);
+    height:100vh; position:sticky; top:0; overflow-y:auto; padding:20px 0;
+  }
+  .brand{display:flex;align-items:center;gap:10px;padding:0 20px 18px;border-bottom:1px solid var(--line);margin-bottom:12px}
+  .brand-badge{width:34px;height:34px;border-radius:9px;background:var(--accent-dim);display:flex;align-items:center;justify-content:center;font-size:17px}
+  .brand-title{font-size:15px;font-weight:700;letter-spacing:.2px}
+  .brand-sub{font-size:11px;color:var(--dim)}
+  .nav-label{font-size:10px;letter-spacing:.12em;color:var(--dim);padding:14px 20px 6px;text-transform:uppercase}
+  .nav-item{
+    display:flex;align-items:center;gap:11px;padding:9px 20px;cursor:pointer;
+    font-size:13.5px;color:var(--muted);border-left:3px solid transparent;transition:.15s;
+  }
+  .nav-item .ic{width:20px;text-align:center;font-size:15px}
+  .nav-item:hover{background:#232325;color:var(--txt)}
+  .nav-item.active{color:var(--accent);border-left-color:var(--accent);background:#232325}
+  .main{flex:1;overflow-y:auto;height:100vh;padding:34px 44px 80px}
+  .page-head{margin-bottom:26px}
+  .page-head h1{font-size:27px;font-weight:800;letter-spacing:.2px;line-height:1.2}
+  .page-head .sub{color:var(--muted);font-size:13.5px;margin-top:7px}
+  .pills{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+  .pill{font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;letter-spacing:.03em}
+  .pill.red{background:var(--red-bg);color:var(--red-dim)}
+  .pill.green{background:var(--green-bg);color:var(--green)}
+  .pill.gold{background:var(--gold-bg);color:var(--gold)}
+  .pill.blue{background:var(--blue-bg);color:var(--blue)}
+  .section{display:none;animation:fade .45s ease both}
+  .section.show{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:20px 22px;margin-bottom:16px}
+  .card-h{display:flex;align-items:center;gap:11px;margin-bottom:15px;flex-wrap:wrap}
+  .card-h .ci{width:30px;height:30px;border-radius:8px;background:var(--accent-dim);display:flex;align-items:center;justify-content:center;font-size:15px}
+  .card-h h3{font-size:16.5px;font-weight:700}
+  .card-h .tag{margin-left:auto;font-size:10px;font-weight:700;letter-spacing:.05em;padding:3px 9px;border-radius:6px;background:var(--red-bg);color:var(--red-dim)}
+  .card-h .tag.g{background:var(--green-bg);color:var(--green)}
+  .card-h .tag.b{background:var(--blue-bg);color:var(--blue)}
+  .row{display:flex;gap:11px;padding:11px 13px;border-radius:9px;background:var(--panel2);margin-bottom:8px;align-items:flex-start;font-size:13.5px}
+  .row .mk{flex-shrink:0;width:18px;height:18px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;margin-top:1px}
+  .mk.x{background:var(--red-bg);color:var(--red)}
+  .mk.ok{background:var(--green-bg);color:var(--green)}
+  .mk.n{background:var(--accent-dim);color:var(--accent)}
+  .row b{color:#fff;font-weight:700}
+  .row .t{color:var(--muted)}
+  .tmpl{background:#1c1214;border:1px dashed var(--accent);border-radius:10px;padding:15px 18px;font-style:italic;color:#f6b8ba;font-size:14px;margin:12px 0}
+  .tmpl .when{display:block;font-style:normal;font-weight:800;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:7px}
+  .note{background:var(--red-bg);border-radius:9px;padding:13px 16px;margin-top:12px;font-size:13px;color:var(--red-dim)}
+  .note b{color:#fff}
+  .why{background:var(--panel2);border-left:3px solid var(--accent);border-radius:0 9px 9px 0;padding:13px 16px;margin-top:6px;font-size:13px;color:var(--muted)}
+  .why b{color:var(--accent);font-weight:700}
+  .foot-note{text-align:center;color:var(--dim);font-size:11px;letter-spacing:.08em;border-top:1px solid var(--line);margin-top:30px;padding-top:18px}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important}}
+  @media(max-width:680px){.sidebar{position:fixed;left:-260px;z-index:40}.main{padding:24px 18px 80px}}
+</style>
+
+<nav class="sidebar">
+  <div class="brand">
+    <div class="brand-badge">📖</div>
+    <div><div class="brand-title">Rules &amp; Scripts</div><div class="brand-sub">Shantal · Cheetah &amp; Red Sheer Sunday</div></div>
+  </div>
+  <div class="nav-label">Playbook</div>
+  <div class="nav-item active" data-s="rules"><span class="ic">⚖️</span>Ground Rules</div>
+  <div class="nav-item" data-s="voice"><span class="ic">🗣️</span>Shantal's Voice</div>
+  <div class="nav-item" data-s="cheetah"><span class="ic">🐆</span>Cheetah Flow</div>
+  <div class="nav-item" data-s="redsheer"><span class="ic">❤️‍🔥</span>Red Sheer Flow</div>
+  <div class="nav-item" data-s="tease"><span class="ic">🌃</span>Late Night Flow</div>
+</nav>
+
+<main class="main">
+
+<section class="section show" id="rules">
+  <div class="page-head">
+    <h1>Ground Rules</h1>
+    <div class="sub">Non-negotiables for every shift today.</div>
+    <div class="pills"><span class="pill red">EXCLUSIONS</span><span class="pill green">TAGGING</span></div>
+  </div>
+  <div class="card">
+    <div class="card-h"><div class="ci">🚫</div><h3>Who never gets a mass</h3></div>
+    <div class="row"><span class="mk x">✕</span><div><b>No MM list</b> <span class="t">— excluded from every single mass today, no exceptions.</span></div></div>
+    <div class="row"><span class="mk x">✕</span><div><b>SHANTAL ONLY list</b> <span class="t">— these fans only ever hear from Shantal herself. Excluded from everything.</span></div></div>
+    <div class="row"><span class="mk x">✕</span><div><b>VIP High Spenders</b> <span class="t">— excluded from both paid masses and the late-night tease. They get worked 1:1, never blasted.</span></div></div>
+    <div class="row"><span class="mk x">✕</span><div><b>FREELOADERS/TIMEWASTERS</b> <span class="t">— excluded from paid masses and tease. Do not chase them in DMs either.</span></div></div>
+    <div class="row"><span class="mk x">✕</span><div><b>Past set buyers</b> <span class="t">— anyone who already owns any part of Cheetah or Red Sheer never sees that set's paid mass again.</span></div></div>
+  </div>
+  <div class="card">
+    <div class="card-h"><div class="ci">🏷️</div><h3>Buyer tagging — the step that makes reminders work</h3><span class="tag g">EVERY BUYER, IMMEDIATELY</span></div>
+    <div class="row"><span class="mk ok">✓</span><div><b>$7 Cheetah buyers</b> <span class="t">→ tag to 7/19 $7 CHEETAH BUYERS. The 4am reminder only reaches this list.</span></div></div>
+    <div class="row"><span class="mk ok">✓</span><div><b>$29.99 Red Sheer buyers</b> <span class="t">→ tag to 7/19 $29.99 RED SHEER BUYERS. The 9:30pm reminder only reaches this list.</span></div></div>
+    <div class="row"><span class="mk ok">✓</span><div><b>Part upsell buyers</b> <span class="t">→ also tag into the matching part list (Part 1, Part 2, Spicy, Extra Spicy) so tomorrow's exclusions stay clean.</span></div></div>
+    <div class="note"><b>If you skip tagging, the reminder masses fire into empty lists.</b> Tag as they buy, not at end of shift.</div>
+  </div>
+</section>
+
+<section class="section" id="voice">
+  <div class="page-head">
+    <h1>Shantal's Voice</h1>
+    <div class="sub">Personal, one-to-one, warm. She writes like a real woman texting someone she likes.</div>
+  </div>
+  <div class="card">
+    <div class="card-h"><div class="ci">🗣️</div><h3>Always / Never</h3></div>
+    <div class="row"><span class="mk ok">✓</span><div><b>Proper sentences, proper capitalization.</b> <span class="t">Shantal never types in all lowercase.</span></div></div>
+    <div class="row"><span class="mk ok">✓</span><div><b>First names only.</b> <span class="t">Use the fan's first name naturally, once or twice, not every line.</span></div></div>
+    <div class="row"><span class="mk ok">✓</span><div><b>Conversational, not salesy.</b> <span class="t">Sell the moment and the feeling, name the price once, stop.</span></div></div>
+    <div class="row"><span class="mk x">✕</span><div><b>No "hey", no pet names.</b> <span class="t">No baby, no handsome, no babe. She opens with the fan's name or a real question.</span></div></div>
+    <div class="row"><span class="mk x">✕</span><div><b>No naming the outfit as a product.</b> <span class="t">Describe what it does to her, not what it is called in the vault.</span></div></div>
+    <div class="row"><span class="mk x">✕</span><div><b>No pushing past a done signal.</b> <span class="t">A satisfied buyer gets warmth, not another pitch.</span></div></div>
+  </div>
+</section>
+
+<section class="section" id="cheetah">
+  <div class="page-head">
+    <h1>Cheetah Flow — Aaliyah</h1>
+    <div class="sub">After the $7 opener lands at 1:05am PST. Goal: warm chat → Part 1 → Part 2.</div>
+    <div class="pills"><span class="pill gold">$7 → $20–$25 → $45–$50</span></div>
+  </div>
+  <div class="card">
+    <div class="card-h"><div class="ci">💬</div><h3>Response scripts</h3></div>
+    <div class="tmpl"><span class="when">Fan replies to the check-in</span>"I like that you actually answered me. Most people scroll past. Tell me one good thing about your Sunday so far."</div>
+    <div class="tmpl"><span class="when">Fan opens the $7 mass</span>"You opened it. Now I'm curious, [name] — which one did you look at twice?"</div>
+    <div class="tmpl"><span class="when">Fan compliments the set</span>"That little set is honestly the tame version of my morning. There's a longer one I only share when someone asks nicely. Part 1 is $25 and worth every second."</div>
+    <div class="tmpl"><span class="when">Fan buys Part 1 → ladder to Part 2</span>"You have good taste. Part 2 is where I stop behaving — $50 and I promise you will not be checking your phone for anything else tonight."</div>
+    <div class="why"><b>Pace it:</b> compliment → curiosity → offer. One rung at a time. If a fan stalls at Part 1, keep the conversation warm and let the 4am reminder do the re-open.</div>
+  </div>
+</section>
+
+<section class="section" id="redsheer">
+  <div class="page-head">
+    <h1>Red Sheer Flow — Trisha</h1>
+    <div class="sub">After the $29.99 drop at 6:30pm PST. Goal: reaction → Part 2 → Spicy for provers.</div>
+    <div class="pills"><span class="pill red">$29.99 → $60–$70 → $300+</span></div>
+  </div>
+  <div class="card">
+    <div class="card-h"><div class="ci">💬</div><h3>Response scripts</h3></div>
+    <div class="tmpl"><span class="when">Fan replies to the check-in</span>"There you are. I was starting to think I was the only one thinking about tonight."</div>
+    <div class="tmpl"><span class="when">Fan opens the $29.99 mass</span>"So you saw it. Be honest with me, [name] — how long did you stare?"</div>
+    <div class="tmpl"><span class="when">Fan reacts strongly</span>"Careful. That was me holding back. The next part is $70 and I did not hold back in that one."</div>
+    <div class="tmpl"><span class="when">Fan buys Part 2 → gauge for Spicy</span>"You keep surprising me. There is one more level to tonight, but I only offer it to someone who really wants it. Do you?"</div>
+    <div class="why"><b>Spicy at $300–$400 is an earn, not a blast.</b> Only offer after a genuine two-way exchange, and price to the fan.</div>
+  </div>
+</section>
+
+<section class="section" id="tease">
+  <div class="page-head">
+    <h1>Late Night Flow — Jeffrey</h1>
+    <div class="sub">Midnight tease + 3am turn-on, both free with promo pics. Goal: convert heat into Red Sheer Part 1.</div>
+    <div class="pills"><span class="pill blue">FREE → $25–$30 PART 1</span></div>
+  </div>
+  <div class="card">
+    <div class="card-h"><div class="ci">💬</div><h3>Response scripts</h3></div>
+    <div class="tmpl"><span class="when">Fan replies to the midnight tease</span>"I knew you would still be up. Since we are both awake and clearly thinking the same thing — want to see the version I did not post?"</div>
+    <div class="tmpl"><span class="when">Fan asks what she means</span>"There is a whole part one to this and it starts at $30. It is the kind of thing you watch twice."</div>
+    <div class="tmpl"><span class="when">Fan replies to the 3am turn-on</span>"Say it then. Tell me exactly what you want and I will tell you if you can handle part one."</div>
+    <div class="tmpl"><span class="when">Fan buys Part 1 at 3am</span>"Now try to sleep after that. When you wake up, ask me about what comes next."</div>
+    <div class="why"><b>Late night is intimacy, not volume.</b> Slower replies, longer messages, make each fan feel like the only one awake with her.</div>
+  </div>
+  <div class="foot-note">LIVERICHMEDIA · SHANTAL MONIQUE · RULES &amp; SCRIPTS · SUNDAY CHEETAH &amp; RED SHEER</div>
+</section>
+
+</main>
+<script>
+document.querySelectorAll('.nav-item').forEach(n=>{
+  n.addEventListener('click',()=>{
+    document.querySelectorAll('.nav-item').forEach(x=>x.classList.remove('active'));
+    n.classList.add('active');
+    document.querySelectorAll('.section').forEach(s=>s.classList.remove('show'));
+    document.getElementById(n.dataset.s).classList.add('show');
+    document.querySelector('.main').scrollTop=0;
+  });
+});
+</script>

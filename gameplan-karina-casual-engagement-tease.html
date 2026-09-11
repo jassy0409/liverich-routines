@@ -1,0 +1,339 @@
+<title>Karina Gameplan — Casual Connection Day · Engagement + Tease</title>
+<style>
+  :root{
+    --bg:#171717; --panel:#202022; --panel2:#1a1a1c; --line:#2e2e30;
+    --accent:#a78bdb; --accent-dim:#2a2138;
+    --gold:#efb23b; --gold-bg:#3a2a08;
+    --txt:#f2f2f2; --muted:#a9a9ad; --dim:#7d7d82;
+    --red:#a78bdb; --red-bg:#241c38; --red-dim:#c9b8ec;
+    --green:#4fc17a; --green-bg:#0c3320;
+    --blue:#7db4f4; --blue-bg:#0e2947;
+    --pink:#e0407b; --pink-bg:#33121f;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg); color:var(--txt);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    display:flex; min-height:100vh; line-height:1.5;
+  }
+  .sidebar{
+    width:250px; flex-shrink:0; background:var(--panel2);
+    border-right:1px solid var(--line);
+    height:100vh; position:sticky; top:0; overflow-y:auto; padding:20px 0;
+  }
+  .sidebar::-webkit-scrollbar{width:7px}
+  .sidebar::-webkit-scrollbar-thumb{background:#333;border-radius:4px}
+  .brand{display:flex;align-items:center;gap:10px;padding:0 20px 18px;border-bottom:1px solid var(--line);margin-bottom:12px}
+  .brand-badge{width:34px;height:34px;border-radius:9px;background:var(--accent-dim);display:flex;align-items:center;justify-content:center;font-size:17px}
+  .brand-title{font-size:15px;font-weight:700;letter-spacing:.2px}
+  .brand-sub{font-size:11px;color:var(--dim)}
+  .nav-label{font-size:10px;letter-spacing:.12em;color:var(--dim);padding:14px 20px 6px;text-transform:uppercase}
+  .nav-item{
+    display:flex;align-items:center;gap:11px;padding:9px 20px;cursor:pointer;
+    font-size:13.5px;color:var(--muted);border-left:3px solid transparent;transition:.15s;
+  }
+  .nav-item .ic{width:20px;text-align:center;font-size:15px}
+  .nav-item:hover{background:#232325;color:var(--txt)}
+  .nav-item.active{color:var(--accent);border-left-color:var(--accent);background:#232325}
+  .main{flex:1;overflow-y:auto;height:100vh;padding:34px 44px 80px}
+  .main::-webkit-scrollbar{width:9px}
+  .main::-webkit-scrollbar-thumb{background:#2c2c2e;border-radius:5px}
+  .page-head{margin-bottom:26px}
+  .page-head h1{font-size:27px;font-weight:800;letter-spacing:.2px;line-height:1.2}
+  .page-head .sub{color:var(--muted);font-size:13.5px;margin-top:7px;max-width:780px}
+  .pills{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+  .pill{font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;letter-spacing:.03em}
+  .pill.red{background:var(--red-bg);color:var(--red-dim)}
+  .pill.green{background:var(--green-bg);color:var(--green)}
+  .pill.gold{background:var(--gold-bg);color:var(--gold)}
+  .pill.blue{background:var(--blue-bg);color:var(--blue)}
+  .pill.pink{background:var(--pink-bg);color:var(--pink)}
+  .section{display:none;animation:fade .45s ease both}
+  .section.show{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-bottom:26px}
+  .stat{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:17px 18px;position:relative;overflow:hidden}
+  .stat .lbl{font-size:10.5px;letter-spacing:.1em;color:var(--dim);text-transform:uppercase}
+  .stat .num{font-size:30px;font-weight:800;margin-top:8px;line-height:1;font-variant-numeric:tabular-nums}
+  .stat .num.gold{color:var(--gold)} .stat .num.red{color:var(--accent)} .stat .num.blue{color:var(--blue)} .stat .num.green{color:var(--green)} .stat .num.pink{color:var(--pink)}
+  .stat .foot{font-size:11.5px;color:var(--muted);margin-top:9px}
+  .stat .ic{position:absolute;top:15px;right:16px;font-size:17px;opacity:.85}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:20px 22px;margin-bottom:16px}
+  .card-h{display:flex;align-items:center;gap:11px;margin-bottom:15px;flex-wrap:wrap}
+  .card-h .ci{width:30px;height:30px;border-radius:8px;background:var(--accent-dim);display:flex;align-items:center;justify-content:center;font-size:15px}
+  .card-h h3{font-size:16.5px;font-weight:700}
+  .card-h .tag{margin-left:auto;font-size:10px;font-weight:700;letter-spacing:.05em;padding:3px 9px;border-radius:6px;background:var(--red-bg);color:var(--red-dim)}
+  .card-h .tag.g{background:var(--green-bg);color:var(--green)}
+  .card-h .tag.b{background:var(--blue-bg);color:var(--blue)}
+  .card-h .tag.gd{background:var(--gold-bg);color:var(--gold)}
+  .tmpl{background:#1a1524;border:1px dashed var(--accent);border-radius:10px;padding:15px 18px;font-style:italic;color:#d8c9f2;font-size:14px;margin:12px 0}
+  .tmpl .when{display:block;font-style:normal;font-weight:800;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:7px}
+  .tmpl.pink{background:#25121b;border-color:var(--pink);color:#f3c3d5}
+  .tmpl.pink .when{color:var(--pink)}
+  .ptable{width:100%;border-collapse:separate;border-spacing:0;background:var(--panel2);border:1px solid var(--line);border-radius:11px;overflow:hidden;margin-bottom:6px}
+  .ptable th,.ptable td{padding:11px 14px;font-size:13.5px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+  .ptable tr:last-child td{border-bottom:none}
+  .ptable th{font-size:10.5px;color:var(--dim);text-transform:uppercase;letter-spacing:.08em}
+  .ptable .p{color:var(--pink);font-weight:800;white-space:nowrap;font-variant-numeric:tabular-nums}
+  .ptable .g{color:var(--accent);font-weight:800;white-space:nowrap}
+  .ptable .t{color:var(--muted)}
+  .twrap{overflow-x:auto}
+  .timeline{position:relative;margin:6px 0 4px;padding-left:26px}
+  .timeline::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:2px;background:var(--line)}
+  .t-item{position:relative;padding:0 0 18px}
+  .t-item::before{content:"";position:absolute;left:-24px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--panel);border:3px solid var(--accent)}
+  .t-item.tease::before{border-color:var(--pink)}
+  .t-time{font-size:12px;font-weight:800;letter-spacing:.06em;color:var(--accent);text-transform:uppercase}
+  .t-time .sub{color:var(--dim);font-weight:600;letter-spacing:normal;text-transform:none}
+  .t-item.tease .t-time{color:var(--pink)}
+  .t-title{font-size:14.5px;font-weight:700;margin-top:2px}
+  .t-body{font-size:13px;color:var(--muted);margin-top:3px}
+  .t-photo{font-size:11px;font-weight:700;color:var(--pink);margin-top:5px;letter-spacing:.03em}
+  .step{display:flex;gap:12px;padding:11px 0;border-bottom:1px solid var(--line)}
+  .step:last-child{border-bottom:none}
+  .step .n{flex-shrink:0;width:24px;height:24px;border-radius:7px;background:var(--accent-dim);color:var(--accent);font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center}
+  .step .sc .h{font-size:13.5px;font-weight:700}
+  .step .sc .b{font-size:12.5px;color:var(--muted);margin-top:2px}
+  .say{color:#d8c9f2;font-style:italic}
+  .note{background:var(--red-bg);border-radius:9px;padding:13px 16px;margin-top:12px;font-size:13px;color:var(--red-dim)}
+  .note b{color:#fff}
+  .note.pink{background:var(--pink-bg);color:#f3c3d5}
+  .note.gold{background:var(--gold-bg);color:#f0d69a}
+  .why{background:var(--panel2);border-left:3px solid var(--accent);border-radius:0 9px 9px 0;padding:13px 16px;margin-top:6px;font-size:13px;color:var(--muted)}
+  .why b{color:var(--accent);font-weight:700}
+  .rules{list-style:none;margin-top:4px}
+  .rules li{position:relative;padding:8px 0 8px 26px;font-size:13px;color:var(--muted);border-bottom:1px solid var(--line)}
+  .rules li:last-child{border-bottom:none}
+  .rules li::before{content:"✓";position:absolute;left:0;top:8px;color:var(--green);font-weight:800}
+  .rules li.no::before{content:"✕";color:var(--pink)}
+  .rules li b{color:var(--txt)}
+  .idgrid{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .idchip{font-size:12px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--red-dim);background:var(--accent-dim);border-radius:8px;padding:6px 11px}
+  .idchip.pick{background:var(--pink-bg);color:var(--pink);border:1px solid var(--pink)}
+  .foot-note{text-align:center;color:var(--dim);font-size:11px;letter-spacing:.08em;border-top:1px solid var(--line);margin-top:30px;padding-top:18px}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important}}
+  @media(max-width:680px){.sidebar{position:fixed;left:-260px;z-index:40}.main{padding:24px 18px 80px}}
+</style>
+<nav class="sidebar">
+  <div class="brand">
+    <div class="brand-badge">🤍</div>
+    <div><div class="brand-title">Casual Connection Day</div><div class="brand-sub">Karina Petro · Both Pages · No Paid Mass</div></div>
+  </div>
+  <div class="nav-label">Gameplan</div>
+  <div class="nav-item active" data-s="overview"><span class="ic">📋</span>Overview</div>
+  <div class="nav-item" data-s="timeline"><span class="ic">🕒</span>Send Timeline</div>
+  <div class="nav-item" data-s="free"><span class="ic">💗</span>Free — Captions</div>
+  <div class="nav-item" data-s="vip"><span class="ic">💎</span>VIP — Captions</div>
+  <div class="nav-item" data-s="photos"><span class="ic">🖼️</span>Tease Photos</div>
+  <div class="nav-item" data-s="lists"><span class="ic">🗂️</span>Inclusion &amp; Exclusion</div>
+  <div class="nav-label">Chatter Module</div>
+  <div class="nav-item" data-s="rules"><span class="ic">📏</span>Rules (all shifts)</div>
+  <div class="nav-item" data-s="flow"><span class="ic">🎬</span>Script Flow / Shift</div>
+</nav>
+<main class="main">
+
+<section class="section show" id="overview">
+  <div class="page-head">
+    <h1>KARINA — CASUAL CONNECTION DAY</h1>
+    <div class="sub">No theme, no paid mass. Each shift opens with a pure engagement mass to get fans talking, then three hours later a soft tease-and-turn-on with a reply CTA that pulls them back into the chat. Every reply is an open door for a DM upsell.</div>
+    <div class="pills">
+      <span class="pill red">NO PAID MASS</span>
+      <span class="pill blue">6 MASSES / PAGE · 3 SHIFTS</span>
+      <span class="pill pink">ENGAGE → +3H TEASE</span>
+      <span class="pill green">SFW · NEVER ON THE WALL</span>
+    </div>
+  </div>
+  <div class="stat-grid">
+    <div class="stat"><div class="lbl">Masses Today</div><div class="num blue">12</div><div class="foot">6 per page, both pages mirrored</div><div class="ic">📨</div></div>
+    <div class="stat"><div class="lbl">Per Shift</div><div class="num red">2</div><div class="foot">engagement first, tease +3h later</div><div class="ic">🔁</div></div>
+    <div class="stat"><div class="lbl">Spacing</div><div class="num gold">3h</div><div class="foot">between the engagement and the tease</div><div class="ic">⏱️</div></div>
+    <div class="stat"><div class="lbl">Upsell</div><div class="num green">DM</div><div class="foot">chatters sell in chat, no prices in masses</div><div class="ic">💬</div></div>
+  </div>
+  <div class="card">
+    <div class="card-h"><div class="ci">🧭</div><h3>How the day flows</h3></div>
+    <div class="why"><b>Mass 1 — Engagement (shift start):</b> a pure check-in, no media, no price. It asks about the fan, not the wallet — warms the inbox and gets replies moving so chatters have live conversations to work.</div>
+    <div class="why"><b>Mass 2 — Tease &amp; turn-on (+3 hours):</b> one SFW-but-teasing photo that has never touched the wall, closed with a reply CTA ("tell me your next move" / "i'm waiting for you to undress me… are you ready?"). Every reply is a warm DM lead.</div>
+    <div class="note pink"><b>Confirm to schedule:</b> the <b>start clock time + chatter</b> for each of the 3 shifts (times below are proposed from the standard rotation). Mass 1 lands at shift start, Mass 2 exactly 3 hours later.</div>
+  </div>
+</section>
+
+<section class="section" id="timeline">
+  <div class="page-head">
+    <h1>Send Timeline — Both Pages</h1>
+    <div class="sub">Proposed times in her PT, built on the standard 3-shift rotation (Leigh graveyard confirmed 11PM–7AM). Same cadence on Free and VIP; different photos per page. Adjust any time and I'll lock it.</div>
+  </div>
+  <div class="card">
+    <div class="card-h"><div class="ci">🕒</div><h3>The six sends</h3><span class="tag">PROPOSED — CONFIRM TIMES</span></div>
+    <div class="twrap"><table class="ptable">
+      <tr><th>Shift / Chatter</th><th>Time (PT)</th><th>Type</th><th>What goes out</th></tr>
+      <tr><td class="t"><b>MJ</b> · 7a–3p</td><td class="g">7:00 AM</td><td>Engagement</td><td class="t">Mass 1 — check-in, no media</td></tr>
+      <tr><td class="t"><b>MJ</b> · 7a–3p</td><td class="p">10:00 AM</td><td>Tease</td><td class="t">Mass 2 — 1 photo + reply CTA</td></tr>
+      <tr><td class="t"><b>Jeffrey</b> · 3p–11p</td><td class="g">3:00 PM</td><td>Engagement</td><td class="t">Mass 1 — check-in, no media</td></tr>
+      <tr><td class="t"><b>Jeffrey</b> · 3p–11p</td><td class="p">6:00 PM</td><td>Tease</td><td class="t">Mass 2 — 1 photo + reply CTA</td></tr>
+      <tr><td class="t"><b>Leigh</b> · 11p–7a</td><td class="g">11:00 PM</td><td>Engagement</td><td class="t">Mass 1 — check-in, no media</td></tr>
+      <tr><td class="t"><b>Leigh</b> · 11p–7a</td><td class="p">2:00 AM</td><td>Tease</td><td class="t">Mass 2 — 1 photo + reply CTA</td></tr>
+    </table></div>
+    <div class="note gold"><b>Which shifts are still ahead today?</b> Tell me the current time / which shift is live and I'll only schedule the sends that haven't passed. Late-night tease (2 AM) can move earlier if you'd rather.</div>
+  </div>
+</section>
+
+<section class="section" id="free">
+  <div class="page-head">
+    <h1>Free Page — karinapetrofree · Captions</h1>
+    <div class="sub">Two free masses per shift. Engagement opens, tease closes three hours later with a reply CTA. Photos confirmed never posted to the wall.</div>
+  </div>
+  <div class="card">
+    <div class="card-h"><div class="ci">💗</div><h3>MJ shift</h3></div>
+    <div class="tmpl"><span class="when">Mass 1 · 7:00 AM · engagement · no media</span>"gooood morning baby 🙈 be honest — what's the first thing you thought about when you woke up? 👀"</div>
+    <div class="tmpl pink"><span class="when">Mass 2 · 10:00 AM · tease + CTA · 📷 4473602896</span>"took this and immediately thought of you 🙈 now tell me… what would you do if you were here with me right now? 😏"</div>
+  </div>
+  <div class="card">
+    <div class="card-h"><div class="ci">💗</div><h3>Jeffrey shift</h3></div>
+    <div class="tmpl"><span class="when">Mass 1 · 3:00 PM · engagement · no media</span>"okay i'm bored and thinking about you 🙈 tell me what you're doing right now, i wanna know 😌"</div>
+    <div class="tmpl pink"><span class="when">Mass 2 · 6:00 PM · tease + CTA · 📷 4473599965</span>"can't stop staring at my phone waiting for you 🥵 tell me your next move… i dare you 😌"</div>
+  </div>
+  <div class="card">
+    <div class="card-h"><div class="ci">💗</div><h3>Leigh shift</h3></div>
+    <div class="tmpl"><span class="when">Mass 1 · 11:00 PM · engagement · no media</span>"were you a good boy today? 🥺 tell me about your day, i actually wanna know 😏"</div>
+    <div class="tmpl pink"><span class="when">Mass 2 · 2:00 AM · tease + CTA · 📷 4473599797</span>"laying here waiting for you to undress me… are you ready? 😈 tell me exactly what you'd do first 💋"</div>
+  </div>
+</section>
+
+<section class="section" id="vip">
+  <div class="page-head">
+    <h1>VIP Page — karinkapetro · Captions</h1>
+    <div class="sub">Same cadence, warmer and closer in tone since these are paying subs. Different photos so nothing feels recycled between pages.</div>
+  </div>
+  <div class="card">
+    <div class="card-h"><div class="ci">💎</div><h3>MJ shift</h3></div>
+    <div class="tmpl"><span class="when">Mass 1 · 7:00 AM · engagement · no media</span>"morning my love 🥺 you're the first person i wanted to talk to — tell me how you slept 💋"</div>
+    <div class="tmpl pink"><span class="when">Mass 2 · 10:00 AM · tease + CTA · 📷 4473603050</span>"made this just for you 🥵 tell me what you'd do if i was laying next to you right now… don't hold back 😈"</div>
+  </div>
+  <div class="card">
+    <div class="card-h"><div class="ci">💎</div><h3>Jeffrey shift</h3></div>
+    <div class="tmpl"><span class="when">Mass 1 · 3:00 PM · engagement · no media</span>"thinking about my favorite person 🙈 what are you up to right now baby? talk to me 😌"</div>
+    <div class="tmpl pink"><span class="when">Mass 2 · 6:00 PM · tease + CTA · 📷 4473599703</span>"waiting on you baby 😌 tell me your next move — i wanna hear every detail 💋"</div>
+  </div>
+  <div class="card">
+    <div class="card-h"><div class="ci">💎</div><h3>Leigh shift</h3></div>
+    <div class="tmpl"><span class="when">Mass 1 · 11:00 PM · engagement · no media</span>"goodnight my love 🥺 before i close my eyes, tell me one thing you wish we were doing right now 😏"</div>
+    <div class="tmpl pink"><span class="when">Mass 2 · 2:00 AM · tease + CTA · 📷 4473592335</span>"i'm all yours tonight… waiting for you to undress me, are you ready? 😈 tell me exactly how 🥵"</div>
+  </div>
+</section>
+
+<section class="section" id="photos">
+  <div class="page-head">
+    <h1>Tease Photos</h1>
+    <div class="sub">Source: vault folder "DO NOT SELL — FOR WALL POST &amp; STORIES ONLY" (free/SFW content). Every photo below is confirmed via the API to have <b>never been posted to the wall</b>. Six are assigned to the teases; the rest are spares to swap in.</div>
+  </div>
+  <div class="card">
+    <div class="card-h"><div class="ci">💗</div><h3>Assigned to teases (6)</h3></div>
+    <div class="idgrid">
+      <span class="idchip pick">4473602896 · Free MJ</span>
+      <span class="idchip pick">4473599965 · Free Jeffrey</span>
+      <span class="idchip pick">4473599797 · Free Leigh</span>
+      <span class="idchip pick">4473603050 · VIP MJ</span>
+      <span class="idchip pick">4473599703 · VIP Jeffrey</span>
+      <span class="idchip pick">4473592335 · VIP Leigh</span>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-h"><div class="ci">🔄</div><h3>Spare unused photos (not on wall)</h3></div>
+    <div class="idgrid">
+      <span class="idchip">4522230901</span><span class="idchip">4522230461</span>
+      <span class="idchip">4522229727</span><span class="idchip">4473604506</span>
+      <span class="idchip">4473603650</span><span class="idchip">4473603597</span>
+      <span class="idchip">4473600646</span><span class="idchip">4473600381</span>
+      <span class="idchip">4473599597</span><span class="idchip">4473599224</span>
+      <span class="idchip">4473592662</span><span class="idchip">4473592143</span>
+    </div>
+    <div class="note"><b>Heads-up:</b> egress policy blocks the OnlyFans CDN, so I couldn't visually preview these — picks are by metadata (phone-selfie ratios + never-posted). Glance at any ID in the vault and tell me to swap if a shot isn't the vibe.</div>
+  </div>
+</section>
+
+<section class="section" id="lists">
+  <div class="page-head">
+    <h1>Inclusion &amp; Exclusion</h1>
+    <div class="sub">Who each mass goes to, and who it skips. Applied identically to all six sends per page.</div>
+  </div>
+  <div class="card">
+    <div class="card-h"><div class="ci">✅</div><h3>Inclusion — send to</h3><span class="tag g">BOTH PAGES</span></div>
+    <div class="twrap"><table class="ptable">
+      <tr><th>Audience</th><th>Notes</th></tr>
+      <tr><td><b>All fans / active subscribers</b></td><td class="t">Standard full-list mass, minus the exclusions below</td></tr>
+    </table></div>
+    <div class="why"><b>Why "all fans":</b> engagement + tease are free and relationship-building — we want max reach into the inbox, then let chatters qualify and upsell the warm repliers in DMs.</div>
+  </div>
+  <div class="card">
+    <div class="card-h"><div class="ci">🚫</div><h3>Free page — excluded from every send</h3></div>
+    <div class="twrap"><table class="ptable">
+      <tr><th>List</th><th>ID</th></tr>
+      <tr><td><b>Timewasters · MM exclude (TW free pic)</b></td><td class="t">1294949678 · 1299560136</td></tr>
+      <tr><td><b>Whales · Ballers</b></td><td class="t">1203382860 · 1203382878 — personal outreach only</td></tr>
+    </table></div>
+  </div>
+  <div class="card">
+    <div class="card-h"><div class="ci">🚫</div><h3>VIP page — excluded from every send</h3></div>
+    <div class="twrap"><table class="ptable">
+      <tr><td><b>Do Not MM · Timewasters · Broke</b></td><td class="t">1202830395 · 1202830123 · 1202344451</td></tr>
+      <tr><td><b>SVIP · Super VIP · Diamond · Whales · Ballers</b></td><td class="t">personal outreach only</td></tr>
+    </table></div>
+    <div class="note"><b>Confirm before scheduling:</b> these are the standard Karina exclusion lists on file — say the word if today's lists should differ.</div>
+  </div>
+</section>
+
+<section class="section" id="rules">
+  <div class="page-head">
+    <h1>Chatter Rules — All Shifts</h1>
+    <div class="sub">The non-negotiables for how every chatter works this casual day, on both pages.</div>
+  </div>
+  <div class="card">
+    <div class="card-h"><div class="ci">📏</div><h3>Do</h3></div>
+    <ul class="rules">
+      <li><b>Personalize every reply.</b> Use what they said and their name — never copy-paste the same line to everyone.</li>
+      <li><b>Engagement window = relationship only.</b> On Mass 1 replies, ask questions, react, build rapport. No selling yet.</li>
+      <li><b>Tease window = the upsell window.</b> Mass 2 repliers are warm — flirt, escalate, then offer content in DM.</li>
+      <li><b>Price to the fan in DM.</b> Read their spend history and interest, then quote a custom price privately.</li>
+      <li><b>Tag buyers immediately.</b> When a fan buys, add them to that page's buyers-exclude list so later teases skip them.</li>
+      <li><b>Log warm leads at handoff.</b> Note who was hot but didn't buy so the next shift can pick it back up.</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-h"><div class="ci">⛔</div><h3>Don't</h3></div>
+    <ul class="rules">
+      <li class="no"><b>No prices in any mass.</b> Ever. Prices live in DMs only.</li>
+      <li class="no"><b>No paid masses today.</b> Every send is free — engagement or tease.</li>
+      <li class="no"><b>Don't hard-sell in the engagement window.</b> It kills the connection vibe.</li>
+      <li class="no"><b>Don't mass the whales/ballers.</b> They're excluded — they get personal 1:1 outreach.</li>
+      <li class="no"><b>Don't reuse a tease photo across pages</b> — Free and VIP have separate assigned shots.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section" id="flow">
+  <div class="page-head">
+    <h1>Script Flow — Per Shift, Per Chatter</h1>
+    <div class="sub">The same repeatable loop each chatter runs on their shift. Send Mass 1, work the replies, send Mass 2 three hours in, then convert the warm repliers in DM.</div>
+  </div>
+  <div class="card">
+    <div class="card-h"><div class="ci">🎬</div><h3>The shift loop</h3></div>
+    <div class="step"><div class="n">1</div><div class="sc"><div class="h">Shift open — send Mass 1 (engagement)</div><div class="b">Fire the engagement caption for your shift to all fans (minus exclusions). No media, no price.</div></div></div>
+    <div class="step"><div class="n">2</div><div class="sc"><div class="h">Work the replies — build rapport</div><div class="b">React to each answer, ask a follow-up. <span class="say">"aww i love that 🙈 okay tell me one more thing — what are you up to the rest of the day?"</span> Learn one detail you can call back later.</div></div></div>
+    <div class="step"><div class="n">3</div><div class="sc"><div class="h">+3 hours — send Mass 2 (tease + CTA)</div><div class="b">Fire the tease caption + its assigned photo. The CTA already asks them to reply ("tell me your next move").</div></div></div>
+    <div class="step"><div class="n">4</div><div class="sc"><div class="h">Work the tease replies — escalate</div><div class="b"><span class="say">"mmm i was hoping you'd say that 😏 you want me to show you what happens next?"</span> Match their energy, keep it playful, get a clear yes.</div></div></div>
+    <div class="step"><div class="n">5</div><div class="sc"><div class="h">Convert in DM — price to the fan</div><div class="b"><span class="say">"i have something i've been saving… i'll make it just for you 🥵"</span> Quote a private price based on their history. Close, then <b>tag them into the buyers-exclude list</b>.</div></div></div>
+    <div class="step"><div class="n">6</div><div class="sc"><div class="h">Shift close — handoff</div><div class="b">Log warm-but-unclosed fans and any customs promised so the next chatter continues the thread.</div></div></div>
+  </div>
+  <div class="card">
+    <div class="card-h"><div class="ci">💬</div><h3>Reply starters by fan type</h3></div>
+    <div class="tmpl"><span class="when">Quiet fan (no reply to Mass 1)</span>"hey you 🙈 i actually wanted to know how your day's going, not just say hi… tell me one thing?"</div>
+    <div class="tmpl pink"><span class="when">Warm fan (replied to the tease)</span>"you have no idea what that does to me 😏 stay right there — i wanna send you something 🥵"</div>
+    <div class="tmpl"><span class="when">Returning/loyal fan</span>"you're always the first one to answer me 🥺 that's why you're my favorite… come here"</div>
+  </div>
+  <div class="foot-note">LIVERICHMEDIA · KARINA PETRO · CASUAL CONNECTION DAY · NO PAID MASS · DRAFT FOR REVIEW</div>
+</section>
+</main>
+<script>
+document.querySelectorAll('.nav-item').forEach(n=>{n.addEventListener('click',()=>{document.querySelectorAll('.nav-item').forEach(x=>x.classList.remove('active'));n.classList.add('active');document.querySelectorAll('.section').forEach(s=>s.classList.remove('show'));document.getElementById(n.dataset.s).classList.add('show');document.querySelector('.main').scrollTop=0;});});
+</script>

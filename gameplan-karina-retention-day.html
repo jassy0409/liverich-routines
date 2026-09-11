@@ -1,0 +1,219 @@
+<title>Karina Gameplan — Sunday Retention Day · Fresh Lace Tease</title>
+<style>
+  :root{
+    --bg:#171717; --panel:#202022; --panel2:#1a1a1c; --line:#2e2e30;
+    --accent:#a78bdb; --accent-dim:#2a2138;
+    --gold:#efb23b; --gold-bg:#3a2a08;
+    --txt:#f2f2f2; --muted:#a9a9ad; --dim:#7d7d82;
+    --red:#a78bdb; --red-bg:#241c38; --red-dim:#c9b8ec;
+    --green:#4fc17a; --green-bg:#0c3320;
+    --blue:#7db4f4; --blue-bg:#0e2947;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg); color:var(--txt);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    display:flex; min-height:100vh; line-height:1.5;
+  }
+  .sidebar{
+    width:250px; flex-shrink:0; background:var(--panel2);
+    border-right:1px solid var(--line);
+    height:100vh; position:sticky; top:0; overflow-y:auto; padding:20px 0;
+  }
+  .sidebar::-webkit-scrollbar{width:7px}
+  .sidebar::-webkit-scrollbar-thumb{background:#333;border-radius:4px}
+  .brand{display:flex;align-items:center;gap:10px;padding:0 20px 18px;border-bottom:1px solid var(--line);margin-bottom:12px}
+  .brand-badge{width:34px;height:34px;border-radius:9px;background:var(--accent-dim);display:flex;align-items:center;justify-content:center;font-size:17px}
+  .brand-title{font-size:15px;font-weight:700;letter-spacing:.2px}
+  .brand-sub{font-size:11px;color:var(--dim)}
+  .nav-label{font-size:10px;letter-spacing:.12em;color:var(--dim);padding:14px 20px 6px;text-transform:uppercase}
+  .nav-item{
+    display:flex;align-items:center;gap:11px;padding:9px 20px;cursor:pointer;
+    font-size:13.5px;color:var(--muted);border-left:3px solid transparent;transition:.15s;
+  }
+  .nav-item .ic{width:20px;text-align:center;font-size:15px}
+  .nav-item:hover{background:#232325;color:var(--txt)}
+  .nav-item.active{color:var(--accent);border-left-color:var(--accent);background:#232325}
+  .main{flex:1;overflow-y:auto;height:100vh;padding:34px 44px 80px}
+  .main::-webkit-scrollbar{width:9px}
+  .main::-webkit-scrollbar-thumb{background:#2c2c2e;border-radius:5px}
+  .page-head{margin-bottom:26px}
+  .page-head h1{font-size:27px;font-weight:800;letter-spacing:.2px;line-height:1.2}
+  .page-head .sub{color:var(--muted);font-size:13.5px;margin-top:7px}
+  .pills{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+  .pill{font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;letter-spacing:.03em}
+  .pill.red{background:var(--red-bg);color:var(--red-dim)}
+  .pill.green{background:var(--green-bg);color:var(--green)}
+  .pill.gold{background:var(--gold-bg);color:var(--gold)}
+  .pill.blue{background:var(--blue-bg);color:var(--blue)}
+  .section{display:none;animation:fade .45s ease both}
+  .section.show{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-bottom:26px}
+  .stat{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:17px 18px;position:relative;overflow:hidden}
+  .stat .lbl{font-size:10.5px;letter-spacing:.1em;color:var(--dim);text-transform:uppercase}
+  .stat .num{font-size:30px;font-weight:800;margin-top:8px;line-height:1;font-variant-numeric:tabular-nums}
+  .stat .num.gold{color:var(--gold)} .stat .num.red{color:var(--accent)} .stat .num.blue{color:var(--blue)} .stat .num.green{color:var(--green)}
+  .stat .foot{font-size:11.5px;color:var(--muted);margin-top:9px}
+  .stat .ic{position:absolute;top:15px;right:16px;font-size:17px;opacity:.85}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:20px 22px;margin-bottom:16px}
+  .card-h{display:flex;align-items:center;gap:11px;margin-bottom:15px;flex-wrap:wrap}
+  .card-h .ci{width:30px;height:30px;border-radius:8px;background:var(--accent-dim);display:flex;align-items:center;justify-content:center;font-size:15px}
+  .card-h h3{font-size:16.5px;font-weight:700}
+  .card-h .tag{margin-left:auto;font-size:10px;font-weight:700;letter-spacing:.05em;padding:3px 9px;border-radius:6px;background:var(--red-bg);color:var(--red-dim)}
+  .card-h .tag.g{background:var(--green-bg);color:var(--green)}
+  .card-h .tag.b{background:var(--blue-bg);color:var(--blue)}
+  .card-h .tag.gd{background:var(--gold-bg);color:var(--gold)}
+  .tmpl{background:#1a1524;border:1px dashed var(--accent);border-radius:10px;padding:15px 18px;font-style:italic;color:#d8c9f2;font-size:14px;margin:12px 0}
+  .tmpl .when{display:block;font-style:normal;font-weight:800;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:7px}
+  .ptable{width:100%;border-collapse:separate;border-spacing:0;background:var(--panel2);border:1px solid var(--line);border-radius:11px;overflow:hidden;margin-bottom:12px}
+  .ptable th,.ptable td{padding:11px 14px;font-size:13.5px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+  .ptable tr:last-child td{border-bottom:none}
+  .ptable th{font-size:10.5px;color:var(--dim);text-transform:uppercase;letter-spacing:.08em}
+  .ptable .p{color:var(--gold);font-weight:800;white-space:nowrap;font-variant-numeric:tabular-nums}
+  .ptable .t{color:var(--muted)}
+  .twrap{overflow-x:auto}
+  .timeline{position:relative;margin:6px 0 4px;padding-left:26px}
+  .timeline::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:2px;background:var(--line)}
+  .t-item{position:relative;padding:0 0 18px}
+  .t-item::before{content:"";position:absolute;left:-24px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--panel);border:3px solid var(--accent)}
+  .t-item.money::before{border-color:var(--gold)}
+  .t-item.post::before{border-color:var(--blue)}
+  .t-time{font-size:12px;font-weight:800;letter-spacing:.06em;color:var(--accent);text-transform:uppercase}
+  .t-time .sub{color:var(--dim);font-weight:600;letter-spacing:normal;text-transform:none}
+  .t-item.money .t-time{color:var(--gold)}
+  .t-item.post .t-time{color:var(--blue)}
+  .t-title{font-size:14.5px;font-weight:700;margin-top:2px}
+  .t-body{font-size:13px;color:var(--muted);margin-top:3px}
+  .note{background:var(--red-bg);border-radius:9px;padding:13px 16px;margin-top:12px;font-size:13px;color:var(--red-dim)}
+  .note b{color:#fff}
+  .why{background:var(--panel2);border-left:3px solid var(--accent);border-radius:0 9px 9px 0;padding:13px 16px;margin-top:6px;font-size:13px;color:var(--muted)}
+  .why b{color:var(--accent);font-weight:700}
+  .foot-note{text-align:center;color:var(--dim);font-size:11px;letter-spacing:.08em;border-top:1px solid var(--line);margin-top:30px;padding-top:18px}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important}}
+  @media(max-width:680px){.sidebar{position:fixed;left:-260px;z-index:40}.main{padding:24px 18px 80px}}
+</style>
+<nav class="sidebar">
+  <div class="brand">
+    <div class="brand-badge">🍒</div>
+    <div><div class="brand-title">Sunday Retention Day</div><div class="brand-sub">Karina Petro · Both Pages · No Paid Mass</div></div>
+  </div>
+  <div class="nav-label">Gameplan</div>
+  <div class="nav-item active" data-s="overview"><span class="ic">📋</span>Overview</div>
+  <div class="nav-item" data-s="timeline"><span class="ic">🕒</span>Mass Timeline</div>
+  <div class="nav-item" data-s="wall"><span class="ic">📱</span>Wall Posts</div>
+  <div class="nav-item" data-s="lists"><span class="ic">🗂️</span>Lists &amp; Exclusions</div>
+</nav>
+<main class="main">
+
+<section class="section show" id="overview">
+  <div class="page-head">
+    <h1>KARINA — SUNDAY RETENTION &amp; CONNECTION DAY</h1>
+    <div class="sub">No paid mass today. Six free masses per page rotating engagement, tease and turn-on every 4 hours, teasing the brand-new lace set nobody has ever seen or bought. Every reply is an open window for a DM upsell.</div>
+    <div class="pills">
+      <span class="pill red">NO PAID MASS</span>
+      <span class="pill blue">6 MASSES / PAGE · 4H APART</span>
+      <span class="pill gold">FRESH LACE SET — NEVER SOLD</span>
+      <span class="pill green">2 WALL POSTS / PAGE</span>
+    </div>
+  </div>
+  <div class="stat-grid">
+    <div class="stat"><div class="lbl">Masses Today</div><div class="num blue">12</div><div class="foot">6 per page, both pages mirrored</div><div class="ic">📨</div></div>
+    <div class="stat"><div class="lbl">Set Teased</div><div class="num red">7/18</div><div class="foot">Red Lace Bedroom Set · 19 pics · 0 buyers ever</div><div class="ic">🍒</div></div>
+    <div class="stat"><div class="lbl">Spacing</div><div class="num gold">4h</div><div class="foot">engagement → tease → turn-on, twice around</div><div class="ic">⏱️</div></div>
+    <div class="stat"><div class="lbl">Upsell</div><div class="num green">DM</div><div class="foot">chatters sell the set in chat, price to the fan</div><div class="ic">💬</div></div>
+  </div>
+  <div class="card">
+    <div class="card-h"><div class="ci">🧭</div><h3>Why today works</h3></div>
+    <div class="why"><b>Retention first:</b> two pure check-ins ask about the fan, not the wallet. The teases show a set that has never been posted, never been massed, never been sold — real "you're the first" energy, because it's true.</div>
+    <div class="why"><b>Upsell window:</b> anyone who replies to a tease or turn-on is warm. Chatters walk them into the Red Lace Bedroom Set in DMs — no prices in the masses, ever.</div>
+    <div class="note"><b>Shifts:</b> Leigh graveyard · Jeffrey covering MJ (Sunday off) · Alyzha afternoon.</div>
+  </div>
+</section>
+
+<section class="section" id="timeline">
+  <div class="page-head">
+    <h1>Mass Timeline — Both Pages</h1>
+    <div class="sub">Times are her PT (fan-facing). Same captions and cadence on Free and VIP pages, different pics per page.</div>
+  </div>
+  <div class="card">
+    <div class="card-h"><div class="ci">🕒</div><h3>Six sends, 4 hours apart</h3><span class="tag">SCHEDULED ✓</span></div>
+    <div class="timeline">
+      <div class="t-item">
+        <div class="t-time">9:00 AM PT <span class="sub">· Leigh · engagement</span></div>
+        <div class="t-title">Check-in — no media</div>
+        <div class="t-body">"good morning 🍒 how's your sunday looking? tell me one good thing and i'll tell you mine"</div>
+      </div>
+      <div class="t-item money">
+        <div class="t-time">1:00 PM PT <span class="sub">· Leigh · tease · 2 pics</span></div>
+        <div class="t-title">Fresh lace tease</div>
+        <div class="t-body">"okay i can't keep this to myself… brand new lace, never shown anyone before. you're literally the first to see it 🍒"</div>
+      </div>
+      <div class="t-item money">
+        <div class="t-time">5:00 PM PT <span class="sub">· Jeffrey · turn-on · 1 pic</span></div>
+        <div class="t-title">Mirror turn-on</div>
+        <div class="t-body">"i've had this on all day and i keep catching myself in the mirror… someone needs to come distract me 😏"</div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">9:00 PM PT <span class="sub">· Jeffrey · engagement</span></div>
+        <div class="t-title">Night check-in — no media</div>
+        <div class="t-body">"before your night gets away from you… what are you doing right now? be honest"</div>
+      </div>
+      <div class="t-item money">
+        <div class="t-time">1:00 AM PT <span class="sub">· Alyzha · tease · 2 pics</span></div>
+        <div class="t-title">Can't-sleep tease</div>
+        <div class="t-body">"can't sleep. it's the lace, it's way too pretty to take off… should i keep it on a little longer? 🍒"</div>
+      </div>
+      <div class="t-item money">
+        <div class="t-time">5:00 AM PT <span class="sub">· Alyzha · turn-on · 1 pic</span></div>
+        <div class="t-title">Morning-after turn-on</div>
+        <div class="t-body">"good morning to everyone who dreamed about me… this is what you missed while you were sleeping 😏"</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="wall">
+  <div class="page-head">
+    <h1>Wall Posts — Both Pages</h1>
+    <div class="sub">Casual vibes only, no prices, photos never used in any post before. Already scheduled.</div>
+  </div>
+  <div class="card">
+    <div class="card-h"><div class="ci">📱</div><h3>Two per page</h3><span class="tag g">SCHEDULED ✓</span></div>
+    <div class="tmpl"><span class="when">11:00 AM PT</span>"it's national ice cream day and i take dessert *very* seriously 🍒"</div>
+    <div class="tmpl"><span class="when">9:00 PM PT</span>"still craving something sweet before bed? you know where to find me"</div>
+  </div>
+</section>
+
+<section class="section" id="lists">
+  <div class="page-head">
+    <h1>Lists &amp; Exclusions</h1>
+    <div class="sub">Verified live on each account today.</div>
+  </div>
+  <div class="card">
+    <div class="card-h"><div class="ci">🚫</div><h3>VIP page — excluded from every send</h3></div>
+    <div class="twrap"><table class="ptable">
+      <tr><th>List</th><th>ID</th></tr>
+      <tr><td><b>❌DO NOT MM❌ / ❌DO NOT MMPPV❌</b></td><td class="t">1202830395 · 1254257516</td></tr>
+      <tr><td><b>❌TIMEWASTERS❌ / ❌BROKE❌ / ❗️NEW MMPPV EXCLUDE❗️</b></td><td class="t">1202830123 · 1202344451 · 1221589138</td></tr>
+      <tr><td><b>💎SVIP · 💰SUPER VIP · 🐋💎DIAMOND · 🐋Whales · 🐋🐋BALLERS</b></td><td class="t">1298690721 · 1286005352 · 1286005398 · 1215997125 · 1215999079 — personal outreach only</td></tr>
+      <tr><td><b>Red lace buyers exclude (pic masses)</b></td><td class="t">1300072624</td></tr>
+    </table></div>
+  </div>
+  <div class="card">
+    <div class="card-h"><div class="ci">🚫</div><h3>Free page — excluded from every send</h3></div>
+    <div class="twrap"><table class="ptable">
+      <tr><th>List</th><th>ID</th></tr>
+      <tr><td><b>TW · MM'S EXCLUDE FOR TW FREE PIC</b></td><td class="t">1294949678 · 1299560136</td></tr>
+      <tr><td><b>Whales · BALLERS</b></td><td class="t">1203382860 · 1203382878 — personal outreach only</td></tr>
+      <tr><td><b>Red lace buyers exclude (pic masses)</b></td><td class="t">1300072836</td></tr>
+    </table></div>
+    <div class="note"><b>When a fan buys the lace set in DMs,</b> tag them into that page's red lace buyers exclude list right away so the later teases skip them.</div>
+  </div>
+  <div class="foot-note">LIVERICHMEDIA · KARINA PETRO · SUNDAY RETENTION DAY · NO PAID MASS</div>
+</section>
+</main>
+<script>
+document.querySelectorAll('.nav-item').forEach(n=>{n.addEventListener('click',()=>{document.querySelectorAll('.nav-item').forEach(x=>x.classList.remove('active'));n.classList.add('active');document.querySelectorAll('.section').forEach(s=>s.classList.remove('show'));document.getElementById(n.dataset.s).classList.add('show');document.querySelector('.main').scrollTop=0;});});
+</script>
