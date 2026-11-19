@@ -20,8 +20,19 @@ Show the Slack channel map for the workspace.
 |---|---|---|---|
 | Shantal Monique | #shantal-team | C09P2UMSE2G | private |
 | Shantal Monique | #shantal-reports | C09PTMA9XLG | private |
-| Karina Petro / KarinkaPetro | none found | — | — |
+| Karina Petro / KarinkaPetro | #karina-team-reports | C0B38BXSM88 | — (from the team's channel list; not found by search) |
 | Staff | #management-team | C06A6KA0YCT | private |
+
+## Shantal team chatters (shift in PHT)
+
+| Chatter | Shift (PHT) | Slack User ID | Management channel |
+|---|---|---|---|
+| Aaliyah | Graveyard 11pm–7am | U09U798V24X | C09U784EE23 |
+| Trisha | Morning 7am–3pm* | U08H7941KTN | C08FFLCF92N |
+| Jeffrey | Midshift 3pm–11pm* | U06AJLM4JM7 | C08488V3C2G |
+| Marianne | Cover (Trisha off-days + Aaliyah off) | no Slack ID on file | not set |
+
+*Rotation trial started Nov 14: Jeffrey on morning, Trisha on midshift. Aaliyah stays on graveyard. Re-check this table if the trial ends.
 
 ## Rules
 
